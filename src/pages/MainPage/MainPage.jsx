@@ -10,8 +10,14 @@ const Home = () => {
 
   return (
     <Container>
-      <Link to="/register">Register</Link>
-      <Link to="/login">Login</Link>
+      <h1>Main Page</h1>
+      {!isLoggedIn && (
+        <>
+          <Link to="/register">Register</Link>
+          <Link to="/login">Login</Link>
+        </>
+      )}
+
       {isLoggedIn && (
         <button type="button" onClick={() => dispath(logoutUser())}>
           Logout

@@ -3,6 +3,7 @@ import { Layout } from './Layout';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
+import { RestrictedRoute } from './RestrictedRoute';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -19,8 +20,16 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route
+          path="login"
+          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
+        />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+          }
+        />
       </Route>
       <Route path="*" element={<h1>Not Found</h1>} />
     </Routes>
