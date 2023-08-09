@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { Field, Form, Label, SubmitBtn } from './RegisterForm.styled';
 import { useDispatch } from 'react-redux';
-import { loginUser } from 'redux/auth/operations';
+import { registerUser } from 'redux/auth/operations';
 
 const initialState = { email: '', password: '' };
 
@@ -12,7 +12,7 @@ const RegisterForm = () => {
     <Formik
       initialValues={initialState}
       onSubmit={(values, actions) => {
-        dispatch(loginUser(values));
+        dispatch(registerUser(values));
         actions.resetForm();
       }}
     >
