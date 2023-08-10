@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import NotFound from 'pages/NotFound';
 import { lazy, useEffect } from 'react';
@@ -34,6 +34,15 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={isLoggedIn ? <MainLayout /> : <MainPage />}>
+          <Route
+            index
+            element={
+              <PrivateRoute
+                redirectTo="/"
+                component={<Navigate to="/calendar/month/:currentDate" />}
+              />
+            }
+          />
           <Route
             path="account"
             element={

@@ -1,17 +1,25 @@
 import { logoutUser } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Suspense } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 
 const MainLayout = () => {
-  const dispath = useDispatch();
+  const dispatсh = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div style={{ padding: '20px' }}>
       Main Layout
       <br />
-      <button type="button" onClick={() => dispath(logoutUser())}>
+      <button
+        type="button"
+        onClick={() => {
+          dispatсh(logoutUser()).then(() => {
+            navigate('/', { replace: true });
+          });
+        }}
+      >
         Logout
       </button>
       <Suspense
