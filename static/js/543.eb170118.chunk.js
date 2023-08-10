@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[543],{2543:function(e,r,n){n.r(r),n.d(r,{default:function(){return u}});var t=n(2791),a=n(7689),c=n(184),u=function(){var e=(0,t.useRef)(!0),r=(0,a.s0)(),n=(0,a.TH)();return(0,t.useEffect)((function(){var t=n.pathname;e.current&&(e.current=!1,t.includes("/calendar/day/")||r("/calendar/month/:currentDate"))}),[n,r]),(0,c.jsxs)("div",{children:["CalendarPage",(0,c.jsx)(a.j3,{})]})}}}]);
+//# sourceMappingURL=543.eb170118.chunk.js.map
