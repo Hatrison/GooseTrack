@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import NotFound from 'pages/NotFound';
-import Theme from './Theme/Theme';
+import Theme from './Theme';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
