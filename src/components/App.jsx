@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import NotFound from 'pages/NotFound';
+import Theme from './Theme/Theme';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
@@ -8,9 +9,6 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { TailSpin } from 'react-loader-spinner';
-import { ThemeProvider } from 'styled-components';
-import { theme as themeTemplate } from 'components/Theme/theme';
-import { selectTheme } from 'redux/theme/selectors';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -23,10 +21,6 @@ const ChoosedMonth = lazy(() => import('../pages/ChoosedMonth'));
 const ChoosedDay = lazy(() => import('../pages/ChoosedDay'));
 
 export const App = () => {
-  const theme = useSelector(selectTheme);
-  const isDarkTheme = theme === 'dark';
-  const { light, dark } = themeTemplate;
-
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -36,7 +30,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={isDarkTheme ? dark : light}>
+    <Theme>
       {isRefreshing ? (
         <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
       ) : (
@@ -103,6 +97,6 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       )}
-    </ThemeProvider>
+    </Theme>
   );
 };
