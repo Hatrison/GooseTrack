@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import NotFound from 'pages/NotFound';
+import Theme from './Theme';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
@@ -28,65 +29,74 @@ export const App = () => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
-  ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={isLoggedIn ? <MainLayout /> : <MainPage />}>
-          <Route
-            index
-            element={
-              <PrivateRoute
-                redirectTo="/"
-                component={<Navigate to="/calendar/month/:currentDate" />}
-              />
-            }
-          />
-          <Route
-            path="account"
-            element={
-              <PrivateRoute redirectTo="/" component={<AccountPage />} />
-            }
-          />
-          <Route
-            path="calendar/*"
-            element={
-              <PrivateRoute redirectTo="/" component={<CalendarPage />} />
-            }
-          >
+  return (
+    <Theme>
+      {isRefreshing ? (
+        <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
+      ) : (
+        <Routes>
+          <Route path="/" element={<Layout />}>
             <Route
-              path="month/:currentDate"
+              path="/"
+              element={isLoggedIn ? <MainLayout /> : <MainPage />}
+            >
+              <Route
+                index
+                element={
+                  <PrivateRoute
+                    redirectTo="/"
+                    component={<Navigate to="/calendar/month/:currentDate" />}
+                  />
+                }
+              />
+              <Route
+                path="account"
+                element={
+                  <PrivateRoute redirectTo="/" component={<AccountPage />} />
+                }
+              />
+              <Route
+                path="calendar/*"
+                element={
+                  <PrivateRoute redirectTo="/" component={<CalendarPage />} />
+                }
+              >
+                <Route
+                  path="month/:currentDate"
+                  element={
+                    <PrivateRoute redirectTo="/" component={<ChoosedMonth />} />
+                  }
+                />
+                <Route
+                  path="day/:currentDate"
+                  element={
+                    <PrivateRoute redirectTo="/" component={<ChoosedDay />} />
+                  }
+                />
+              </Route>
+              <Route
+                path="statistics"
+                element={
+                  <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
+                }
+              />
+            </Route>
+            <Route
+              path="login"
               element={
-                <PrivateRoute redirectTo="/" component={<ChoosedMonth />} />
+                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
               }
             />
             <Route
-              path="day/:currentDate"
+              path="register"
               element={
-                <PrivateRoute redirectTo="/" component={<ChoosedDay />} />
+                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
               }
             />
           </Route>
-          <Route
-            path="statistics"
-            element={
-              <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
-            }
-          />
-        </Route>
-        <Route
-          path="login"
-          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
-        />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-          }
-        />
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      )}
+    </Theme>
   );
 };

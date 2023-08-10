@@ -1,0 +1,111 @@
+/* @import-normalize; bring in normalize.css styles */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap'); */
+
+@font-face {
+  font-family: 'InterNormal';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'InterBolt';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/Inter-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'InterSemiBolt';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  src: url('./fonts/Inter-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'InterRegular';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  src: url('./fonts/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CoolveticaItalic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  src: url('./fonts/coolvetica.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'InterSemiBolt';
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+li {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
