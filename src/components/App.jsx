@@ -7,6 +7,7 @@ import { fetchCurrentUser } from 'redux/auth/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
+import { TailSpin } from 'react-loader-spinner';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -28,7 +29,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p>Loading, please, wait...</p>
+    <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
