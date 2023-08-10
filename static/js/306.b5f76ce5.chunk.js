@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[306],{1306:function(e,t,r){r.r(t),r.d(t,{default:function(){return c}});var n=r(1087),a=r(184),c=function(){return(0,a.jsxs)("div",{children:["ChoosedDay",(0,a.jsx)("br",{}),(0,a.jsx)(n.rU,{to:"/calendar/month/:currentDate",children:"Month"})]})}}}]);
+//# sourceMappingURL=306.b5f76ce5.chunk.js.map
