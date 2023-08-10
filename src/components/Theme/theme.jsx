@@ -1,6 +1,6 @@
 export const theme = {
   /* 
-    Звертатись до змінних у файлі .styled.jsx через ${props => props.theme.mainBackgroundColor};  
+    Звертатись до змінних у файлі .styled.jsx через ${({ theme }) => theme.mainBackgroundColor};  
   */
   // ======================================================================================================
 

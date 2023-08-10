@@ -8,6 +8,9 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { TailSpin } from 'react-loader-spinner';
+import { ThemeProvider } from 'styled-components';
+import { theme as themeTemplate } from 'components/Theme/theme';
+import { selectTheme } from 'redux/theme/selectors';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -20,6 +23,10 @@ const ChoosedMonth = lazy(() => import('../pages/ChoosedMonth'));
 const ChoosedDay = lazy(() => import('../pages/ChoosedDay'));
 
 export const App = () => {
+  const theme = useSelector(selectTheme);
+  const isDarkTheme = theme === 'dark';
+  const { light, dark } = themeTemplate;
+
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -28,65 +35,74 @@ export const App = () => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
-  ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={isLoggedIn ? <MainLayout /> : <MainPage />}>
-          <Route
-            index
-            element={
-              <PrivateRoute
-                redirectTo="/"
-                component={<Navigate to="/calendar/month/:currentDate" />}
-              />
-            }
-          />
-          <Route
-            path="account"
-            element={
-              <PrivateRoute redirectTo="/" component={<AccountPage />} />
-            }
-          />
-          <Route
-            path="calendar/*"
-            element={
-              <PrivateRoute redirectTo="/" component={<CalendarPage />} />
-            }
-          >
+  return (
+    <ThemeProvider theme={isDarkTheme ? dark : light}>
+      {isRefreshing ? (
+        <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
+      ) : (
+        <Routes>
+          <Route path="/" element={<Layout />}>
             <Route
-              path="month/:currentDate"
+              path="/"
+              element={isLoggedIn ? <MainLayout /> : <MainPage />}
+            >
+              <Route
+                index
+                element={
+                  <PrivateRoute
+                    redirectTo="/"
+                    component={<Navigate to="/calendar/month/:currentDate" />}
+                  />
+                }
+              />
+              <Route
+                path="account"
+                element={
+                  <PrivateRoute redirectTo="/" component={<AccountPage />} />
+                }
+              />
+              <Route
+                path="calendar/*"
+                element={
+                  <PrivateRoute redirectTo="/" component={<CalendarPage />} />
+                }
+              >
+                <Route
+                  path="month/:currentDate"
+                  element={
+                    <PrivateRoute redirectTo="/" component={<ChoosedMonth />} />
+                  }
+                />
+                <Route
+                  path="day/:currentDate"
+                  element={
+                    <PrivateRoute redirectTo="/" component={<ChoosedDay />} />
+                  }
+                />
+              </Route>
+              <Route
+                path="statistics"
+                element={
+                  <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
+                }
+              />
+            </Route>
+            <Route
+              path="login"
               element={
-                <PrivateRoute redirectTo="/" component={<ChoosedMonth />} />
+                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
               }
             />
             <Route
-              path="day/:currentDate"
+              path="register"
               element={
-                <PrivateRoute redirectTo="/" component={<ChoosedDay />} />
+                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
               }
             />
           </Route>
-          <Route
-            path="statistics"
-            element={
-              <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
-            }
-          />
-        </Route>
-        <Route
-          path="login"
-          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
-        />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-          }
-        />
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      )}
+    </ThemeProvider>
   );
 };
