@@ -3,14 +3,22 @@ import { useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Suspense } from 'react';
 import { TailSpin } from 'react-loader-spinner';
+import { toggleTheme } from 'redux/theme/themeSlice';
+import { Container } from './MainLayout.styled';
 
 const MainLayout = () => {
   const dispatсh = useDispatch();
   const navigate = useNavigate();
 
   return (
-    <div style={{ padding: '20px' }}>
+    <Container>
       Main Layout
+      <br />
+      <br />
+      <button type="button" onClick={() => dispatсh(toggleTheme())}>
+        Switch Theme
+      </button>
+      <br />
       <br />
       <button
         type="button"
@@ -27,7 +35,7 @@ const MainLayout = () => {
       >
         <Outlet />
       </Suspense>
-    </div>
+    </Container>
   );
 };
 
