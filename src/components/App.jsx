@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
+import NotFound from 'pages/NotFound';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
@@ -12,6 +13,8 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const MainLayout = lazy(() => import('../pages/MainLayout'));
 const AccountPage = lazy(() => import('../pages/AccountPage'));
+const CalendarPage = lazy(() => import('../pages/CalendarPage'));
+const StatisticsPage = lazy(() => import('../pages/StatisticsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -42,8 +45,18 @@ export const App = () => {
           path="account"
           element={<PrivateRoute redirectTo="/" component={<AccountPage />} />}
         />
+        <Route
+          path="calendar"
+          element={<PrivateRoute redirectTo="/" component={<CalendarPage />} />}
+        />
+        <Route
+          path="statistics"
+          element={
+            <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
+          }
+        />
       </Route>
-      <Route path="*" element={<h1>Not Found</h1>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
