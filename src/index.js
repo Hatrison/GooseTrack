@@ -7,6 +7,7 @@ import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { ThemeProvider } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
 import 'index.css';
 
