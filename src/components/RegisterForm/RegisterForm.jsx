@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
 
-import { ReactComponent as IconButton } from 'images/svg/hide.svg';
+import { ReactComponent as IconButton } from 'images/svg/buttonLogReg.svg';
 
 const initialState = { email: '', password: '' };
 

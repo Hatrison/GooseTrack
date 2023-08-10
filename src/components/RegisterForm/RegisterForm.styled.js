@@ -57,6 +57,7 @@ padding: 14px;
 border: 1px solid rgba(220, 227, 229, 0.6);
 border-radius: 8px;
 position: relative;
+margin-top: 10px;
 
 :hover,
 :focus {
