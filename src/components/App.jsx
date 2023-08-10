@@ -15,6 +15,8 @@ const MainLayout = lazy(() => import('../pages/MainLayout'));
 const AccountPage = lazy(() => import('../pages/AccountPage'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'));
+const ChoosedMonth = lazy(() => import('../pages/ChoosedMonth'));
+const ChoosedDay = lazy(() => import('../pages/ChoosedDay'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,7 +32,39 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={isLoggedIn ? <MainLayout /> : <MainPage />} />
+        <Route path="/" element={isLoggedIn ? <MainLayout /> : <MainPage />}>
+          <Route
+            path="account"
+            element={
+              <PrivateRoute redirectTo="/" component={<AccountPage />} />
+            }
+          />
+          <Route
+            path="calendar/*"
+            element={
+              <PrivateRoute redirectTo="/" component={<CalendarPage />} />
+            }
+          >
+            <Route
+              path="month/:currentDate"
+              element={
+                <PrivateRoute redirectTo="/" component={<ChoosedMonth />} />
+              }
+            />
+            <Route
+              path="day/:currentDate"
+              element={
+                <PrivateRoute redirectTo="/" component={<ChoosedDay />} />
+              }
+            />
+          </Route>
+          <Route
+            path="statistics"
+            element={
+              <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
+            }
+          />
+        </Route>
         <Route
           path="login"
           element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
@@ -39,20 +73,6 @@ export const App = () => {
           path="register"
           element={
             <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-          }
-        />
-        <Route
-          path="account"
-          element={<PrivateRoute redirectTo="/" component={<AccountPage />} />}
-        />
-        <Route
-          path="calendar"
-          element={<PrivateRoute redirectTo="/" component={<CalendarPage />} />}
-        />
-        <Route
-          path="statistics"
-          element={
-            <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
           }
         />
       </Route>
