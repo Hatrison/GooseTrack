@@ -27,19 +27,17 @@ export default function MainLayout() {
   };
   return (
     <MainWrap>
-      <main>
-        <Container>
-          {(isDesktop || sideBarVisible) && (
-            <Sidebar onSidebarToggle={onSidebarToggle} />
-          )}
-          <PageContainer>
-            <Header onSidebarToggle={onSidebarToggle} />
-            <Suspense fallback={<div>Loading...</div>}>
-              <Outlet />
-            </Suspense>
-          </PageContainer>
-        </Container>
-      </main>
+      <Container>
+        {(isDesktop || sideBarVisible) && (
+          <Sidebar onSidebarToggle={onSidebarToggle} />
+        )}
+        <PageContainer>
+          <Header onSidebarToggle={onSidebarToggle} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
+        </PageContainer>
+      </Container>
     </MainWrap>
   );
 }

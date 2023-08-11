@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Suspense as SuspenseModule } from 'react';
 
-export const MainWrap = styled.div`
+export const MainWrap = styled.main`
   /* max-width: 1440px; */
+  max-width: 100vw;
   margin: 0 auto;
   background-color: ${({ theme }) => theme.secondaryBackgroundColor};
 
@@ -14,9 +15,8 @@ export const MainWrap = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
-  width: 100%;
-  min-height: 100vh;
+  width: calc(100vw - 290px);
+  height: 100vh;
   padding: 24px 20px 20px;
 
   transition: 250ms ease-in-out;
