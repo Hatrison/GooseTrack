@@ -4,7 +4,7 @@ import { Suspense as SuspenseModule } from 'react';
 export const MainWrap = styled.div`
   /* max-width: 1440px; */
   margin: 0 auto;
-  background-color: lightgray;
+  background-color: ${({ theme }) => theme.secondaryBackgroundColor};
 
   @media screen and (min-width: 1440px) {
     min-width: 1440px;
