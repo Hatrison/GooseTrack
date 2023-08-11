@@ -28,8 +28,14 @@ export const BtnAdd = styled.button`
 export const Box = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 
-  max-width: 304px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    margin-bottom: 28px;
+  }
 `;
 
 export const Title = styled.h3`
