@@ -43,5 +43,7 @@ export const SidebarWrap = styled.div`
 export const NavLink = styled(SidebarNav)`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `;
+
+export const Link = styled(SidebarLink)``;

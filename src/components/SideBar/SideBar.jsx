@@ -2,9 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { logoutUser } from 'redux/auth/operations';
-import { Link } from 'react-router-dom';
 
-import { SidebarOverlay, SidebarWrap, NavLink } from './SideBar.styled';
+import { SidebarOverlay, SidebarWrap, NavLink, Link } from './SideBar.styled';
 
 export default function SideBar({ onSidebarToggle }) {
   const dispatch = useDispatch();
