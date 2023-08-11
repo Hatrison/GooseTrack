@@ -16,7 +16,7 @@ import { GlobalStyle } from './GlobalStyle.styled';
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
-const MainLayout = lazy(() => import('../pages/MainLayout'));
+const MainLayout = lazy(() => import('../components/MainLayout'));
 const AccountPage = lazy(() => import('../pages/AccountPage'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'));
