@@ -6,7 +6,7 @@ import {
   Avatar,
   PriorityLow,
 } from './TaskColumnCard.styled';
-import { TaskToolbar } from '../TaskToolbar/TaskToolbar';
+import { TaskToolbar } from '../index';
 
 export const TaskColumnCard = () => {
   return (

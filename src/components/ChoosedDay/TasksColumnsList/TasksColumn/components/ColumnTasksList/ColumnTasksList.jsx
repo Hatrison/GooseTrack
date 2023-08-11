@@ -1,4 +1,4 @@
-import { TaskColumnCard } from '../TaskColumnCard/TaskColumnCard';
+import { TaskColumnCard } from '../index';
 import { List } from './ColumnTasksList.styled';
 
 export const ColumnTasksList = () => {
