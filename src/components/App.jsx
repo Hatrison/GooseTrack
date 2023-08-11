@@ -9,6 +9,9 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { TailSpin } from 'react-loader-spinner';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { GlobalStyle } from './GlobalStyle.styled';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -97,6 +100,8 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       )}
+      <GlobalStyle />
+      <ToastContainer />
     </Theme>
   );
 };
