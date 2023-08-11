@@ -1,10 +1,10 @@
 import { Container } from './TasksColumn.styled';
 import { ColumnHeadBar, ColumnTasksList, AddTaskBtn } from './components';
 
-export const TasksColumn = () => {
+export const TasksColumn = ({ propTitle }) => {
   return (
     <Container>
-      <ColumnHeadBar />
+      <ColumnHeadBar title={propTitle} />
       <ColumnTasksList />
       <AddTaskBtn />
     </Container>

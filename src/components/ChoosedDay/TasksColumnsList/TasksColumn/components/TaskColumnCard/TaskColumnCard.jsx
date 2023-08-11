@@ -11,7 +11,10 @@ import { TaskToolbar } from '../index';
 export const TaskColumnCard = () => {
   return (
     <TaskBox>
-      <TaskText>abrcadabra</TaskText>
+      <TaskText>
+        abracadabra, avada kedavra, focus pokus, alahai malahai, vengardium
+        leviosa
+      </TaskText>
       <ToolbarBox>
         <Wrapper>
           <Avatar />
