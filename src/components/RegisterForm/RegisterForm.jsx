@@ -6,7 +6,7 @@ import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
 
 import { ReactComponent as IconButton } from 'images/svg/buttonLogReg.svg';
 
-const initialState = { email: '', password: '' };
+const initialState = { name: '', email: '', password: '' };
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -22,6 +22,10 @@ const RegisterForm = () => {
       >
         <Form>
         <TitleForm>Sign Up</TitleForm>
+        <Label>
+            Name
+            <Field type="name" name="name" />
+          </Label>
           <Label>
             Email
             <Field type="email" name="email" />
