@@ -15,7 +15,7 @@ export const MainWrap = styled.main`
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: calc(100vw - 290px);
+  width: 100%;
   height: 100vh;
   padding: 24px 20px 20px;
 
@@ -23,6 +23,10 @@ export const PageContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 40px 32px 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: calc(100vw - 290px);
   }
 `;
 
