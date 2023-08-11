@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as IconPlus } from '../../../../../../icons/ChooseDay-icons/plus.svg';
+import { ReactComponent as IconPlus } from '../../../../../../images/svg/plusAdd.svg';
 
 export const Icon = styled(IconPlus)`
   width: 24px;

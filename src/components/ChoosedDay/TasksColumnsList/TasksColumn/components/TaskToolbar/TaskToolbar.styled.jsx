@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ReactComponent as IconMove } from '../../../../../../icons/ChooseDay-icons/arrow-circle-broken-right.svg';
-import { ReactComponent as IconPencil } from '../../../../../../icons/ChooseDay-icons/pencil-01.svg';
-import { ReactComponent as IconTrash } from '../../../../../../icons/ChooseDay-icons/trash-04.svg';
+import { ReactComponent as IconMove } from '../../../../../../images/svg/iconMove.svg';
+import { ReactComponent as IconPencil } from '../../../../../../images/svg/iconEdit.svg';
+import { ReactComponent as IconTrash } from '../../../../../../images/svg/iconDelete.svg';
 
 export const ChangeDirIcon = styled(IconMove)`
   width: 16px;
@@ -47,6 +47,7 @@ export const TrashIcon = styled(IconTrash)`
 export const List = styled.ul`
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 
   width: 62px;
   list-style: none;
@@ -60,6 +61,7 @@ export const Btn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 
   background-color: inherit;
   border: none;

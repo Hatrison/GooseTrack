@@ -7,7 +7,7 @@ export const List = styled.ul`
   list-style: none;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.5);
-  background: #fff;
+  background: ${props => props.theme.mainBackgroundColor};
 
   @media screen and (max-width: 767px) {
     padding: 14px 18px;

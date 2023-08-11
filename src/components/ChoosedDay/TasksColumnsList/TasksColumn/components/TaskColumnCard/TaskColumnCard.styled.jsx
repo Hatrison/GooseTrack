@@ -6,7 +6,7 @@ export const TaskBox = styled.div`
   padding-bottom: 18px;
   padding-left: 15px;
 
-  width: 100%;
+  /* width: 100%; */
   height: 108px;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
@@ -27,19 +27,75 @@ export const TaskBox = styled.div`
 `;
 
 export const TaskText = styled.p`
-  display: inline-block;
+  margin-bottom: 28px;
+
+  font-family: 'InterMedium';
+  font-size: 14px;
+  line-height: 1.28;
+
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 90%;
-  margin-bottom: 28px;
-
-  color: ${props => props.theme.mainTextColor};
-  font-family: 'InterNormal';
-  font-size: 14px;
-  line-height: calc((18 / 14) * 100%);
 
   @media (min-width: 768px) {
     margin-bottom: 30px;
   }
+`;
+
+export const ToolbarBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+`;
+
+export const Avatar = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  border: 1.8px solid #3e85f3;
+`;
+
+export const PriorityLow = styled.p`
+  padding: 4px 12px;
+  border-radius: 4px;
+  max-height: 20px;
+
+  font-family: 'InterSemiBolt';
+  font-size: 10px;
+  line-height: 1.2;
+  color: white;
+
+  background-color: #72c2f8;
+`;
+
+export const PriorityMedium = styled.p`
+  padding: 4px 12px;
+  border-radius: 4px;
+  max-height: 20px;
+
+  font-family: 'InterSemiBolt';
+  font-size: 10px;
+  line-height: 1.2;
+  color: white;
+
+  background-color: #f3b249;
+`;
+
+export const PriorityHigh = styled.p`
+  padding: 4px 12px;
+  border-radius: 4px;
+  max-height: 20px;
+
+  font-family: 'InterSemiBolt';
+  font-size: 10px;
+  line-height: 1.2;
+  color: white;
+
+  background-color: #ea3d65;
 `;

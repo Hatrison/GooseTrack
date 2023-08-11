@@ -9,14 +9,14 @@
 }
 
 @font-face {
-  font-family: 'InterBolt';
+  font-family: 'InterBold';
   font-style: normal;
   font-weight: 700;
   src: url('./fonts/Inter-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBold';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

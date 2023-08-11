@@ -1,1 +1,3 @@
-// import { DayCalendarHead } from "./DayCalendarHead/DayCalendarHead";
+import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
+
+export { DayCalendarHead };
