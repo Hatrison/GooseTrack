@@ -1,14 +1,16 @@
 import { Formik } from 'formik';
 import {  Wrapper,
-  FormContainer,Field, Form, FormField, ErrorMessage, FormTitle, SubmitBtn, GooseIMG, Svg } from './LoginForm.styled';
+  FormContainer,Field, Form, FormField, ErrorMessage, FormTitle, SubmitBtn, GooseIMG} from './LoginForm.styled';
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/auth/operations';
 import AuthNavigate from 'components/AuthNavigate';
 import { loginFormSchema } from './loginFormSchema';
+import { toast } from 'react-toastify';
 
-
+import { ReactComponent as Icon} from 'images/svg/buttonLogReg.svg';
 import GooseRocket from 'images/png/goose-rocket-login/goose-login.png';
 import GooseRocketRetina from 'images/png/goose-rocket-login/goose-login@2x.png';
+
 
 const initialState = { email: '', password: '' };
 
@@ -22,25 +24,50 @@ const LoginForm = () => {
       <Formik
         initialValues={initialState}
         onSubmit={(values, actions) => {
-          dispatch(loginUser(values));
-          actions.resetForm();
+          dispatch(loginUser({email: values.email,
+            password: values.password}))
+            .then(data => {
+              if (data.error) {
+                throw new Error(data.payload);
+              }
+              actions.resetForm();
+              return dispatch(
+                loginUser({
+                  email: values.email,
+                  password: values.password,
+                })
+              );
+            })
+            .then(loginData => {
+              if (loginData.error) {
+                throw new Error(loginData.payload);
+              }
+            })
+            .catch(error => {
+              toast.error(error.message);
+            });
+         
+          
         }}
         validationSchema={loginFormSchema}
       >
         <Form >
         <FormTitle>Log In</FormTitle>
         <FormField htmlFor="email">Email</FormField>
-          <ErrorMessage name="email" component="span" />
             <Field type="email" name="email" />
+            <ErrorMessage name="email" component="span" />
           
 
             <FormField htmlFor="password">Password</FormField>
-          <ErrorMessage name="password" component="span" />
             <Field type="password" name="password" />
-          
+            <ErrorMessage name="password" component="span" />
 
-          <SubmitBtn type="submit">Log in</SubmitBtn>
-          <Svg style={{ width: '13px', height: '13px', marginLeft: '13px' }}/>
+          <SubmitBtn type="submit">Log in
+          <Icon
+                style={{ width: '13px', height: '13px', marginLeft: '13px' }}
+              />
+          </SubmitBtn>
+          
         </Form>
       </Formik>
       <AuthNavigate navigateTo="/register">Sign up</AuthNavigate>

@@ -2,6 +2,7 @@ import {  Form as FormikForm,
   ErrorMessage as FormikErrorMessage,
   Field as FormikField,} from 'formik';
 import styled from 'styled-components';
+//import styled from '@emotion/styled/macro';
 
 
 export const Wrapper = styled.div`
@@ -58,96 +59,126 @@ export const FormContainer = styled.div`
 `;
 
 export const Form = styled(FormikForm)`
-display: flex;
-flex-direction: column;
-gap: 24px;
-width: 100%;
+max-width: 335px;
+  height: 469px;
 
-padding: 40px 24px;
-margin-bottom: 8px;
+  background-color:  ${props => props.theme.mainBackgroundColor};
+  border-radius: 8px;
+  padding: 40px 24px;
+  margin-bottom: 8px;
 
-background-color: #fff;
-border-radius: 8px;
+  @media (min-width: 768px) {
+    width: 480px;
+    margin-bottom: 14px;
+  }
 
-@media (min-width: 768px) {
-  padding: 40px;
-}
 `;
 
 export const FormTitle = styled.div`
-  font-family: 'InterSemiBolt';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.3;
+font-family: 'InterSemiBolt';
+font-weight: 600;
+font-size: 18px;
+line-height: 1.3;
+color: ${props => props.theme.accentColor};
 
-  color: #3e85f3;
-  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
-    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-
-  margin-bottom: 0.5rem;
+@media (min-width: 768px) {
+  font-size: 24px;
+}
 `;
 
 export const Field = styled(FormikField)`
-  padding: 5px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  font-size: 20px;
+font-family: 'InterRegular';
+font-weight: 400;
+width: 100%;
+display: block;
+outline: none;
+padding: 14px;
+border: 1px solid rgba(220, 227, 229, 0.6);
+border-radius: 8px;
+position: relative;
+margin-top: 10px;
+
+:hover,
+:focus {
+  border-color: #290b78;
+}
 `;
 
 export const FormField = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 24px;
+display: block;
+font-family: 'InterSemiBolt';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 1.25;
+
+color:  ${props => props.theme.mainTextColor};
+margin-top: 24px;
+margin-bottom: 8px;
+
+@media (min-width: 768px) {
+  font-size: 14px;
+  margin-top: 18px;
+}
 `;
 
+export const Icon = styled.svg`
+fill: transparent;
+stroke: #ffffff;
 
+@keyframes scale-up-hor-left {
+  0% {
+    -webkit-transform: scaleX(0.4);
+    transform: scaleX(0.4);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+}
+`; 
 
 export const SubmitBtn = styled.button`
+border: transparent;
+cursor: pointer;
+width: 100%;
+
 display: flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 0.8125rem;
-  padding: 14px;
-  margin-top: 0.5rem;
+align-items: center;
+justify-content: center;
 
-  background: #3e85f3;
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-  border-radius: 16px;
+font-family: 'InterSemiBolt';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 1.3;
+background: ${props => props.theme.accentColor};
+box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+border-radius: 16px;
+color: ${props => props.theme.secondaryTextColor};
 
-  border: none;
+padding: 14px;
+margin-top: 32px;
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1.125rem;
-  letter-spacing: -0.02em;
-  color: #fff;
+:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
- 
+@media (min-width: 768px) {
+  margin-top: 48px;
+}
+
+&:hover ${Icon} {
+  animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
 `;
 
-export const Svg = styled.svg`
-  fill: transparent;
-  stroke: #ffffff;
-
-  @keyframes scale-up-hor-left {
-    0% {
-      -webkit-transform: scaleX(0.4);
-      transform: scaleX(0.4);
-      -webkit-transform-origin: 0% 0%;
-      transform-origin: 0% 0%;
-    }
-    100% {
-      -webkit-transform: scaleX(1);
-      transform: scaleX(1);
-      -webkit-transform-origin: 0% 0%;
-      transform-origin: 0% 0%;
-    }
-  }
-`; 
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 4px;
   font-size: 14px;
@@ -162,8 +193,8 @@ export const GooseIMG = styled.img`
     position: fixed;
     width: 368px;
     height: 521px;
-    right: 20px;
-    bottom: 20px;
+    right: 60px;
+    bottom: 19px;
     display: block;
   }
 `;
