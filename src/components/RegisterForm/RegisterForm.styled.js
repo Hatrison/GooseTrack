@@ -96,3 +96,10 @@ margin-top: 32px;
   margin-top: 48px;
 }
 `;
+
+export const ToggleHidePassword = styled.span`
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  cursor: pointer;
+`;
