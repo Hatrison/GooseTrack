@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { DayCalendarHead, TasksColumnsList } from 'components/ChoosedDay';
 
 const ChoosedDay = () => {
   return (
@@ -6,6 +7,8 @@ const ChoosedDay = () => {
       ChoosedDay
       <br />
       <Link to="/calendar/month/:currentDate">Month</Link>
+      <DayCalendarHead />
+      <TasksColumnsList />
     </div>
   );
 };
