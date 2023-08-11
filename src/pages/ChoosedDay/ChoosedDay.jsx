@@ -3,7 +3,8 @@ import { DayCalendarHead } from 'components/ChoosedDay';
 // import { ColumnTasksList } from 'components/ChoosedDay/TasksColumnsList/TasksColumn/components/ColumnTasksList/ColumnTasksList';
 // import { ColumnHeadBar } from 'components/ChoosedDay/TasksColumnsList/TasksColumn/components';
 // import { AddTaskBtn } from 'components/ChoosedDay/TasksColumnsList/TasksColumn/components';
-import { TasksColumn } from 'components/ChoosedDay/TasksColumnsList/TasksColumn/TasksColumn';
+// import { TasksColumn } from 'components/ChoosedDay/TasksColumnsList/TasksColumn/TasksColumn';
+import { TasksColumnsList } from 'components/ChoosedDay/TasksColumnsList/TasksColumnsList';
 
 const ChoosedDay = () => {
   return (
@@ -14,7 +15,7 @@ const ChoosedDay = () => {
       <DayCalendarHead />
       {/* <ColumnHeadBar />
       <ColumnTasksList /> */}
-      <TasksColumn />
+      <TasksColumnsList />
     </div>
   );
 };
