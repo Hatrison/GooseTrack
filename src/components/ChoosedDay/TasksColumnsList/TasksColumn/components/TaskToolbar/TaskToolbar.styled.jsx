@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ReactComponent as IconMove } from '../../../../../../images/svg/iconMove.svg';
-import { ReactComponent as IconPencil } from '../../../../../../images/svg/iconEdit.svg';
-import { ReactComponent as IconTrash } from '../../../../../../images/svg/iconDelete.svg';
+import { ReactComponent as IconMove } from 'images/svg/iconMove.svg';
+import { ReactComponent as IconPencil } from 'images/svg/iconEdit.svg';
+import { ReactComponent as IconTrash } from 'images/svg/iconDelete.svg';
 
 export const ChangeDirIcon = styled(IconMove)`
   width: 16px;

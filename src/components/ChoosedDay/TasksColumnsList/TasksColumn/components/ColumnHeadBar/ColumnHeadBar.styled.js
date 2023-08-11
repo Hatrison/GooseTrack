@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as Icon } from '../../../../../../images/svg/plus-circle.svg';
+import { ReactComponent as Icon } from 'images/svg/plus-circle.svg';
 
 export const PlusCircleIcon = styled(Icon)`
   width: 22px;
