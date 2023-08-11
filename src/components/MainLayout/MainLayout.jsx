@@ -15,7 +15,7 @@ export default function MainLayout() {
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
 
   useEffect(() => {
-    if (setSitebarVisible) {
+    if (sideBarVisible) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';

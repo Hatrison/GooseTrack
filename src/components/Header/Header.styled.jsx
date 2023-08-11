@@ -28,6 +28,7 @@ export const BurgerButton = styled.button`
 export const BurgerIcon = styled(Icon)`
   width: 24px;
   height: 24px;
+  fill: black;
   @media screen and (min-width: 768px) {
     width: 34px;
     height: 34px;

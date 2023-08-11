@@ -1,8 +1,14 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import { logoutUser } from 'redux/auth/operations';
+import { Link } from 'react-router-dom';
 
-import { SidebarOverlay, SidebarWrap } from './SideBar.styled';
+import { SidebarOverlay, SidebarWrap, NavLink } from './SideBar.styled';
 
 export default function SideBar({ onSidebarToggle }) {
+  const dispatch = useDispatch();
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   useEffect(() => {
     const closeMenuByEsc = e => {
       if (e.code === 'Escape') {
@@ -22,6 +28,11 @@ export default function SideBar({ onSidebarToggle }) {
       onSidebarToggle();
     }
   };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    !isDesktop && onSidebarToggle();
+  };
   return (
     <SidebarOverlay onClick={onOverlayClick}>
       <SidebarWrap>
@@ -30,13 +41,17 @@ export default function SideBar({ onSidebarToggle }) {
           <div>WordLogo</div>
           <div>Button</div>
         </div>
-        <nav>
+        <div>
           <p>User Panel</p>
-          <div>My account</div>
-          <div>Calendar</div>
-          <div>Statistics</div>
-        </nav>
-        <button type="button">Log out</button>
+          <NavLink>
+            <Link to="/account">My account</Link>
+            <Link to="/calendar">Calendar</Link>
+            <Link to="/statistics">Statistics</Link>
+          </NavLink>
+        </div>
+        <button type="button" onClick={handleLogout}>
+          Log out
+        </button>
       </SidebarWrap>
     </SidebarOverlay>
   );
