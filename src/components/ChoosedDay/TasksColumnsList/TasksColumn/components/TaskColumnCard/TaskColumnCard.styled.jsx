@@ -6,7 +6,7 @@ export const TaskBox = styled.div`
   padding-bottom: 18px;
   padding-left: 15px;
 
-  /* width: 100%; */
+  width: 296px;
   height: 108px;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
@@ -19,6 +19,7 @@ export const TaskBox = styled.div`
   @media (min-width: 768px) {
     height: 112px;
     padding-left: 14px;
+    width: 300px;
 
     &:not(:last-child) {
       margin-bottom: 18px;

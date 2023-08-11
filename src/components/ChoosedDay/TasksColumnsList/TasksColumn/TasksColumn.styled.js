@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.li`
   padding-left: 14px;
   padding-top: 18px;
   padding-right: 18px;
