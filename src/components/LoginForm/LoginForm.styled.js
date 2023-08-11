@@ -6,24 +6,17 @@ import styled from 'styled-components';
 
 
 export const Wrapper = styled.div`
-  height: 100vh;
+min-height: 100vh;
+background: #dcebf7;
+position: relative;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem;
-  background-color: #dcebf7;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 
-  @media screen and (min-width: 1200px) {
-    background: url(../../shared/images/GooseImg/goose-rocket/goose-rocket.png),
-      url(), #dcebf7;
-    background-repeat: no-repeat;
-    background-position-x: calc(50% + (480px / 2) + (368px / 2) + 52px),
-      calc(50% + (480px / 2) + (207px / 2) + 156px);
-    background-position-y: calc(50% + 212px - 66px),
-      calc(50% + 212px - 66px - (717px / 2) + (174px / 2) + 76px);
-  }
+padding-top: 20px;
+padding-bottom: 20px;
 `;
 
 export const FormContainer = styled.div`
@@ -38,7 +31,7 @@ export const FormContainer = styled.div`
   & > a {
     position: relative;
     display: block;
-    font-family: 'Inter';
+    font-family: 'InterSemiBolt';
     font-style: normal;
     font-weight: 600;
     font-size: 0.75rem;
@@ -189,7 +182,7 @@ export const ErrorMessage = styled(FormikErrorMessage)`
 export const GooseIMG = styled.img`
   display: none;
 
-  @media (min-width: 1120px) {
+  @media (min-width: 1280px) {
     position: fixed;
     width: 368px;
     height: 521px;
