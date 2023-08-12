@@ -7,17 +7,22 @@ import {
   updateUser,
 } from './operations';
 
+const updateUserState = (state, action) => {
+  for (let key in state) {
+    if (state.hasOwnProperty(key) && action.hasOwnProperty(key)) {
+      state[key] = action[key];
+    }
+  }
+};
+
 const initialState = {
   token: null,
   user: {
-    _id: '',
     name: '',
-    password: '',
     email: '',
     birthday: '',
     phone: '',
     skype: '',
-    token: '',
     avatarURL: '',
   },
   isLoggedIn: false,
@@ -30,20 +35,17 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        updateUserState(state.user, action.payload);
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        updateUserState(state.user, action.payload);
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logoutUser.fulfilled, state => {
-        state.user = {
-          email: '',
-          subscription: '',
-        };
+        state.user = initialState.user;
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -51,7 +53,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        updateUserState(state.user, action.payload);
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
@@ -59,7 +61,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        updateUserState(state.user, action.payload);
       });
   },
 });
