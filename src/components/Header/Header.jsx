@@ -22,13 +22,13 @@ export default function Header({ onSidebarToggle }) {
       </BurgerButton>
       <UserOptions>
         <AddFeedbackBtn type="button">Feedback</AddFeedbackBtn>
-        <UserInfo class="userDetails">
+        <UserInfo className="userDetails">
           <ThemeToggler
             onClick={() => dispatch(toggleTheme())}
-            class="themeToggler"
+            className="themeToggler"
           ></ThemeToggler>
-          <UserName class="userName">Nadiia</UserName>
-          <UserAvatar class="userAvatar"></UserAvatar>
+          <UserName className="userName">Nadiia</UserName>
+          <UserAvatar className="userAvatar"></UserAvatar>
         </UserInfo>
       </UserOptions>
     </HeaderWrap>
