@@ -2,7 +2,7 @@ import { useMediaQuery } from 'react-responsive';
 // import { nanoid } from 'nanoid';
 import {
   ListDay,
-  ListItem,
+  ListItemDate,
   CalendarContainer,
   ListDate,
   CurrentDay,
@@ -39,21 +39,21 @@ export const DayCalendarHead = ({ selectedWeek }) => {
       </ListDay>
 
       <ListDate>
-        <ListItem>
+        <ListItemDate>
           <CurrentDay>1</CurrentDay>
-        </ListItem>
-        <ListItem>2</ListItem>
-        <ListItem>3</ListItem>
-        <ListItem>4</ListItem>
-        <ListItem>5</ListItem>
-        <ListItem>6</ListItem>
-        <ListItem>7</ListItem>
-      </ListDate>
-      {/* {selectedWeek.map(day => (
-        <ListItem key={nanoid()}>
+        </ListItemDate>
+        <ListItemDate>2</ListItemDate>
+        <ListItemDate>3</ListItemDate>
+        <ListItemDate>4</ListItemDate>
+        <ListItemDate>5</ListItemDate>
+        <ListItemDate>6</ListItemDate>
+        <ListItemDate>7</ListItemDate>
+        {/* {selectedWeek.map(day => (
+        <ListItemDate key={nanoid()}>
           <CurrentDay>{day}</CurrentDay>
-        </ListItem>
+        </ListItemDate>
       ))} */}
+      </ListDate>
     </CalendarContainer>
   );
 };
