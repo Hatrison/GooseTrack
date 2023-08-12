@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import CalendarToolbar from 'components/CalendarToolbar';
 
 const CalendarPage = () => {
   const isFirstRender = useRef(true);
@@ -19,7 +20,7 @@ const CalendarPage = () => {
 
   return (
     <div>
-      CalendarPage
+      <CalendarToolbar />
       <Outlet />
     </div>
   );
