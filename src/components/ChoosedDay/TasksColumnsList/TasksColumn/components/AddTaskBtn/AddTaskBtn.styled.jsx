@@ -5,7 +5,7 @@ export const Icon = styled(IconPlus)`
   width: 24px;
   height: 24px;
 
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
 
   transition: stroke 250ms ease-in-out;
 `;
@@ -21,9 +21,9 @@ export const Button = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.28;
-  color: #111111;
+  color: ${({ theme }) => theme.mainTextColor};
 
-  background-color: #e3f3ff;
+  background-color: ${({ theme }) => theme.buttonBackgroundColorAddTask};
   border: 1px dashed #3e85f3;
   border-radius: 8px;
   cursor: pointer;
@@ -40,7 +40,7 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: #3e85f3;
+    background-color: #2b78ef;
     color: #ffffff;
   }
 
