@@ -1,33 +1,59 @@
+import { useMediaQuery } from 'react-responsive';
+// import { nanoid } from 'nanoid';
 import {
-  List,
-  ListItemDesktop,
-  ListItemMobile,
+  ListDay,
+  ListItem,
+  CalendarContainer,
+  ListDate,
+  CurrentDay,
+  ListItemDay,
 } from './DayCalendarHead.styled';
 
 export const DayCalendarHead = ({ selectedWeek }) => {
+  const mobileDevice = useMediaQuery({ maxWidth: 767 });
+
   return (
-    <List>
-      <ListItemMobile>M</ListItemMobile>
-      <ListItemMobile>T</ListItemMobile>
-      <ListItemMobile>W</ListItemMobile>
-      <ListItemMobile>T</ListItemMobile>
-      <ListItemMobile>F</ListItemMobile>
-      <ListItemMobile>S</ListItemMobile>
-      <ListItemMobile>S</ListItemMobile>
+    <CalendarContainer>
+      <ListDay>
+        {mobileDevice ? (
+          <>
+            <ListItemDay>M</ListItemDay>
+            <ListItemDay>T</ListItemDay>
+            <ListItemDay>W</ListItemDay>
+            <ListItemDay>T</ListItemDay>
+            <ListItemDay>F</ListItemDay>
+            <ListItemDay>S</ListItemDay>
+            <ListItemDay>S</ListItemDay>
+          </>
+        ) : (
+          <>
+            <ListItemDay>MON</ListItemDay>
+            <ListItemDay>TUE</ListItemDay>
+            <ListItemDay>WED</ListItemDay>
+            <ListItemDay>THU</ListItemDay>
+            <ListItemDay>FRI</ListItemDay>
+            <ListItemDay>SAT</ListItemDay>
+            <ListItemDay>SUN</ListItemDay>
+          </>
+        )}
+      </ListDay>
 
-      <ListItemDesktop>MON</ListItemDesktop>
-      <ListItemDesktop>TUE</ListItemDesktop>
-      <ListItemDesktop>WED</ListItemDesktop>
-      <ListItemDesktop>THU</ListItemDesktop>
-      <ListItemDesktop>FRI</ListItemDesktop>
-      <ListItemDesktop>SAT</ListItemDesktop>
-      <ListItemDesktop>SUN</ListItemDesktop>
-
+      <ListDate>
+        <ListItem>
+          <CurrentDay>1</CurrentDay>
+        </ListItem>
+        <ListItem>2</ListItem>
+        <ListItem>3</ListItem>
+        <ListItem>4</ListItem>
+        <ListItem>5</ListItem>
+        <ListItem>6</ListItem>
+        <ListItem>7</ListItem>
+      </ListDate>
       {/* {selectedWeek.map(day => (
-        <DateWrapper key={nanoid()}>
+        <ListItem key={nanoid()}>
           <CurrentDay>{day}</CurrentDay>
-        </DateWrapper>
+        </ListItem>
       ))} */}
-    </List>
+    </CalendarContainer>
   );
 };
