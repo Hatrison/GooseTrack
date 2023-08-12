@@ -9,8 +9,15 @@ import {
 const initialState = {
   token: null,
   user: {
+    _id: '',
+    name: '',
+    password: '',
     email: '',
-    subscription: '',
+    birthday: '',
+    phone: '',
+    skype: '',
+    token: '',
+    avatarURL: '',
   },
   isLoggedIn: false,
   isRefreshing: false,
