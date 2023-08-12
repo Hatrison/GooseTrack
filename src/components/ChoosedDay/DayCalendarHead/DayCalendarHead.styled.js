@@ -6,7 +6,7 @@ export const CalendarContainer = styled.div`
   gap: 8px;
 
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.5);
+  border: 1px solid ${({ theme }) => theme.tasksColumnBorder};
   background: ${props => props.theme.mainBackgroundColor};
 
   @media screen and (max-width: 767px) {

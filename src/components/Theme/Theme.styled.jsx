@@ -61,6 +61,13 @@ export const theme = {
 
     //WeekCalendar
     weekCalendarText: '#343434',
+
+    //TasksColumn
+    tasksColumnBorder: 'rgba(220, 227, 229, 0.80)',
+
+    //TasksColumnCard
+    tasksColumnCardBg: '#DCE3E5CC',
+    priorTextColor: '#F7F6F9',
   },
 
   // Стилі для темної теми
@@ -114,6 +121,13 @@ export const theme = {
 
     //WeekCalendar
     weekCalendarText: 'rgba(250, 250, 250, 0.3)',
+
+    //TasksColumn
+    tasksColumnBorder: 'rgba(255, 255, 255, 0.15)',
+
+    //TasksColumnCard
+    tasksColumnCardBg: '#171820',
+    priorTextColor: '#171820',
   },
 
   // TaskModal

@@ -11,8 +11,8 @@ export const Container = styled.li`
   width: 100%;
 
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.5);
-  background: #fff;
+  border: 1px solid ${({ theme }) => theme.tasksColumnBorder};
+  background: ${props => props.theme.mainBackgroundColor};
 
   @media (min-width: 768px) {
     min-width: 344px;
