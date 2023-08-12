@@ -5,7 +5,8 @@ import { format, parse, add, sub } from 'date-fns';
 import PropTypes from 'prop-types';
 import { setDates } from 'redux/date/dateSlice';
 import { selectDate } from 'redux/date/selectors';
-import sprite from 'images/sprite.svg';
+import { ReactComponent as LeftArrow } from 'images/svg/chevron-left.svg';
+import { ReactComponent as RightArrow } from 'images/svg/chevron-right.svg';
 
 import {
   Btn,
@@ -71,20 +72,11 @@ export const PeriodPaginator = ({ type }) => {
       </StyledDate>
       <ul>
         <Li>
-          <Btn
-            type="button"
-            name="subtraction"
-            onClick={onChangeDate}
-            // disabled={shouldDisable}
-          >
-            <svg height={'10px'} width={'8px'}>
-              <use href={`${sprite}#icon-arrow-left-small`} />
-            </svg>
+          <Btn type="button" name="subtraction" onClick={onChangeDate}>
+            <LeftArrow />
           </Btn>
           <Btn type="button" name="addition" onClick={onChangeDate}>
-            <svg height={'10px'} width={'8px'}>
-              <use href={`${sprite}#icon-arrow-right-small`} />
-            </svg>
+            <RightArrow />
           </Btn>
         </Li>
       </ul>

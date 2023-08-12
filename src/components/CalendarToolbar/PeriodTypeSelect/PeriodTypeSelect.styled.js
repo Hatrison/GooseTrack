@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { NavLink as StyledLink } from 'react-router-dom';
 
 export const List = styled.ul`
@@ -17,8 +17,9 @@ export const ListItem = styled.li`
   display: flex;
 `;
 export const StyledNavLink = styled(StyledLink)`
-  color: #3e85f3;
-  background-color: #e3f3ff;
+  font-family: Inter;
+  color: ${({ theme }) => theme.accentColor};
+  background-color: ${({ theme }) => theme.buttonBackgroundColorAddTask};
   text-decoration: none;
 
   &.active {

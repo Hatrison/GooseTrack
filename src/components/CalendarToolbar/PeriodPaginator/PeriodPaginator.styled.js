@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const PeriodPaginatorWrapper = styled.div`
   display: flex;
@@ -25,9 +25,9 @@ export const Btn = styled.button`
   align-items: center;
   width: 36px;
   border: 1px solid rgba(220, 227, 229, 0.5);
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
   &:disabled {
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.mainBackgroundColor};
 
     & svg {
       stroke: #dce3e5;
@@ -44,7 +44,7 @@ export const Btn = styled.button`
 
   & svg {
     fill: transparent;
-    stroke: #616161;
+    stroke: ${({ theme }) => theme.CalendarHead};
   }
   @media (min-width: 768px) {
     width: 38px;
@@ -53,17 +53,16 @@ export const Btn = styled.button`
 
 export const StyledDate = styled.p`
   display: inline-block;
-
+  font-family: Inter;
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
 
   padding: 6px 12px;
-
   border-radius: 8px;
 
-  background-color: #3e85f3;
-  color: #ffffff;
+  background-color: ${({ theme }) => theme.accentColor};
+  color: ${({ theme }) => theme.mainBackgroundColor};
 
   text-transform: uppercase;
   text-align: center;
