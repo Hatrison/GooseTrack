@@ -36,7 +36,7 @@ export const FormContainer = styled.div`
     font-weight: 600;
     font-size: 0.75rem;
     line-height: 0.875rem;
-    color: var(--main-blue-color);
+    color: ${props => props.theme.accentColor};
 
     &:before {
       position: absolute;
@@ -46,7 +46,7 @@ export const FormContainer = styled.div`
       content: '';
       width: 100%;
       height: 1px;
-      background-color: var(--main-blue-color);
+      
     }
   }
 `;
@@ -167,6 +167,7 @@ margin-top: 32px;
 }
 
 &:hover ${Icon} {
+ 
   animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
