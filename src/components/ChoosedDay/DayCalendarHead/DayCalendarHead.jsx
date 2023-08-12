@@ -4,7 +4,7 @@ import {
   ListItemMobile,
 } from './DayCalendarHead.styled';
 
-export const DayCalendarHead = () => {
+export const DayCalendarHead = ({ selectedWeek }) => {
   return (
     <List>
       <ListItemMobile>M</ListItemMobile>
@@ -22,6 +22,12 @@ export const DayCalendarHead = () => {
       <ListItemDesktop>FRI</ListItemDesktop>
       <ListItemDesktop>SAT</ListItemDesktop>
       <ListItemDesktop>SUN</ListItemDesktop>
+
+      {/* {selectedWeek.map(day => (
+        <DateWrapper key={nanoid()}>
+          <CurrentDay>{day}</CurrentDay>
+        </DateWrapper>
+      ))} */}
     </List>
   );
 };
