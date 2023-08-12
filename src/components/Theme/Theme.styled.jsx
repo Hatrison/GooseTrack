@@ -58,6 +58,9 @@ export const theme = {
     taskModalInputColor: '#F6F6F6',
     taskModalLabelColor: '#5D5D5D',
     titleColor: 'rgba(52, 52, 52, 0.8)',
+
+    //WeekCalendar
+    weekCalendarText: '#343434',
   },
 
   // Стилі для темної теми
@@ -108,6 +111,9 @@ export const theme = {
     titleColor: 'rgba(250, 250, 250, 0.3)',
     CalendarHead: '#FFFFFF',
     CurrentDate: '#FFFFFF',
+
+    //WeekCalendar
+    weekCalendarText: 'rgba(250, 250, 250, 0.3)',
   },
 
   // TaskModal
