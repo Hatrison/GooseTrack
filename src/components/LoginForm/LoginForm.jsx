@@ -30,23 +30,12 @@ const LoginForm = () => {
               if (data.error) {
                 throw new Error(data.payload);
               }
-              actions.resetForm();
-              return dispatch(
-                loginUser({
-                  email: values.email,
-                  password: values.password,
-                })
-              );
-            })
-            .then(loginData => {
-              if (loginData.error) {
-                throw new Error(loginData.payload);
-              }
             })
             .catch(error => {
               toast.error(error.message);
             });
-         
+              actions.resetForm();
+            
           
         }}
         validationSchema={loginFormSchema}

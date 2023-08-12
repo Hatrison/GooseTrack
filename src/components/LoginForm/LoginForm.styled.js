@@ -2,7 +2,7 @@ import {  Form as FormikForm,
   ErrorMessage as FormikErrorMessage,
   Field as FormikField,} from 'formik';
 import styled from 'styled-components';
-//import styled from '@emotion/styled/macro';
+
 
 
 export const Wrapper = styled.div`
@@ -80,7 +80,7 @@ color: ${props => props.theme.accentColor};
 `;
 
 export const Field = styled(FormikField)`
-font-family: 'InterRegular';
+font-family: 'InterSemiBolt';
 font-weight: 400;
 width: 100%;
 display: block;
