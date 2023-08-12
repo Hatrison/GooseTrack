@@ -32,9 +32,10 @@ export const PageContainer = styled.div`
 
 export const Container = styled.div`
   display: flex;
-
+  flex-basis: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
   min-height: 100vh;
-  width: 100%;
 `;
 
 export const Suspense = styled(SuspenseModule)`

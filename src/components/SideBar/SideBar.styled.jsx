@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink as SidebarNav, Link as SidebarLink } from 'react-router-dom';
+import { Link as SidebarLink } from 'react-router-dom';
 export const SidebarOverlay = styled.div`
   @media (max-width: 1439px) {
     z-index: 2;
@@ -40,7 +40,7 @@ export const SidebarWrap = styled.div`
   }
 `;
 
-export const NavLink = styled(SidebarNav)`
+export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 20px;
