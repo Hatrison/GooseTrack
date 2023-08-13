@@ -66,7 +66,6 @@ export const theme = {
     tasksColumnBorder: 'rgba(220, 227, 229, 0.80)',
 
     //TasksColumnCard
-    tasksColumnCardBg: '#DCE3E5CC',
     priorTextColor: '#F7F6F9',
   },
 
@@ -126,7 +125,6 @@ export const theme = {
     tasksColumnBorder: 'rgba(255, 255, 255, 0.15)',
 
     //TasksColumnCard
-    tasksColumnCardBg: '#171820',
     priorTextColor: '#171820',
   },
 

@@ -11,7 +11,7 @@ export const TaskBox = styled.div`
   height: 108px;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.tasksColumnBorder};
-  background: ${({ theme }) => theme.tasksColumnCardBg};
+  background: ${({ theme }) => theme.secondaryBackgroundColor};
 
   &:not(:last-child) {
     margin-bottom: 14px;

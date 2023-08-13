@@ -1,5 +1,4 @@
 import { useMediaQuery } from 'react-responsive';
-// import { nanoid } from 'nanoid';
 import {
   ListDay,
   ListItemDate,
@@ -49,7 +48,7 @@ export const DayCalendarHead = ({ selectedWeek }) => {
         <ListItemDate>6</ListItemDate>
         <ListItemDate>7</ListItemDate>
         {/* {selectedWeek.map(day => (
-        <ListItemDate key={nanoid()}>
+        <ListItemDate key={day}>
           <CurrentDay>{day}</CurrentDay>
         </ListItemDate>
       ))} */}
