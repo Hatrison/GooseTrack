@@ -47,10 +47,16 @@ const RegisterForm = () => {
               if (loginData.error) {
                 throw new Error(loginData.payload);
               }
-              console.log('Registration and login successful');
+              toast.success('Registration successful', {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 3000,
+              });
             })
             .catch(error => {
-              toast.error(error.message);
+              toast.error('Registration failed', {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 3000,
+              });
             });
         }}
       >
@@ -59,15 +65,15 @@ const RegisterForm = () => {
             <TitleForm>Sign Up</TitleForm>
             <Label>
               Name
-              <Field type="name" name="name" />
+              <Field type="name" name="name"  placeholder="Enter your name"/>
             </Label>
             <Label>
               Email
-              <Field type="email" name="email" />
+              <Field type="email" name="email"  placeholder="Enter your e-mail" />
             </Label>
             <Label>
               Password
-              <Field type={showPassword ? 'text' : 'password'} name="password" 
+              <Field type={showPassword ? 'text' : 'password'} name="password"  placeholder="Enter your password"
               />
               <ToggleHidePassword type="button" onClick={handleShowPassword}>
                 {showPassword ? (
