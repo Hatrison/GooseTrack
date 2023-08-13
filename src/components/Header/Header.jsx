@@ -1,9 +1,7 @@
-
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import UserInfo from './UserInfo/UserInfo';
 import PageInfo from './PageInfo/PageInfo';
 import { useMediaQuery } from 'react-responsive';
-
 
 import {
   HeaderWrap,
@@ -13,12 +11,9 @@ import {
   AddFeedbackBtn,
   InfoWrap,
 } from './Header.styled';
-import { toggleTheme } from 'redux/theme/themeSlice';
 
 export default function Header({ onSidebarToggle }) {
-
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
-
 
   return (
     <HeaderWrap>
@@ -34,7 +29,6 @@ export default function Header({ onSidebarToggle }) {
           <ThemeToggler />
           <UserInfo />
         </InfoWrap>
-
       </UserOptions>
     </HeaderWrap>
   );

@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router';
-// import { useSelector } from 'react-redux';
-// import { selectTasks } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { selectTasks } from 'redux/tasks/selectors';
 
 import {
   PageInfoWrap,
@@ -13,7 +13,7 @@ import {
 } from './PageInfo.styled';
 
 export default function PageInfo() {
-  const tasks = [{ info: '1' }];
+  const tasks = useSelector(selectTasks);
   const { pathname } = useLocation();
   let location = ``;
   if (pathname.includes(`account`)) {
@@ -26,7 +26,9 @@ export default function PageInfo() {
 
   return (
     <PageInfoWrap>
-      {location === 'Calendar' && tasks.length > 0 && <GooseMotivator />}
+      {location === 'Calendar' && tasks && tasks.length > 0 && (
+        <GooseMotivator />
+      )}
       <Wrapper>
         <LocationName>{location}</LocationName>
         {location === 'Calendar' && tasks.length > 0 && (

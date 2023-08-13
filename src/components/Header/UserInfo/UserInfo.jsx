@@ -4,8 +4,8 @@ import {
   UserAvatar,
   AvatarFirstLetter,
 } from './UserInfo.styled';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectUser } from 'redux/auth/selectors';
 import { ReactComponent as MyAvatar } from '../../../images/avatarTest.svg';
 
 export default function UserInfo() {
