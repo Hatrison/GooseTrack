@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 import { themeReducer } from './theme/themeSlice';
+import { userReducer } from './user/userSlice';
 import { dateReducer } from './date/dateSlice';
 import { tasksReducer } from './tasks/tasksSlice';
 
@@ -26,21 +27,12 @@ const themePersistConfig = {
   storage,
 };
 
-const datePersistConfig = {
-  key: 'date',
-  storage,
-};
-
-const tasksPersistConfig = {
-  key: 'tasks',
-  storage,
-};
-
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   theme: persistReducer(themePersistConfig, themeReducer),
-  date: persistReducer(datePersistConfig, dateReducer),
-  tasks: persistReducer(tasksPersistConfig, tasksReducer),
+  date: dateReducer,
+  tasks: tasksReducer,
+  user: userReducer,
 });
 
 export const store = configureStore({
