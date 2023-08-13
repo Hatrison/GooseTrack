@@ -15,7 +15,6 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 32px;
 
   width: 100%;
   font-family: 'InterSemiBolt';
@@ -36,6 +35,8 @@ export const Button = styled.button`
   }
 
   @media screen and (min-width: 768px) {
+    margin-top: 32px;
+
     height: 52px;
   }
 
