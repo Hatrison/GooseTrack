@@ -49,6 +49,8 @@ export const List = styled.ul`
   justify-content: space-between;
   align-items: flex-end;
 
+  position: relative;
+
   width: 62px;
   list-style: none;
 
