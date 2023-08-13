@@ -67,6 +67,9 @@ export const theme = {
 
     //TasksColumnCard
     priorTextColor: '#F7F6F9',
+
+    //ChangeTaskDirModal
+    changeTaskDirModalBorder: 'transparent',
   },
 
   // Стилі для темної теми
@@ -126,6 +129,9 @@ export const theme = {
 
     //TasksColumnCard
     priorTextColor: '#171820',
+
+    //ChangeTaskDirModal
+    changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
   },
 
   // TaskModal

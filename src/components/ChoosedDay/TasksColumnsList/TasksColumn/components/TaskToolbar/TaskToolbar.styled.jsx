@@ -8,12 +8,12 @@ export const ChangeDirIcon = styled(IconMove)`
   height: 16px;
 
   stroke: ${({ theme }) => theme.mainTextColor};
-
   transition: stroke 250ms ease-in-out;
+  cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${props => props.theme.accentColor};
   }
 `;
 
@@ -23,10 +23,11 @@ export const PencilIcon = styled(IconPencil)`
 
   stroke: ${({ theme }) => theme.mainTextColor};
   transition: stroke 250ms ease-in-out;
+  cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${props => props.theme.accentColor};
   }
 `;
 
@@ -35,12 +36,12 @@ export const TrashIcon = styled(IconTrash)`
   height: 16px;
 
   stroke: ${({ theme }) => theme.mainTextColor};
-
   transition: stroke 250ms ease-in-out;
+  cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${props => props.theme.accentColor};
   }
 `;
 
@@ -48,6 +49,8 @@ export const List = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  position: relative;
 
   width: 62px;
   list-style: none;

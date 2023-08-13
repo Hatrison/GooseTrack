@@ -35,6 +35,8 @@ export const Button = styled.button`
   }
 
   @media screen and (min-width: 768px) {
+    margin-top: 32px;
+
     height: 52px;
   }
 

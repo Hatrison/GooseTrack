@@ -23,6 +23,7 @@ export const PlusCircleIcon = styled(Icon)`
 export const BtnAdd = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 
 export const Box = styled.div`
