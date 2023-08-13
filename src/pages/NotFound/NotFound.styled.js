@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ReactComponent as Rocket } from 'images/svg/rocket.svg';
 
 export const Wrapper = styled.div`
-  /* position: relative;
-  max-width: 100%;
-  height: 100vh; */
   position: fixed;
   top: 0;
   left: 0;
@@ -25,18 +23,20 @@ export const ContentWrap = styled.div`
     max-width: 503px;
   }
 `;
+
 export const NumberWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: -28px;
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 80px;
+    margin-bottom: -80px;
   }
 `;
 
 export const Number = styled.p`
+  font-family: 'Inter', sans-serif;
   font-size: 100px;
   line-height: 1.5;
   font-weight: bold;
@@ -48,25 +48,29 @@ export const Number = styled.p`
   }
 `;
 
-export const Image = styled.img`
-  display: block;
-  max-width: 100%;
-  /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); */
-  /* width: 81px; */
-  /* height: 188px; */
-  height: auto;
-  /* transform: rotate(-31deg); */
-  outline: 1px dashed red;
+export const RocketStyled = styled(Rocket)`
+  width: 166px;
+  height: 202px;
+
+  @media screen and (min-width: 768px) {
+    width: 367px;
+    height: 445px;
+  }
 `;
+
 export const Text = styled.p`
+  font-family: 'Inter', sans-serif;
   line-height: 1.29;
   text-align: center;
   font-weight: 500;
   color: ${({ theme }) => theme.mainTextColor};
   opacity: 0.7;
   margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
+    max-width: 387px;
     margin-bottom: 32px;
   }
 `;
@@ -74,6 +78,7 @@ export const Text = styled.p`
 export const StyledLink = styled(Link)`
   display: block;
   width: max-content;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -2%;
@@ -83,10 +88,12 @@ export const StyledLink = styled(Link)`
   border-radius: 16px;
   background-color: ${({ theme }) => theme.accentColor};
   color: ${({ theme }) => theme.buttontextColor};
-  box-shadow: ${({ theme }) => theme.buttonShadow};
+
+  transition: ${({ theme }) => theme.defaultTransition};
 
   &:hover {
     background-color: ${({ theme }) => theme.buttonBackgroundColorHover};
+    box-shadow: ${({ theme }) => theme.buttonShadow};
   }
 
   @media screen and (min-width: 768px) {
