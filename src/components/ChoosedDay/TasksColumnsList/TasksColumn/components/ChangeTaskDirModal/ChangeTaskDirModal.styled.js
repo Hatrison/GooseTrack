@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as IconMove } from 'images/svg/iconMove.svg';
 
 export const Box = styled.div`
   display: flex;
@@ -8,8 +9,8 @@ export const Box = styled.div`
   padding: 14px 14px;
 
   position: absolute;
-  top: -60px;
-  right: 75px;
+  top: -56px;
+  right: 80px;
 
   width: 115px;
   background-color: ${props => props.theme.mainBackgroundColor};
@@ -41,16 +42,46 @@ export const List = styled.ul`
     @media (min-width: 768px) {
       width: 99px;
     }
+  }
+`;
 
-    p {
-      font-family: 'InterNormal';
-      font-size: 12px;
-      line-height: 1.17;
+export const ChangeDirIconModal = styled(IconMove)`
+  width: 16px;
+  height: 16px;
 
-      @media (min-width: 768px) {
-        font-size: 14px;
-        line-height: 1.28;
-      }
-    }
+  stroke: ${({ theme }) => theme.mainTextColor};
+
+  transition: stroke 250ms ease-in-out;
+`;
+
+export const ModalBtn = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+
+  font-family: 'InterNormal';
+  font-size: 12px;
+  line-height: 1.17;
+  color: ${props => props.theme.mainTextColor};
+  width: 100%;
+  background-color: ${props => props.theme.mainBackgroundColor};
+  border: 0;
+  cursor: pointer;
+
+  transition: color 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.accentColor};
+  }
+
+  &:hover ${ChangeDirIconModal}, &:focus ${ChangeDirIconModal} {
+    stroke: #3e85f3;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.28;
   }
 `;

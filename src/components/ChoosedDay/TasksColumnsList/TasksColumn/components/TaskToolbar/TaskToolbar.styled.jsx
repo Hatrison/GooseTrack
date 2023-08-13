@@ -13,7 +13,7 @@ export const ChangeDirIcon = styled(IconMove)`
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${props => props.theme.accentColor};
   }
 `;
 
@@ -26,7 +26,7 @@ export const PencilIcon = styled(IconPencil)`
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${props => props.theme.accentColor};
   }
 `;
 
@@ -40,7 +40,7 @@ export const TrashIcon = styled(IconTrash)`
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${props => props.theme.accentColor};
   }
 `;
 

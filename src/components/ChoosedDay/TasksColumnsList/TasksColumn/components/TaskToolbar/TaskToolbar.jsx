@@ -7,6 +7,10 @@ import {
   PencilIcon,
   TrashIcon,
 } from './TaskToolbar.styled';
+import {
+  ModalBtn,
+  ChangeDirIconModal,
+} from '../ChangeTaskDirModal/ChangeTaskDirModal.styled';
 
 export const TaskToolbar = () => {
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
@@ -24,17 +28,23 @@ export const TaskToolbar = () => {
         {isChangeDirOpened && (
           <ChangeTaskDirModal>
             <li>
-              <p>In progress</p>
-              <ChangeDirIcon />
+              <ModalBtn>
+                In progress
+                <ChangeDirIconModal />
+              </ModalBtn>
             </li>
             <li>
-              <p>Done</p>
-              <ChangeDirIcon />
+              <ModalBtn>
+                Done
+                <ChangeDirIconModal />
+              </ModalBtn>
             </li>
             {/* {something.map(element => (
               <li key={element} onClick={() => handleChangeDir(element)}>
-                <p>{element}</p>
-                <ChangeDirIcon />
+                <ModalBtn>
+                {element}
+                <ChangeDirIconModal />
+              </ModalBtn>
               </li>
             ))} */}
           </ChangeTaskDirModal>
