@@ -3,28 +3,23 @@ import {
   UserName,
   UserAvatar,
   AvatarFirstLetter,
+  UserImage,
 } from './UserInfo.styled';
-// import { useSelector } from 'react-redux';
-// import { selectUser } from 'redux/auth/selectors';
-import { ReactComponent as MyAvatar } from '../../../images/avatarTest.svg';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/user/selectors';
 
 export default function UserInfo() {
-  //   const user = useSelector(selectUser);
-
-  const user = {
-    name: 'Serg',
-    email: 'serg@info.com',
-    avatar: 'ok',
-  };
-  const firstCharName = user.name.charAt(0).toUpperCase();
+  const { name, avatarURL } = useSelector(selectUser);
+  // const avatar =
+  const firstCharName = name.charAt(0).toUpperCase();
   return (
     <UserWrap>
-      <UserName>{user.name}</UserName>
+      <UserName>{name}</UserName>
       <UserAvatar>
-        {user.avatar === null ? (
+        {avatarURL && avatarURL.length === 0 ? (
           <AvatarFirstLetter>{firstCharName}</AvatarFirstLetter>
         ) : (
-          <MyAvatar />
+          <UserImage src={avatarURL} alt="User's profile" />
         )}
       </UserAvatar>
     </UserWrap>

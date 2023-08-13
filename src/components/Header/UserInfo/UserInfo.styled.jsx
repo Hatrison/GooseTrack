@@ -46,11 +46,19 @@ export const UserAvatar = styled.div`
 export const AvatarFirstLetter = styled.span`
   margin: 0;
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
   font-size: 30px;
-  font-style: oblique 10deg;
+
   color: ${({ theme }) => theme.buttontextColor};
+  @media screen and (max-width: 240px) {
+    font-size: 15px;
+  }
+`;
+
+export const UserImage = styled.img`
+  border-radius: 50%;
+  position: absolute;
 `;
