@@ -7,7 +7,7 @@ export const ChangeDirIcon = styled(IconMove)`
   width: 16px;
   height: 16px;
 
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
 
   transition: stroke 250ms ease-in-out;
 
@@ -21,7 +21,7 @@ export const PencilIcon = styled(IconPencil)`
   width: 16px;
   height: 16px;
 
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
   transition: stroke 250ms ease-in-out;
 
   &:hover,
@@ -34,7 +34,7 @@ export const TrashIcon = styled(IconTrash)`
   width: 16px;
   height: 16px;
 
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
 
   transition: stroke 250ms ease-in-out;
 
