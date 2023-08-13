@@ -1,28 +1,34 @@
+import ThemeToggler from './ThemeToggler/ThemeToggler';
+import UserInfo from './UserInfo/UserInfo';
+import PageInfo from './PageInfo/PageInfo';
+import { useMediaQuery } from 'react-responsive';
+
 import {
   HeaderWrap,
   BurgerIcon,
   BurgerButton,
   UserOptions,
   AddFeedbackBtn,
-  UserInfo,
-  ThemeToggler,
-  UserName,
-  UserAvatar,
+  InfoWrap,
 } from './Header.styled';
 
 export default function Header({ onSidebarToggle }) {
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+
   return (
     <HeaderWrap>
-      <BurgerButton type="button" onClick={() => onSidebarToggle()}>
-        <BurgerIcon />
-      </BurgerButton>
+      {isDesktop && <PageInfo />}
+      {!isDesktop && (
+        <BurgerButton type="button" onClick={() => onSidebarToggle()}>
+          <BurgerIcon />
+        </BurgerButton>
+      )}
       <UserOptions>
         <AddFeedbackBtn type="button">Feedback</AddFeedbackBtn>
-        <UserInfo class="userDetails">
-          <ThemeToggler class="themeToggler"></ThemeToggler>
-          <UserName class="userName">Nadiia</UserName>
-          <UserAvatar class="userAvatar"></UserAvatar>
-        </UserInfo>
+        <InfoWrap>
+          <ThemeToggler />
+          <UserInfo />
+        </InfoWrap>
       </UserOptions>
     </HeaderWrap>
   );

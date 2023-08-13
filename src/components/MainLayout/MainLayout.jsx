@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import Header from 'components/Header/Header';
 import Sidebar from 'components/SideBar/SideBar';
+import { TailSpin } from 'react-loader-spinner';
 import {
   Suspense,
   MainWrap,
@@ -33,7 +34,11 @@ export default function MainLayout() {
         )}
         <PageContainer>
           <Header onSidebarToggle={onSidebarToggle} />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
+            }
+          >
             <Outlet />
           </Suspense>
         </PageContainer>
