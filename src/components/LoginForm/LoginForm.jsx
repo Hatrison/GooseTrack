@@ -1,13 +1,13 @@
 import { Formik } from 'formik';
-import {  Wrapper,
-  FormContainer,Field, Form, FormField, ErrorMessage, FormTitle, SubmitBtn, GooseIMG} from './LoginForm.styled';
+import {  
+  FormContainer,Field, Form, FormField, ErrorMessage, ButtonIcon, FormTitle, SubmitBtn, GooseIMG} from './LoginForm.styled';
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/auth/operations';
 import AuthNavigate from 'components/AuthNavigate';
 import { loginFormSchema } from './loginFormSchema';
 import { toast } from 'react-toastify';
 
-import { ReactComponent as Icon} from 'images/svg/buttonLogReg.svg';
+
 import GooseRocket from 'images/png/goose-rocket-login/goose-login.png';
 import GooseRocketRetina from 'images/png/goose-rocket-login/goose-login@2x.png';
 
@@ -19,7 +19,7 @@ const LoginForm = () => {
 
   return (
     <>
-   <Wrapper>
+   
    <FormContainer>
       <Formik
         initialValues={initialState}
@@ -53,8 +53,8 @@ const LoginForm = () => {
             <ErrorMessage name="password" component="span" />
 
           <SubmitBtn type="submit">Log in
-          <Icon
-                style={{ width: '13px', height: '13px', marginLeft: '13px' }}
+          <ButtonIcon
+                // style={{ width: '13px', height: '13px', marginLeft: '13px' }}
               />
           </SubmitBtn>
           
@@ -67,7 +67,7 @@ const LoginForm = () => {
           alt="goose"
         />
          </FormContainer>
-    </Wrapper>
+    
 
     </>
   );
