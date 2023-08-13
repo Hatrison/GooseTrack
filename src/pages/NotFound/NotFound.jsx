@@ -4,7 +4,7 @@ import {
   Image,
   NumberWrap,
   Number,
-  Wtapper,
+  Wrapper,
   StyledLink,
   ContentWrap,
 } from './NotFound.styled';
@@ -13,18 +13,36 @@ import imagePaths from './imagePaths';
 
 const NotFound = () => {
   return (
-    <Wtapper>
+    <Wrapper>
       <ContentWrap>
         <NumberWrap>
           <Number>4</Number>
-          {/* <Image src="" alt="Rocket" width="81px" height="188px" /> */}
+
           <picture>
-            <source srcSet={imagePaths.webp2x} type="image/webp" />
-            <source srcSet={imagePaths.webp1x} type="image/webp" />
-            <source srcSet={imagePaths.png2x} type="image/png" />
-            <source srcSet={imagePaths.png1x} type="image/png" />
-            <Image src={imagePaths.png1x} alt="Rocket" />
+            <source
+              srcSet={`${imagePaths.webp2xTabDesk} 2x, ${imagePaths.webp1xTabDesk} 1x`}
+              type="image/webp"
+              media="(min-width: 768px)"
+            />
+            <source
+              srcSet={`${imagePaths.png2xTabDesk} 2x, ${imagePaths.png1xTabDesk} 1x`}
+              type="image/png"
+              media="(min-width: 768px)"
+            />
+            <source
+              srcSet={`${imagePaths.webp2xMob} 2x, ${imagePaths.webp1xMob} 1x`}
+              type="image/webp"
+              media="(max-width: 767px)"
+            />
+            <source
+              srcSet={`${imagePaths.png2xMob} 2x, ${imagePaths.png1xMob} 1x`}
+              type="image/png"
+              media="(max-width: 767px)"
+            />
+
+            <Image src={imagePaths.png1xMob} alt="Rocket" />
           </picture>
+
           <Number>4</Number>
         </NumberWrap>
         <Text>
@@ -33,7 +51,7 @@ const NotFound = () => {
         </Text>
         <StyledLink>Back to home</StyledLink>
       </ContentWrap>
-    </Wtapper>
+    </Wrapper>
   );
 };
 

@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Wtapper = styled.div`
-  position: relative;
+export const Wrapper = styled.div`
+  /* position: relative;
   max-width: 100%;
-  height: 100vh;
+  height: 100vh; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: ${({ theme }) => theme.secondaryBackgroundColor};
 `;
 
@@ -46,8 +51,11 @@ export const Number = styled.p`
 export const Image = styled.img`
   display: block;
   max-width: 100%;
+  /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); */
+  /* width: 81px; */
+  /* height: 188px; */
   height: auto;
-  transform: rotate(-31deg);
+  /* transform: rotate(-31deg); */
   outline: 1px dashed red;
 `;
 export const Text = styled.p`
@@ -75,6 +83,7 @@ export const StyledLink = styled(Link)`
   border-radius: 16px;
   background-color: ${({ theme }) => theme.accentColor};
   color: ${({ theme }) => theme.buttontextColor};
+  box-shadow: ${({ theme }) => theme.buttonShadow};
 
   &:hover {
     background-color: ${({ theme }) => theme.buttonBackgroundColorHover};
