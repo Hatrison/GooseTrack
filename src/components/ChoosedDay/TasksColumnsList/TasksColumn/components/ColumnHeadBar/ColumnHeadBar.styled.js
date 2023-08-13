@@ -5,7 +5,7 @@ export const PlusCircleIcon = styled(Icon)`
   width: 22px;
   height: 22px;
 
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
 
   transition: stroke 250ms ease-in-out;
 
@@ -43,6 +43,7 @@ export const Title = styled.h3`
   font-weight: 700;
   font-size: 18px;
   line-height: 1.11;
+  color: ${({ theme }) => theme.mainTextColor};
 
   @media (min-width: 768px) {
     font-size: 20px;

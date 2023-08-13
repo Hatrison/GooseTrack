@@ -10,8 +10,8 @@ export const TaskBox = styled.div`
   width: 100%;
   height: 108px;
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  background: #f7f6f9;
+  border: 1px solid ${({ theme }) => theme.tasksColumnBorder};
+  background: ${({ theme }) => theme.secondaryBackgroundColor};
 
   &:not(:last-child) {
     margin-bottom: 14px;
@@ -34,7 +34,7 @@ export const TaskText = styled.p`
   font-family: 'InterMedium';
   font-size: 14px;
   line-height: 1.28;
-
+  color: ${({ theme }) => theme.mainTextColor};
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -47,7 +47,6 @@ export const TaskText = styled.p`
 export const ToolbarBox = styled.div`
   display: flex;
   justify-content: space-between;
-  /* align-items: flex-end; */
 `;
 
 export const Wrapper = styled.div`
@@ -71,7 +70,7 @@ export const PriorityLow = styled.p`
   font-family: 'InterSemiBolt';
   font-size: 10px;
   line-height: 1.2;
-  color: white;
+  color: ${({ theme }) => theme.priorTextColor};
 
   background-color: #72c2f8;
 `;

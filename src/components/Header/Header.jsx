@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import {
   HeaderWrap,
   BurgerIcon,
@@ -9,8 +10,11 @@ import {
   UserName,
   UserAvatar,
 } from './Header.styled';
+import { toggleTheme } from 'redux/theme/themeSlice';
 
 export default function Header({ onSidebarToggle }) {
+  const dispatch = useDispatch();
+
   return (
     <HeaderWrap>
       <BurgerButton type="button" onClick={() => onSidebarToggle()}>
@@ -18,10 +22,13 @@ export default function Header({ onSidebarToggle }) {
       </BurgerButton>
       <UserOptions>
         <AddFeedbackBtn type="button">Feedback</AddFeedbackBtn>
-        <UserInfo class="userDetails">
-          <ThemeToggler class="themeToggler"></ThemeToggler>
-          <UserName class="userName">Nadiia</UserName>
-          <UserAvatar class="userAvatar"></UserAvatar>
+        <UserInfo className="userDetails">
+          <ThemeToggler
+            onClick={() => dispatch(toggleTheme())}
+            className="themeToggler"
+          ></ThemeToggler>
+          <UserName className="userName">Nadiia</UserName>
+          <UserAvatar className="userAvatar"></UserAvatar>
         </UserInfo>
       </UserOptions>
     </HeaderWrap>
