@@ -9,6 +9,7 @@ import {
   MainWrap,
   Container,
   PageContainer,
+  SpinnerWrap,
 } from './MainLayout.styled';
 
 export default function MainLayout() {
@@ -34,9 +35,12 @@ export default function MainLayout() {
         )}
         <PageContainer>
           <Header onSidebarToggle={onSidebarToggle} />
+
           <Suspense
             fallback={
-              <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
+              <SpinnerWrap>
+                <TailSpin width={'70%'} height={'70%'} color={'#3E85F3'} />
+              </SpinnerWrap>
             }
           >
             <Outlet />
