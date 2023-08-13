@@ -3,7 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { logoutUser } from 'redux/auth/operations';
 
-import { SidebarOverlay, SidebarWrap, NavLink, Link } from './SideBar.styled';
+import {
+  SidebarOverlay,
+  SidebarWrap,
+  Link,
+  Navigation,
+} from './SideBar.styled';
 
 export default function SideBar({ onSidebarToggle }) {
   const dispatch = useDispatch();
@@ -42,11 +47,11 @@ export default function SideBar({ onSidebarToggle }) {
         </div>
         <div>
           <p>User Panel</p>
-          <NavLink>
+          <Navigation>
             <Link to="/account">My account</Link>
             <Link to="/calendar">Calendar</Link>
             <Link to="/statistics">Statistics</Link>
-          </NavLink>
+          </Navigation>
         </div>
         <button type="button" onClick={handleLogout}>
           Log out
