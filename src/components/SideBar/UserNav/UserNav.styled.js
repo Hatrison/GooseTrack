@@ -9,12 +9,12 @@ export const Navigation = styled.nav`
   flex-direction: column;
   gap: 18px;
 
-  @media (min-width: 768px), @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     gap: 16px;
   }
 `;
 
-export const Link = styled(LinkRouter)` 
+export const Link = styled(LinkRouter)`
   display: inline-block;
   width: 185px;
   height: 40px;
@@ -23,28 +23,24 @@ export const Link = styled(LinkRouter)`
   border-radius: 8px;
   padding: 12px, 10px, 65px, 10px;
   background-color: transparent;
+  color: ${({ theme }) => theme.secondaryBackgroundColor};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.secondaryBackgroundColor};
+  }
 
   @media (min-width: 768px) {
-  width: 225px;
-  height: 56px;
-  padding: 20px, 16px, 80px, 16px;
-  font-size: 16px;
-}
+    width: 225px;
+    height: 56px;
+    padding: 20px, 16px, 80px, 16px;
+    font-size: 16px;
+  }
 
   @media (min-width: 1440px) {
-  width: 241px;
-  height: 56px;
-  padding: 20px, 16px, 96px, 16px;
-  font-size: 16px;
-}
-
-{background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-(color: #000000) : (color: #FFFFFF)};
-
-&:hover {
-    {background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-    (background-color: #E3F3FF) : (background-color: #3E85F3)};
-
+    width: 241px;
+    height: 56px;
+    padding: 20px, 16px, 96px, 16px;
+    font-size: 16px;
   }
 `;
 
@@ -54,25 +50,15 @@ export const User = styled(UserIcon)`
   margin-right: 8px;
   stroke: #000000;
 
-  @media (min-width: 768px),
-  @media (min-width: 1440px) {
-  width: 24px;
-  height: 24px;
-  margin-right: 11px;
-}
-
-&:hover {
-    {background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-    (stroke: #3E85F3) : (stroke: #ffffff)};
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    margin-right: 11px;
   }
 
-{background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-(stroke: #000000) : (stroke: #ffffff)};
-
-{{background-color: ${({ theme }) =>
-  !theme.secondaryBackgroundColor}} && {isActive}
- ? 
-(stroke: #3E85F3) : (stroke: #000000)};
+  &:hover {
+    background-color: ${({ theme }) => !theme.secondaryBackgroundColor};
+  }
 `;
 
 export const Calendar = styled(CalendarIcon)`
@@ -81,25 +67,15 @@ export const Calendar = styled(CalendarIcon)`
   margin-right: 8px;
   stroke: #000000;
 
-  @media (min-width: 768px),
-  @media (min-width: 1440px) {
-  width: 24px;
-  height: 24px;
-  margin-right: 11px;
-}
-
-&:hover {
-    {background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-    (stroke: #3E85F3) : (stroke: #ffffff)};
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    margin-right: 11px;
   }
 
-{background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-(stroke: #000000) : (stroke: #ffffff)};
-
-{{background-color: ${({ theme }) =>
-  !theme.secondaryBackgroundColor}} && {isActive}
- ? 
-(stroke: #3E85F3) : (stroke: #000000)};
+  &:hover {
+    background-color: ${({ theme }) => !theme.secondaryBackgroundColor};
+  }
 `;
 
 export const Chart = styled(ChartIcon)`
@@ -108,23 +84,13 @@ export const Chart = styled(ChartIcon)`
   margin-right: 8px;
   stroke: #000000;
 
-  @media (min-width: 768px),
-  @media (min-width: 1440px) {
-  width: 24px;
-  height: 24px;
-  margin-right: 11px;
-}
-
-&:hover {
-    {background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-    (stroke: #3E85F3) : (stroke: #ffffff)};
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    margin-right: 11px;
   }
 
-{background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-(stroke: #000000) : (stroke: #ffffff)};
-
-{{background-color: ${({ theme }) =>
-  !theme.secondaryBackgroundColor}} && {isActive}
- ? 
-(stroke: #3E85F3) : (stroke: #000000)};
+  &:hover {
+    background-color: ${({ theme }) => !theme.secondaryBackgroundColor};
+  }
 `;

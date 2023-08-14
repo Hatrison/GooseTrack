@@ -52,28 +52,25 @@ export const CloseIcon = styled.svg`
   border: 0;
   stroke: #000000;
   fill: transparent;
+  background-color: ${({ theme }) => !theme.secondaryBackgroundColor};
 
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;
     margin-left: 31px;
-}
-
-{background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-(stroke: #000000) : (stroke: #ffffff)};
+  }
 `;
 
-export const Logo = styled.logo`
+export const Logo = styled.img`
   margin-bottom: 64px;
 
-@media (min-width: 768px) {
-  margin-bottom: 50px;
-}
+  @media (min-width: 768px) {
+    margin-bottom: 50px;
+  }
 
-@media (min-width: 1440px) {
-  margin-bottom: 32px;
-}
+  @media (min-width: 1440px) {
+    margin-bottom: 32px;
+  }
 
-{background-color: ${({ theme }) => !theme.secondaryBackgroundColor} ? 
-(fill: #3E85F3) : (fill: #FFFFFF)};
+  background-color: ${({ theme }) => !theme.secondaryBackgroundColor};
 `;

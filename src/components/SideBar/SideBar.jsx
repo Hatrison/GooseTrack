@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { LogOutBtn } from './SideBar.styled';
 import { ReactComponent as CloseIcon } from 'images/svg/close.svg';
 import { ReactComponent as Logo } from 'images/svg/logo_text.svg';
 import { SidebarOverlay, SidebarWrap, SidebarCover } from './SideBar.styled';
 import UserNav from './UserNav';
+import LogoutBtn from './LogoutBtn/LogoutBtn';
 
 export default function SideBar({ onSidebarToggle }) {
   const [closeIconVisible, setCloseIconVisible] = useState(false);
@@ -52,7 +52,7 @@ export default function SideBar({ onSidebarToggle }) {
             <div>
               <Logo />
               {(!isDesktop || closeIconVisible) && (
-                <CloseIcon showCloseIcon={showCloseIcon} />
+                <CloseIcon onClick={showCloseIcon} />
               )}
             </div>
           </SidebarCover>
@@ -61,7 +61,7 @@ export default function SideBar({ onSidebarToggle }) {
           <p>User Panel</p>
           <UserNav />
         </div>
-        <LogOutBtn />
+        <LogoutBtn />
       </SidebarWrap>
     </SidebarOverlay>
   );

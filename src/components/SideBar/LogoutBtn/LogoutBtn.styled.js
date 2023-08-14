@@ -7,14 +7,14 @@ export const LogoutIcon = styled(LogoutIconRaw)`
   margin-left: 6px;
   stroke: #ffffff;
 
-  @media (min-width: 768px), @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 20px;
     height: 20px;
     margin-left: 11px;
   }
 `;
 
-export const LogOutBtn = styled.button`
+export const LogoutButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
