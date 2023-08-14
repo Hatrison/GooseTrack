@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
 // import { fetchTasks } from '../../redux/tasks/operations';
@@ -13,9 +12,6 @@ const ChoosedDay = ({ propSelectedWeek }) => {
 
   return (
     <div>
-      ChoosedDay
-      <br />
-      <Link to="/calendar/month/:currentDate">Month</Link>
       <DayCalendarHead selectedWeek={propSelectedWeek} />
       <TasksColumnsList />
     </div>
