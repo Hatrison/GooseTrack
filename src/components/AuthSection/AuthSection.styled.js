@@ -25,7 +25,7 @@ export const Image = styled.img`
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-  outline: 1px dashed red;
+  /* outline: 1px dashed red; */
 `;
 
 export const Header = styled.h1`
@@ -71,7 +71,8 @@ export const LinkSignUp = styled(Link)`
   display: block;
   font-family: 'Inter', sans-serif;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 1.29;
   font-weight: 600;
   text-decoration: underline;
 `;
@@ -89,6 +90,7 @@ export const LinkLogIn = styled(Link)`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
+  line-height: 1.29;
   letter-spacing: -2%;
 
   @media screen and (min-width: 768px) {
