@@ -1,10 +1,11 @@
-import StatisticsChart from 'components/Statistics/StatisticsChart/StatisticsChart';
+import StatisticsSection from 'components/Statistics/StatisticsSection/StatisticsSection';
+import { StatisticsContainer } from 'pages/StatisticsPage/StatisticsPage.styled';
 
 const StatisticsPage = () => {
   return (
-    <>
-      <StatisticsChart />
-    </>
+    <StatisticsContainer>
+      <StatisticsSection />
+    </StatisticsContainer>
   );
 };
 

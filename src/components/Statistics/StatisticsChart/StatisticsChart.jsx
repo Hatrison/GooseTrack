@@ -10,26 +10,26 @@ import {
   Label,
 } from 'recharts';
 
-const columns = [
-  {
-    name: 'To Do',
-    byDay: `${1.2 * 100}`,
-    byMonth: `${1.2 * 100}`,
-  },
-
-  {
-    name: 'In Progress',
-    byDay: `${1.3 * 100}`,
-    byMonth: `${1.4 * 100}`,
-  },
-  {
-    name: 'Done',
-    byDay: `${1.5 * 100}`,
-    byMonth: `${1.6 * 100}`,
-  },
-];
-
 const StatisticsChart = () => {
+  const columns = [
+    {
+      name: 'To Do',
+      byDay: `${0.1 * 100}`,
+      byMonth: `${0.2 * 100}`,
+    },
+
+    {
+      name: 'In Progress',
+      byDay: `${0.3 * 100}`,
+      byMonth: `${0.4 * 100}`,
+    },
+    {
+      name: 'Done',
+      byDay: `${0.5 * 100}`,
+      byMonth: `${0.6 * 100}`,
+    },
+  ];
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
@@ -45,7 +45,7 @@ const StatisticsChart = () => {
         barSize={27}
       >
         <defs>
-          <linearGradient id="colorM" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="colorP" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="rgb(255, 210, 221)" stopOpacity={0} />
             <stop
               offset="100%"
@@ -55,7 +55,7 @@ const StatisticsChart = () => {
           </linearGradient>
         </defs>
         <defs>
-          <linearGradient id="colorD" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="colorB" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="rgb(62, 133, 243)" stopOpacity={0} />
             <stop offset="100%" stopColor="rgb(62, 133, 243)" stopOpacity={1} />
           </linearGradient>
@@ -93,7 +93,7 @@ const StatisticsChart = () => {
         <Bar
           name="By Day"
           dataKey="byDay"
-          fill="url(#colorM)"
+          fill="url(#colorP)"
           barSize={27}
           radius={10}
           minPointSize={10}
@@ -102,13 +102,13 @@ const StatisticsChart = () => {
             position="top"
             fontSize={16}
             fontWeight={500}
-            stroke={'#343434'}
+            stroke="#343434"
           />
         </Bar>
         <Bar
           name="By Month"
           dataKey="byMonth"
-          fill="url(#colorD"
+          fill="url(#colorB)"
           barSize={27}
           radius={10}
           minPointSize={10}
