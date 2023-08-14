@@ -1,11 +1,19 @@
 import { Modal } from 'components/Modal/Modal';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-export const TaskModal = ({ task_info, handlerCloseModal }) => {
+const initialTask = {
+  title: '',
+  date: '2023-08-15',
+  start: '09:00',
+  end: '09:15',
+  priority: 'low',
+  category: 'to-do',
+  statusOperation: 'create',
+};
+
+export const TaskModal = ({ task_info = initialTask, handlerCloseModal }) => {
   const [initialData, setInitialData] = useState(null);
-  const { currentDay } = useParams();
 
   useEffect(() => {
     const { _id, category } = task_info;
@@ -13,33 +21,20 @@ export const TaskModal = ({ task_info, handlerCloseModal }) => {
     if (_id) {
       setInitialData({ ...task_info, statusOperation: 'edit' });
     } else if (category) {
-      
-      setInitialData({
-        title: '',
-        date: currentDay,
-        start: '09:00',
-        end: '09:15',
-        priority: 'low',
-        category,
-        statusOperation: 'create',
-      });
+      setInitialData(initialTask);
     } else {
       handlerCloseModal();
     }
-  }, [task_info, handlerCloseModal, currentDay]);
+  }, [task_info, handlerCloseModal]);
 
   return (
-    <>
-      {!!initialData && (
-        <Modal handlerCloseModal={handlerCloseModal}>
-          <TaskForm
-            initialData={initialData}
-            handlerCloseModal={handlerCloseModal}
-          ></TaskForm>
-        </Modal>
-      )}
-    </>
+    <Modal handlerCloseModal={handlerCloseModal}>
+      <TaskForm
+        initialData={initialData}
+        handlerCloseModal={handlerCloseModal}
+      ></TaskForm>
+    </Modal>
   );
 };
 
-export default TaskModal
+export default TaskModal;

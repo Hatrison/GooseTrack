@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   WrapForm,
   Form,
@@ -17,8 +17,8 @@ import {
   IconPlus,
 } from './TaskForm.styled';
 import { toast } from 'react-toastify';
-import { addTask, updateTask } from 'redux/tasks/operations';
-import { useDispatch, useSelector } from 'react-redux';
+// import { addTask, updateTask } from 'redux/tasks/operations';
+// import { useDispatch } from 'react-redux';
 
 const emptyTask = {
   title: '',
@@ -28,26 +28,33 @@ const emptyTask = {
   category: 'in-progress',
 };
 
-//  const initialData = {
-//    title: 'My task 1',
-//    date: '2023-06-01',
-//    start: '09:10',
-//    end: '09:40',
-//    priority: 'low',
-//    category: 'in-progress',
-//    statusOperation: 'create',
-//  };
+const initialTask = {
+  title: '',
+  date: '2023-08-15',
+  start: '09:00',
+  end: '09:15',
+  priority: 'low',
+  category: 'to-do',
+  statusOperation: 'create',
+};
+
 export const TaskForm = ({ initialData, handlerCloseModal }) => {
   const [informationTask, setInformationTask] = useState(emptyTask);
   const [operation, setOperation] = useState('create');
   const [dateSave, setDataSave] = useState(null);
 
-  const dispatch = useDispatch();
-  const successful = useSelector();
-  const error = useSelector();
+  // Прибрати при фінальній версії, це мокові дані
+  const initialDataTask = useRef(initialData);
+
+  // const dispatch = useDispatch();
+  const successful = true;
+  const error = false;
 
   useEffect(() => {
-    const { statusOperation, _id, ...information } = initialData;
+    // Прибрати при фінальній версії
+    initialDataTask.current = initialTask;
+    // const { statusOperation, _id, ...information } = initialData;
+    const { statusOperation, _id, ...information } = initialDataTask.current;
     if (_id) information.id = _id;
     setInformationTask(information);
     setOperation(statusOperation);
@@ -79,11 +86,11 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
       return;
     }
 
-    if (operation === 'edit') {
-      dispatch(updateTask(informationTask));
-    } else {
-      dispatch(addTask(informationTask));
-    }
+    // if (operation === 'edit') {
+    //   dispatch(updateTask(informationTask));
+    // } else {
+    //   dispatch(addTask(informationTask));
+    // }
     setDataSave(Date.now());
   };
 

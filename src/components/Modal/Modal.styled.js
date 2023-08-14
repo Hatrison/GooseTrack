@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from 'images/svg/closeModal.svg';
 
-// Styled Components
 export const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
@@ -16,21 +15,12 @@ export const Backdrop = styled.div`
 
 export const ModalContainer = styled.div`
   position: relative;
-
-  background-color: ${p => p.theme.colors.modal_window};
-  border: none;
-
-  min-width: 100px;
-  min-height: 100px;
-
-  /* border: 1px solid rgba(220, 227, 229, 0.8); */
-  box-shadow: ${p => p.theme.shadows.modalShadow};
-  border-radius: ${p => p.theme.radii.small};
-
-  /* @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
-    max-width: 468px;
-    width: 468px;
-  } */
+  min-width: 200px;
+  min-height: 200px;
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  border: ${({ theme }) => theme.modalBorder};
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 `;
 
 export const CloseButton = styled.button`
@@ -40,24 +30,12 @@ export const CloseButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 999;
-  stroke: black;
-
-  @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
-    top: 18px;
-    right: 18px;
-  }
-
-  /* @media screen and (min-width: ${p => p.theme.breakpoints.desktop}) {
-    max-width: 468px;
-    width: 468px;
-  } */
 `;
 
 export const MyCloseIcon = styled(CloseIcon)`
-  stroke: ${p => p.theme.colors.primary_text_mode};
+  stroke: ${({ theme }) => theme.modalCloseIcon};
+  transition: stroke 250ms linear 0s;
   :hover {
     stroke: rgb(62, 133, 243);
-    transition: stroke 250ms linear 0s;
   }
 `;

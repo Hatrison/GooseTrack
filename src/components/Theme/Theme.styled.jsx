@@ -55,10 +55,16 @@ export const theme = {
     CalendarHead: '#616161',
     CurrentDate: '#FFFFFF',
 
+    //Modal
+    modalBorder: '1px solid rgba(220, 227, 229, 0.8)',
+    modalCloseIcon: '#111',
+
     // TaskModal
+    taskModalTextColor: '#343434',
     taskModalInputColor: '#F6F6F6',
     taskModalLabelColor: '#5D5D5D',
-    titleColor: 'rgba(52, 52, 52, 0.8)',
+    taskModalTitleColor: 'rgba(52, 52, 52, 0.8)',
+    taskModalBorder: '1px solid rgba(220, 227, 229, 0.8)',
 
     //WeekCalendar
     weekCalendarText: '#343434',
@@ -123,6 +129,16 @@ export const theme = {
     CalendarHead: '#FFFFFF',
     CurrentDate: '#FFFFFF',
 
+    //Modal
+    modalBorder: 'none',
+    modalCloseIcon: '#fff',
+
+    // TaskModal
+    taskModalTextColor: '#fff',
+    taskModalInputColor: '#171820',
+    taskModalLabelColor: '#5B5C61',
+    taskModalTitleColor: 'rgba(52, 52, 52, 0.8)',
+
     //WeekCalendar
     weekCalendarText: 'rgba(250, 250, 250, 0.3)',
 
@@ -135,8 +151,4 @@ export const theme = {
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
   },
-
-  // TaskModal
-  taskModalInputColor: '#171820',
-  taskModalLabelColor: '#5B5C61',
 };

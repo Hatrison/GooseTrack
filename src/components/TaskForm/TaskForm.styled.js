@@ -3,34 +3,26 @@ import { ReactComponent as EditPen } from 'images/svg/editModal.svg';
 import { ReactComponent as Plus } from 'images/svg/addIcon.svg';
 
 export const WrapForm = styled.div`
-  max-width: 303px;
+  width: 303px;
   padding: 10px;
   border-radius: 8px;
+  padding: 48px 18px 40px 18px;
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  color: ${({ theme }) => theme.mainTextColor};
 
-  padding: 48px 18px;
-  background-color: ${props => props.theme.colors.modal_window};
-  color: ${p => p.theme.colors.modal_form_content};
-
-  @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
+  @media screen and (min-width: 768px) {
     padding: 40px 28px;
-    max-width: 396px;
-    width: 396px;
   }
 `;
 
-export const Form = styled.form`
-  /* padding: '40px 28px';
-  display: 'block';
-  position: 'relative'; */
-  /* background-color: ${p => p.theme.colors.modal_window}; */
-`;
+export const Form = styled.form``;
 
 export const Label = styled.label`
   display: inline-flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 18px;
-  color: ${p => p.theme.colors.modal_form_label};
+  color: ${({ theme }) => theme.taskModalTitleColor};
 `;
 
 export const Input = styled.input`
@@ -39,12 +31,12 @@ export const Input = styled.input`
   left: 0px;
   top: 0px;
 
-  background: transparent;
+  background: ${({ theme }) => theme.taskModalInputColor};
   border-radius: 8px;
-  border: ${p => p.theme.colors.user_input_border};
+  border: none;
   padding-left: 18px;
 
-  color: ${p => p.theme.colors.primary_text_mode};
+  color: ${({ theme }) => theme.taskModalTextColor};
   &::-webkit-calendar-picker-indicator {
     display: none;
   }
@@ -109,7 +101,7 @@ export const RadioButtonsLabel = styled.label`
   display: flex;
   align-items: center;
   align-content: center;
-  color: ${p => p.theme.colors.third_text_mode};
+  color: #343434;
 `;
 
 export const RadioButtonCustom = styled.span`
