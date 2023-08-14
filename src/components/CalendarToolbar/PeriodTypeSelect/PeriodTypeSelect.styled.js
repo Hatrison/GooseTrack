@@ -17,7 +17,7 @@ export const ListItem = styled.li`
   display: flex;
 `;
 export const StyledNavLink = styled(StyledLink)`
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   color: ${({ theme }) => theme.accentColor};
   background-color: ${({ theme }) => theme.buttonBackgroundColorAddTask};
   text-decoration: none;
