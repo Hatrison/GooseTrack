@@ -1,38 +1,18 @@
-import { Modal } from 'components/Modal/Modal';
-import { TaskForm } from 'components/TaskForm/TaskForm';
-import React, { useEffect, useState } from 'react';
+import Modal from 'components/Modal';
+import TaskForm from 'components/TaskForm';
 
 const initialTask = {
-  title: '',
-  date: '2023-08-15',
+  title: 'First task',
   start: '09:00',
   end: '09:15',
-  priority: 'low',
+  priority: 'high',
   category: 'to-do',
-  statusOperation: 'create',
 };
 
-export const TaskModal = ({ task_info = initialTask, handlerCloseModal }) => {
-  const [initialData, setInitialData] = useState(null);
-
-  useEffect(() => {
-    const { _id, category } = task_info;
-
-    if (_id) {
-      setInitialData({ ...task_info, statusOperation: 'edit' });
-    } else if (category) {
-      setInitialData(initialTask);
-    } else {
-      handlerCloseModal();
-    }
-  }, [task_info, handlerCloseModal]);
-
+export const TaskModal = ({ task = initialTask, handlerCloseModal }) => {
   return (
     <Modal handlerCloseModal={handlerCloseModal}>
-      <TaskForm
-        initialData={initialData}
-        handlerCloseModal={handlerCloseModal}
-      ></TaskForm>
+      <TaskForm task={task} handlerCloseModal={handlerCloseModal}></TaskForm>
     </Modal>
   );
 };

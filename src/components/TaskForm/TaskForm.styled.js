@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { ReactComponent as EditPen } from 'images/svg/editModal.svg';
 import { ReactComponent as Plus } from 'images/svg/addIcon.svg';
+import { Form as FormikForm, Field as FormikField } from 'formik';
 
-export const WrapForm = styled.div`
+export const Form = styled(FormikForm)`
   width: 303px;
   padding: 10px;
   border-radius: 8px;
@@ -15,8 +16,6 @@ export const WrapForm = styled.div`
   }
 `;
 
-export const Form = styled.form``;
-
 export const Label = styled.label`
   display: inline-flex;
   flex-direction: column;
@@ -25,7 +24,7 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.taskModalTitleColor};
 `;
 
-export const Input = styled.input`
+export const Input = styled(FormikField)`
   margin-top: 8px;
   height: 46px;
   left: 0px;
@@ -88,7 +87,7 @@ export const RadioContainer = styled.div`
   align-items: center;
 `;
 
-export const RadioButtonsInput = styled.input`
+export const RadioButtonsInput = styled(FormikField)`
   position: absolute;
   opacity: 0;
   cursor: pointer;

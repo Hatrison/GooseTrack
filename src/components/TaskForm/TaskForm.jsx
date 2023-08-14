@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  WrapForm,
   Form,
   EditButton,
   FormGroup,
@@ -17,183 +16,119 @@ import {
   IconPlus,
 } from './TaskForm.styled';
 import { toast } from 'react-toastify';
-// import { addTask, updateTask } from 'redux/tasks/operations';
-// import { useDispatch } from 'react-redux';
+import { Formik } from 'formik';
+import { addTask, updateTask } from 'redux/tasks/operations';
+import { selectDate } from 'redux/date/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { taskFormSchema } from './taskFormSchema';
 
 const emptyTask = {
   title: '',
   start: '00:00',
   end: '00:00',
   priority: 'low',
-  category: 'in-progress',
-};
-
-const initialTask = {
-  title: '',
-  date: '2023-08-15',
-  start: '09:00',
-  end: '09:15',
-  priority: 'low',
   category: 'to-do',
-  statusOperation: 'create',
 };
 
-export const TaskForm = ({ initialData, handlerCloseModal }) => {
-  const [informationTask, setInformationTask] = useState(emptyTask);
+export const TaskForm = ({ task, handlerCloseModal }) => {
   const [operation, setOperation] = useState('create');
-  const [dateSave, setDataSave] = useState(null);
-
-  // Прибрати при фінальній версії, це мокові дані
-  const initialDataTask = useRef(initialData);
-
-  // const dispatch = useDispatch();
-  const successful = true;
-  const error = false;
+  const date = useSelector(selectDate);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Прибрати при фінальній версії
-    initialDataTask.current = initialTask;
-    // const { statusOperation, _id, ...information } = initialData;
-    const { statusOperation, _id, ...information } = initialDataTask.current;
-    if (_id) information.id = _id;
-    setInformationTask(information);
-    setOperation(statusOperation);
-  }, [initialData]);
+    if (task._id) setOperation('edit');
+  }, [task]);
 
-  useEffect(() => {
-    if (!successful || !dateSave) return;
-
-    handlerCloseModal();
-  }, [dateSave, successful, handlerCloseModal]);
-
-  useEffect(() => {
-    if (!error || !dateSave) return;
-    toast.failure(`Data save error`);
-  }, [error, dateSave]);
-
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setInformationTask(prev => {
-      return { ...prev, [name]: value };
-    });
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-
-    if (informationTask.start > informationTask.end) {
+  const handleSubmit = async values => {
+    const { start, end } = values;
+    if (start > end) {
       toast.failure('Start time cannot be later than end time');
       return;
     }
 
-    // if (operation === 'edit') {
-    //   dispatch(updateTask(informationTask));
-    // } else {
-    //   dispatch(addTask(informationTask));
-    // }
-    setDataSave(Date.now());
+    dispatch(
+      operation === 'edit' ? updateTask(values) : addTask({ ...values, date })
+    )
+      .then(data => {
+        if (data.error) {
+          throw new Error(data.payload);
+        }
+      })
+      .catch(error => {
+        toast.error(error.message);
+      });
   };
 
   return (
-    <WrapForm>
-      <Form onSubmit={handleSubmit}>
+    <Formik
+      initialValues={task || emptyTask}
+      validationSchema={taskFormSchema}
+      onSubmit={(values, action) => {
+        handleSubmit(values);
+        action.resetForm();
+      }}
+    >
+      <Form>
         <Label>
           Title
-          <Input
-            type="text"
-            placeholder="Enter text"
-            name="title"
-            value={informationTask.title}
-            onChange={handleChange}
-            required
-          />
+          <Input type="text" name="title" placeholder="Enter text" required />
         </Label>
         <FormGroup>
           <Label>
             Start
-            <Input
-              id="time"
-              type="time"
-              name="start"
-              value={informationTask.start}
-              onChange={handleChange}
-              required
-            />
+            <Input type="time" name="start" required />
           </Label>
           <Label>
             End
-            <Input
-              type="time"
-              name="end"
-              value={informationTask.end}
-              onChange={handleChange}
-              required
-            />
+            <Input type="time" name="end" required />
           </Label>
         </FormGroup>
 
         <WrapRadio>
           <RadioContainer>
             <RadioButtonsLabel>
-              <RadioButtonsInput
-                type="radio"
-                value="low"
-                name="priority"
-                checked={informationTask.priority === 'low'}
-                onChange={handleChange}
-              />
+              <RadioButtonsInput type="radio" value="low" name="priority" />
               <RadioButtonCustom />
               Low
             </RadioButtonsLabel>
           </RadioContainer>
+
           <RadioContainer>
             <RadioButtonsLabel>
-              <RadioButtonsInput
-                type="radio"
-                value="medium"
-                name="priority"
-                checked={informationTask.priority === 'medium'}
-                onChange={handleChange}
-              />
+              <RadioButtonsInput type="radio" value="medium" name="priority" />
               <RadioButtonCustom />
               Medium
             </RadioButtonsLabel>
           </RadioContainer>
+
           <RadioContainer>
             <RadioButtonsLabel>
-              <RadioButtonsInput
-                type="radio"
-                value="high"
-                name="priority"
-                checked={informationTask.priority === 'high'}
-                onChange={handleChange}
-              />
+              <RadioButtonsInput type="radio" value="high" name="priority" />
               <RadioButtonCustom />
               High
             </RadioButtonsLabel>
           </RadioContainer>
         </WrapRadio>
 
-        {/* must be replaced with initialData.id */}
-        {operation === 'edit' ? (
-          <EditButton type="submit">
-            <IconEditPen />
-            Edit
-          </EditButton>
-        ) : (
-          <WrapButton>
+        <WrapButton>
+          {operation === 'edit' ? (
+            <EditButton type="submit">
+              <IconEditPen />
+              Edit
+            </EditButton>
+          ) : (
             <EditButton type="submit">
               <IconPlus />
               Add
             </EditButton>
+          )}
 
-            <CancelButton type="button" onClick={handlerCloseModal}>
-              Cancel
-            </CancelButton>
-          </WrapButton>
-        )}
+          <CancelButton type="button" onClick={handlerCloseModal}>
+            Cancel
+          </CancelButton>
+        </WrapButton>
       </Form>
-    </WrapForm>
+    </Formik>
   );
 };
 
