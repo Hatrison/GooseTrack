@@ -18,7 +18,7 @@ const handleFetchTasks = (state, action) => {
 
 const tasksSlice = createSlice({
   name: 'tasks',
-  initialState: { tasksArray: [] },
+  initialState: { tasksArray: [], isLoading: false, error: null },
 
   extraReducers: builder =>
     builder
