@@ -8,9 +8,7 @@ export const getTasks = createAsyncThunk(
   'getTasks',
   async ({ year, month }, thunkAPI) => {
     try {
-      const response = await axios.get(
-        `/api/tasks/?year=${year}&month=${month}`
-      );
+      const response = await axios.get(`/api/tasks/?date=${year}-${month}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
