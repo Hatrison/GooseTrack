@@ -1,4 +1,7 @@
-import { useSelector } from 'react-redux';
+import {
+  useSelector,
+  // useDispatch
+} from 'react-redux';
 import {
   TaskBox,
   TaskText,
@@ -6,14 +9,20 @@ import {
   Wrapper,
   Avatar,
   PriorityLow,
-  PriorityHigh,
-  PriorityMedium,
+  // PriorityHigh,
+  // PriorityMedium,
 } from './TaskColumnCard.styled';
 import { TaskToolbar } from '../index';
 import { selectUser } from 'redux/user/selectors';
 
 export const TaskColumnCard = ({ items }) => {
   const { avatarURL, name } = useSelector(selectUser);
+
+  // const dispatch = useDispatch();
+
+  // const handleDeleteTask = value => {
+  //   dispatch(deleteTask(value));
+  // };
 
   return (
     <TaskBox>
@@ -29,10 +38,11 @@ export const TaskColumnCard = ({ items }) => {
         <TaskToolbar />
       </ToolbarBox>
     </TaskBox>
+    // Вставляється після ретурна
     //  <>
     //       {items?.map(element => (
-    //        <TaskBox key={element.id}>
-    //          <TaskText>{element.text}</TaskText>
+    //        <TaskBox key={element._id}>
+    //          <TaskText>{element.title}</TaskText>
     //          <ToolbarBox>
     //            <Wrapper>
     //              <Avatar src={avatarURL} alt={name} />
@@ -40,7 +50,9 @@ export const TaskColumnCard = ({ items }) => {
     //              {element.priority === 'medium' && <PriorityMedium>{element.priority}</PriorityMedium>}
     //              {element.priority === 'low' && <PriorityLow>{element.priority}</PriorityLow>}
     //            </Wrapper>
-    //            <TaskToolbar/>
+    //            <TaskToolbar
+    //              handleDeleteTask={handleDeleteTask}
+    //            />
     //          </ToolbarBox>
     //        </TaskBox>
     //      )}
