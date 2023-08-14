@@ -2,10 +2,9 @@ import {  Form as FormikForm,
   ErrorMessage as FormikErrorMessage,
   Field as FormikField,} from 'formik';
 import styled from 'styled-components';
+import { ReactComponent as Icon} from 'images/svg/buttonLogReg.svg';
 
-
-
-export const Wrapper = styled.div`
+export const FormContainer = styled.div`
 min-height: 100vh;
 background: #dcebf7;
 position: relative;
@@ -15,27 +14,18 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 
-padding-top: 20px;
-padding-bottom: 20px;
-`;
+padding: 20px;
 
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  max-width: 480px;
 
   & > a {
     position: relative;
     display: block;
-    font-family: 'InterSemiBolt';
+    font-family: 'InterSemiBolt', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 0.75rem;
-    line-height: 0.875rem;
+    font-size: 12px;
+    line-height: 14px;
+    
     color: ${props => props.theme.accentColor};
 
     &:before {
@@ -46,32 +36,42 @@ export const FormContainer = styled.div`
       content: '';
       width: 100%;
       height: 1px;
+      background-color: ${props => props.theme.accentColor};
       
+    }
+    @media (min-width: 768px) {
+      font-size: 18px;
+    line-height: 24px;
     }
   }
 `;
 
 export const Form = styled(FormikForm)`
-max-width: 335px;
-  height: 469px;
+  width: 335px;
+  height: 376px;
+  margin-bottom: 32px;
 
   background-color:  ${props => props.theme.mainBackgroundColor};
   border-radius: 8px;
   padding: 40px 24px;
-  margin-bottom: 8px;
+
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 
   @media (min-width: 768px) {
     width: 480px;
-    margin-bottom: 14px;
+    height: 424px;
+    margin-bottom: 40px;
   }
 
 `;
 
-export const FormTitle = styled.div`
-font-family: 'InterSemiBolt';
+export const FormTitle = styled.h1`
+font-family: 'InterSemiBolt', sans-serif;
 font-weight: 600;
 font-size: 18px;
-line-height: 1.3;
+line-height: 24px;
 color: ${props => props.theme.accentColor};
 
 @media (min-width: 768px) {
@@ -80,7 +80,7 @@ color: ${props => props.theme.accentColor};
 `;
 
 export const Field = styled(FormikField)`
-font-family: 'InterSemiBolt';
+font-family: 'InterRegular', sans-serif;
 font-weight: 400;
 width: 100%;
 display: block;
@@ -99,7 +99,7 @@ margin-top: 10px;
 
 export const FormField = styled.label`
 display: block;
-font-family: 'InterSemiBolt';
+font-family: 'InterSemiBolt', sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 12px;
@@ -115,9 +115,12 @@ margin-bottom: 8px;
 }
 `;
 
-export const Icon = styled.svg`
+export const ButtonIcon = styled(Icon)`
 fill: transparent;
 stroke: #ffffff;
+width: 18px;
+height: 18px;
+margin-left: 13px;
 
 @keyframes scale-up-hor-left {
   0% {
@@ -133,6 +136,10 @@ stroke: #ffffff;
     transform-origin: 0% 0%;
   }
 }
+@media (min-width: 768px) {
+  width: 20px;
+height: 20px;
+}
 `; 
 
 export const SubmitBtn = styled.button`
@@ -144,11 +151,11 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-font-family: 'InterSemiBolt';
+font-family: 'InterSemiBolt', sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
-line-height: 1.3;
+line-height: 18px;
 background: ${props => props.theme.accentColor};
 box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
 border-radius: 16px;
@@ -163,14 +170,15 @@ margin-top: 32px;
 }
 
 @media (min-width: 768px) {
+  font-size: 18px;
+line-height: 24px;
   margin-top: 48px;
 }
 
-&:hover ${Icon} {
- 
+&:hover ${ButtonIcon} {
   animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-
+}
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
