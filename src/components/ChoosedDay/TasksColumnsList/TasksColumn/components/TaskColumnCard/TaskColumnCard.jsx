@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   TaskBox,
   TaskText,
@@ -7,8 +8,11 @@ import {
   PriorityLow,
 } from './TaskColumnCard.styled';
 import { TaskToolbar } from '../index';
+import { selectUser } from 'redux/user/selectors';
 
 export const TaskColumnCard = () => {
+  const { avatarURL, name } = useSelector(selectUser);
+
   return (
     <TaskBox>
       <TaskText>
@@ -17,7 +21,7 @@ export const TaskColumnCard = () => {
       </TaskText>
       <ToolbarBox>
         <Wrapper>
-          <Avatar />
+          <Avatar src={avatarURL} alt={name} />
           <PriorityLow>Low</PriorityLow>
         </Wrapper>
         <TaskToolbar />
