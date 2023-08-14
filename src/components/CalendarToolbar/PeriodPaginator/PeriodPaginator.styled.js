@@ -66,7 +66,7 @@ export const StyledDate = styled.p`
   border-radius: 8px;
 
   background-color: ${({ theme }) => theme.accentColor};
-  color: ${({ theme }) => theme.mainBackgroundColor};
+  color: ${({ theme }) => theme.buttontextColor};
 
   text-transform: uppercase;
   text-align: center;

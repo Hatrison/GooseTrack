@@ -18,12 +18,14 @@ export const ListItem = styled.li`
 `;
 export const StyledNavLink = styled(StyledLink)`
   font-family: Inter, sans-serif;
-  color: ${({ theme }) => theme.accentColor};
-  background-color: ${({ theme }) => theme.buttonBackgroundColorAddTask};
+
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  color: ${({ theme }) => theme.buttonPeriodColor};
   text-decoration: none;
 
   &.active {
-    background-color: #cae8ff;
+    background-color: ${({ theme }) => theme.buttonBackgroundColor};
+    color: ${({ theme }) => theme.buttontextColor};
   }
   &.month {
     padding: 8px 16px;

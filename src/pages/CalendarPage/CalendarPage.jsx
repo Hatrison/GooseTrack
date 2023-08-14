@@ -3,7 +3,9 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setDates } from 'redux/date/dateSlice';
 import { format } from 'date-fns';
+import { TailSpin } from 'react-loader-spinner';
 import CalendarToolbar from 'components/CalendarToolbar';
+import { Suspense, SpinnerWrap } from 'components/MainLayout/MainLayout.styled';
 
 const CalendarPage = () => {
   const isFirstRender = useRef(true);
@@ -28,7 +30,15 @@ const CalendarPage = () => {
   return (
     <div>
       <CalendarToolbar />
-      <Outlet />
+      <Suspense
+        fallback={
+          <SpinnerWrap>
+            <TailSpin width={'70%'} height={'70%'} color={'#3E85F3'} />
+          </SpinnerWrap>
+        }
+      >
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
