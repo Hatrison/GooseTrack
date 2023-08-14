@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addTask, deleteTask, getTasks, updateTask } from './operations';
 
 const initialState = {
@@ -33,7 +33,30 @@ const tasksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.tasks = state.tasks.filter(task => task._id !== action.payload);
-      }),
+      })
+      .addMatcher(
+        isAnyOf(
+          getTasks.pending,
+          addTask.pending,
+          updateTask.pending,
+          deleteTask.pending
+        ),
+        state => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getTasks.rejected,
+          addTask.rejected,
+          updateTask.rejected,
+          deleteTask.rejected
+        ),
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        }
+      ),
 });
 
 export const tasksReducer = tasksSlice.reducer;
