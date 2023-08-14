@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Navigation } from './UserNav.styled';
-import { ReactComponent as User } from 'images/svg/user.svg';
-import { ReactComponent as Calendar } from 'images/svg/calendarCheck.svg';
-import { ReactComponent as Chart } from 'images/svg/chart.svg';
+import { Calendar, Chart, Navigation, User } from './UserNav.styled';
 
 const UserNav = () => {
   return (

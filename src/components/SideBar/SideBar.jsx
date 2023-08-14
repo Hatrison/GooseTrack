@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { LogOutBtn } from './SideBar.styled';
-import { ReactComponent as ButtonIcon } from 'images/svg/logout.svg';
 import { ReactComponent as CloseIcon } from 'images/svg/close.svg';
 import { ReactComponent as Logo } from 'images/svg/logo_text.svg';
 import { SidebarOverlay, SidebarWrap, SidebarCover } from './SideBar.styled';
@@ -57,10 +56,6 @@ export default function SideBar({ onSidebarToggle }) {
               )}
             </div>
           </SidebarCover>
-          <LogOutBtn type="button">
-            Log out
-            <ButtonIcon />
-          </LogOutBtn>
         </div>
         <div>
           <p>User Panel</p>

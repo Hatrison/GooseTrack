@@ -1,13 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/auth/operations';
+import { LogOutBtn, LogoutIcon } from './LogoutBtn.styled';
 
 const LogoutBtn = () => {
   const dispatch = useDispatch();
 
   return (
-    <button type="button" onClick={dispatch(logoutUser())}>
+    <LogOutBtn type="button" onClick={dispatch(logoutUser())}>
       Log out
-    </button>
+      <LogoutIcon />
+    </LogOutBtn>
   );
 };
 
