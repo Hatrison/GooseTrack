@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as CloseIcon } from '../../images/x-close.svg';
+import { ReactComponent as CloseIcon } from 'images/svg/closeModal.svg';
 
 // Styled Components
 export const Backdrop = styled.div`

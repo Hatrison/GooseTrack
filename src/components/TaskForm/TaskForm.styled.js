@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-
-import { ReactComponent as EditPen } from '../../images/editPen.svg';
-import { ReactComponent as Plus } from '../../images/addIcon.svg';
+import { ReactComponent as EditPen } from 'images/svg/editModal.svg';
+import { ReactComponent as Plus } from 'images/svg/addIcon.svg';
 
 export const WrapForm = styled.div`
   max-width: 303px;

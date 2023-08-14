@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   WrapForm,
   Form,
@@ -17,11 +16,9 @@ import {
   IconEditPen,
   IconPlus,
 } from './TaskForm.styled';
-
-import { addTask, updateTask } from 'redux/task/operations';
+import { toast } from 'react-toastify';
+import { addTask, updateTask } from 'redux/tasks/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSuccessful, selectTasksError } from 'redux/task/selectors';
-import FeedbackForm from 'components/FeedbackForm/FeedbackForm';
 
 const emptyTask = {
   title: '',
@@ -46,8 +43,8 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
   const [dateSave, setDataSave] = useState(null);
 
   const dispatch = useDispatch();
-  const successful = useSelector(selectSuccessful);
-  const error = useSelector(selectTasksError);
+  const successful = useSelector();
+  const error = useSelector();
 
   useEffect(() => {
     const { statusOperation, _id, ...information } = initialData;
@@ -64,7 +61,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
 
   useEffect(() => {
     if (!error || !dateSave) return;
-    Notify.failure(`Data save error`);
+    toast.failure(`Data save error`);
   }, [error, dateSave]);
 
   const handleChange = event => {
@@ -78,7 +75,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
     e.preventDefault();
 
     if (informationTask.start > informationTask.end) {
-      Notify.failure('Start time cannot be later than end time');
+      toast.failure('Start time cannot be later than end time');
       return;
     }
 
@@ -193,4 +190,4 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
   );
 };
 
-export default FeedbackForm
+export default TaskForm;
