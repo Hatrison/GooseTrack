@@ -1,27 +1,58 @@
+import { useMediaQuery } from 'react-responsive';
 import {
-  List,
-  ListItemDesktop,
-  ListItemMobile,
+  ListDay,
+  ListItemDate,
+  CalendarContainer,
+  ListDate,
+  CurrentDay,
+  ListItemDay,
 } from './DayCalendarHead.styled';
 
-export const DayCalendarHead = () => {
-  return (
-    <List>
-      <ListItemMobile>M</ListItemMobile>
-      <ListItemMobile>T</ListItemMobile>
-      <ListItemMobile>W</ListItemMobile>
-      <ListItemMobile>T</ListItemMobile>
-      <ListItemMobile>F</ListItemMobile>
-      <ListItemMobile>S</ListItemMobile>
-      <ListItemMobile>S</ListItemMobile>
+export const DayCalendarHead = ({ selectedWeek }) => {
+  const mobileDevice = useMediaQuery({ maxWidth: 767 });
 
-      <ListItemDesktop>MON</ListItemDesktop>
-      <ListItemDesktop>TUE</ListItemDesktop>
-      <ListItemDesktop>WED</ListItemDesktop>
-      <ListItemDesktop>THU</ListItemDesktop>
-      <ListItemDesktop>FRI</ListItemDesktop>
-      <ListItemDesktop>SAT</ListItemDesktop>
-      <ListItemDesktop>SUN</ListItemDesktop>
-    </List>
+  return (
+    <CalendarContainer>
+      <ListDay>
+        {mobileDevice ? (
+          <>
+            <ListItemDay>M</ListItemDay>
+            <ListItemDay>T</ListItemDay>
+            <ListItemDay>W</ListItemDay>
+            <ListItemDay>T</ListItemDay>
+            <ListItemDay>F</ListItemDay>
+            <ListItemDay>S</ListItemDay>
+            <ListItemDay>S</ListItemDay>
+          </>
+        ) : (
+          <>
+            <ListItemDay>MON</ListItemDay>
+            <ListItemDay>TUE</ListItemDay>
+            <ListItemDay>WED</ListItemDay>
+            <ListItemDay>THU</ListItemDay>
+            <ListItemDay>FRI</ListItemDay>
+            <ListItemDay>SAT</ListItemDay>
+            <ListItemDay>SUN</ListItemDay>
+          </>
+        )}
+      </ListDay>
+
+      <ListDate>
+        <ListItemDate>
+          <CurrentDay>1</CurrentDay>
+        </ListItemDate>
+        <ListItemDate>2</ListItemDate>
+        <ListItemDate>3</ListItemDate>
+        <ListItemDate>4</ListItemDate>
+        <ListItemDate>5</ListItemDate>
+        <ListItemDate>6</ListItemDate>
+        <ListItemDate>7</ListItemDate>
+        {/* {selectedWeek.map(day => (
+        <ListItemDate key={day}>
+          <CurrentDay>{day}</CurrentDay>
+        </ListItemDate>
+      ))} */}
+      </ListDate>
+    </CalendarContainer>
   );
 };

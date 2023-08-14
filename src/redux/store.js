@@ -12,6 +12,9 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 import { themeReducer } from './theme/themeSlice';
+import { userReducer } from './user/userSlice';
+import { dateReducer } from './date/dateSlice';
+import { tasksReducer } from './tasks/tasksSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -27,6 +30,9 @@ const themePersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   theme: persistReducer(themePersistConfig, themeReducer),
+  date: dateReducer,
+  tasks: tasksReducer,
+  user: userReducer,
 });
 
 export const store = configureStore({

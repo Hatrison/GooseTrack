@@ -58,6 +58,18 @@ export const theme = {
     taskModalInputColor: '#F6F6F6',
     taskModalLabelColor: '#5D5D5D',
     titleColor: 'rgba(52, 52, 52, 0.8)',
+
+    //WeekCalendar
+    weekCalendarText: '#343434',
+
+    //TasksColumn
+    tasksColumnBorder: 'rgba(220, 227, 229, 0.80)',
+
+    //TasksColumnCard
+    priorTextColor: '#F7F6F9',
+
+    //ChangeTaskDirModal
+    changeTaskDirModalBorder: 'transparent',
   },
 
   // Стилі для темної теми
@@ -108,6 +120,18 @@ export const theme = {
     titleColor: 'rgba(250, 250, 250, 0.3)',
     CalendarHead: '#FFFFFF',
     CurrentDate: '#FFFFFF',
+
+    //WeekCalendar
+    weekCalendarText: 'rgba(250, 250, 250, 0.3)',
+
+    //TasksColumn
+    tasksColumnBorder: 'rgba(255, 255, 255, 0.15)',
+
+    //TasksColumnCard
+    priorTextColor: '#171820',
+
+    //ChangeTaskDirModal
+    changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
   },
 
   // TaskModal
