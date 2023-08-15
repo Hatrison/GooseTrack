@@ -2,17 +2,17 @@ import styled from 'styled-components';
 // import { NavLink } from 'react-router-dom';
 
 export const Сontainer = styled.div`
-min-height: 100vh;
-background: #dcebf7;
-position: relative;
+  min-height: 100vh;
+  background: #dcebf7;
+  position: relative;
 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-padding-top: 20px;
-padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;
 
 export const ImageContainer = styled.div`

@@ -4,19 +4,18 @@ import {
   Field,
   Form,
   Label,
-  PasswordWrap,
   SubmitBtn,
   TitleForm,
   ToggleHidePassword,
-  IconButton,
 } from './RegisterForm.styled';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
 import { toast } from 'react-toastify';
-import { RegisterValidSchema } from './RegisterValidSchema';
+
 import { ReactComponent as ShowIcon } from 'images/svg/show.svg';
 import { ReactComponent as HideIcon } from 'images/svg/hide.svg';
+import { ReactComponent as IconButton } from 'images/svg/buttonLogReg.svg';
 import { useNavigate } from 'react-router';
 
 const initialState = { name: '', email: '', password: '' };
@@ -39,48 +38,33 @@ const RegisterForm = () => {
               if (data.error) throw new Error(data.payload);
               navigate('/', { replace: true });
             })
-            .catch(error => toast.error(`Error: ${'Registartion failed'}`));
+            .catch(error => toast.error(error.message));
         }}
-        validationSchema={RegisterValidSchema}
       >
         {() => (
           <Form>
             <TitleForm>Sign Up</TitleForm>
             <Label>
               Name
-              <Field
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                required
-              />
+              <Field type="name" name="name" />
             </Label>
             <Label>
               Email
-              <Field
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-              />
+              <Field type="email" name="email" />
             </Label>
             <Label>
               Password
-              <PasswordWrap>
-                <Field
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  placeholder="Enter your password"
-                  required
-                />
-                <ToggleHidePassword type="button" onClick={handleShowPassword}>
-                  {showPassword ? (
-                    <ShowIcon style={{ marginLeft: '10px' }} />
-                  ) : (
-                    <HideIcon style={{ marginLeft: '10px' }} />
-                  )}
-                </ToggleHidePassword>
-              </PasswordWrap>
+              <Field
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+              />
+              <ToggleHidePassword type="button" onClick={handleShowPassword}>
+                {showPassword ? (
+                  <ShowIcon style={{ marginLeft: '10px' }} />
+                ) : (
+                  <HideIcon style={{ marginLeft: '10px' }} />
+                )}
+              </ToggleHidePassword>
             </Label>
 
             <SubmitBtn type="submit">

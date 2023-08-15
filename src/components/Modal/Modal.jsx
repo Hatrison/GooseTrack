@@ -1,5 +1,6 @@
-import { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+
 import {
   Backdrop,
   CloseButton,
@@ -7,41 +8,52 @@ import {
   MyCloseIcon,
 } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modal-root');
-
 export const Modal = ({ children, handlerCloseModal }) => {
-  const onEsc = useCallback(
-    event => {
-      if (event.code === 'Escape') handlerCloseModal();
+  const handleKeyDown = useCallback(
+    evt => {
+      if (evt.code === 'Escape') {
+        handlerCloseModal();
+      }
     },
     [handlerCloseModal]
   );
 
-  useEffect(() => {
-    window.addEventListener('keydown', onEsc);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      window.removeEventListener('keydown', onEsc);
-      document.body.style.overflow = 'auto';
-    };
-  }, [onEsc]);
-
-  const handleBackdropClick = event => {
-    if (event.currentTarget === event.target) handlerCloseModal();
+  const handleBackdropClick = evt => {
+    if (evt.currentTarget === evt.target) {
+      handlerCloseModal();
+    }
   };
 
+  // * useEffect
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  useEffect(() => {
+    document.body.classList.add('no-scroll');
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, []);
+
   return createPortal(
-    <Backdrop onClick={handleBackdropClick}>
-      <ModalContainer>
-        <CloseButton onClick={handlerCloseModal}>
-          <MyCloseIcon></MyCloseIcon>
-        </CloseButton>
-        {children}
-      </ModalContainer>
-    </Backdrop>,
-    modalRoot
+    <>
+      <Backdrop onMouseDown={handleBackdropClick}>
+        <ModalContainer data-tour="7">
+          <CloseButton onClick={handlerCloseModal}>
+            <MyCloseIcon width="24" height="24"></MyCloseIcon>
+          </CloseButton>
+          {children}
+        </ModalContainer>
+      </Backdrop>
+    </>,
+    document.getElementById('modal-root')
   );
 };
 
-export default Modal;
+export default Modal

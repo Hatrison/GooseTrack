@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
+  WrapForm,
   Form,
-  InputWrap,
-  FieldWrap,
   EditButton,
   FormGroup,
   Input,
   Label,
-  StartWrap,
-  EndWrap,
   RadioButtonsInput,
   RadioButtonsLabel,
-  // RadioButtonCustom,
+  RadioButtonCustom,
   CancelButton,
   RadioContainer,
   WrapRadio,
@@ -19,136 +17,180 @@ import {
   IconEditPen,
   IconPlus,
 } from './TaskForm.styled';
-import { toast } from 'react-toastify';
-import { Formik } from 'formik';
-import { addTask, updateTask } from 'redux/tasks/operations';
-import { selectDate } from 'redux/date/selectors';
+
+import { addTask, updateTask } from 'redux/task/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { taskFormSchema } from './taskFormSchema';
+import { selectSuccessful, selectTasksError } from 'redux/task/selectors';
+import FeedbackForm from 'components/FeedbackForm/FeedbackForm';
 
 const emptyTask = {
   title: '',
   start: '00:00',
   end: '00:00',
   priority: 'low',
-  category: 'to-do',
+  category: 'in-progress',
 };
 
-export const TaskForm = ({ task, handlerCloseModal }) => {
+//  const initialData = {
+//    title: 'My task 1',
+//    date: '2023-06-01',
+//    start: '09:10',
+//    end: '09:40',
+//    priority: 'low',
+//    category: 'in-progress',
+//    statusOperation: 'create',
+//  };
+export const TaskForm = ({ initialData, handlerCloseModal }) => {
+  const [informationTask, setInformationTask] = useState(emptyTask);
   const [operation, setOperation] = useState('create');
-  const date = useSelector(selectDate);
+  const [dateSave, setDataSave] = useState(null);
+
   const dispatch = useDispatch();
+  const successful = useSelector(selectSuccessful);
+  const error = useSelector(selectTasksError);
 
   useEffect(() => {
-    if (task?._id) setOperation('edit');
-  }, [task]);
+    const { statusOperation, _id, ...information } = initialData;
+    if (_id) information.id = _id;
+    setInformationTask(information);
+    setOperation(statusOperation);
+  }, [initialData]);
 
-  const handleSubmit = async values => {
-    const { start, end } = values;
-    if (start > end) {
-      toast.failure('Start time cannot be later than end time');
+  useEffect(() => {
+    if (!successful || !dateSave) return;
+
+    handlerCloseModal();
+  }, [dateSave, successful, handlerCloseModal]);
+
+  useEffect(() => {
+    if (!error || !dateSave) return;
+    Notify.failure(`Data save error`);
+  }, [error, dateSave]);
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setInformationTask(prev => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if (informationTask.start > informationTask.end) {
+      Notify.failure('Start time cannot be later than end time');
       return;
     }
 
-    dispatch(
-      operation === 'edit' ? updateTask(values) : addTask({ ...values, date })
-    )
-      .then(data => {
-        if (data.error) {
-          throw new Error(data.payload);
-        }
-        handlerCloseModal();
-      })
-      .catch(error => {
-        toast.error(error.message);
-      });
+    if (operation === 'edit') {
+      dispatch(updateTask(informationTask));
+    } else {
+      dispatch(addTask(informationTask));
+    }
+    setDataSave(Date.now());
   };
 
   return (
-    <Formik
-      initialValues={task || emptyTask}
-      validationSchema={taskFormSchema}
-      onSubmit={(values, action) => {
-        handleSubmit(values);
-        action.resetForm();
-      }}
-    >
-      <Form>
-        <InputWrap>
-          <FieldWrap>
-            <div>
-              <Label>Title</Label>
-              <Input
-                type="text"
-                name="title"
-                placeholder="Enter text"
-                required
+    <WrapForm>
+      <Form onSubmit={handleSubmit}>
+        <Label>
+          Title
+          <Input
+            type="text"
+            placeholder="Enter text"
+            name="title"
+            value={informationTask.title}
+            onChange={handleChange}
+            required
+          />
+        </Label>
+        <FormGroup>
+          <Label>
+            Start
+            <Input
+              id="time"
+              type="time"
+              name="start"
+              value={informationTask.start}
+              onChange={handleChange}
+              required
+            />
+          </Label>
+          <Label>
+            End
+            <Input
+              type="time"
+              name="end"
+              value={informationTask.end}
+              onChange={handleChange}
+              required
+            />
+          </Label>
+        </FormGroup>
+
+        <WrapRadio>
+          <RadioContainer>
+            <RadioButtonsLabel>
+              <RadioButtonsInput
+                type="radio"
+                value="low"
+                name="priority"
+                checked={informationTask.priority === 'low'}
+                onChange={handleChange}
               />
-            </div>
+              <RadioButtonCustom />
+              Low
+            </RadioButtonsLabel>
+          </RadioContainer>
+          <RadioContainer>
+            <RadioButtonsLabel>
+              <RadioButtonsInput
+                type="radio"
+                value="medium"
+                name="priority"
+                checked={informationTask.priority === 'medium'}
+                onChange={handleChange}
+              />
+              <RadioButtonCustom />
+              Medium
+            </RadioButtonsLabel>
+          </RadioContainer>
+          <RadioContainer>
+            <RadioButtonsLabel>
+              <RadioButtonsInput
+                type="radio"
+                value="high"
+                name="priority"
+                checked={informationTask.priority === 'high'}
+                onChange={handleChange}
+              />
+              <RadioButtonCustom />
+              High
+            </RadioButtonsLabel>
+          </RadioContainer>
+        </WrapRadio>
 
-            <FormGroup>
-              <StartWrap>
-                <Label>Start</Label>
-                <Input type="time" name="start" required />
-              </StartWrap>
-              <EndWrap>
-                <Label>End</Label>
-                <Input type="time" name="end" required />
-              </EndWrap>
-            </FormGroup>
-          </FieldWrap>
-
-          <WrapRadio>
-            <RadioContainer>
-              <RadioButtonsLabel>
-                <RadioButtonsInput type="radio" value="low" name="priority" />
-                {/* <RadioButtonCustom /> */}
-                Low
-              </RadioButtonsLabel>
-            </RadioContainer>
-
-            <RadioContainer>
-              <RadioButtonsLabel>
-                <RadioButtonsInput
-                  type="radio"
-                  value="medium"
-                  name="priority"
-                />
-                {/* <RadioButtonCustom /> */}
-                Medium
-              </RadioButtonsLabel>
-            </RadioContainer>
-
-            <RadioContainer>
-              <RadioButtonsLabel>
-                <RadioButtonsInput type="radio" value="high" name="priority" />
-                {/* <RadioButtonCustom /> */}
-                High
-              </RadioButtonsLabel>
-            </RadioContainer>
-          </WrapRadio>
-        </InputWrap>
-
-        <WrapButton>
-          {operation === 'edit' ? (
-            <EditButton type="submit">
-              <IconEditPen />
-              Edit
-            </EditButton>
-          ) : (
+        {/* must be replaced with initialData.id */}
+        {operation === 'edit' ? (
+          <EditButton type="submit">
+            <IconEditPen />
+            Edit
+          </EditButton>
+        ) : (
+          <WrapButton>
             <EditButton type="submit">
               <IconPlus />
               Add
             </EditButton>
-          )}
 
-          <CancelButton type="button" onClick={handlerCloseModal}>
-            Cancel
-          </CancelButton>
-        </WrapButton>
+            <CancelButton type="button" onClick={handlerCloseModal}>
+              Cancel
+            </CancelButton>
+          </WrapButton>
+        )}
       </Form>
-    </Formik>
+    </WrapForm>
   );
 };
 
-export default TaskForm;
+export default FeedbackForm
