@@ -12,7 +12,9 @@ export const AddTaskBtn = () => {
       <Button onClick={handleToggle}>
         <Icon /> Add task
       </Button>
-      {isTaskModalOpened && <TaskModal onClose={handleToggle}></TaskModal>}
+      {isTaskModalOpened && (
+        <TaskModal handlerCloseModal={handleToggle}></TaskModal>
+      )}
     </>
   );
 };
