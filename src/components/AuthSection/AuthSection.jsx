@@ -26,14 +26,6 @@ const AuthSection = () => {
       <Wrap>
         <picture>
           <source
-            srcSet={`${Goose1xMobWebp} 1x, ${Goose2xMobWebp} 2x`}
-            media="(max-width: 767px)"
-          />
-          <source
-            srcSet={`${Goose1xMobPng} 1x, ${Goose2xMobPng} 2x`}
-            media="(max-width: 767px)"
-          />
-          <source
             srcSet={`${goose1xTabDeskWebp} 1x, ${goose2xTabDeskWebp} 2x`}
             media="(min-width: 768px)"
           />
@@ -41,6 +33,8 @@ const AuthSection = () => {
             srcSet={`${goose1xTabDeskPng} 1x, ${goose2xTabDeskPng} 2x`}
             media="(min-width: 768px)"
           />
+          <source srcSet={`${Goose1xMobWebp} 1x, ${Goose2xMobWebp} 2x`} />
+          <source srcSet={`${Goose1xMobPng} 1x, ${Goose2xMobPng} 2x`} />
           <Image src={`${Goose1xMobPng}`} alt="Goose" />
         </picture>
         <Header>

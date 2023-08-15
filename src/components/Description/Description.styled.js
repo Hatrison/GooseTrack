@@ -126,9 +126,6 @@ export const Overview = styled.p`
 
 export const Image = styled.img`
   display: block;
-
   max-width: 100%;
   height: auto;
-  border-radius: 40px;
-  outline: 1px dashed red;
 `;
