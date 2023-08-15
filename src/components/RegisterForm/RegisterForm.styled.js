@@ -82,7 +82,7 @@ export const SubmitBtn = styled.button`
   align-items: center;
   justify-content: center;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -102,6 +102,7 @@ export const SubmitBtn = styled.button`
 
   @media (min-width: 768px) {
     margin-top: 48px;
+    height: 56px;
   }
 `;
 
