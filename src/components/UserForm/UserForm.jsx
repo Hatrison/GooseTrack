@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from '../../redux/user/selectors';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -21,17 +23,20 @@ import defaultAvatar from '../../images/avatar.png';
 const currentDate = moment().format('DD/MM/YYYY');
 
 const UserForm = () => {
+  const dispatch = useDispatch();
+  const userInfo = useSelector(selectUser);
+
   const [avatarURL, setAvatarURL] = useState(null);
 
   return (
     <Formik
       validationSchema={UserValidSchema}
       initialValues={{
-        name: '',
-        birthday: '',
-        email: '',
-        phone: '',
-        skype: '',
+        name: userInfo?.name || '',
+        birthday: userInfo?.birthday || `${currentDate}`,
+        email: userInfo?.email || '',
+        phone: userInfo?.phone || '',
+        skype: userInfo?.skype || '',
       }}
       onSubmit={async values => {
         alert(JSON.stringify(values, null, 2));
@@ -41,9 +46,6 @@ const UserForm = () => {
         <WrapperForm>
           <AvatarWrap>
             <div>
-              {/* <label htmlFor="avatar">
-                <img src={URL.createObjectURL(avatarURL)} alt="avatar" />
-              </label> */}
               {avatarURL ? (
                 <label htmlFor="avatar">
                   <img src={URL.createObjectURL(avatarURL)} alt="Avatar" />
@@ -58,10 +60,9 @@ const UserForm = () => {
               id="add-avatar"
               name="avatar"
               type="file"
-              accept="image/*,.png,.jpg,.gif,.web"
+              accept="image/*"
               onChange={e => {
-                const file = e.target.files[0];
-                setAvatarURL(file);
+                setAvatarURL(e.target.files[0]);
               }}
             />
             <label htmlFor="add-avatar">
@@ -84,7 +85,7 @@ const UserForm = () => {
                     type="date"
                     slotProps={{
                       textField: {
-                        placeholder: `${currentDate}`,
+                        placeholder: userInfo.birthday || `${currentDate}`,
                       },
                     }}
                     views={['year', 'month', 'day']}
