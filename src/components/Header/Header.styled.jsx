@@ -61,7 +61,7 @@ export const AddFeedbackBtn = styled.button`
   font-size: 12px;
 
   background-color: ${({ theme }) => theme.buttonBackgroundColor};
-  color: white;
+  color: ${({ theme }) => theme.buttontextColor};
   box-shadow: ${({ theme }) => theme.buttonShadow};
 
   height: 32px;

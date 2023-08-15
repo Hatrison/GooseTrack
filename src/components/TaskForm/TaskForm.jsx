@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   Form,
   InputWrap,
+  FieldWrap,
   EditButton,
   FormGroup,
   Input,
@@ -10,7 +11,7 @@ import {
   EndWrap,
   RadioButtonsInput,
   RadioButtonsLabel,
-  RadioButtonCustom,
+  // RadioButtonCustom,
   CancelButton,
   RadioContainer,
   WrapRadio,
@@ -74,27 +75,34 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
     >
       <Form>
         <InputWrap>
-          <div>
-            <Label>Title</Label>
-            <Input type="text" name="title" placeholder="Enter text" required />
-          </div>
+          <FieldWrap>
+            <div>
+              <Label>Title</Label>
+              <Input
+                type="text"
+                name="title"
+                placeholder="Enter text"
+                required
+              />
+            </div>
 
-          <FormGroup>
-            <StartWrap>
-              <Label>Start</Label>
-              <Input type="time" name="start" required />
-            </StartWrap>
-            <EndWrap>
-              <Label>End</Label>
-              <Input type="time" name="end" required />
-            </EndWrap>
-          </FormGroup>
+            <FormGroup>
+              <StartWrap>
+                <Label>Start</Label>
+                <Input type="time" name="start" required />
+              </StartWrap>
+              <EndWrap>
+                <Label>End</Label>
+                <Input type="time" name="end" required />
+              </EndWrap>
+            </FormGroup>
+          </FieldWrap>
 
           <WrapRadio>
             <RadioContainer>
               <RadioButtonsLabel>
                 <RadioButtonsInput type="radio" value="low" name="priority" />
-                <RadioButtonCustom />
+                {/* <RadioButtonCustom /> */}
                 Low
               </RadioButtonsLabel>
             </RadioContainer>
@@ -106,7 +114,7 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
                   value="medium"
                   name="priority"
                 />
-                <RadioButtonCustom />
+                {/* <RadioButtonCustom /> */}
                 Medium
               </RadioButtonsLabel>
             </RadioContainer>
@@ -114,7 +122,7 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
             <RadioContainer>
               <RadioButtonsLabel>
                 <RadioButtonsInput type="radio" value="high" name="priority" />
-                <RadioButtonCustom />
+                {/* <RadioButtonCustom /> */}
                 High
               </RadioButtonsLabel>
             </RadioContainer>
