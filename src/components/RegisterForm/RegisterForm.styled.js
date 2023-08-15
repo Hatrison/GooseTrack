@@ -55,6 +55,10 @@ export const Label = styled.label`
   }
 `;
 
+export const PasswordWrap = styled.div`
+  position: relative;
+`;
+
 export const Field = styled(FormikField)`
   font-family: 'InterRegular', sans-serif;
   font-weight: 400;
@@ -64,7 +68,6 @@ export const Field = styled(FormikField)`
   padding: 14px;
   border: 1px solid rgba(220, 227, 229, 0.6);
   border-radius: 8px;
-  position: relative;
   margin-top: 10px;
 
   :hover,
@@ -102,7 +105,8 @@ export const SubmitBtn = styled.button`
 
   @media (min-width: 768px) {
     margin-top: 48px;
-    height: 56px;
+    font-size: 18px;
+    padding: 16px;
   }
 `;
 

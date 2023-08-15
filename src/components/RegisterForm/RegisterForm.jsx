@@ -4,6 +4,7 @@ import {
   Field,
   Form,
   Label,
+  PasswordWrap,
   SubmitBtn,
   TitleForm,
   ToggleHidePassword,
@@ -66,19 +67,21 @@ const RegisterForm = () => {
             </Label>
             <Label>
               Password
-              <Field
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Enter your password"
-                required
-              />
-              <ToggleHidePassword type="button" onClick={handleShowPassword}>
-                {showPassword ? (
-                  <ShowIcon style={{ marginLeft: '10px' }} />
-                ) : (
-                  <HideIcon style={{ marginLeft: '10px' }} />
-                )}
-              </ToggleHidePassword>
+              <PasswordWrap>
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Enter your password"
+                  required
+                />
+                <ToggleHidePassword type="button" onClick={handleShowPassword}>
+                  {showPassword ? (
+                    <ShowIcon style={{ marginLeft: '10px' }} />
+                  ) : (
+                    <HideIcon style={{ marginLeft: '10px' }} />
+                  )}
+                </ToggleHidePassword>
+              </PasswordWrap>
             </Label>
 
             <SubmitBtn type="submit">
