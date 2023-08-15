@@ -76,7 +76,7 @@ export const LinkSignUp = styled(Link)`
   transition: all 250ms;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 `;
 
@@ -97,7 +97,7 @@ export const LinkLogIn = styled(Link)`
   transition: all 250ms;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   }
 
