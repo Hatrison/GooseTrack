@@ -17,7 +17,7 @@ import { selectUser } from 'redux/user/selectors';
 
 export const TaskColumnCard = ({ items }) => {
   const { avatarURL, name } = useSelector(selectUser);
-  console.log('TaskColumnCard', items);
+  // console.log('TaskColumnCard', items);
 
   // const dispatch = useDispatch();
 

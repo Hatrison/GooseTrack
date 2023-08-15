@@ -10,7 +10,7 @@ export const TasksColumnsList = () => {
   const tasksDone = tasks.filter(task => task.category === 'done');
 
   // console.log(tasks);
-  console.log('TasksColumnsList to do', tasksToDo);
+  // console.log('TasksColumnsList to do', tasksToDo);
 
   return (
     <List>
