@@ -19,13 +19,20 @@ export const WrapperForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 `;
 
-export const AvatarWrap = styled.div`
+export const AvatarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+`;
+
+export const ImgAvatar = styled.div`
+  border-radius: 50%;
 `;
 
 export const UserInfo = styled.div`

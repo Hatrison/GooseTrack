@@ -6,16 +6,20 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import moment from 'moment/moment';
+import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
+import { updateUser } from '../../redux/user/operations';
 import {
   AddIcon,
   AvatarWrap,
+  AvatarWrapper,
   DefaultAvatar,
   FieldAdd,
   Form,
+  ImageAvatar,
+  ImgAvatar,
   UserInfo,
   UserWrapper,
-  Wrapper,
   WrapperForm,
 } from './UserForm.styled';
 import defaultAvatar from '../../images/avatar.png';
@@ -28,6 +32,28 @@ const UserForm = () => {
 
   const [avatarURL, setAvatarURL] = useState(null);
 
+  const handleSubmit = async values => {
+    const formData = new FormData();
+    formData.append('name', values.name);
+    formData.append('email', values.email);
+    if (values.phone) {
+      formData.append('phone', values.phone);
+    }
+    if (values.skype) {
+      formData.append('skype', values.skype);
+    }
+    formData.append('birthday', values.birthday);
+    if (avatarURL) {
+      formData.append('avatar', avatarURL);
+    }
+    try {
+      await dispatch(updateUser(formData));
+      toast.success('Profile data changed successfully');
+    } catch {
+      toast.error('Something went wrong... Try again!');
+    }
+  };
+
   return (
     <Formik
       validationSchema={UserValidSchema}
@@ -38,29 +64,31 @@ const UserForm = () => {
         phone: userInfo?.phone || '',
         skype: userInfo?.skype || '',
       }}
-      onSubmit={async values => {
-        alert(JSON.stringify(values, null, 2));
-      }}
+      onSubmit={handleSubmit}
     >
       <Form>
         <WrapperForm>
-          <AvatarWrap>
-            <div>
+          <AvatarWrapper>
+            <ImgAvatar>
               {avatarURL ? (
                 <label htmlFor="avatar">
                   <img src={URL.createObjectURL(avatarURL)} alt="Avatar" />
+                </label>
+              ) : userInfo?.avatarURL ? (
+                <label htmlFor="avatar">
+                  <img src={userInfo?.avatarURL} alt="Avatar" />
                 </label>
               ) : (
                 <DefaultAvatar>
                   <img src={defaultAvatar} alt="Avatar" />
                 </DefaultAvatar>
               )}
-            </div>
+            </ImgAvatar>
             <FieldAdd
               id="add-avatar"
               name="avatar"
               type="file"
-              accept="image/*"
+              accept="image/*, .png,.jpg,.gif,.web, .webp"
               onChange={e => {
                 setAvatarURL(e.target.files[0]);
               }}
@@ -68,7 +96,9 @@ const UserForm = () => {
             <label htmlFor="add-avatar">
               <AddIcon />
             </label>
-          </AvatarWrap>
+          </AvatarWrapper>
+          <h1>{userInfo.name}</h1>
+          <p>User</p>
           <UserWrapper>
             <UserInfo>
               <label>
