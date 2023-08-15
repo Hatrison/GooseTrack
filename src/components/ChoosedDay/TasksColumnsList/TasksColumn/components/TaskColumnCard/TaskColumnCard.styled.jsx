@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TaskBox = styled.div`
+export const TaskBox = styled.li`
   padding-top: 14px;
   padding-right: 14px;
   padding-bottom: 18px;
