@@ -3,13 +3,17 @@ import { ReactComponent as ArrowBack } from '../../images/svg/arrowBack.svg';
 import { ReactComponent as ArrowNext } from '../../images/svg/arrowNext.svg';
 import { ReactComponent as Stars } from '../../images/svg/RatingStar.svg';
 
+export const Section = styled.div`
+  background-color: #ffffff;
+`;
+
 export const Container = styled.div`
   max-width: 375px;
   margin: 0 auto;
   padding-bottom: 64px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  background-color: #ffffff;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -33,7 +37,7 @@ export const List = styled.ul`
     margin-bottom: 18px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     display: flex;
     gap: 24px;
   }
@@ -42,13 +46,10 @@ export const List = styled.ul`
 export const Item = styled.li`
   padding: 24px;
   border-radius: 8px;
-  /* border-style: solid; */
   border: 1px solid rgba(17, 17, 17, 0.1);
-  /* border-color: #111111; */
-  /* outline: 1px dashed red; */
   width: 100%;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     width: calc((100% - 24px) / 2);
   }
 `;
@@ -67,7 +68,7 @@ export const Title = styled.h2`
   font-weight: bold;
   line-height: 1.14;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.accentColor};
+  color: #3e85f3;
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
@@ -97,11 +98,10 @@ export const Text = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29;
-  color: ${({ theme }) => theme.mainTextColor};
+  color: #111111;
   opacity: 0.7;
   width: 100%;
   height: 72px;
-
   /* overflow: auto; */
 `;
 
