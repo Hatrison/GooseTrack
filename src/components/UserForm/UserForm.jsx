@@ -11,12 +11,12 @@ import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
 import {
   AddIcon,
-  AvatarWrap,
+  // AvatarWrap,
   AvatarWrapper,
   DefaultAvatar,
   FieldAdd,
   Form,
-  ImageAvatar,
+  // ImageAvatar,
   ImgAvatar,
   UserInfo,
   UserWrapper,

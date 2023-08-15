@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form as FormikForm, Field as FormikFieldAdd } from 'formik';
 import { ReactComponent as plusCircle } from '../../images/svg/plus.svg';
-import { ReactComponent as Avatar } from '../../images/svg/user.svg';
+//import { ReactComponent as Avatar } from '../../images/svg/user.svg';
 
 export const Form = styled(FormikForm)``;
 
