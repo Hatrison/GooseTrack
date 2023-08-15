@@ -15,7 +15,7 @@ const tasksSlice = createSlice({
       .addCase(getTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.error = action.payload;
+        state.tasks = action.payload;
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;

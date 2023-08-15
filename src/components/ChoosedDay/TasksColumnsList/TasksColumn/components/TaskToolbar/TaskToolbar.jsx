@@ -12,7 +12,7 @@ import {
   ChangeDirIconModal,
 } from '../ChangeTaskDirModal/ChangeTaskDirModal.styled';
 
-export const TaskToolbar = () => {
+export const TaskToolbar = ({ handleDeleteTask }) => {
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
 
   const handleModalToggle = () => {
@@ -39,7 +39,9 @@ export const TaskToolbar = () => {
                 <ChangeDirIconModal />
               </ModalBtn>
             </li>
-            {/* {something.map(element => (
+            {/* Вставляється після {isChangeDirOpened && (<ChangeTaskDirModal>
+            
+            {something.map(element => (
               <li key={element} onClick={() => handleChangeDir(element)}>
                 <ModalBtn>
                 {element}
@@ -51,12 +53,16 @@ export const TaskToolbar = () => {
         )}
       </li>
       <li>
-        <Btn>
+        <Btn
+        // onClick={() => handleEdit(task)}
+        >
           <PencilIcon />
         </Btn>
       </li>
       <li>
-        <Btn>
+        <Btn
+        // onClick={() => handleDeleteTask(task._id)}
+        >
           <TrashIcon />
         </Btn>
       </li>
