@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import {
   Form,
+  InputWrap,
   EditButton,
   FormGroup,
   Input,
   Label,
+  StartWrap,
+  EndWrap,
   RadioButtonsInput,
   RadioButtonsLabel,
   RadioButtonCustom,
@@ -69,46 +72,53 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
       }}
     >
       <Form>
-        <Label>
-          Title
-          <Input type="text" name="title" placeholder="Enter text" required />
-        </Label>
-        <FormGroup>
-          <Label>
-            Start
-            <Input type="time" name="start" required />
-          </Label>
-          <Label>
-            End
-            <Input type="time" name="end" required />
-          </Label>
-        </FormGroup>
+        <InputWrap>
+          <div>
+            <Label>Title</Label>
+            <Input type="text" name="title" placeholder="Enter text" required />
+          </div>
 
-        <WrapRadio>
-          <RadioContainer>
-            <RadioButtonsLabel>
-              <RadioButtonsInput type="radio" value="low" name="priority" />
-              <RadioButtonCustom />
-              Low
-            </RadioButtonsLabel>
-          </RadioContainer>
+          <FormGroup>
+            <StartWrap>
+              <Label>Start</Label>
+              <Input type="time" name="start" required />
+            </StartWrap>
+            <EndWrap>
+              <Label>End</Label>
+              <Input type="time" name="end" required />
+            </EndWrap>
+          </FormGroup>
 
-          <RadioContainer>
-            <RadioButtonsLabel>
-              <RadioButtonsInput type="radio" value="medium" name="priority" />
-              <RadioButtonCustom />
-              Medium
-            </RadioButtonsLabel>
-          </RadioContainer>
+          <WrapRadio>
+            <RadioContainer>
+              <RadioButtonsLabel>
+                <RadioButtonsInput type="radio" value="low" name="priority" />
+                <RadioButtonCustom />
+                Low
+              </RadioButtonsLabel>
+            </RadioContainer>
 
-          <RadioContainer>
-            <RadioButtonsLabel>
-              <RadioButtonsInput type="radio" value="high" name="priority" />
-              <RadioButtonCustom />
-              High
-            </RadioButtonsLabel>
-          </RadioContainer>
-        </WrapRadio>
+            <RadioContainer>
+              <RadioButtonsLabel>
+                <RadioButtonsInput
+                  type="radio"
+                  value="medium"
+                  name="priority"
+                />
+                <RadioButtonCustom />
+                Medium
+              </RadioButtonsLabel>
+            </RadioContainer>
+
+            <RadioContainer>
+              <RadioButtonsLabel>
+                <RadioButtonsInput type="radio" value="high" name="priority" />
+                <RadioButtonCustom />
+                High
+              </RadioButtonsLabel>
+            </RadioContainer>
+          </WrapRadio>
+        </InputWrap>
 
         <WrapButton>
           {operation === 'edit' ? (

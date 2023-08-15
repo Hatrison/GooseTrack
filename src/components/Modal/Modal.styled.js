@@ -20,11 +20,15 @@ export const ModalContainer = styled.div`
   background-color: ${({ theme }) => theme.mainBackgroundColor};
   border: ${({ theme }) => theme.modalBorder};
   border-radius: 8px;
+
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 `;
 
 export const CloseButton = styled.button`
+  padding: 0;
   position: absolute;
+  width: 24px;
+  height: 24px;
   top: 14px;
   right: 14px;
   background: none;
@@ -34,6 +38,8 @@ export const CloseButton = styled.button`
 
 export const MyCloseIcon = styled(CloseIcon)`
   stroke: ${({ theme }) => theme.modalCloseIcon};
+  width: 24px;
+  height: 24px;
   transition: stroke 250ms linear 0s;
   :hover {
     stroke: rgb(62, 133, 243);

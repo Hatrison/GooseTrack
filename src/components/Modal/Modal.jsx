@@ -35,7 +35,7 @@ export const Modal = ({ children, handlerCloseModal }) => {
     <Backdrop onClick={handleBackdropClick}>
       <ModalContainer>
         <CloseButton onClick={handlerCloseModal}>
-          <MyCloseIcon width="24" height="24"></MyCloseIcon>
+          <MyCloseIcon></MyCloseIcon>
         </CloseButton>
         {children}
       </ModalContainer>
