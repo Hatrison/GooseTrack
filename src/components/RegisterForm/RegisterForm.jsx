@@ -7,7 +7,6 @@ import {
   SubmitBtn,
   TitleForm,
   ToggleHidePassword,
-  ErrorMessage,
 } from './RegisterForm.styled';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
@@ -49,21 +48,29 @@ const RegisterForm = () => {
             <TitleForm>Sign Up</TitleForm>
             <Label>
               Name
-              <Field type="name" name="name" placeholder="Enter your name" />
-              
+              <Field
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+              />
             </Label>
-            <ErrorMessage name="name" component="span" />
             <Label>
               Email
-              <Field type="email" name="email" placeholder="Enter your email" />
+              <Field
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
             </Label>
-            <ErrorMessage name="email" component="span" />
             <Label>
               Password
               <Field
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="Enter your password"
+                required
               />
               <ToggleHidePassword type="button" onClick={handleShowPassword}>
                 {showPassword ? (
@@ -73,7 +80,6 @@ const RegisterForm = () => {
                 )}
               </ToggleHidePassword>
             </Label>
-            <ErrorMessage name="password" component="span" />
 
             <SubmitBtn type="submit">
               Sign Up
