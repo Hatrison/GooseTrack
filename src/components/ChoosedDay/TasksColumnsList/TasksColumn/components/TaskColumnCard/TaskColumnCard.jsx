@@ -15,7 +15,7 @@ import {
 import { TaskToolbar } from '../index';
 import { selectUser } from 'redux/user/selectors';
 
-export const TaskColumnCard = ({ items }) => {
+export const TaskColumnCard = ({ tasks }) => {
   const { avatarURL, name } = useSelector(selectUser);
 
   // const dispatch = useDispatch();

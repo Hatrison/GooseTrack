@@ -8,8 +8,7 @@ export const ColumnHeadBar = ({ title }) => {
 
   return (
     <Box>
-      {/* <Title>{title}</Title> */}
-      <Title>To Do</Title>
+      <Title>{title}</Title>
       <BtnAdd
       // onClick={handleToggle}
       >
