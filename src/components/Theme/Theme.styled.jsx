@@ -137,7 +137,7 @@ export const theme = {
     taskModalTextColor: '#fff',
     taskModalInputColor: '#171820',
     taskModalLabelColor: '#5B5C61',
-    taskModalTitleColor: 'rgba(52, 52, 52, 0.8)',
+    taskModalTitleColor: 'rgba(250, 250, 250, 0.30)',
 
     //WeekCalendar
     weekCalendarText: 'rgba(250, 250, 250, 0.3)',

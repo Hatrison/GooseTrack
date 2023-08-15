@@ -100,7 +100,7 @@ export const RadioButtonsLabel = styled.label`
   display: flex;
   align-items: center;
   align-content: center;
-  color: #343434;
+  color: ${({ theme }) => theme.taskModalTextColor};
 `;
 
 export const RadioButtonCustom = styled.span`
