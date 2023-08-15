@@ -36,7 +36,7 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (task._id) setOperation('edit');
+    if (task?._id) setOperation('edit');
   }, [task]);
 
   const handleSubmit = async values => {
