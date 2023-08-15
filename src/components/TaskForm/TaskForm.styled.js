@@ -8,13 +8,18 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   gap: 32px;
 
-  width: 303px;
+  /* width: 303px; */
   border-radius: 8px;
   padding: 40px 18px;
 
   background-color: ${({ theme }) => theme.mainBackgroundColor};
   color: ${({ theme }) => theme.mainTextColor};
-
+  @media screen and (max-width: 290px) {
+    max-width: 290px;
+  }
+  @media screen and (min-width: 375px) {
+    width: 303px;
+  }
   @media screen and (min-width: 768px) {
     width: 396px;
     padding: 40px 28px;
@@ -25,6 +30,7 @@ export const InputWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
   @media screen and (min-width: 768px) {
     gap: 28px;
   }
@@ -64,9 +70,15 @@ export const Input = styled(FormikField)`
   border: none;
   padding: 0 0 0 14px;
   color: ${({ theme }) => theme.taskModalTextColor};
+  @media screen and (max-width: 220px) {
+    font-size: 10px;
+  }
 
   ::placeholder {
     color: ${({ theme }) => theme.taskModalTextColor};
+    @media screen and (max-width: 220px) {
+      font-size: 10px;
+    }
   }
   &::-webkit-calendar-picker-indicator {
     display: none;
@@ -93,6 +105,9 @@ export const EndWrap = styled.div`
 export const WrapRadio = styled.div`
   display: flex;
   gap: 16px;
+  @media screen and (max-width: 220px) {
+    flex-direction: column;
+  }
 `;
 
 export const RadioContainer = styled.div`
@@ -114,58 +129,56 @@ export const RadioButtonsLabel = styled.label`
 `;
 
 export const RadioButtonsInput = styled(FormikField)`
-  /* position: absolute; */
-  /* opacity: 0; */
+  appearance: none;
   cursor: pointer;
 `;
 
-// export const RadioButtonCustom = styled.span`
-//   /* position: absolute; */
-//   left: 0;
-//   width: 10px;
-//   height: 10px;
-//   border-radius: 50%;
-//   background-color: #fff;
-//   border: 1px solid transparent;
-//   transition: ${({ theme }) => theme.defaultTransition};
+export const RadioButtonCustom = styled.span`
+  /* position: absolute; */
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid transparent;
+  transition: ${({ theme }) => theme.defaultTransition};
 
-//   /* Define different colors for each radio button */
-//   ${RadioContainer}:nth-child(1) ${RadioButtonsInput} + & {
-//     background-color: #72c2f8;
-//     border-color: #72c2f8;
-//   }
+  /* Define different colors for each radio button */
+  ${RadioContainer}:nth-child(1) ${RadioButtonsInput} + & {
+    background-color: #72c2f8;
+    border-color: #72c2f8;
+  }
 
-//   ${RadioContainer}:nth-child(2) ${RadioButtonsInput} + & {
-//     background-color: #f3b249;
-//     border-color: #f3b249;
-//     border: 1px solid transparent;
-//   }
+  ${RadioContainer}:nth-child(2) ${RadioButtonsInput} + & {
+    background-color: #f3b249;
+    border-color: #f3b249;
+  }
 
-//   ${RadioContainer}:nth-child(3) ${RadioButtonsInput}+ & {
-//     background-color: #ea3d65;
-//     border-color: #ea3d65;
-//   }
+  ${RadioContainer}:nth-child(3) ${RadioButtonsInput}+ & {
+    background-color: #ea3d65;
+    border-color: #ea3d65;
+  }
 
-//   /* Change border when checked */
-//   ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
-//     background-color: #72c2f880;
+  /* Change border when checked */
+  ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
+    background-color: #72c2f880;
 
-//     border: 1.3px solid #72c2f880;
-//     transform: scale(1.5);
-//   }
+    border: 1.3px solid #72c2f880;
+    transform: scale(1.2);
+  }
 
-//   ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
-//     background-color: #f3b24980;
-//     border: 1.3px solid #f3b24980;
-//     transform: scale(1.5);
-//   }
+  ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
+    background-color: #f3b24980;
+    border: 1.3px solid #f3b24980;
+    transform: scale(1.2);
+  }
 
-//   ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
-//     background-color: #ea3d6580;
-//     border: 1.3px solid #ea3d6580;
-//     transform: scale(1.5);
-//   }
-// `;
+  ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
+    background-color: #ea3d6580;
+    border: 1.3px solid #ea3d6580;
+    transform: scale(1.2);
+  }
+`;
 
 export const WrapButton = styled.div`
   display: flex;
@@ -195,7 +208,9 @@ export const EditButton = styled.button`
   cursor: pointer;
 
   transition: ${({ theme }) => theme.defaultTransition};
-
+  @media screen and (max-width: 290px) {
+    padding: 5px 5px;
+  }
   @media screen and (min-width: 768px) {
     padding: 15px 61px;
   }
@@ -211,6 +226,9 @@ export const CancelButton = styled(EditButton)`
   background: #efefef;
   color: #111111;
   padding: 12px 35px;
+  @media screen and (max-width: 290px) {
+    padding: 5px 5px;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 15px 48px;

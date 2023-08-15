@@ -11,7 +11,7 @@ import {
   EndWrap,
   RadioButtonsInput,
   RadioButtonsLabel,
-  // RadioButtonCustom,
+  RadioButtonCustom,
   CancelButton,
   RadioContainer,
   WrapRadio,
@@ -102,7 +102,7 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
             <RadioContainer>
               <RadioButtonsLabel>
                 <RadioButtonsInput type="radio" value="low" name="priority" />
-                {/* <RadioButtonCustom /> */}
+                <RadioButtonCustom />
                 Low
               </RadioButtonsLabel>
             </RadioContainer>
@@ -114,7 +114,7 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
                   value="medium"
                   name="priority"
                 />
-                {/* <RadioButtonCustom /> */}
+                <RadioButtonCustom />
                 Medium
               </RadioButtonsLabel>
             </RadioContainer>
@@ -122,7 +122,7 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
             <RadioContainer>
               <RadioButtonsLabel>
                 <RadioButtonsInput type="radio" value="high" name="priority" />
-                {/* <RadioButtonCustom /> */}
+                <RadioButtonCustom />
                 High
               </RadioButtonsLabel>
             </RadioContainer>
