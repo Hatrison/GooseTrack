@@ -49,6 +49,10 @@ export const Item = styled.li`
   border: 1px solid rgba(17, 17, 17, 0.1);
   width: 100%;
 
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+  }
+
   @media screen and (min-width: 1280px) {
     width: calc((100% - 24px) / 2);
   }
