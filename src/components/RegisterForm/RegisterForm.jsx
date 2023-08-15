@@ -38,7 +38,7 @@ const RegisterForm = () => {
               if (data.error) throw new Error(data.payload);
               navigate('/', { replace: true });
             })
-            .catch(error => toast.error(error.message));
+            .catch(error => toast.error(`Error: ${'Registartion failed'}`));
         }}
       >
         {() => (
@@ -46,17 +46,18 @@ const RegisterForm = () => {
             <TitleForm>Sign Up</TitleForm>
             <Label>
               Name
-              <Field type="name" name="name" />
+              <Field type="name" name="name" placeholder="Enter your name" />
             </Label>
             <Label>
               Email
-              <Field type="email" name="email" />
+              <Field type="email" name="email" placeholder="Enter your email" />
             </Label>
             <Label>
               Password
               <Field
                 type={showPassword ? 'text' : 'password'}
                 name="password"
+                placeholder="Enter your password"
               />
               <ToggleHidePassword type="button" onClick={handleShowPassword}>
                 {showPassword ? (
