@@ -53,6 +53,7 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
         if (data.error) {
           throw new Error(data.payload);
         }
+        handlerCloseModal();
       })
       .catch(error => {
         toast.error(error.message);
