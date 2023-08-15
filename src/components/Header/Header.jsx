@@ -1,35 +1,34 @@
-import { useDispatch } from 'react-redux';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
+import UserInfo from './UserInfo/UserInfo';
+import PageInfo from './PageInfo/PageInfo';
+import { useMediaQuery } from 'react-responsive';
+
 import {
   HeaderWrap,
   BurgerIcon,
   BurgerButton,
   UserOptions,
   AddFeedbackBtn,
-  UserInfo,
-  ThemeToggler,
-  UserName,
-  UserAvatar,
+  InfoWrap,
 } from './Header.styled';
-import { toggleTheme } from 'redux/theme/themeSlice';
 
 export default function Header({ onSidebarToggle }) {
-  const dispatch = useDispatch();
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
 
   return (
     <HeaderWrap>
-      <BurgerButton type="button" onClick={() => onSidebarToggle()}>
-        <BurgerIcon />
-      </BurgerButton>
+      {isDesktop && <PageInfo />}
+      {!isDesktop && (
+        <BurgerButton type="button" onClick={() => onSidebarToggle()}>
+          <BurgerIcon />
+        </BurgerButton>
+      )}
       <UserOptions>
         <AddFeedbackBtn type="button">Feedback</AddFeedbackBtn>
-        <UserInfo className="userDetails">
-          <ThemeToggler
-            onClick={() => dispatch(toggleTheme())}
-            className="themeToggler"
-          ></ThemeToggler>
-          <UserName className="userName">Nadiia</UserName>
-          <UserAvatar className="userAvatar"></UserAvatar>
-        </UserInfo>
+        <InfoWrap>
+          <ThemeToggler />
+          <UserInfo />
+        </InfoWrap>
       </UserOptions>
     </HeaderWrap>
   );
