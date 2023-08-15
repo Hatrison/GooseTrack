@@ -14,9 +14,8 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 
-padding-top: 20px;
-padding-bottom: 20px;
- 
+padding: 20px;
+
 
   & > a {
     position: relative;
@@ -24,8 +23,9 @@ padding-bottom: 20px;
     font-family: 'InterSemiBolt', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 0.75rem;
-    line-height: 0.875rem;
+    font-size: 12px;
+    line-height: 14px;
+    
     color: ${props => props.theme.accentColor};
 
     &:before {
@@ -36,24 +36,33 @@ padding-bottom: 20px;
       content: '';
       width: 100%;
       height: 1px;
+      background-color: ${props => props.theme.accentColor};
       
+    }
+    @media (min-width: 768px) {
+      font-size: 18px;
+    line-height: 24px;
     }
   }
 `;
 
 export const Form = styled(FormikForm)`
-max-width: 335px;
-  height: 408px;
+  width: 335px;
+  height: 376px;
+  margin-bottom: 32px;
 
   background-color:  ${props => props.theme.mainBackgroundColor};
   border-radius: 8px;
   padding: 40px 24px;
-  margin-bottom: 8px;
+
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 
   @media (min-width: 768px) {
     width: 480px;
-    height: 472px;
-    margin-bottom: 14px;
+    height: 424px;
+    margin-bottom: 40px;
   }
 
 `;
@@ -62,7 +71,7 @@ export const FormTitle = styled.h1`
 font-family: 'InterSemiBolt', sans-serif;
 font-weight: 600;
 font-size: 18px;
-line-height: 1.3;
+line-height: 24px;
 color: ${props => props.theme.accentColor};
 
 @media (min-width: 768px) {
@@ -109,8 +118,8 @@ margin-bottom: 8px;
 export const ButtonIcon = styled(Icon)`
 fill: transparent;
 stroke: #ffffff;
-width: 13px;
-height: 13px;
+width: 18px;
+height: 18px;
 margin-left: 13px;
 
 @keyframes scale-up-hor-left {
@@ -127,6 +136,10 @@ margin-left: 13px;
     transform-origin: 0% 0%;
   }
 }
+@media (min-width: 768px) {
+  width: 20px;
+height: 20px;
+}
 `; 
 
 export const SubmitBtn = styled.button`
@@ -142,7 +155,7 @@ font-family: 'InterSemiBolt', sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
-line-height: 1.3;
+line-height: 18px;
 background: ${props => props.theme.accentColor};
 box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
 border-radius: 16px;
@@ -157,6 +170,8 @@ margin-top: 32px;
 }
 
 @media (min-width: 768px) {
+  font-size: 18px;
+line-height: 24px;
   margin-top: 48px;
 }
 
