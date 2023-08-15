@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { ReactComponent as CloseIcon } from 'images/svg/close.svg';
-import { ReactComponent as Logo } from 'images/svg/logo_text.svg';
-import { SidebarOverlay, SidebarWrap, SidebarCover } from './SideBar.styled';
+import {
+  SidebarOverlay,
+  SidebarWrap,
+  SidebarCover,
+  CloseIcon,
+  Logo,
+  LogoText,
+} from './SideBar.styled';
 import UserNav from './UserNav';
 import LogoutBtn from './LogoutBtn/LogoutBtn';
 
 export default function SideBar({ onSidebarToggle }) {
-  const [closeIconVisible, setCloseIconVisible] = useState(false);
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
-  if (isDesktop || !closeIconVisible) {
+  if (isDesktop) {
     document.body.style.show = 'false';
   } else {
     document.body.style.show = 'true';
   }
-
-  const showCloseIcon = () => {
-    setCloseIconVisible(state => !state);
-  };
 
   useEffect(() => {
     const closeMenuByEsc = e => {
@@ -39,21 +39,16 @@ export default function SideBar({ onSidebarToggle }) {
     }
   };
 
-  // const handleLogout = () => {
-  //   dispatch(logoutUser());
-  //   !isDesktop && onSidebarToggle();
-  // };
-
   return (
     <SidebarOverlay onClick={onOverlayClick}>
+      <div>
       <SidebarWrap>
         <div>
           <SidebarCover>
             <div>
-              <Logo />
-              {(!isDesktop || closeIconVisible) && (
-                <CloseIcon onClick={showCloseIcon} />
-              )}
+                <Logo />
+                <LogoText />
+              {!isDesktop && <CloseIcon onClick={() => onSidebarToggle()} />}
             </div>
           </SidebarCover>
         </div>
@@ -62,7 +57,8 @@ export default function SideBar({ onSidebarToggle }) {
           <UserNav />
         </div>
         <LogoutBtn />
-      </SidebarWrap>
+        </SidebarWrap>
+        </div>
     </SidebarOverlay>
   );
 }
