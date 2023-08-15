@@ -15,8 +15,9 @@ import {
 import { TaskToolbar } from '../index';
 import { selectUser } from 'redux/user/selectors';
 
-export const TaskColumnCard = ({ tasks }) => {
+export const TaskColumnCard = ({ items }) => {
   const { avatarURL, name } = useSelector(selectUser);
+  console.log('TaskColumnCard', items);
 
   // const dispatch = useDispatch();
 
@@ -26,28 +27,26 @@ export const TaskColumnCard = ({ tasks }) => {
 
   return (
     <>
-      {tasks?.map(task => (
-        <TaskBox key={task._id}>
-          <TaskText>{task.title}</TaskText>
-          <ToolbarBox>
-            <Wrapper>
-              <Avatar src={avatarURL} alt={name} />
-              {task.priority === 'high' && (
-                <PriorityHigh>{task.priority}</PriorityHigh>
-              )}
-              {task.priority === 'medium' && (
-                <PriorityMedium>{task.priority}</PriorityMedium>
-              )}
-              {task.priority === 'low' && (
-                <PriorityLow>{task.priority}</PriorityLow>
-              )}
-            </Wrapper>
-            <TaskToolbar
-            // handleDeleteTask={handleDeleteTask}
-            />
-          </ToolbarBox>
-        </TaskBox>
-      ))}
+      <TaskBox key={items._id}>
+        <TaskText>{items.title}</TaskText>
+        <ToolbarBox>
+          <Wrapper>
+            <Avatar src={avatarURL} alt={name} />
+            {items.priority === 'high' && (
+              <PriorityHigh>{items.priority}</PriorityHigh>
+            )}
+            {items.priority === 'medium' && (
+              <PriorityMedium>{items.priority}</PriorityMedium>
+            )}
+            {items.priority === 'low' && (
+              <PriorityLow>{items.priority}</PriorityLow>
+            )}
+          </Wrapper>
+          <TaskToolbar
+          // handleDeleteTask={handleDeleteTask}
+          />
+        </ToolbarBox>
+      </TaskBox>
     </>
   );
 };

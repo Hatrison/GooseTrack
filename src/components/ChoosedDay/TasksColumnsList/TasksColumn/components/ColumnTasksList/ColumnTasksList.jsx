@@ -6,11 +6,9 @@ export const ColumnTasksList = ({ tasks }) => {
 
   return (
     <List>
-      {/* <TaskColumnCard />
-      <TaskColumnCard />
-      <TaskColumnCard />
-      <TaskColumnCard /> */}
-      <TaskColumnCard items={tasks} />
+      {tasks?.map(task => (
+        <TaskColumnCard key={task._id} items={task} />
+      ))}
     </List>
   );
 };
