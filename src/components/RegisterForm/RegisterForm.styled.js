@@ -1,9 +1,9 @@
-import { Form as FormikForm, Field as FormikField } from 'formik';
+import { Form as FormikForm, Field as FormikField, ErrorMessage as FormikErrorMessage } from 'formik';
 import styled from 'styled-components';
 
 export const Form = styled(FormikForm)`
 max-width: 335px;
-  height: 469px;
+  height: 569px;
 
   background-color:  ${props => props.theme.mainBackgroundColor};
   border-radius: 8px;
@@ -14,24 +14,23 @@ max-width: 335px;
     width: 480px;
     margin-bottom: 14px;
   }
-}
 `;
 
 export const TitleForm = styled.h1`
-  font-family: 'InterSemiBolt';
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.3;
-  color: ${props => props.theme.accentColor};
+  font-family: 'InterSemiBolt', sans-serif;
+font-weight: 600;
+font-size: 18px;
+line-height: 24px;
+color: ${props => props.theme.accentColor};
 
-  @media (min-width: 768px) {
-    font-size: 24px;
-  }
+@media (min-width: 768px) {
+  font-size: 24px;
+}
 `;
 
 export const Label = styled.label`
 display: block;
-font-family: 'InterSemiBolt';
+font-family: 'InterSemiBolt', sans-serif;;
 font-style: normal;
 font-weight: 600;
 font-size: 12px;
@@ -48,7 +47,7 @@ margin-bottom: 8px;
 `;
 
 export const Field = styled(FormikField)`
-font-family: 'InterRegular';
+font-family: 'InterRegular', sans-serif;;
 font-weight: 400;
 width: 100%;
 display: block;
@@ -103,3 +102,19 @@ export const ToggleHidePassword = styled.span`
   top: 10px;
   cursor: pointer;
 `;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+// position: absolute;
+// top: 10;
+// width: 250px;
+// font-size: 14px;
+// color: #c10430;
+
+// @media (min-width: 768px) {
+//   width: 300px;
+// }
+margin-left: 4px;
+  font-size: 14px;
+  color: red;
+  max-width: 400px;
+// `;

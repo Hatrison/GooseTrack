@@ -7,11 +7,13 @@ import {
   SubmitBtn,
   TitleForm,
   ToggleHidePassword,
+  ErrorMessage,
 } from './RegisterForm.styled';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
 import { toast } from 'react-toastify';
+import { RegisterValidSchema } from './RegisterValidSchema';
 
 import { ReactComponent as ShowIcon } from 'images/svg/show.svg';
 import { ReactComponent as HideIcon } from 'images/svg/hide.svg';
@@ -40,6 +42,7 @@ const RegisterForm = () => {
             })
             .catch(error => toast.error(`Error: ${'Registartion failed'}`));
         }}
+        validationSchema={RegisterValidSchema}
       >
         {() => (
           <Form>
@@ -47,11 +50,14 @@ const RegisterForm = () => {
             <Label>
               Name
               <Field type="name" name="name" placeholder="Enter your name" />
+              
             </Label>
+            <ErrorMessage name="name" component="span" />
             <Label>
               Email
               <Field type="email" name="email" placeholder="Enter your email" />
             </Label>
+            <ErrorMessage name="email" component="span" />
             <Label>
               Password
               <Field
@@ -67,6 +73,7 @@ const RegisterForm = () => {
                 )}
               </ToggleHidePassword>
             </Label>
+            <ErrorMessage name="password" component="span" />
 
             <SubmitBtn type="submit">
               Sign Up
