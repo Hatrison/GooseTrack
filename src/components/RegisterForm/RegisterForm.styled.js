@@ -1,4 +1,5 @@
 import { Form as FormikForm, Field as FormikField } from 'formik';
+import { ReactComponent as LoginIcon } from 'images/svg/buttonLogReg.svg';
 import styled from 'styled-components';
 
 export const Form = styled(FormikForm)`
@@ -115,4 +116,14 @@ export const ToggleHidePassword = styled.span`
   right: 12px;
   top: 10px;
   cursor: pointer;
+`;
+
+export const IconButton = styled(LoginIcon)`
+  width: 18px;
+  height: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
 `;

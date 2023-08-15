@@ -8,16 +8,15 @@ import {
   SubmitBtn,
   TitleForm,
   ToggleHidePassword,
+  IconButton,
 } from './RegisterForm.styled';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
 import { toast } from 'react-toastify';
 import { RegisterValidSchema } from './RegisterValidSchema';
-
 import { ReactComponent as ShowIcon } from 'images/svg/show.svg';
 import { ReactComponent as HideIcon } from 'images/svg/hide.svg';
-import { ReactComponent as IconButton } from 'images/svg/buttonLogReg.svg';
 import { useNavigate } from 'react-router';
 
 const initialState = { name: '', email: '', password: '' };
