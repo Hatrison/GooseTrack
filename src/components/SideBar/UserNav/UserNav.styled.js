@@ -26,7 +26,7 @@ export const Link = styled(LinkRouter)`
   font-weight: 600;
   border-radius: 8px;
   background-color: transparent;
-  color: #84828A;
+  color: #84828a;
   color: ${({ theme }) => theme.asideBarLinkText};
 
   :focus,
@@ -57,7 +57,6 @@ export const User = styled(UserIcon)`
   width: 20px;
   height: 20px;
   margin-left: 4px;
-  stroke: asideBarIcon;
   stroke: ${({ theme }) => theme.asideBarIcon};
 
   :focus,
@@ -89,7 +88,6 @@ export const Calendar = styled(CalendarIcon)`
   height: 20px;
   margin-right: 8px;
   margin-left: 0;
-  stroke: asideBarIcon;
   stroke: ${({ theme }) => theme.asideBarIcon};
 
   :focus,
@@ -122,12 +120,11 @@ export const Chart = styled(ChartIcon)`
   height: 20px;
   margin-right: 8px;
   margin-left: 0;
-  stroke: asideBarIcon;
-  stroke: ${({ theme }) => theme.asideBarIcon};
+  fill: ${({ theme }) => theme.asideBarIcon};
 
   :focus,
   :hover {
-    stroke: ${({ theme }) => theme.asideBarIconActive};
+    fill: ${({ theme }) => theme.asideBarIconActive};
   }
 
   @media (min-width: 768px) {
@@ -136,7 +133,7 @@ export const Chart = styled(ChartIcon)`
     width: 24px;
     height: 24px;
   }
-  
+
   @media (min-width: 1440px) {
     top: 161px;
     left: 6px;
@@ -145,4 +142,3 @@ export const Chart = styled(ChartIcon)`
     font-size: 16px;
   }
 `;
-
