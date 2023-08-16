@@ -60,4 +60,3 @@ const tasksSlice = createSlice({
 });
 
 export const tasksReducer = tasksSlice.reducer;
-export const selectTasks = state => state.tasks;
