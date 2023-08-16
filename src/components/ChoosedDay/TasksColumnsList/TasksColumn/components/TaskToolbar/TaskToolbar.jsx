@@ -12,7 +12,7 @@ import {
   ChangeDirIconModal,
 } from '../ChangeTaskDirModal/ChangeTaskDirModal.styled';
 
-export const TaskToolbar = ({ handleDeleteTask }) => {
+export const TaskToolbar = ({ handleDeleteTask, item }) => {
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
 
   const handleModalToggle = () => {
@@ -60,9 +60,7 @@ export const TaskToolbar = ({ handleDeleteTask }) => {
         </Btn>
       </li>
       <li>
-        <Btn
-        // onClick={() => handleDeleteTask(task._id)}
-        >
+        <Btn onClick={() => handleDeleteTask(item._id)}>
           <TrashIcon />
         </Btn>
       </li>
