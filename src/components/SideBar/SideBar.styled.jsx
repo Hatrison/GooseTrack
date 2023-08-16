@@ -31,18 +31,8 @@ export const SidebarWrap = styled.div`
   transition: 250ms ease-in-out;
   position: relative;
 
-  @media (max-width: 1440px) {
-    position: absolute;
-    z-index: 2;
-
-    transition: 250ms ease-in-out;
-    @media (min-width: 768px) {
-      width: 289px;
-    }
-    @media (min-width: 1440px) {
-      z-index: 1;
-      width: 289px;
-    }
+  @media (min-width: 768px) {
+    width: 289px;
   }
 `;
 
