@@ -1,6 +1,7 @@
 export const theme = {
   /* 
-    Звертатись до змінних у файлі .styled.jsx через ${({ theme }) => theme.mainBackgroundColor};  
+    Звертатись до змінних у файлі .styled.jsx через 
+    ${({ theme }) => theme.mainBackgroundColor};  
   */
   // ======================================================================================================
 
@@ -75,8 +76,12 @@ export const theme = {
     //TasksColumnCard
     priorTextColor: '#F7F6F9',
 
-    //ChangeTaskDirModal
-    changeTaskDirModalBorder: 'transparent',
+    //LoginForm
+    loginInputColor: '#111111',
+    loginInputBorder: '1px solid rgba(17, 17, 17, 0.15)',
+    backgroundColorForm: '#FFFFFF',
+    errorTagColor: "#E74A3B",
+    correctTagColor: "#3CBC81",
   },
 
   // Стилі для темної теми
@@ -151,4 +156,15 @@ export const theme = {
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
   },
+
+  // TaskModal
+  taskModalInputColor: '#171820',
+  taskModalLabelColor: '#5B5C61',
+
+   //LoginForm
+   loginInputColor: '#FFFFFF',
+   loginInputBorder: '#DCEBF7',
+   backgroundColorForm: '#111111',
+   errorTagColor: "#E74A3B",
+  correctTagColor: "#3CBC81",
 };
