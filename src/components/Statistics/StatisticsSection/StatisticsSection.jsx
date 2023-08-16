@@ -1,4 +1,4 @@
-import PeriodPaginator from 'components/CalendarToolbar/CalendarToolbar';
+// import PeriodPaginator from 'components/CalendarToolbar/CalendarToolbar';
 import StatisticsChart from '../StatisticsChart/StatisticsChart';
 import { BsFillCircleFill } from 'react-icons/bs';
 import {
@@ -12,7 +12,7 @@ const StatisticsSection = () => {
   return (
     <>
       <HeadContainer>
-        <PeriodPaginator />
+        {/* <PeriodPaginator /> */}
         <PeriodTime>
           <Period>
             <BsFillCircleFill fill="#FFD2DD" size={8} /> By Day
