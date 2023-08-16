@@ -13,7 +13,7 @@ import {
 } from './RegisterForm.styled';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
-import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
+import AuthNavigate from 'components/AuthNavigate';
 import { toast } from 'react-toastify';
 import { RegisterValidSchema } from './RegisterValidSchema';
 import { ReactComponent as ShowIcon } from 'images/svg/show.svg';

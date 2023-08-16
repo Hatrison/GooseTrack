@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const Form = styled(FormikForm)`
   width: 335px;
-  height: 469px;
+  height: 100%;
   z-index: 2;
 
   background-color: ${props => props.theme.mainBackgroundColor};
@@ -13,12 +13,12 @@ export const Form = styled(FormikForm)`
   margin-bottom: 8px;
 
   @media screen and (max-width: 374px) {
-    width: 90%;
+    width: 100%;
   }
 
   @media (min-width: 768px) {
     width: 480px;
-    height: 521px;
+    height: 100%;
     padding: 40px;
     margin-bottom: 14px;
   }
@@ -30,11 +30,11 @@ export const TitleForm = styled.h1`
   font-size: 18px;
   line-height: 24px;
   color: ${props => props.theme.accentColor};
-  margin-bottom: 32px;
+  // margin-bottom: 32px;
 
   @media (min-width: 768px) {
     font-size: 24px;
-    margin-bottom: 40px;
+    // margin-bottom: 40px;
   }
 `;
 
@@ -56,9 +56,7 @@ export const Label = styled.label`
   }
 `;
 
-export const PasswordWrap = styled.div`
-  position: relative;
-`;
+
 
 export const Field = styled(FormikField)`
   font-family: 'InterRegular', sans-serif;
@@ -75,6 +73,17 @@ export const Field = styled(FormikField)`
   :focus {
     border-color: #290b78;
   }
+`;
+
+export const PasswordWrap = styled.div`
+  position: relative;
+`;
+
+export const ToggleHidePassword = styled.span`
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  cursor: pointer;
 `;
 
 export const SubmitBtn = styled.button`
@@ -111,12 +120,7 @@ export const SubmitBtn = styled.button`
   }
 `;
 
-export const ToggleHidePassword = styled.span`
-  position: absolute;
-  right: 12px;
-  top: 10px;
-  cursor: pointer;
-`;
+
 
 export const IconButton = styled(LoginIcon)`
   width: 18px;
