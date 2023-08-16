@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TaskBox = styled.div`
+export const TaskBox = styled.li`
   padding-top: 14px;
   padding-right: 14px;
   padding-bottom: 18px;
@@ -83,7 +83,7 @@ export const PriorityMedium = styled.p`
   font-family: 'InterSemiBolt';
   font-size: 10px;
   line-height: 1.2;
-  color: white;
+  color: ${({ theme }) => theme.priorTextColor};
 
   background-color: #f3b249;
 `;
@@ -96,7 +96,7 @@ export const PriorityHigh = styled.p`
   font-family: 'InterSemiBolt';
   font-size: 10px;
   line-height: 1.2;
-  color: white;
+  color: ${({ theme }) => theme.priorTextColor};
 
   background-color: #ea3d65;
 `;

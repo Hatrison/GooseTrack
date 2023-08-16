@@ -10,6 +10,10 @@ export const PeriodPaginatorWrapper = styled.div`
   }
 `;
 
+export const Ul = styled.ul`
+  display: flex;
+`;
+
 export const Li = styled.li`
   display: flex;
   height: 30px;
@@ -34,11 +38,11 @@ export const Btn = styled.button`
     }
   }
 
-  &:first-of-type {
+  &.subtraction {
     border-radius: 8px 0 0 8px;
   }
 
-  &:last-child {
+  &.addition {
     border-radius: 0 8px 8px 0;
   }
 
@@ -53,7 +57,7 @@ export const Btn = styled.button`
 
 export const StyledDate = styled.p`
   display: inline-block;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
@@ -62,7 +66,7 @@ export const StyledDate = styled.p`
   border-radius: 8px;
 
   background-color: ${({ theme }) => theme.accentColor};
-  color: ${({ theme }) => theme.mainBackgroundColor};
+  color: ${({ theme }) => theme.buttontextColor};
 
   text-transform: uppercase;
   text-align: center;
