@@ -1,4 +1,4 @@
-import { Form as FormikForm, Field as FormikField } from 'formik';
+import { Form as FormikForm, Field as FormikField, ErrorMessage as FormikErrorMessage, } from 'formik';
 import { ReactComponent as LoginIcon } from 'images/svg/buttonLogReg.svg';
 import styled from 'styled-components';
 
@@ -126,4 +126,11 @@ export const IconButton = styled(LoginIcon)`
     width: 20px;
     height: 20px;
   }
+`;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+  margin-left: 4px;
+  font-size: 14px;
+  color: red;
+  max-width: 400px;
 `;
