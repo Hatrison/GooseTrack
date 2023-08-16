@@ -3,18 +3,21 @@ import { ReactComponent as IconClose } from 'images/svg/close.svg';
 import { ReactComponent as LogoIcon } from 'images/svg/logo.svg';
 
 export const SidebarOverlay = styled.div`
-    width: 225px;
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-  
+  width: 225px;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  @media screen and (min-width: 1440px) {
+    position: relative;
+    width: 290px;
+  }
 `;
 
 export const SidebarWrap = styled.div`
-  border: 1px solid #3e85f3;
   background-color: ${({ theme }) => theme.asideBarBackground};
   min-height: 100vh;
   width: 225px;
