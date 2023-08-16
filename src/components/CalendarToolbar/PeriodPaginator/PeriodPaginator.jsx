@@ -10,6 +10,7 @@ import { ReactComponent as RightArrow } from 'images/svg/chevron-right.svg';
 
 import {
   Btn,
+  Ul,
   Li,
   StyledDate,
   PeriodPaginatorWrapper,
@@ -34,29 +35,13 @@ export const PeriodPaginator = ({ type }) => {
 
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
 
-  const onChangeDate = e => {
-    if (e.currentTarget.name === 'addition') {
-      if (type === 'day') {
-        const newDate = add(date, { days: 1 });
-        const formattedNewDate = format(newDate, 'yyyy-MM-dd');
-        dispatch(setDates(formattedNewDate));
-        navigate(`${type}/${formattedNewDate}`);
-        return;
-      }
-      const newDate = add(date, { months: 1 });
-      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
-      dispatch(setDates(formattedNewDate));
-      navigate(`${type}/${formattedNewDate}`);
-      return;
-    }
-    if (type === 'day') {
-      const newDate = sub(date, { days: 1 });
-      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
-      dispatch(setDates(formattedNewDate));
-      navigate(`${type}/${formattedNewDate}`);
-      return;
-    }
-    const newDate = sub(date, { months: 1 });
+  const onChangeDate1 = e => {
+    const period = `${type}s`;
+    const newDate =
+      e.currentTarget.name === 'addition'
+        ? add(date, { [period]: 1 })
+        : sub(date, { [period]: 1 });
+
     const formattedNewDate = format(newDate, 'yyyy-MM-dd');
     dispatch(setDates(formattedNewDate));
     navigate(`${type}/${formattedNewDate}`);
@@ -70,16 +55,28 @@ export const PeriodPaginator = ({ type }) => {
       <StyledDate>
         {type === 'month' ? currentDate.slice(3) : currentDate}
       </StyledDate>
-      <ul>
+      <Ul>
         <Li>
-          <Btn type="button" name="subtraction" onClick={onChangeDate}>
+          <Btn
+            type="button"
+            name="subtraction"
+            className="subtraction"
+            onClick={onChangeDate1}
+          >
             <LeftArrow />
           </Btn>
-          <Btn type="button" name="addition" onClick={onChangeDate}>
+        </Li>
+        <Li>
+          <Btn
+            type="button"
+            name="addition"
+            className="addition"
+            onClick={onChangeDate1}
+          >
             <RightArrow />
           </Btn>
         </Li>
-      </ul>
+      </Ul>
     </PeriodPaginatorWrapper>
   );
 };
