@@ -1,18 +1,24 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { logoutUser } from 'redux/auth/operations';
-
 import {
   SidebarOverlay,
   SidebarWrap,
-  Link,
-  Navigation,
+  SidebarCover,
+  CloseIcon,
+  Logo,
+  LogoText,
 } from './SideBar.styled';
+import UserNav from './UserNav';
+import LogoutBtn from './LogoutBtn/LogoutBtn';
 
 export default function SideBar({ onSidebarToggle }) {
-  const dispatch = useDispatch();
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+  if (isDesktop) {
+    document.body.style.show = 'false';
+  } else {
+    document.body.style.show = 'true';
+  }
+
   useEffect(() => {
     const closeMenuByEsc = e => {
       if (e.code === 'Escape') {
@@ -33,30 +39,26 @@ export default function SideBar({ onSidebarToggle }) {
     }
   };
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    !isDesktop && onSidebarToggle();
-  };
   return (
     <SidebarOverlay onClick={onOverlayClick}>
+      <div>
       <SidebarWrap>
         <div>
-          <div>logo</div>
-          <div>WordLogo</div>
-          <div>Button</div>
+          <SidebarCover>
+            <div>
+                <Logo />
+                <LogoText />
+              {!isDesktop && <CloseIcon onClick={() => onSidebarToggle()} />}
+            </div>
+          </SidebarCover>
         </div>
         <div>
           <p>User Panel</p>
-          <Navigation>
-            <Link to="/account">My account</Link>
-            <Link to="/calendar/month/:currentDate">Calendar</Link>
-            <Link to="/statistics">Statistics</Link>
-          </Navigation>
+          <UserNav />
         </div>
-        <button type="button" onClick={handleLogout}>
-          Log out
-        </button>
-      </SidebarWrap>
+        <LogoutBtn />
+        </SidebarWrap>
+        </div>
     </SidebarOverlay>
   );
 }
