@@ -1,7 +1,4 @@
-import {
-  useSelector,
-  // useDispatch
-} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   TaskBox,
   TaskText,
@@ -14,36 +11,39 @@ import {
 } from './TaskColumnCard.styled';
 import { TaskToolbar } from '../index';
 import { selectUser } from 'redux/user/selectors';
+import { deleteTask } from 'redux/tasks/operations';
 
-export const TaskColumnCard = ({ items }) => {
+export const TaskColumnCard = ({ item, title }) => {
   const { avatarURL, name } = useSelector(selectUser);
   // console.log('TaskColumnCard', items);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //  const handleDeleteTask = value => {
-  //    dispatch(deleteTask(value));
-  // };
+  const handleDeleteTask = value => {
+    dispatch(deleteTask(value));
+  };
 
   return (
     <>
-      <TaskBox key={items._id}>
-        <TaskText>{items.title}</TaskText>
+      <TaskBox key={item._id}>
+        <TaskText>{item.title}</TaskText>
         <ToolbarBox>
           <Wrapper>
             <Avatar src={avatarURL} alt={name} />
-            {items.priority === 'high' && (
-              <PriorityHigh>{items.priority}</PriorityHigh>
+            {item.priority === 'high' && (
+              <PriorityHigh>{item.priority}</PriorityHigh>
             )}
-            {items.priority === 'medium' && (
-              <PriorityMedium>{items.priority}</PriorityMedium>
+            {item.priority === 'medium' && (
+              <PriorityMedium>{item.priority}</PriorityMedium>
             )}
-            {items.priority === 'low' && (
-              <PriorityLow>{items.priority}</PriorityLow>
+            {item.priority === 'low' && (
+              <PriorityLow>{item.priority}</PriorityLow>
             )}
           </Wrapper>
           <TaskToolbar
-          // handleDeleteTask={handleDeleteTask}
+            item={item}
+            title={title}
+            handleDeleteTask={handleDeleteTask}
           />
         </ToolbarBox>
       </TaskBox>
