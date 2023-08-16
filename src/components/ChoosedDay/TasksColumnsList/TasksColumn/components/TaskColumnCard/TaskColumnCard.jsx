@@ -9,53 +9,44 @@ import {
   Wrapper,
   Avatar,
   PriorityLow,
-  // PriorityHigh,
-  // PriorityMedium,
+  PriorityHigh,
+  PriorityMedium,
 } from './TaskColumnCard.styled';
 import { TaskToolbar } from '../index';
 import { selectUser } from 'redux/user/selectors';
 
 export const TaskColumnCard = ({ items }) => {
   const { avatarURL, name } = useSelector(selectUser);
+  // console.log('TaskColumnCard', items);
 
   // const dispatch = useDispatch();
 
-  // const handleDeleteTask = value => {
-  //   dispatch(deleteTask(value));
+  //  const handleDeleteTask = value => {
+  //    dispatch(deleteTask(value));
   // };
 
   return (
-    <TaskBox>
-      <TaskText>
-        abracadabra, avada kedavra, focus pokus, alahai malahai, vengardium
-        leviosa
-      </TaskText>
-      <ToolbarBox>
-        <Wrapper>
-          <Avatar src={avatarURL} alt={name} />
-          <PriorityLow>Low</PriorityLow>
-        </Wrapper>
-        <TaskToolbar />
-      </ToolbarBox>
-    </TaskBox>
-    // Вставляється після ретурна
-    //  <>
-    //       {items?.map(element => (
-    //        <TaskBox key={element._id}>
-    //          <TaskText>{element.title}</TaskText>
-    //          <ToolbarBox>
-    //            <Wrapper>
-    //              <Avatar src={avatarURL} alt={name} />
-    //              {element.priority === 'high' && <PriorityHigh>{element.priority}</PriorityHigh>}
-    //              {element.priority === 'medium' && <PriorityMedium>{element.priority}</PriorityMedium>}
-    //              {element.priority === 'low' && <PriorityLow>{element.priority}</PriorityLow>}
-    //            </Wrapper>
-    //            <TaskToolbar
-    //              handleDeleteTask={handleDeleteTask}
-    //            />
-    //          </ToolbarBox>
-    //        </TaskBox>
-    //      )}
-    //    </>
+    <>
+      <TaskBox key={items._id}>
+        <TaskText>{items.title}</TaskText>
+        <ToolbarBox>
+          <Wrapper>
+            <Avatar src={avatarURL} alt={name} />
+            {items.priority === 'high' && (
+              <PriorityHigh>{items.priority}</PriorityHigh>
+            )}
+            {items.priority === 'medium' && (
+              <PriorityMedium>{items.priority}</PriorityMedium>
+            )}
+            {items.priority === 'low' && (
+              <PriorityLow>{items.priority}</PriorityLow>
+            )}
+          </Wrapper>
+          <TaskToolbar
+          // handleDeleteTask={handleDeleteTask}
+          />
+        </ToolbarBox>
+      </TaskBox>
+    </>
   );
 };
