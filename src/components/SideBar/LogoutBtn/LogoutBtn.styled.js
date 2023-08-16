@@ -27,14 +27,14 @@ export const LogoutButton = styled.button`
   color: #ffffff;
   cursor: pointer;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;';
   font-style: normal;
   font-weight: 600;
   line-height: 1.3;
-  font-size: 24px;
+  font-size: 18px;
 
   padding: 28px 14px;
-  margin-top: 20px 424px 74px 24px;
+  margin: 20px 424px 74px 24px;
 
   &:hover ${LogoutIcon} {
     animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;

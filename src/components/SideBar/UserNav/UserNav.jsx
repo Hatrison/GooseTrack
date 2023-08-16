@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { Calendar, Chart, Navigation, User } from './UserNav.styled';
+import { Calendar, Chart, Navigation, User, Link } from './UserNav.styled';
 
 const UserNav = () => {
   return (

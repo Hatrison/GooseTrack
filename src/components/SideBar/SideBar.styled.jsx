@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as IconClose } from 'images/svg/close.svg';
 import { ReactComponent as LogoIcon } from 'images/svg/logo.svg';
-import { ReactComponent as LogoTextIcon } from 'images/svg/logoText.svg';
 
 export const SidebarOverlay = styled.div`
     width: 225px;
@@ -16,7 +15,7 @@ export const SidebarOverlay = styled.div`
 
 export const SidebarWrap = styled.div`
   border: 1px solid #3e85f3;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.asideBarBackground};
   min-height: 100vh;
   width: 225px;
   padding-left: 24px;
@@ -47,18 +46,18 @@ export const SidebarWrap = styled.div`
 export const SidebarCover = styled.div`
   display: flex;
   flex-direction: row;
-   
 `;
 
 export const CloseIcon = styled(IconClose)`
   position: absolute;
-  top: 24px;
+  top: 38px;
   right: 24px;
   width: 24px;
   height: 24px;
-  margin-left: 25px;
+  margin-left: 0;
   border: 0;
-  stroke: #000000;
+  stroke: assideBarCloseIconColor;
+  stroke: ${({ theme }) => theme.assideBarCloseIconColor};
 
   @media (min-width: 768px) {
     width: 34px;
@@ -70,7 +69,6 @@ export const CloseIcon = styled(IconClose)`
 export const Logo = styled(LogoIcon)`
   width: 36px;
   height: 35px;
-  
 
   @media (min-width: 768px) {
     margin-bottom: 50px;
@@ -78,13 +76,30 @@ export const Logo = styled(LogoIcon)`
 
   @media (min-width: 1440px) {
     margin-bottom: 32px;
+    margin-left: 10px;
   }
-
-  background-color: ${({ theme }) => !theme.secondaryBackgroundColor};
 `;
 
-export const LogoText = styled(LogoTextIcon)`
-  width: 94px;
-  height: 22px;
+export const LogoText = styled.span`
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-left: 6px;
+  padding-bottom: 0;
+  color: asideBarLogoText;
+  color: ${({ theme }) => theme.asideBarLogoText};
 
+  @media (min-width: 1440px) {
+    margin-left: 22px;
+  }
+`;
+
+export const Paragraph = styled.p`
+  font-size: 12px;
+  font-family: 'InterSemiBolt', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: asideBarTitle;
+  color: ${({ theme }) => theme.asideBarTitle};
+  margin-left: 0;
 `;
