@@ -1,4 +1,8 @@
-import { Form as FormikForm, Field as FormikField, ErrorMessage as FormikErrorMessage, } from 'formik';
+import {
+  Form as FormikForm,
+  Field as FormikField,
+  ErrorMessage as FormikErrorMessage,
+} from 'formik';
 import { ReactComponent as LoginIcon } from 'images/svg/buttonLogReg.svg';
 import styled from 'styled-components';
 
@@ -55,8 +59,6 @@ export const Label = styled.label`
     margin-top: 18px;
   }
 `;
-
-
 
 export const Field = styled(FormikField)`
   font-family: 'InterRegular', sans-serif;
@@ -119,8 +121,6 @@ export const SubmitBtn = styled.button`
     padding: 16px;
   }
 `;
-
-
 
 export const IconButton = styled(LoginIcon)`
   width: 18px;
