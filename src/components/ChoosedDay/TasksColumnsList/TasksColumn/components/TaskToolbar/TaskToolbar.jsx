@@ -22,13 +22,13 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
     let titlesArr = [];
     switch (title) {
       case 'To do':
-        titlesArr = ['In Progress', 'Done'];
+        titlesArr = ['In progress', 'Done'];
         break;
       case 'In progress':
         titlesArr = ['To do', 'Done'];
         break;
       case 'Done':
-        titlesArr = ['To do', 'In Progress'];
+        titlesArr = ['To do', 'In progress'];
         break;
 
       default:
@@ -38,8 +38,7 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
     return titlesArr;
   };
 
-  console.log('TaskToolbar', item);
-
+  // Cтворюється масив з іншими титулами відмінними від оригінального
   const newTitlesArr = ChangeDirTitle(title);
 
   // Створюємо масив з двома ідентичними обєктами але з різними ключами category
@@ -53,7 +52,23 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
   };
 
   const handleTransfer = task => {
-    dispatch(updateTask(task));
+    const modifiedTask = { ...task };
+
+    switch (modifiedTask.category) {
+      case 'Done':
+        modifiedTask.category = 'done';
+        break;
+      case 'In progress':
+        modifiedTask.category = 'in-progress';
+        break;
+      case 'To do':
+        modifiedTask.category = 'to-do';
+        break;
+      default:
+        break;
+    }
+
+    dispatch(updateTask(modifiedTask));
   };
 
   return (
@@ -90,24 +105,3 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
     </List>
   );
 };
-// {category: 'done';
-// date: '2023-08-16';
-// end: '11:30';
-// owner: '64d9cb8bd8b377cef7108e7f';
-// priority: 'low';
-// start: '11:20';
-// title: 'Having a party Stepan';
-// _id: '64dc88d1984fe6fb475d0efc';}
-
-// {
-/* Вставляється після {isChangeDirOpened && (<ChangeTaskDirModal>
-            
-            {something.map(element => (
-              <li key={element} onClick={() => handleChangeDir(element)}>
-                <ModalBtn>
-                {element}
-                <ChangeDirIconModal />
-              </ModalBtn>
-              </li>
-            ))} */
-// }
