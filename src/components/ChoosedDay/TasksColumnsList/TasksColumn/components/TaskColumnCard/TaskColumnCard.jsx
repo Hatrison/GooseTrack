@@ -13,7 +13,7 @@ import { TaskToolbar } from '../index';
 import { selectUser } from 'redux/user/selectors';
 import { deleteTask } from 'redux/tasks/operations';
 
-export const TaskColumnCard = ({ item }) => {
+export const TaskColumnCard = ({ item, title }) => {
   const { avatarURL, name } = useSelector(selectUser);
   // console.log('TaskColumnCard', items);
 
@@ -40,7 +40,11 @@ export const TaskColumnCard = ({ item }) => {
               <PriorityLow>{item.priority}</PriorityLow>
             )}
           </Wrapper>
-          <TaskToolbar item={item} handleDeleteTask={handleDeleteTask} />
+          <TaskToolbar
+            item={item}
+            title={title}
+            handleDeleteTask={handleDeleteTask}
+          />
         </ToolbarBox>
       </TaskBox>
     </>

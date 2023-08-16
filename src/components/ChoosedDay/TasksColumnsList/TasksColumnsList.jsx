@@ -1,10 +1,7 @@
-import { useSelector } from 'react-redux';
 import { List } from './TasksColumnsList.styled';
 import { TasksColumn } from './TasksColumn/TasksColumn';
 
-export const TasksColumnsList = () => {
-  const tasks = useSelector(state => state.tasks.tasks);
-
+export const TasksColumnsList = ({ tasks }) => {
   const tasksToDo = tasks.filter(task => task.category === 'to-do');
   const tasksInProgress = tasks.filter(task => task.category === 'in-progress');
   const tasksDone = tasks.filter(task => task.category === 'done');

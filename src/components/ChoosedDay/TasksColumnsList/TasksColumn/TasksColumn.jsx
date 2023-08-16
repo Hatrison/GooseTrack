@@ -5,7 +5,7 @@ export const TasksColumn = ({ tasks, taskName }) => {
   return (
     <Container>
       <ColumnHeadBar title={taskName} />
-      <ColumnTasksList tasks={tasks} />
+      <ColumnTasksList tasks={tasks} title={taskName} />
       <AddTaskBtn category={taskName} />
     </Container>
   );
