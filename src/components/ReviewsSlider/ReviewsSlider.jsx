@@ -1,6 +1,9 @@
 // import React from 'react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+// import Slider from 'react-slick';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 import {
   Section,
   Container,
@@ -16,6 +19,7 @@ import {
   ArrowsWrap,
   RatingStar,
   StarsList,
+  SliderStyled,
 } from './ReviewsSlider.styled';
 
 export const getAllReviews = async () => {
@@ -51,11 +55,43 @@ const ReviewsSlider = () => {
     getReviews();
   }, []);
 
+  function NextArrow(props) {
+    const { onClick } = props;
+    return <ArrowRight onClick={onClick} />;
+  }
+
+  function PrevArrow(props) {
+    const { onClick } = props;
+    return <ArrowLeft onClick={onClick} />;
+  }
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    // autoplay: true,
+    autoplaySpeed: 2000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <Section>
       <Container>
         <Title>Reviews</Title>
-        <List>
+        <SliderStyled {...settings}>
           {reviews &&
             reviews.map(review => {
               return (
@@ -95,7 +131,49 @@ const ReviewsSlider = () => {
                 </Item>
               );
             })}
-          {/* <Item>
+        </SliderStyled>
+
+        {/* <List> */}
+        {/* {reviews &&
+            reviews.map(review => {
+              return (
+                <Item key={review._id}>
+                  <WrapAvatarNameStars>
+                    <Avatar
+                      src="https://366icons.com/media/01/profile-avatar-account-icon-16699.png"
+                      alt="Avatar"
+                      width="50px"
+                      height="50px"
+                    />
+                    <div>
+                      <Name>
+                        {review.name} - {review.rating}
+                      </Name>
+                      <StarsList>
+                        <li>
+                          <RatingStar />
+                        </li>
+                        <li>
+                          <RatingStar />
+                        </li>
+                        <li>
+                          <RatingStar />
+                        </li>
+                        <li>
+                          <RatingStar />
+                        </li>
+                        <li>
+                          <RatingStar />
+                        </li>
+                      </StarsList>
+                    </div>
+                  </WrapAvatarNameStars>
+
+                  <Text>{review.text}</Text>
+                </Item>
+              );
+            })} */}
+        {/* <Item>
             <WrapAvatarNameStars>
               <Avatar
                 src="../../images/avatar1.jpg"
@@ -166,7 +244,7 @@ const ReviewsSlider = () => {
               make it easy to stay organized and focused. Highly recommended.
             </Text>
           </Item> */}
-        </List>
+        {/* </List> */}
         <ArrowsWrap>
           <ArrowLeft />
           <ArrowRight />

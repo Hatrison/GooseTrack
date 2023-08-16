@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { ReactComponent as ArrowBack } from '../../images/svg/arrowBack.svg';
 import { ReactComponent as ArrowNext } from '../../images/svg/arrowNext.svg';
 import { ReactComponent as Stars } from '../../images/svg/RatingStar.svg';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export const Section = styled.div`
   background-color: #ffffff;
@@ -30,6 +33,19 @@ export const Container = styled.div`
   }
 `;
 
+export const SliderStyled = styled(Slider)`
+  margin-bottom: 8px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 18px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    gap: 24px;
+  }
+`;
+
 export const List = styled.ul`
   margin-bottom: 8px;
 
@@ -48,6 +64,7 @@ export const Item = styled.li`
   border-radius: 8px;
   border: 1px solid rgba(17, 17, 17, 0.1);
   width: 100%;
+  margin: 0 12px;
 
   @media screen and (min-width: 768px) {
     padding: 32px;

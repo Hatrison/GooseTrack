@@ -24,14 +24,14 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
+  :not(:last-child) {
+    margin-bottom: 64px;
+  }
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     :nth-child(2n) {
       align-items: flex-end;
-    }
-    :not(:last-child) {
-      margin-bottom: 64px;
     }
   }
 
