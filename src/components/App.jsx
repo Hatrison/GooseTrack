@@ -4,7 +4,7 @@ import NotFound from 'pages/NotFound';
 import Theme from './Theme';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCurrentUser } from 'redux/auth/operations';
+import { fetchCurrentUser } from 'redux/user/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';

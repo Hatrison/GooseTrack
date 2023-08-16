@@ -42,3 +42,12 @@ export const Suspense = styled(SuspenseModule)`
   flex-grow: 1;
   padding-top: 32px;
 `;
+
+export const SpinnerWrap = styled.div`
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
