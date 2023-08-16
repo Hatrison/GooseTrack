@@ -4,10 +4,11 @@ import {
   SidebarOverlay,
   SidebarWrap,
   SidebarCover,
+  LogoWrap,
   CloseIcon,
   Logo,
   LogoText,
-  Paragraph
+  Paragraph,
 } from './SideBar.styled';
 import UserNav from './UserNav';
 import LogoutBtn from './LogoutBtn/LogoutBtn';
@@ -44,14 +45,14 @@ export default function SideBar({ onSidebarToggle }) {
     <SidebarOverlay onClick={onOverlayClick}>
       <SidebarWrap>
         <SidebarCover>
-          <Logo />
-          <LogoText>GooseTrack</LogoText>
-          {!isDesktop && <CloseIcon onClick={() => onSidebarToggle()} />}
-        </SidebarCover>
-        <Paragraph>
-          UserPanel
-        </Paragraph> 
+          <LogoWrap>
+            <Logo />
+            <LogoText>GooseTrack</LogoText>
+            {!isDesktop && <CloseIcon onClick={() => onSidebarToggle()} />}
+          </LogoWrap>
+          <Paragraph>UserPanel</Paragraph>
           <UserNav />
+        </SidebarCover>
         <LogoutBtn />
       </SidebarWrap>
     </SidebarOverlay>

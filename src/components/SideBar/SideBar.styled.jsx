@@ -38,7 +38,11 @@ export const SidebarWrap = styled.div`
 
 export const SidebarCover = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+`;
+
+export const LogoWrap = styled.div`
+  display: flex;
 `;
 
 export const CloseIcon = styled(IconClose)`
