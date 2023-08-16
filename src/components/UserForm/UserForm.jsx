@@ -24,7 +24,7 @@ import {
 } from './UserForm.styled';
 import defaultAvatar from '../../images/avatar.png';
 
-const currentDate = moment().format('DD/MM/YYYY');
+const currentDate = moment().format('DD-MM-YYYY');
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -88,7 +88,7 @@ const UserForm = () => {
               id="add-avatar"
               name="avatar"
               type="file"
-              accept="image/*, .png,.jpg,.gif,.web, .webp"
+              accept="image/*, .png,.jpg"
               onChange={e => {
                 setAvatarURL(e.target.files[0]);
               }}
