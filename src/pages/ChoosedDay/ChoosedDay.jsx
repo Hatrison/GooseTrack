@@ -17,7 +17,7 @@ const ChoosedDay = ({ propSelectedWeek }) => {
 
   return (
     <div>
-      <DayCalendarHead selectedWeek={propSelectedWeek} />
+      <DayCalendarHead date={date} />
       <TasksColumnsList tasks={tasks} actualDate={date} />
     </div>
   );
