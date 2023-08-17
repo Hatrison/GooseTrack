@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Field, Form as FormikForm, ErrorMessage as FormikError } from 'formik';
+import { Form as FormikForm, ErrorMessage as FormikError } from 'formik';
+import { Rating } from '@mui/material';
 
 export const Form = styled(FormikForm)`
   color: ${({ theme }) => theme.mainTextColor};
@@ -13,6 +14,16 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 1.17;
   color: ${({ theme }) => theme.taskModalTitleColor};
+`;
+
+export const StyledRating = styled(Rating)`
+  & .MuiRating-iconFilled {
+    color: '#ff6d75';
+  }
+
+  & .MuiRating-iconHover {
+    color: '#ff3d47';
+  }
 `;
 
 export const ErrorMessage = styled(FormikError)`
@@ -52,7 +63,7 @@ export const DeleteToolbarButton = styled(ToolbarButton)`
   background: red;
 `;
 
-export const StyledTextArea = styled(Field)`
+export const StyledTextArea = styled.textarea`
   width: 100%;
   height: 127px;
   background-color: ${({ theme }) => theme.taskModalInputColor};
