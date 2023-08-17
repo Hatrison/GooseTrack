@@ -30,10 +30,10 @@ export const theme = {
     // AsideBar
     asideBarBackground: '#FFFFFF',
     asideBarLogoText: '#3E85F3',
-    asideBarTitle: '#7E7D82',
-    asideBarIcon: '#84828A',
+    asideBarTitle: '#34343480',
+    asideBarIcon: '#34343480',
     asideBarIconActive: '#3E85F3',
-    asideBarLinkText: '#84828A',
+    asideBarLinkText: '#34343480',
     asideBarActiveLinkText: '#3E85F3',
     asideBarActiveLinkBackground: '#E3F3FF',
     asideBarLinkBackgroundHover: 'rgba(120, 165, 191, 0.1)',
@@ -97,7 +97,7 @@ export const theme = {
     // AsideBar
     asideBarBackground: '#13151A',
     asideBarLogoText: '#FFFFFF',
-    asideBarTitle: '#585A5D',
+    asideBarTitle: '#FAFAFA4D',
     asideBarIcon: '#FFFFFF',
     asideBarIconActive: '#FFFFFF',
     asideBarLinkText: '#FFFFFF',
