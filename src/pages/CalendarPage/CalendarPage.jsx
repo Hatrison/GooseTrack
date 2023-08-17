@@ -21,7 +21,7 @@ const CalendarPage = () => {
       isFirstRender.current = false;
 
       if (!pathname.includes('/calendar/day/')) {
-        navigate(`/calendar/month/${currentDate}`);
+        navigate(`/calendar/month/${currentDate}`, { replace: true });
         dispatch(setDates(currentDate));
       }
     }
