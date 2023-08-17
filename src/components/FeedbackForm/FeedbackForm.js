@@ -5,6 +5,11 @@ import {
   Form,
   Label,
   RatingText,
+  ErrorMessage,
+  Wrap,
+  ToolbarWrap,
+  EditToolbarButton,
+  DeleteToolbarButton,
   //StyledRating,
   WrapButton,
   StyledButton,
@@ -15,10 +20,12 @@ import {
 import { useEffect, useState } from 'react';
 import {
   createReview,
+  deleteReview,
   getOwnReview,
   updateReview,
 } from 'redux/reviews/operations';
 import { selectOwnReview } from 'redux/reviews/selectors';
+import { FeedbackFormSchema } from './FeedbackFormSchema';
 
 const initialValues = {
   rating: 0,
@@ -26,7 +33,7 @@ const initialValues = {
 };
 
 const FeedbackForm = ({ handlerCloseModal }) => {
-  const [statusForm, setStatusForm] = useState('create');
+  const [statusForm, setStatusForm] = useState('edit');
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
   const review = useSelector(selectOwnReview);
@@ -39,19 +46,25 @@ const FeedbackForm = ({ handlerCloseModal }) => {
     if (review?.text) setStatusForm('edit');
   }, [review]);
 
+  const toggleIsEditing = () => {
+    setIsEditing(prevState => !prevState);
+  };
+
   return (
     <Formik
       initialValues={initialValues}
+      validationSchema={FeedbackFormSchema}
       onSubmit={values => {
         dispatch(
           statusForm === 'create' ? createReview(values) : updateReview(values)
         );
       }}
     >
-      <Form>
-        <Label>
-          <RatingText>Rating</RatingText>
-          {/* <StyledRating
+      {({ errors }) => (
+        <Form>
+          <Label>
+            <RatingText>Rating</RatingText>
+            {/* <StyledRating
             name="rating"
             value={review.rating}
             precision={1}
@@ -62,24 +75,43 @@ const FeedbackForm = ({ handlerCloseModal }) => {
             }}
             sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
           /> */}
-        </Label>
-        <Label>
-          Review
-          <StyledTextArea name="text" placeholder="Enter text" />
-        </Label>
-        <WrapButton>
-          {isEditing ? (
-            <div style={{ display: 'flex', gap: '8px' }}>
+          </Label>
+          <ErrorMessage name="rating" component="div" />
+          <Wrap>
+            <Label htmlForor="name">Review</Label>
+            {statusForm === 'edit' && (
+              <ToolbarWrap>
+                <EditToolbarButton
+                  type="button"
+                  className={isEditing ? 'active' : ''}
+                  onClick={() => toggleIsEditing()}
+                />
+                <DeleteToolbarButton
+                  type="button"
+                  onClick={() => dispatch(deleteReview())}
+                />
+              </ToolbarWrap>
+            )}
+          </Wrap>
+          <StyledTextArea
+            id="name"
+            name="text"
+            placeholder="Enter text"
+            as="textarea"
+          />
+          <ErrorMessage name="text" component="div" />
+          <WrapButton>
+            {isEditing ? (
               <StyledEditButton type="submit">Edit</StyledEditButton>
-            </div>
-          ) : (
-            <StyledButton type="submit">Save</StyledButton>
-          )}
-          <CancelButton type="button" onClick={handlerCloseModal}>
-            Cancel
-          </CancelButton>
-        </WrapButton>
-      </Form>
+            ) : (
+              <StyledButton type="submit">Save</StyledButton>
+            )}
+            <CancelButton type="button" onClick={handlerCloseModal}>
+              Cancel
+            </CancelButton>
+          </WrapButton>
+        </Form>
+      )}
     </Formik>
   );
 };

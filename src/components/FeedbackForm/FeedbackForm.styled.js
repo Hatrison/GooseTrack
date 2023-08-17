@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form as FormikForm } from 'formik';
+import { Field, Form as FormikForm, ErrorMessage as FormikError } from 'formik';
 
 export const Form = styled(FormikForm)`
   color: ${({ theme }) => theme.mainTextColor};
@@ -13,8 +13,6 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 1.17;
   color: ${({ theme }) => theme.taskModalTitleColor};
-
-  margin: 0 0 8px;
 `;
 
 export const RatingText = styled.p`
@@ -25,7 +23,44 @@ export const RatingText = styled.p`
   margin: 0 0 8px;
 `;
 
-export const StyledTextArea = styled.textarea`
+export const ErrorMessage = styled(FormikError)`
+  font-size: 12px;
+  color: red;
+  margin: 15px 0;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+`;
+
+export const ToolbarWrap = styled.div`
+  display: flex;
+  gap: 15px;
+`;
+
+export const ToolbarButton = styled.button`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+`;
+
+export const EditToolbarButton = styled(ToolbarButton)`
+  background-color: lightblue;
+
+  &.active {
+    background-color: blue;
+  }
+`;
+
+export const DeleteToolbarButton = styled(ToolbarButton)`
+  background: red;
+`;
+
+export const StyledTextArea = styled(Field)`
   width: 100%;
   height: 127px;
   background-color: ${({ theme }) => theme.taskModalInputColor};
@@ -60,7 +95,7 @@ export const WrapButton = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  width: 100%;
+  width: calc(100% / 2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +110,6 @@ export const StyledButton = styled.button`
 
   border-radius: 8px;
 
-  margin-bottom: 28px;
   border: 0;
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
@@ -86,7 +120,6 @@ export const StyledButton = styled.button`
   cursor: pointer;
   @media screen and (min-width: 768px) {
     padding: 15px;
-    margin-bottom: 32px;
   }
 `;
 
