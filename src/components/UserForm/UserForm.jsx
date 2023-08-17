@@ -11,20 +11,18 @@ import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
 import {
   AddIcon,
-  // AvatarWrap,
   AvatarWrapper,
   DefaultAvatar,
   FieldAdd,
   Form,
-  // ImageAvatar,
   ImgAvatar,
   UserInfo,
   UserWrapper,
   WrapperForm,
 } from './UserForm.styled';
-import defaultAvatar from '../../images/avatar.png';
+import defaultAvatar from '../../images/account/defaultAvatar.png';
 
-const currentDate = dayjs(new Date()).format('YYYY-MM-DD');
+const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -33,19 +31,26 @@ const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthDate, setBirthDate] = useState(null);
 
-  const handleSubmit = async values => {
+  const handleSubmit = async ({
+    name,
+    email,
+    phone,
+    skype,
+    birthday,
+    avatarURL,
+  }) => {
     const formData = new FormData();
-    formData.append('name', values.name);
-    formData.append('email', values.email);
-    if (values.phone) {
-      formData.append('phone', values.phone);
+    formData.append('name', name);
+    formData.append('email', email);
+    if (phone) {
+      formData.append('phone', phone);
     }
-    if (values.skype) {
-      formData.append('skype', values.skype);
+    if (skype) {
+      formData.append('skype', skype);
     }
     formData.append(
       'birthday',
-      birthDate ? dayjs(birthDate).format('YYYY-MM-DD') : ''
+      birthDate ? dayjs(birthDate).format('YYYY/MM/DD') : ''
     );
     if (avatarURL) {
       formData.append('avatar', avatarURL);
@@ -59,46 +64,44 @@ const UserForm = () => {
   };
 
   return (
-    <Formik
-      validationSchema={UserValidSchema}
-      initialValues={{
-        name: userInfo?.name || '',
-        birthday: userInfo?.birthday || `${currentDate}`,
-        email: userInfo?.email || '',
-        phone: userInfo?.phone || '',
-        skype: userInfo?.skype || '',
-        // name: '',
-        // birthday: '',
-        // email: '',
-        // phone: '',
-        // skype: '',
-      }}
-      onSubmit={handleSubmit}
-    >
-      {({ values, setFieldValue }) => (
-        <Form>
-          <WrapperForm>
+    <WrapperForm>
+      <Formik
+        validationSchema={UserValidSchema}
+        initialValues={{
+          name: userInfo?.name || '',
+          birthday: userInfo?.birthday || `${currentDate}`,
+          email: userInfo?.email || '',
+          phone: userInfo?.phone || '',
+          skype: userInfo?.skype || '',
+        }}
+        onSubmit={handleSubmit}
+      >
+        {({ values, setFieldValue }) => (
+          <Form>
             <AvatarWrapper>
-              <ImgAvatar>
+              <div>
                 {avatarURL ? (
                   <label htmlFor="avatar">
-                    <img src={URL.createObjectURL(avatarURL)} alt="Avatar" />
+                    <ImgAvatar
+                      src={URL.createObjectURL(avatarURL)}
+                      alt="Avatar"
+                    />
                   </label>
                 ) : userInfo?.avatarURL ? (
                   <label htmlFor="avatar">
-                    <img src={userInfo?.avatarURL} alt="Avatar" />
+                    <ImgAvatar src={userInfo?.avatarURL} alt="Avatar" />
                   </label>
                 ) : (
                   <DefaultAvatar>
-                    <img src={defaultAvatar} alt="Avatar" />
+                    <ImgAvatar src={defaultAvatar} alt="Avatar" />
                   </DefaultAvatar>
                 )}
-              </ImgAvatar>
+              </div>
               <FieldAdd
                 id="add-avatar"
                 name="avatar"
                 type="file"
-                accept="image/*, .png,.jpg"
+                accept="image/*, .png,.jpg, .gif"
                 onChange={e => {
                   setAvatarURL(e.target.files[0]);
                 }}
@@ -126,7 +129,6 @@ const UserForm = () => {
                       slotProps={{
                         textField: {
                           placeholder: userInfo.birthday || `${currentDate}`,
-                          // placeholder: `${currentDate}`,
                         },
                       }}
                       views={['year', 'month', 'day']}
@@ -170,10 +172,10 @@ const UserForm = () => {
             </UserWrapper>
 
             <button type="submit">Save changes</button>
-          </WrapperForm>
-        </Form>
-      )}
-    </Formik>
+          </Form>
+        )}
+      </Formik>
+    </WrapperForm>
   );
 };
 
