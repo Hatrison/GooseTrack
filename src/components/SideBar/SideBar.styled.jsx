@@ -3,7 +3,6 @@ import { ReactComponent as IconClose } from 'images/svg/close.svg';
 import { ReactComponent as LogoIcon } from 'images/svg/logo.svg';
 
 export const SidebarOverlay = styled.div`
-  width: 225px;
   z-index: 2;
   position: fixed;
   top: 0;
@@ -28,6 +27,7 @@ export const SidebarWrap = styled.div`
   position: relative;
 
   @media (min-width: 768px) {
+    padding: 24px 32px;
     width: 289px;
   }
 `;
@@ -42,6 +42,10 @@ export const LogoWrap = styled.div`
   align-items: center;
   gap: 6px;
   margin-bottom: 64px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 50px;
+  }
 `;
 
 export const CloseIcon = styled(IconClose)`
@@ -58,8 +62,8 @@ export const CloseIcon = styled(IconClose)`
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;
-    margin-left: 31px;
-    margin-top: 4px;
+    top: 36px;
+    right: 32px;
   }
 `;
 
@@ -70,7 +74,6 @@ export const Logo = styled(LogoIcon)`
   @media (min-width: 768px) {
     width: 60px;
     height: 58px;
-    margin-bottom: 50px;
   }
 
   @media (min-width: 1440px) {
@@ -85,12 +88,6 @@ export const LogoText = styled.span`
   font-size: 16px;
   font-weight: 600;
   color: ${({ theme }) => theme.asideBarLogoText};
-
-  @media (min-width: 768px) {
-    font-size: 24px;
-    margin-left: 6px;
-    margin-top: 17px;
-  }
 
   @media (min-width: 1440px) {
     font-size: 24px;
@@ -110,4 +107,9 @@ export const Paragraph = styled.p`
   font-weight: 600;
   color: ${({ theme }) => theme.asideBarTitle};
   margin-bottom: 24px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
 `;

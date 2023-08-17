@@ -52,7 +52,7 @@ export default function SideBar({ onSidebarToggle }) {
             </LogoText>
             {!isDesktop && <CloseIcon onClick={() => onSidebarToggle()} />}
           </LogoWrap>
-          <Paragraph>UserPanel</Paragraph>
+          <Paragraph>User Panel</Paragraph>
           <UserNav />
         </SidebarCover>
         <LogoutBtn />

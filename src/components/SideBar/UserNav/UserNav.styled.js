@@ -9,11 +9,6 @@ const baseIconStyles = css`
   height: 20px;
   stroke: ${({ theme }) => theme.asideBarIcon};
 
-  :focus,
-  :hover {
-    stroke: ${({ theme }) => theme.asideBarIconActive};
-  }
-
   @media (min-width: 768px) {
     width: 24px;
     height: 24px;
@@ -21,79 +16,14 @@ const baseIconStyles = css`
 `;
 
 export const User = styled(UserIcon)`
-  /* width: 20px;
-  height: 20px;
-  margin-left: -60px;
-  margin-right: 8px;
-  stroke: ${({ theme }) => theme.asideBarIcon};
-
-  :focus,
-  :hover {
-    stroke: ${({ theme }) => theme.asideBarIconActive};
-  }
-
-  @media (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    margin-left: -84px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-left: -18px;
-  } */
-
   ${baseIconStyles}
 `;
 
 export const Calendar = styled(CalendarIcon)`
-  /* width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  margin-left: -76px;
-  stroke: ${({ theme }) => theme.asideBarIcon};
-
-  :focus,
-  :hover {
-    stroke: ${({ theme }) => theme.asideBarIconActive};
-  }
-
-  @media (min-width: 768px) {
-    margin-left: -104px;
-    width: 24px;
-    height: 24px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-left: -30px;
-    font-size: 16px;
-    margin-right: 10px;
-  } */
-
   ${baseIconStyles}
 `;
 
 export const Chart = styled(ChartIcon)`
-  /* width: 20px;
-  height: 20px;
-  margin-left: -76px;
-  fill: ${({ theme }) => theme.asideBarIcon};
-
-  :focus,
-  :hover {
-    fill: ${({ theme }) => theme.asideBarIconActive};
-  }
-
-  @media (min-width: 768px) {
-    margin-left: -104px;
-    width: 24px;
-    height: 24px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-left: -30px;
-    font-size: 16px;
-  } */
-
   ${baseIconStyles}
 
   stroke: none;
@@ -115,7 +45,6 @@ export const Link = styled(LinkRouter)`
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 185px;
   padding: 10px 14px;
 
   font-size: 14px;
@@ -139,10 +68,9 @@ export const Link = styled(LinkRouter)`
   }
 
   @media (min-width: 768px) {
-    width: 225px;
-    height: 56px;
-    padding-left: 0;
     font-size: 16px;
+    padding: 16px 20px;
+    gap: 10px;
   }
 
   @media (min-width: 1440px) {

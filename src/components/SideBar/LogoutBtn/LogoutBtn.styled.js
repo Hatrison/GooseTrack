@@ -9,7 +9,6 @@ export const LogoutIcon = styled(LogoutIconRaw)`
   @media (min-width: 768px) {
     width: 20px;
     height: 20px;
-    margin-left: 11px;
   }
 `;
 
@@ -29,7 +28,6 @@ export const LogoutButton = styled.button`
   font-family: 'InterSemiBolt', sans-serif;
   font-style: normal;
   font-weight: 600;
-  line-height: 1.3;
   font-size: 14px;
 
   &:hover ${LogoutIcon} {
@@ -38,6 +36,8 @@ export const LogoutButton = styled.button`
   }
 
   @media (min-width: 768px) {
-    padding: 23px 16px;
+    font-size: 18px;
+    padding: 18px 23px;
+    gap: 11px;
   }
 `;
