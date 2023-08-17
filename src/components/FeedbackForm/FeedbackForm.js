@@ -5,15 +5,11 @@ import { Formik, Form } from 'formik';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import {
-  CharactersQuantityText,
-  FormContainer,
   LabelText,
   RatingText,
   StyledButton,
   StyledEditButton,
   StyledTextArea,
-  CharactersQuantityTextContainer,
-  StyledCancelButton,
 } from './FeedbackForm.styled';
 
 import { addReview, updateReview } from '../../redux/reviews/operations';
