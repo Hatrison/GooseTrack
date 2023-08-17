@@ -4,21 +4,21 @@ import {
 } from 'react-redux';
 import { DayCalendarHead, TasksColumnsList } from 'components/ChoosedDay';
 import { selectTasks } from 'redux/tasks/selectors';
+import { selectDate } from 'redux/date/selectors';
 // import { useEffect } from 'react';
-// import { getTasks } from 'redux/tasks/operations';
+
 const ChoosedDay = ({ propSelectedWeek }) => {
   // const dispatch = useDispatch();
   const { tasks } = useSelector(selectTasks);
+  const date = useSelector(selectDate);
 
+  // console.log(date);
   // console.log(tasks);
 
-  // useEffect(() => {
-  //   console.log('this id useeffect log', tasks);
-  // }, [tasks]);
   return (
     <div>
       <DayCalendarHead selectedWeek={propSelectedWeek} />
-      <TasksColumnsList tasks={tasks} />
+      <TasksColumnsList tasks={tasks} actualDate={date} />
     </div>
   );
 };
