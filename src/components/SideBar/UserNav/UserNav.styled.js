@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Link as LinkRouter } from 'react-router-dom';
+import { NavLink as LinkRouter } from 'react-router-dom';
 import { ReactComponent as UserIcon } from 'images/svg/user.svg';
 import { ReactComponent as CalendarIcon } from 'images/svg/calendarCheck.svg';
 import { ReactComponent as ChartIcon } from 'images/svg/chart.svg';
@@ -53,20 +53,18 @@ export const Link = styled(LinkRouter)`
   background-color: transparent;
   color: ${({ theme }) => theme.asideBarLinkText};
 
-  :focus,
   :hover,
   &.active {
     background-color: ${({ theme }) => theme.asideBarActiveLinkBackground};
     color: ${({ theme }) => theme.asideBarActiveLinkText};
   }
 
-  :focus svg,
   :hover svg,
   &.active svg {
     stroke: ${({ theme }) => theme.asideBarActiveLinkText};
   }
 
-  :focus ${Chart}, :hover ${Chart}, &.active ${Chart} {
+  :hover ${Chart}, &.active ${Chart} {
     stroke: none;
     fill: ${({ theme }) => theme.asideBarActiveLinkText};
   }
