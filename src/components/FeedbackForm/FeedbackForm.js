@@ -4,7 +4,6 @@ import { Formik } from 'formik';
 import {
   Form,
   Label,
-  RatingText,
   ErrorMessage,
   Wrap,
   ToolbarWrap,
@@ -60,11 +59,10 @@ const FeedbackForm = ({ handlerCloseModal }) => {
         );
       }}
     >
-      {({ errors }) => (
-        <Form>
-          <Label>
-            <RatingText>Rating</RatingText>
-            {/* <StyledRating
+      <Form>
+        <Label>
+          Rating
+          {/* <StyledRating
             name="rating"
             value={review.rating}
             precision={1}
@@ -75,43 +73,46 @@ const FeedbackForm = ({ handlerCloseModal }) => {
             }}
             sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
           /> */}
-          </Label>
-          <ErrorMessage name="rating" component="div" />
-          <Wrap>
-            <Label htmlForor="name">Review</Label>
-            {statusForm === 'edit' && (
-              <ToolbarWrap>
-                <EditToolbarButton
-                  type="button"
-                  className={isEditing ? 'active' : ''}
-                  onClick={() => toggleIsEditing()}
-                />
-                <DeleteToolbarButton
-                  type="button"
-                  onClick={() => dispatch(deleteReview())}
-                />
-              </ToolbarWrap>
-            )}
-          </Wrap>
-          <StyledTextArea
-            id="name"
-            name="text"
-            placeholder="Enter text"
-            as="textarea"
-          />
-          <ErrorMessage name="text" component="div" />
-          <WrapButton>
-            {isEditing ? (
-              <StyledEditButton type="submit">Edit</StyledEditButton>
-            ) : (
-              <StyledButton type="submit">Save</StyledButton>
-            )}
-            <CancelButton type="button" onClick={handlerCloseModal}>
-              Cancel
-            </CancelButton>
-          </WrapButton>
-        </Form>
-      )}
+        </Label>
+        <ErrorMessage name="rating" component="div" />
+        <Wrap>
+          <Label htmlForor="name">Review</Label>
+          {statusForm === 'edit' && (
+            <ToolbarWrap>
+              <EditToolbarButton
+                type="button"
+                className={isEditing ? 'active' : ''}
+                onClick={() => toggleIsEditing()}
+              />
+              <DeleteToolbarButton
+                type="button"
+                onClick={() => dispatch(deleteReview())}
+              />
+            </ToolbarWrap>
+          )}
+        </Wrap>
+        <StyledTextArea
+          id="name"
+          name="text"
+          placeholder="Enter text"
+          as="textarea"
+        />
+        <ErrorMessage name="text" component="div" />
+        <WrapButton>
+          {(statusForm === 'create' || isEditing) && (
+            <>
+              {isEditing ? (
+                <StyledEditButton type="submit">Edit</StyledEditButton>
+              ) : (
+                <StyledButton type="submit">Save</StyledButton>
+              )}
+              <CancelButton type="button" onClick={handlerCloseModal}>
+                Cancel
+              </CancelButton>
+            </>
+          )}
+        </WrapButton>
+      </Form>
     </Formik>
   );
 };

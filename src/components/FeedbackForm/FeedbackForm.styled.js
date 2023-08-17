@@ -15,14 +15,6 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.taskModalTitleColor};
 `;
 
-export const RatingText = styled.p`
-  font-family: 'Inter';
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  margin: 0 0 8px;
-`;
-
 export const ErrorMessage = styled(FormikError)`
   font-size: 12px;
   color: red;
@@ -106,7 +98,8 @@ export const StyledButton = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.29;
-  color: ${({ theme }) => theme.mainTextColor};
+  color: ${({ theme }) => theme.buttontextColor};
+  background-color: ${({ theme }) => theme.buttonBackgroundColor};
 
   border-radius: 8px;
 
@@ -115,6 +108,7 @@ export const StyledButton = styled.button`
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
   :hover,
   :focus {
+    background-color: ${({ theme }) => theme.buttonBackgroundColorHover};
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   cursor: pointer;
@@ -131,14 +125,13 @@ export const StyledEditButton = styled.button`
   padding: 12px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.buttonBackgroundColor};
-  color: ${({ theme }) => theme.mainTextColor};
+  color: ${({ theme }) => theme.buttontextColor};
 
   border: 0;
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
   :hover,
   :focus {
-    color: #ffffff;
     background-color: ${({ theme }) => theme.buttonBackgroundColorHover};
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
@@ -148,7 +141,6 @@ export const StyledEditButton = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.29;
-  color: #ffffff;
 
   @media screen and (min-width: 678px) {
     padding: 15px;
