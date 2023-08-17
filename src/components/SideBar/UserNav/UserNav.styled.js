@@ -54,16 +54,20 @@ export const Link = styled(LinkRouter)`
   color: ${({ theme }) => theme.asideBarLinkText};
 
   :focus,
-  :hover {
+  :hover,
+  &.active {
     background-color: ${({ theme }) => theme.asideBarActiveLinkBackground};
     color: ${({ theme }) => theme.asideBarActiveLinkText};
   }
 
-  :focus ${User}, :hover ${User}, :focus ${Calendar}, :hover ${Calendar} {
+  :focus svg,
+  :hover svg,
+  &.active svg {
     stroke: ${({ theme }) => theme.asideBarActiveLinkText};
   }
 
-  :focus ${Chart}, :hover ${Chart} {
+  :focus ${Chart}, :hover ${Chart}, &.active ${Chart} {
+    stroke: none;
     fill: ${({ theme }) => theme.asideBarActiveLinkText};
   }
 
