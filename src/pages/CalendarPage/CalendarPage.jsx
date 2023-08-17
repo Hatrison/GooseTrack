@@ -22,7 +22,7 @@ const CalendarPage = () => {
 
       if (!pathname.includes('/calendar/day/')) {
         navigate(`/calendar/month/${currentDate}`);
-        dispatch(setDates(currentDate));
+        // dispatch(setDates(currentDate));
       }
     }
   }, [location, navigate, currentDate, dispatch]);
