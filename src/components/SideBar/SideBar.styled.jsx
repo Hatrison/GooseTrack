@@ -21,11 +21,10 @@ export const SidebarWrap = styled.div`
   background-color: ${({ theme }) => theme.asideBarBackground};
   min-height: 100vh;
   width: 225px;
-  padding: 20px 24px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: 250ms ease-in-out;
   position: relative;
 
   @media (min-width: 768px) {
@@ -40,19 +39,21 @@ export const SidebarCover = styled.div`
 
 export const LogoWrap = styled.div`
   display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 64px;
 `;
 
 export const CloseIcon = styled(IconClose)`
   position: absolute;
-  top: 30px;
-  right: 24px;
+  top: 29px;
+  right: 20px;
   width: 24px;
   height: 24px;
-  margin-left: 25px;
   border: 0;
-  stroke: assideBarCloseIconColor;
   stroke: ${({ theme }) => theme.assideBarCloseIconColor};
   transition: ${({ theme }) => theme.defaultTransition};
+  cursor: pointer;
 
   @media (min-width: 768px) {
     width: 34px;
@@ -81,25 +82,24 @@ export const Logo = styled(LogoIcon)`
 `;
 
 export const LogoText = styled.span`
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 600;
-  margin-top: 10px;
-  margin-left: 6px;
-  padding-bottom: 0;
-  color: asideBarLogoText;
   color: ${({ theme }) => theme.asideBarLogoText};
-  
+
   @media (min-width: 768px) {
     font-size: 24px;
     margin-left: 6px;
     margin-top: 17px;
   }
 
-
   @media (min-width: 1440px) {
     font-size: 24px;
     margin-left: 10px;
     margin-top: 22px;
+  }
+
+  & span {
+    font-style: italic;
   }
 `;
 
@@ -108,7 +108,6 @@ export const Paragraph = styled.p`
   font-family: 'InterSemiBolt', sans-serif;
   font-style: normal;
   font-weight: 600;
-  color: asideBarTitle;
   color: ${({ theme }) => theme.asideBarTitle};
-  margin-left: 0;
+  margin-bottom: 24px;
 `;

@@ -47,7 +47,9 @@ export default function SideBar({ onSidebarToggle }) {
         <SidebarCover>
           <LogoWrap>
             <Logo />
-            <LogoText>GooseTrack</LogoText>
+            <LogoText>
+              G<span>oo</span>seTrack
+            </LogoText>
             {!isDesktop && <CloseIcon onClick={() => onSidebarToggle()} />}
           </LogoWrap>
           <Paragraph>UserPanel</Paragraph>

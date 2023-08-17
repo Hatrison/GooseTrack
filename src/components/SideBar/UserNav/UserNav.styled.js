@@ -1,57 +1,27 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link as LinkRouter } from 'react-router-dom';
 import { ReactComponent as UserIcon } from 'images/svg/user.svg';
 import { ReactComponent as CalendarIcon } from 'images/svg/calendarCheck.svg';
 import { ReactComponent as ChartIcon } from 'images/svg/chart.svg';
 
-export const Navigation = styled.nav`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-
-  @media (min-width: 768px) {
-    gap: 16px;
-  }
-`;
-
-export const Link = styled(LinkRouter)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 185px;
-  height: 40px;
-  
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-  background-color: transparent;
-  color: #84828a;
-  color: ${({ theme }) => theme.asideBarLinkText};
+const baseIconStyles = css`
+  width: 20px;
+  height: 20px;
+  stroke: ${({ theme }) => theme.asideBarIcon};
 
   :focus,
   :hover {
-    background-color: ${({ theme }) => theme.asideBarActiveLinkBackground};
-    color: ${({ theme }) => theme.asideBarActiveLinkText};
-  }
-   
-  @media (min-width: 768px) {
-    width: 225px;
-    height: 56px;
-    padding-left: 0;
-    font-size: 16px;
+    stroke: ${({ theme }) => theme.asideBarIconActive};
   }
 
-  @media (min-width: 1440px) {
-    width: 190px;
-    height: 56px;
-    padding-right: 30px;
-    font-size: 16px;
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
   }
 `;
 
 export const User = styled(UserIcon)`
-  width: 20px;
+  /* width: 20px;
   height: 20px;
   margin-left: -60px;
   margin-right: 8px;
@@ -70,11 +40,13 @@ export const User = styled(UserIcon)`
 
   @media (min-width: 1440px) {
     margin-left: -18px;
-  }
+  } */
+
+  ${baseIconStyles}
 `;
 
 export const Calendar = styled(CalendarIcon)`
-  width: 20px;
+  /* width: 20px;
   height: 20px;
   margin-right: 8px;
   margin-left: -76px;
@@ -95,11 +67,13 @@ export const Calendar = styled(CalendarIcon)`
     margin-left: -30px;
     font-size: 16px;
     margin-right: 10px;
-  }
+  } */
+
+  ${baseIconStyles}
 `;
 
 export const Chart = styled(ChartIcon)`
-  width: 20px;
+  /* width: 20px;
   height: 20px;
   margin-left: -76px;
   fill: ${({ theme }) => theme.asideBarIcon};
@@ -117,6 +91,64 @@ export const Chart = styled(ChartIcon)`
 
   @media (min-width: 1440px) {
     margin-left: -30px;
+    font-size: 16px;
+  } */
+
+  ${baseIconStyles}
+
+  stroke: none;
+  fill: ${({ theme }) => theme.asideBarIcon};
+`;
+
+export const Navigation = styled.nav`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  @media (min-width: 768px) {
+    gap: 16px;
+  }
+`;
+
+export const Link = styled(LinkRouter)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 185px;
+  padding: 10px 14px;
+
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: transparent;
+  color: ${({ theme }) => theme.asideBarLinkText};
+
+  :focus,
+  :hover {
+    background-color: ${({ theme }) => theme.asideBarActiveLinkBackground};
+    color: ${({ theme }) => theme.asideBarActiveLinkText};
+  }
+
+  :focus ${User}, :hover ${User}, :focus ${Calendar}, :hover ${Calendar} {
+    stroke: ${({ theme }) => theme.asideBarActiveLinkText};
+  }
+
+  :focus ${Chart}, :hover ${Chart} {
+    fill: ${({ theme }) => theme.asideBarActiveLinkText};
+  }
+
+  @media (min-width: 768px) {
+    width: 225px;
+    height: 56px;
+    padding-left: 0;
+    font-size: 16px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 190px;
+    height: 56px;
+    padding-right: 30px;
     font-size: 16px;
   }
 `;
