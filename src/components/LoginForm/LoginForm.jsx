@@ -39,14 +39,17 @@ const LoginForm = () => {
               loginUser({ email: values.email, password: values.password })
             )
               .then(data => {
-                if (data.error) {
-                  throw new Error(data.payload);
+                if (data.payload.name) {
+                  toast.success(`Wellcom, ${data.payload.name}!`);
                 }
+                if (data.error) {
+                  throw new Error(`Your email or password is incorrect`);
+                }
+                actions.resetForm();
               })
               .catch(error => {
                 toast.error(error.message);
               });
-            actions.resetForm();
           }}
           validationSchema={loginFormSchema}
         >
@@ -76,26 +79,26 @@ const LoginForm = () => {
                 />
                 {touched.email && errors.email && <ErrorIcon />}
                 {touched.email && !errors.email && <CorrectIcon />}
-                </IconContainer>
-                
-                {touched.email && errors.email && (
-                  <ErrorTag>This is an ERROR email</ErrorTag>
-                )}
-                {touched.email && !errors.email && (
-                  <CorrectTag>This is an CORRECT email</CorrectTag>
-                )}
-              
-                <FormField
-                  htmlFor="password"
-                  style={{
-                    color:
-                      (touched.password && errors.password && '#E74A3B') ||
-                      (touched.password && !errors.password && '#3CBC81'),
-                  }}
-                >
-                  Password
-                </FormField>
-                <IconContainer>
+              </IconContainer>
+
+              {touched.email && errors.email && (
+                <ErrorTag>Invalid email format</ErrorTag>
+              )}
+              {touched.email && !errors.email && (
+                <CorrectTag>Valid email format</CorrectTag>
+              )}
+
+              <FormField
+                htmlFor="password"
+                style={{
+                  color:
+                    (touched.password && errors.password && '#E74A3B') ||
+                    (touched.password && !errors.password && '#3CBC81'),
+                }}
+              >
+                Password
+              </FormField>
+              <IconContainer>
                 <Field
                   type="password"
                   name="password"
@@ -108,18 +111,18 @@ const LoginForm = () => {
                 />
                 {touched.password && errors.password && <ErrorIcon />}
                 {touched.password && !errors.password && <CorrectIcon />}
-                </IconContainer>
-                
-                {touched.password && errors.password && (
-                  <ErrorTag>
-                    Password must contain lowecase letters, uppercase letters
-                    and numbers
-                  </ErrorTag>
-                )}
-                {touched.password && !errors.password && (
-                  <CorrectTag>This is an CORRECT password</CorrectTag>
-                )}
-              
+              </IconContainer>
+
+              {touched.password && errors.password && (
+                <ErrorTag>
+                  Password must contain lowecase letters, uppercase letters and
+                  numbers
+                </ErrorTag>
+              )}
+              {touched.password && !errors.password && (
+                <CorrectTag>Valid password format</CorrectTag>
+              )}
+
               <SubmitBtn type="submit">
                 Log in
                 <ButtonIcon />

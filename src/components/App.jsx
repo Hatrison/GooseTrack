@@ -101,7 +101,7 @@ export const App = () => {
         </Routes>
       )}
       <GlobalStyle />
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
     </Theme>
   );
 };
