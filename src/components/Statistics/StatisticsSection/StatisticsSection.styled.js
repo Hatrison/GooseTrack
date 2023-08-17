@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const ChartContainer = styled.div`
+  /* position: relative; */
   margin-top: auto;
+  width: 100%;
   border-radius: 29px;
   border: 0.8px solid #e3f3ff;
   @media screen and (max-width: 375px) {
@@ -44,7 +46,7 @@ export const HeadContainer = styled.section`
   align-items: baseline;
   padding-bottom: 48px;
 
-  @media screen and (min-width: 375px) and (max-width: 768px) {
+  /* @media screen and (min-width: 375px) and (max-width: 768px) {
     flex-wrap: wrap;
     gap: 20px;
   }
@@ -52,7 +54,7 @@ export const HeadContainer = styled.section`
   @media screen and (min-width: 768px) {
     padding-left: 54px;
     padding-right: 54px;
-  }
+  } */
 `;
 
 export const PeriodTime = styled.div`
@@ -63,6 +65,7 @@ export const PeriodTime = styled.div`
 export const Period = styled.span`
   color: #343434;
   font-size: 16px;
+  color: ${props => props.theme};
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
