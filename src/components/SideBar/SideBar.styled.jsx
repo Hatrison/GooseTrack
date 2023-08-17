@@ -30,6 +30,11 @@ export const SidebarWrap = styled.div`
     padding: 24px 32px;
     width: 289px;
   }
+
+  @media (min-width: 1440px) {
+    padding: 24px;
+    padding-top: 32px;
+  }
 `;
 
 export const SidebarCover = styled.div`
@@ -45,6 +50,11 @@ export const LogoWrap = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 10px;
+    margin-bottom: 32px;
   }
 `;
 
@@ -79,8 +89,6 @@ export const Logo = styled(LogoIcon)`
   @media (min-width: 1440px) {
     width: 71px;
     height: 68px;
-    margin-bottom: 32px;
-    margin-left: 10px;
   }
 `;
 
@@ -91,8 +99,6 @@ export const LogoText = styled.span`
 
   @media (min-width: 1440px) {
     font-size: 24px;
-    margin-left: 10px;
-    margin-top: 22px;
   }
 
   & span {

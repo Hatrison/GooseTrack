@@ -72,11 +72,4 @@ export const Link = styled(LinkRouter)`
     padding: 16px 20px;
     gap: 10px;
   }
-
-  @media (min-width: 1440px) {
-    width: 190px;
-    height: 56px;
-    padding-right: 30px;
-    font-size: 16px;
-  }
 `;

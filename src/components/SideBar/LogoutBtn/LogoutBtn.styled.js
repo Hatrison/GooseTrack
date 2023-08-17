@@ -31,7 +31,6 @@ export const LogoutButton = styled.button`
   font-size: 14px;
 
   &:hover ${LogoutIcon} {
-    animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
     transform: scale(1.1);
   }
 
