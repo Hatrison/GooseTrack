@@ -32,10 +32,14 @@ function FeedbackForm({
       initialValues={{ rating: rating, review: feedback }}
       onSubmit={(values, { setSubmitting }) => {
         if (isEditFeedbackOpen) {
-          dispatch(updateReview({ id, rating: values.rating, comment: values.review }));
+          dispatch(
+            updateReview({ id, rating: values.rating, comment: values.review })
+          );
           toggleEditFeedback();
         } else {
-          dispatch(addReview({ rating: values.rating, comment: values.review }));
+          dispatch(
+            addReview({ rating: values.rating, comment: values.review })
+          );
         }
         setSubmitting(false);
       }}
@@ -64,7 +68,7 @@ function FeedbackForm({
           name="review"
           component="textarea"
         />
-        
+
         {isEditFeedbackOpen ? (
           <div style={{ display: 'flex', gap: '8px' }}>
             <StyledEditButton type="submit" disabled={isSubmitting}>

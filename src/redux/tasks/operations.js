@@ -8,7 +8,10 @@ export const getTasks = createAsyncThunk(
   'getTasks',
   async ({ year, month }, thunkAPI) => {
     try {
-      const response = await axios.get(`/api/tasks/?date=${year}-${month}`);
+      const correctMonth = String(month).padStart(2, '0');
+      const response = await axios.get(
+        `/api/tasks/?date=${year}-${correctMonth}`
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -44,8 +47,8 @@ export const deleteTask = createAsyncThunk(
   'deleteTask',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(`/api/tasks/${id}`);
-      return response.data;
+      await axios.delete(`/api/tasks/${id}`);
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

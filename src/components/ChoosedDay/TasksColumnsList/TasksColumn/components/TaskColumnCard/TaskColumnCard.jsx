@@ -1,7 +1,4 @@
-import {
-  useSelector,
-  // useDispatch
-} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   TaskBox,
   TaskText,
@@ -9,53 +6,47 @@ import {
   Wrapper,
   Avatar,
   PriorityLow,
-  // PriorityHigh,
-  // PriorityMedium,
+  PriorityHigh,
+  PriorityMedium,
 } from './TaskColumnCard.styled';
 import { TaskToolbar } from '../index';
 import { selectUser } from 'redux/user/selectors';
+import { deleteTask } from 'redux/tasks/operations';
 
-export const TaskColumnCard = ({ items }) => {
+export const TaskColumnCard = ({ item, title }) => {
   const { avatarURL, name } = useSelector(selectUser);
+  // console.log('TaskColumnCard', items);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const handleDeleteTask = value => {
-  //   dispatch(deleteTask(value));
-  // };
+  const handleDeleteTask = value => {
+    dispatch(deleteTask(value));
+  };
 
   return (
-    <TaskBox>
-      <TaskText>
-        abracadabra, avada kedavra, focus pokus, alahai malahai, vengardium
-        leviosa
-      </TaskText>
-      <ToolbarBox>
-        <Wrapper>
-          <Avatar src={avatarURL} alt={name} />
-          <PriorityLow>Low</PriorityLow>
-        </Wrapper>
-        <TaskToolbar />
-      </ToolbarBox>
-    </TaskBox>
-    // Вставляється після ретурна
-    //  <>
-    //       {items?.map(element => (
-    //        <TaskBox key={element._id}>
-    //          <TaskText>{element.title}</TaskText>
-    //          <ToolbarBox>
-    //            <Wrapper>
-    //              <Avatar src={avatarURL} alt={name} />
-    //              {element.priority === 'high' && <PriorityHigh>{element.priority}</PriorityHigh>}
-    //              {element.priority === 'medium' && <PriorityMedium>{element.priority}</PriorityMedium>}
-    //              {element.priority === 'low' && <PriorityLow>{element.priority}</PriorityLow>}
-    //            </Wrapper>
-    //            <TaskToolbar
-    //              handleDeleteTask={handleDeleteTask}
-    //            />
-    //          </ToolbarBox>
-    //        </TaskBox>
-    //      )}
-    //    </>
+    <>
+      <TaskBox key={item._id}>
+        <TaskText>{item.title}</TaskText>
+        <ToolbarBox>
+          <Wrapper>
+            <Avatar src={avatarURL} alt={name} />
+            {item.priority === 'high' && (
+              <PriorityHigh>{item.priority}</PriorityHigh>
+            )}
+            {item.priority === 'medium' && (
+              <PriorityMedium>{item.priority}</PriorityMedium>
+            )}
+            {item.priority === 'low' && (
+              <PriorityLow>{item.priority}</PriorityLow>
+            )}
+          </Wrapper>
+          <TaskToolbar
+            item={item}
+            title={title}
+            handleDeleteTask={handleDeleteTask}
+          />
+        </ToolbarBox>
+      </TaskBox>
+    </>
   );
 };

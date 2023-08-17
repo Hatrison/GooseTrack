@@ -3,7 +3,6 @@ import { ReactComponent as IconClose } from 'images/svg/close.svg';
 import { ReactComponent as LogoIcon } from 'images/svg/logo.svg';
 
 export const SidebarOverlay = styled.div`
-  width: 225px;
   z-index: 2;
   position: fixed;
   top: 0;
@@ -21,18 +20,20 @@ export const SidebarWrap = styled.div`
   background-color: ${({ theme }) => theme.asideBarBackground};
   min-height: 100vh;
   width: 225px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 32px;
-  padding-bottom: 24px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: 250ms ease-in-out;
   position: relative;
 
   @media (min-width: 768px) {
+    padding: 24px 32px;
     width: 289px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 24px;
+    padding-top: 32px;
   }
 `;
 
@@ -43,23 +44,36 @@ export const SidebarCover = styled.div`
 
 export const LogoWrap = styled.div`
   display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 64px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 10px;
+    margin-bottom: 32px;
+  }
 `;
 
 export const CloseIcon = styled(IconClose)`
   position: absolute;
-  top: 38px;
-  right: 24px;
+  top: 29px;
+  right: 20px;
   width: 24px;
   height: 24px;
-  margin-left: 0;
   border: 0;
-  stroke: assideBarCloseIconColor;
   stroke: ${({ theme }) => theme.assideBarCloseIconColor};
+  transition: ${({ theme }) => theme.defaultTransition};
+  cursor: pointer;
 
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;
-    margin-left: 31px;
+    top: 36px;
+    right: 32px;
   }
 `;
 
@@ -68,26 +82,27 @@ export const Logo = styled(LogoIcon)`
   height: 35px;
 
   @media (min-width: 768px) {
-    margin-bottom: 50px;
+    width: 60px;
+    height: 58px;
   }
 
   @media (min-width: 1440px) {
-    margin-bottom: 32px;
-    margin-left: 10px;
+    width: 71px;
+    height: 68px;
   }
 `;
 
 export const LogoText = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  margin-top: 10px;
-  margin-left: 6px;
-  padding-bottom: 0;
-  color: asideBarLogoText;
   color: ${({ theme }) => theme.asideBarLogoText};
 
   @media (min-width: 1440px) {
-    margin-left: 22px;
+    font-size: 24px;
+  }
+
+  & span {
+    font-style: italic;
   }
 `;
 
@@ -96,7 +111,11 @@ export const Paragraph = styled.p`
   font-family: 'InterSemiBolt', sans-serif;
   font-style: normal;
   font-weight: 600;
-  color: asideBarTitle;
   color: ${({ theme }) => theme.asideBarTitle};
-  margin-left: 0;
+  margin-bottom: 24px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
 `;

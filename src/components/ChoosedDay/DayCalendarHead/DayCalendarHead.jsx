@@ -7,9 +7,23 @@ import {
   CurrentDay,
   ListItemDay,
 } from './DayCalendarHead.styled';
+import { startOfWeek, addDays, isSameDay, format } from 'date-fns';
+import { uk } from 'date-fns/locale'; // Імпорт локалі для української мови
 
-export const DayCalendarHead = ({ selectedWeek }) => {
+export const DayCalendarHead = ({ date }) => {
   const mobileDevice = useMediaQuery({ maxWidth: 767 });
+
+  const activeDate = new Date(date);
+
+  // Встановлюємо локаль для української мови
+  const locale = uk;
+
+  // Знаходження першого дня тижня (понеділок) для відображення
+  const startOfCurrentWeek = startOfWeek(activeDate, { locale });
+
+  const datesToDisplay = Array.from({ length: 7 }, (_, index) =>
+    addDays(startOfCurrentWeek, index)
+  );
 
   return (
     <CalendarContainer>
@@ -36,22 +50,16 @@ export const DayCalendarHead = ({ selectedWeek }) => {
           </>
         )}
       </ListDay>
-
       <ListDate>
-        <ListItemDate>
-          <CurrentDay>1</CurrentDay>
-        </ListItemDate>
-        <ListItemDate>2</ListItemDate>
-        <ListItemDate>3</ListItemDate>
-        <ListItemDate>4</ListItemDate>
-        <ListItemDate>5</ListItemDate>
-        <ListItemDate>6</ListItemDate>
-        <ListItemDate>7</ListItemDate>
-        {/* {selectedWeek.map(day => (
-        <ListItemDate key={day}>
-          <CurrentDay>{day}</CurrentDay>
-        </ListItemDate>
-      ))} */}
+        {datesToDisplay.map((date, index) => (
+          <ListItemDate key={index}>
+            {isSameDay(date, activeDate) ? ( // Перевірка, чи це поточний день
+              <CurrentDay>{format(date, 'd', { locale })}</CurrentDay>
+            ) : (
+              format(date, 'd', { locale })
+            )}
+          </ListItemDate>
+        ))}
       </ListDate>
     </CalendarContainer>
   );
