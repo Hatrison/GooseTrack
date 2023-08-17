@@ -56,7 +56,7 @@ const RegisterForm = () => {
                 required
               />
             </Label>
-            <ErrorMessage name="email" component="span" />
+            <ErrorMessage name="name" component="span" />
             <Label>
               Email
               <Field

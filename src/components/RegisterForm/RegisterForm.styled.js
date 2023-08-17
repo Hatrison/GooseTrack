@@ -17,7 +17,7 @@ export const Form = styled(FormikForm)`
   margin-bottom: 8px;
 
   @media screen and (max-width: 374px) {
-    width: 100%;
+    width: 90%;
   }
 
   @media (min-width: 768px) {
