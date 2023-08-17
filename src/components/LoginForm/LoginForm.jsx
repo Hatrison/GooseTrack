@@ -76,26 +76,26 @@ const LoginForm = () => {
                 />
                 {touched.email && errors.email && <ErrorIcon />}
                 {touched.email && !errors.email && <CorrectIcon />}
-                </IconContainer>
-                
-                {touched.email && errors.email && (
-                  <ErrorTag>This is an ERROR email</ErrorTag>
-                )}
-                {touched.email && !errors.email && (
-                  <CorrectTag>This is an CORRECT email</CorrectTag>
-                )}
-              
-                <FormField
-                  htmlFor="password"
-                  style={{
-                    color:
-                      (touched.password && errors.password && '#E74A3B') ||
-                      (touched.password && !errors.password && '#3CBC81'),
-                  }}
-                >
-                  Password
-                </FormField>
-                <IconContainer>
+              </IconContainer>
+
+              {touched.email && errors.email && (
+                <ErrorTag>This is an ERROR email</ErrorTag>
+              )}
+              {touched.email && !errors.email && (
+                <CorrectTag>This is an CORRECT email</CorrectTag>
+              )}
+
+              <FormField
+                htmlFor="password"
+                style={{
+                  color:
+                    (touched.password && errors.password && '#E74A3B') ||
+                    (touched.password && !errors.password && '#3CBC81'),
+                }}
+              >
+                Password
+              </FormField>
+              <IconContainer>
                 <Field
                   type="password"
                   name="password"
@@ -108,18 +108,18 @@ const LoginForm = () => {
                 />
                 {touched.password && errors.password && <ErrorIcon />}
                 {touched.password && !errors.password && <CorrectIcon />}
-                </IconContainer>
-                
-                {touched.password && errors.password && (
-                  <ErrorTag>
-                    Password must contain lowecase letters, uppercase letters
-                    and numbers
-                  </ErrorTag>
-                )}
-                {touched.password && !errors.password && (
-                  <CorrectTag>This is an CORRECT password</CorrectTag>
-                )}
-              
+              </IconContainer>
+
+              {touched.password && errors.password && (
+                <ErrorTag>
+                  Password must contain lowercase letters, uppercase letters and
+                  numbers
+                </ErrorTag>
+              )}
+              {touched.password && !errors.password && (
+                <CorrectTag>This is an CORRECT password</CorrectTag>
+              )}
+
               <SubmitBtn type="submit">
                 Log in
                 <ButtonIcon />

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setDates } from 'redux/date/dateSlice';
+import { useSelector } from 'react-redux';
 import { format } from 'date-fns';
+import { selectDate } from 'redux/date/selectors';
 import { TailSpin } from 'react-loader-spinner';
 import CalendarToolbar from 'components/CalendarToolbar';
 import { Suspense, SpinnerWrap } from 'components/MainLayout/MainLayout.styled';
@@ -11,21 +11,25 @@ const CalendarPage = () => {
   const isFirstRender = useRef(true);
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
-  const currentDate = format(Date.now(), 'yyyy-MM-dd');
+  const currentDate = useSelector(selectDate);
+  const dateNow = format(Date.now(), 'yyyy-MM-dd');
 
   useEffect(() => {
     const { pathname } = location;
-
     if (isFirstRender.current) {
       isFirstRender.current = false;
+      console.log('dateNow: ', dateNow);
+      console.log('currentDate: ', currentDate);
 
-      if (!pathname.includes('/calendar/day/')) {
+      if (
+        !pathname.includes('/calendar/day/') &&
+        (pathname.includes(`/calendar/month/${currentDate}`) ||
+          pathname.includes('currentDate'))
+      ) {
         navigate(`/calendar/month/${currentDate}`);
-        // dispatch(setDates(currentDate));
       }
     }
-  }, [location, navigate, currentDate, dispatch]);
+  }, [location, navigate, currentDate, dateNow]);
 
   return (
     <div>
