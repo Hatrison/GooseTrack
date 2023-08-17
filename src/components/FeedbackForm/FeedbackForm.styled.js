@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from 'theme';
+import { theme } from './theme';
 
 export const FormContainer = styled.div`
   margin: 0;
@@ -10,7 +10,7 @@ export const RatingText = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: ${theme.colors.modal_form_label};
+  color: rgba(250, 250, 250, 0.3);
 
   margin: 0 0 8px;
 `;
@@ -20,7 +20,7 @@ export const LabelText = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: ${theme.colors.modal_form_label};
+  color: rgba(250, 250, 250, 0.3);
 
   margin: 0 0 8px;
 `;
@@ -28,8 +28,8 @@ export const LabelText = styled.p`
 export const StyledTextArea = styled.textarea`
   width: 100%;
   height: 127px;
-  background-color: ${theme.colors.textarea_bg};
-  border: ${theme.colors.textarea_border};
+  background-color: #f7f7f7;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   padding: 14px 18px;
   font-family: 'Inter';
@@ -52,7 +52,7 @@ export const StyledTextArea = styled.textarea`
     font-weight: 600;
     font-size: 14px;
     line-height: 1.29;
-    color: ${theme.colors.second_text_mode};
+    color: #FFFFFF;
     /* color: ${p => p.theme.colors.primary_text_mode}; */
   }
 `;
