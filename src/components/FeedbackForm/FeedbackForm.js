@@ -1,8 +1,6 @@
 import { ReactComponent as FavoriteIcon } from 'images/svg/fullStar.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
-
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import {
   LabelText,
@@ -11,32 +9,41 @@ import {
   StyledEditButton,
   StyledTextArea,
 } from './FeedbackForm.styled';
+import { useEffect, useState } from 'react';
+import {
+  createReview,
+  getOwnReview,
+  updateReview,
+} from 'redux/reviews/operations';
+import { selectOwnReview } from 'redux/reviews/selectors';
 
-import { addReview, updateReview } from '../../redux/reviews/operations';
+const initialValues = {
+  rating: 0,
+  text: '',
+};
 
-function FeedbackForm({
-  feedback,
-  rating,
-  toggleEditFeedback,
-  isEditFeedbackOpen,
-  id,
-}) {
+function FeedbackForm() {
+  const [statusForm, setStatusForm] = useState('create');
+  const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
+  const review = useSelector(selectOwnReview);
+
+  useEffect(() => {
+    dispatch(getOwnReview());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (review.text) setStatusForm('edit');
+  }, [review]);
 
   return (
     <Formik
-      initialValues={{ rating: rating, review: feedback }}
+      initialValues={initialValues}
       onSubmit={(values, { setSubmitting }) => {
-        if (isEditFeedbackOpen) {
-          dispatch(
-            updateReview({ id, rating: values.rating, comment: values.review })
-          );
-          toggleEditFeedback();
-        } else {
-          dispatch(
-            addReview({ rating: values.rating, comment: values.review })
-          );
-        }
+        dispatch(
+          statusForm === 'create' ? createReview(values) : updateReview(values)
+        );
+
         setSubmitting(false);
       }}
     >
@@ -45,7 +52,7 @@ function FeedbackForm({
         <Box>
           <StyledRating
             name="customized-color"
-            value={rating}
+            value={review.rating}
             precision={1}
             icon={<FavoriteIcon fontSize="inherit" width="24px" />}
             emptyIcon={<EmptyBigStar fontSize="inherit" width="24px" />}
@@ -65,16 +72,12 @@ function FeedbackForm({
           component="textarea"
         />
 
-        {isEditFeedbackOpen ? (
+        {isEditing ? (
           <div style={{ display: 'flex', gap: '8px' }}>
-            <StyledEditButton type="submit" disabled={isSubmitting}>
-              Edit
-            </StyledEditButton>
+            <StyledEditButton type="submit">Edit</StyledEditButton>
           </div>
         ) : (
-          <StyledButton type="submit" disabled={isSubmitting}>
-            Save
-          </StyledButton>
+          <StyledButton type="submit">Save</StyledButton>
         )}
       </Form>
     </Formik>
