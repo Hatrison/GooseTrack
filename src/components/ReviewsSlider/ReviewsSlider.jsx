@@ -17,9 +17,11 @@ import {
   ArrowRight,
   ArrowsWrap,
   RatingStar,
-  StarsList,
+  // StarsList,
   SliderStyled,
 } from './ReviewsSlider.styled';
+import RatingComponent from '../RatingComponent/RatingComponent';
+import StarsList from '../RatingComponent/RatingComponent';
 
 export const getAllReviews = async () => {
   const response = await axios.get(
@@ -108,8 +110,12 @@ const ReviewsSlider = () => {
                       <Name>
                         {review.name} - {review.rating}
                       </Name>
-                      <StarsList>
-                        <li>
+                      <StarsList rating={review.rating}>
+                        {/* <li> */}
+                        {/* <RatingStar /> */}
+                        {/* <RatingComponent rating={review.rating} />
+                        </li> */}
+                        {/* <li>
                           <RatingStar />
                         </li>
                         <li>
@@ -120,10 +126,7 @@ const ReviewsSlider = () => {
                         </li>
                         <li>
                           <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li>
+                        </li> */}
                       </StarsList>
                     </div>
                   </WrapAvatarNameStars>

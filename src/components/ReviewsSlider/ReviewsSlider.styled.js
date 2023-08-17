@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { ReactComponent as ArrowBack } from '../../images/svg/arrowBack.svg';
 import { ReactComponent as ArrowNext } from '../../images/svg/arrowNext.svg';
-import { ReactComponent as Stars } from '../../images/svg/RatingStar.svg';
+// import { ReactComponent as Stars } from '../../images/svg/RatingStar.svg';
+import { ReactComponent as Star } from '../../images/svg/star-black.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -106,7 +107,7 @@ export const Avatar = styled.img`
   max-width: 100%;
   height: auto;
   border-radius: 40px;
-  outline: 1px dashed red;
+  /* outline: 1px dashed red; */
 `;
 
 export const Name = styled.p`
@@ -156,9 +157,16 @@ export const ArrowsWrap = styled.div`
   gap: 25px;
 `;
 
-export const RatingStar = styled(Stars)`
+// export const RatingStar = styled(Stars)`
+//   width: 14px;
+//   height: 14px;
+//   fill: red;
+// `;
+
+export const RatingStar = styled(Star)`
   width: 14px;
   height: 14px;
+  fill: ${props => (props.isyellow = 'true' ? '#FFAC33' : '#CEC9C1')};
 `;
 
 export const StarsList = styled.ul`
