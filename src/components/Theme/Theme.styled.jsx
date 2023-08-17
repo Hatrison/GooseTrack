@@ -49,7 +49,7 @@ export const theme = {
     inputText: '#111111',
     labelText: '#111111',
     inputBorder: 'rgba(17, 17, 17, 0.15)',
-
+    bordeRadius: '16px',
     TextColorUserProfile: '#111111',
 
     //CalendarHead
@@ -80,8 +80,8 @@ export const theme = {
     loginInputColor: '#111111',
     loginInputBorder: '1px solid rgba(17, 17, 17, 0.15)',
     backgroundColorForm: '#FFFFFF',
-    errorTagColor: "#E74A3B",
-    correctTagColor: "#3CBC81",
+    errorTagColor: '#E74A3B',
+    correctTagColor: '#3CBC81',
   },
 
   // Стилі для темної теми
@@ -161,10 +161,10 @@ export const theme = {
   taskModalInputColor: '#171820',
   taskModalLabelColor: '#5B5C61',
 
-   //LoginForm
-   loginInputColor: '#FFFFFF',
-   loginInputBorder: '#DCEBF7',
-   backgroundColorForm: '#111111',
-   errorTagColor: "#E74A3B",
-  correctTagColor: "#3CBC81",
+  //LoginForm
+  loginInputColor: '#FFFFFF',
+  loginInputBorder: '#DCEBF7',
+  backgroundColorForm: '#111111',
+  errorTagColor: '#E74A3B',
+  correctTagColor: '#3CBC81',
 };
