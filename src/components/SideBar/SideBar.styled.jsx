@@ -3,7 +3,6 @@ import { ReactComponent as IconClose } from 'images/svg/close.svg';
 import { ReactComponent as LogoIcon } from 'images/svg/logo.svg';
 
 export const SidebarOverlay = styled.div`
-  z-index: 2;
   position: fixed;
   top: 0;
   left: 0;
