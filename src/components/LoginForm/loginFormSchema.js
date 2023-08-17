@@ -7,6 +7,6 @@ export const loginFormSchema = Yup.object().shape({
     .email('This is an ERROR email')
     .required('This field is required'),
   password: Yup.string('Enter your password')
-  .matches( passwordMatches, "This is an ERROR password")
+  .matches( passwordMatches, 'Password must contain lowecase letters, uppercase letters and numbers')
   .required('This field is required'),
 });

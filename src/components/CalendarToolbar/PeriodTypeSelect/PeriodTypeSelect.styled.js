@@ -17,13 +17,15 @@ export const ListItem = styled.li`
   display: flex;
 `;
 export const StyledNavLink = styled(StyledLink)`
-  font-family: Inter;
-  color: ${({ theme }) => theme.accentColor};
-  background-color: ${({ theme }) => theme.buttonBackgroundColorAddTask};
+  font-family: Inter, sans-serif;
+
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  color: ${({ theme }) => theme.buttonPeriodColor};
   text-decoration: none;
 
   &.active {
-    background-color: #cae8ff;
+    background-color: ${({ theme }) => theme.buttonBackgroundColor};
+    color: ${({ theme }) => theme.buttontextColor};
   }
   &.month {
     padding: 8px 16px;
