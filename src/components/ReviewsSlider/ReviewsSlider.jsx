@@ -1,6 +1,6 @@
 // import React from 'react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // import Slider from 'react-slick';
 // import 'slick-carousel/slick/slick.css';
 // import 'slick-carousel/slick/slick-theme.css';
@@ -13,7 +13,6 @@ import {
   Item,
   Avatar,
   WrapAvatarNameStars,
-  List,
   ArrowLeft,
   ArrowRight,
   ArrowsWrap,
@@ -33,6 +32,7 @@ export const getAllReviews = async () => {
 };
 
 const ReviewsSlider = () => {
+  const slider = useRef(null);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -67,6 +67,7 @@ const ReviewsSlider = () => {
 
   const settings = {
     dots: false,
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 2,
@@ -91,7 +92,7 @@ const ReviewsSlider = () => {
     <Section>
       <Container>
         <Title>Reviews</Title>
-        <SliderStyled {...settings}>
+        <SliderStyled ref={slider} {...settings}>
           {reviews &&
             reviews.map(review => {
               return (
@@ -133,121 +134,9 @@ const ReviewsSlider = () => {
             })}
         </SliderStyled>
 
-        {/* <List> */}
-        {/* {reviews &&
-            reviews.map(review => {
-              return (
-                <Item key={review._id}>
-                  <WrapAvatarNameStars>
-                    <Avatar
-                      src="https://366icons.com/media/01/profile-avatar-account-icon-16699.png"
-                      alt="Avatar"
-                      width="50px"
-                      height="50px"
-                    />
-                    <div>
-                      <Name>
-                        {review.name} - {review.rating}
-                      </Name>
-                      <StarsList>
-                        <li>
-                          <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li>
-                      </StarsList>
-                    </div>
-                  </WrapAvatarNameStars>
-
-                  <Text>{review.text}</Text>
-                </Item>
-              );
-            })} */}
-        {/* <Item>
-            <WrapAvatarNameStars>
-              <Avatar
-                src="../../images/avatar1.jpg"
-                alt="Avatar"
-                width="50px"
-                height="50px"
-              />
-              <div>
-                <Name>Olena Doe</Name>
-                <StarsList>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                </StarsList>
-              </div>
-            </WrapAvatarNameStars>
-
-            <Text>
-              GooseTrack is impressive, the calendar view and filter options
-              make it easy to stay organized and focused. Highly recommended.
-            </Text>
-          </Item>
-          <Item>
-            <WrapAvatarNameStars>
-              <Avatar
-                src="../../images/avatar1.jpg"
-                alt="Avatar"
-                width="50px"
-                height="50px"
-              />
-              <div>
-                <Name>Olena Doe</Name>
-
-                <StarsList>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                  <li>
-                    <RatingStar />
-                  </li>
-                </StarsList>
-              </div>
-            </WrapAvatarNameStars>
-
-            <Text>
-              GooseTrack is impressive, the calendar view and filter options
-              make it easy to stay organized and focused. Highly recommended.
-            </Text>
-          </Item> */}
-        {/* </List> */}
         <ArrowsWrap>
-          <ArrowLeft />
-          <ArrowRight />
+          <ArrowLeft onClick={() => slider.current.slickPrev()} />
+          <ArrowRight onClick={() => slider.current.slickNext()} />
         </ArrowsWrap>
       </Container>
     </Section>

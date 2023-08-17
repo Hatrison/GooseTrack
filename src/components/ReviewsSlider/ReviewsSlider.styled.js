@@ -41,30 +41,34 @@ export const SliderStyled = styled(Slider)`
   }
 
   @media screen and (min-width: 1280px) {
+    .slick-track {
+      display: flex;
+      gap: 24px;
+    }
     display: flex;
     gap: 24px;
   }
 `;
 
-export const List = styled.ul`
-  margin-bottom: 8px;
+// export const List = styled.ul`
+//   margin-bottom: 8px;
 
-  @media screen and (min-width: 768px) {
-    margin-bottom: 18px;
-  }
+//   @media screen and (min-width: 768px) {
+//     margin-bottom: 18px;
+//   }
 
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    gap: 24px;
-  }
-`;
+//   @media screen and (min-width: 1280px) {
+//     display: flex;
+//     gap: 24px;
+//   }
+// `;
 
-export const Item = styled.li`
+export const Item = styled.div`
   padding: 24px;
   border-radius: 8px;
   border: 1px solid rgba(17, 17, 17, 0.1);
   width: 100%;
-  margin: 0 12px;
+  /* margin: 0 12px; */
 
   @media screen and (min-width: 768px) {
     padding: 32px;
