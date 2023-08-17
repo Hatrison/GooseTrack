@@ -25,7 +25,11 @@ const CalendarPage = () => {
         dispatch(setDates(currentDate));
       }
     }
-  }, [location, navigate, currentDate, dispatch]);
+    if (pathname === '/calendar' || pathname === '/calendar/') {
+      navigate(`/calendar/month/${currentDate}`);
+      dispatch(setDates(currentDate));
+    }
+  }, [navigate, currentDate, dispatch, location]);
 
   return (
     <div>

@@ -49,7 +49,7 @@ export default function SideBar({ onSidebarToggle }) {
           <p>User Panel</p>
           <Navigation>
             <Link to="/account">My account</Link>
-            <Link to="/calendar/month/:currentDate">Calendar</Link>
+            <Link to="/calendar">Calendar</Link>
             <Link to="/statistics">Statistics</Link>
           </Navigation>
         </div>

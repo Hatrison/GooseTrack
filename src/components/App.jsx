@@ -59,7 +59,7 @@ export const App = () => {
                 }
               />
               <Route
-                path="calendar/*"
+                path="calendar"
                 element={
                   <PrivateRoute redirectTo="/" component={<CalendarPage />} />
                 }
