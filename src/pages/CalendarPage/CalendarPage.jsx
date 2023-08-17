@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { format } from 'date-fns';
 import { selectDate } from 'redux/date/selectors';
 import { TailSpin } from 'react-loader-spinner';
 import CalendarToolbar from 'components/CalendarToolbar';
@@ -12,15 +11,11 @@ const CalendarPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const currentDate = useSelector(selectDate);
-  const dateNow = format(Date.now(), 'yyyy-MM-dd');
 
   useEffect(() => {
     const { pathname } = location;
     if (isFirstRender.current) {
       isFirstRender.current = false;
-      console.log('dateNow: ', dateNow);
-      console.log('currentDate: ', currentDate);
-
       if (
         !pathname.includes('/calendar/day/') &&
         (pathname.includes(`/calendar/month/${currentDate}`) ||
@@ -29,7 +24,7 @@ const CalendarPage = () => {
         navigate(`/calendar/month/${currentDate}`);
       }
     }
-  }, [location, navigate, currentDate, dateNow]);
+  }, [location, navigate, currentDate]);
 
   return (
     <div>
