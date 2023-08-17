@@ -62,16 +62,16 @@ const UserForm = () => {
     <Formik
       validationSchema={UserValidSchema}
       initialValues={{
-        // name: userInfo?.name || '',
-        // birthday: userInfo?.birthday || `${currentDate}`,
-        // email: userInfo?.email || '',
-        // phone: userInfo?.phone || '',
-        // skype: userInfo?.skype || '',
-        name: '',
-        birthday: '',
-        email: '',
-        phone: '',
-        skype: '',
+        name: userInfo?.name || '',
+        birthday: userInfo?.birthday || `${currentDate}`,
+        email: userInfo?.email || '',
+        phone: userInfo?.phone || '',
+        skype: userInfo?.skype || '',
+        // name: '',
+        // birthday: '',
+        // email: '',
+        // phone: '',
+        // skype: '',
       }}
       onSubmit={handleSubmit}
     >
@@ -125,8 +125,8 @@ const UserForm = () => {
                       type="date"
                       slotProps={{
                         textField: {
-                          // placeholder: userInfo.birthday || `${currentDate}`,
-                          placeholder: `${currentDate}`,
+                          placeholder: userInfo.birthday || `${currentDate}`,
+                          // placeholder: `${currentDate}`,
                         },
                       }}
                       views={['year', 'month', 'day']}
