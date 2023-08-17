@@ -11,8 +11,13 @@ import {
   AddFeedbackBtn,
   InfoWrap,
 } from './Header.styled';
+import { useState } from 'react';
+import AddFeedbackModal from './AddFeedbackModal';
 
 export default function Header({ onSidebarToggle }) {
+  const [isTaskModalOpened, setIsTaskModalOpened] = useState(false);
+
+  const handleToggleModal = () => setIsTaskModalOpened(prevState => !prevState);
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
 
   return (
@@ -24,7 +29,12 @@ export default function Header({ onSidebarToggle }) {
         </BurgerButton>
       )}
       <UserOptions>
-        <AddFeedbackBtn type="button">Feedback</AddFeedbackBtn>
+        <AddFeedbackBtn onClick={() => handleToggleModal()} type="button">
+          Feedback
+        </AddFeedbackBtn>
+        {isTaskModalOpened && (
+          <AddFeedbackModal handlerCloseModal={handleToggleModal} />
+        )}
         <InfoWrap>
           <ThemeToggler />
           <UserInfo />
