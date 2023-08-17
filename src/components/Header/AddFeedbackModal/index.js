@@ -1,1 +1,1 @@
-export { default } from './AddFeedbackModal';
+export { default } from './AddFeedbackModal.jsx';
