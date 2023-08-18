@@ -40,7 +40,6 @@ const LoginForm = () => {
             )
               .then(data => {
                 if (data.payload.name) {
-                  toast.success(`Wellcom, ${data.payload.name}!`);
                 }
                 if (data.error) {
                   throw new Error(`Your email or password is incorrect`);
