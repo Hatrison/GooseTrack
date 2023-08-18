@@ -18,7 +18,7 @@ export const Form = styled(FormikForm)`
     align-items: center;
     padding-top: 40px;
   }
-  @media (min-width: 1400px) {
+  @media (min-width: 1440px) {
     padding-top: 60px;
     padding-bottom: 60px;
   }

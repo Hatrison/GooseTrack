@@ -6,6 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
@@ -63,15 +64,22 @@ const UserForm = () => {
   //   }
   // };
 
-  const handleSubmit = async values => {
+  const handleSubmit = async ({
+    name,
+    email,
+    phone,
+    skype,
+    birthday,
+    avatarURL,
+  }) => {
     const formData = new FormData();
-    formData.append('name', values.name);
-    formData.append('email', values.email);
-    if (values.phone) {
-      formData.append('phone', values.phone);
+    formData.append('name', name);
+    formData.append('email', email);
+    if (phone) {
+      formData.append('phone', phone);
     }
-    if (values.skype) {
-      formData.append('skype', values.skype);
+    if (skype) {
+      formData.append('skype', skype);
     }
     formData.append(
       'birthday',
