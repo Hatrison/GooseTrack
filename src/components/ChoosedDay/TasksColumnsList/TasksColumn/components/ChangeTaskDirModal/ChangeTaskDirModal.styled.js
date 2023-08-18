@@ -15,7 +15,6 @@ export const Box = styled.div`
   width: 115px;
   background-color: ${props => props.theme.mainBackgroundColor};
   transition: ${props => props.theme.defaultTransition};
-  border: 1px solid ${props => props.theme.changeTaskDirModalBorder};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   z-index: 1;
