@@ -85,7 +85,7 @@ const FeedbackForm = ({ handlerCloseModal }) => {
             </Label>
             <ErrorMessage name="rating" component="div" />
             <Wrap>
-              <Label htmlForor="name">Review</Label>
+              <Label htmlFor="name">Review</Label>
               {statusForm === 'edit' && (
                 <ToolbarWrap>
                   <EditToolbarButton
