@@ -60,7 +60,7 @@ const UserForm = () => {
         validationSchema={UserValidSchema}
         initialValues={{
           name: userInfo?.name || '',
-          birthday: userInfo?.birthday || `${currentDate}`,
+          birthday: userInfo?.birthday || `${birthDate}` || `${currentDate}`,
           email: userInfo?.email || '',
           phone: userInfo?.phone || '',
           skype: userInfo?.skype || '',
@@ -71,7 +71,7 @@ const UserForm = () => {
           <Form>
             <div>
               <AvatarWrapper>
-                {avatarURL ? (
+                {/* {avatarURL ? (
                   <label htmlFor="avatar">
                     <ImgAvatar
                       src={URL.createObjectURL(avatarURL)}
@@ -84,6 +84,18 @@ const UserForm = () => {
                   </label>
                 ) : (
                   ''
+                )} */}
+                {avatarURL ? (
+                  <label htmlFor="avatar">
+                    <ImgAvatar
+                      src={URL.createObjectURL(avatarURL)}
+                      alt="Avatar"
+                    />
+                  </label>
+                ) : (
+                  <label htmlFor="avatar">
+                    <ImgAvatar src={userInfo?.avatarURL} alt="Avatar" />
+                  </label>
                 )}
               </AvatarWrapper>
               <FieldAdd
