@@ -85,7 +85,7 @@ const FeedbackForm = ({ handlerCloseModal }) => {
             </Label>
             <ErrorMessage name="rating" component="div" />
             <Wrap>
-              <Label htmlFor="name">Review</Label>
+              <Label htmlFor="review">Review</Label>
               {statusForm === 'edit' && (
                 <ToolbarWrap>
                   <EditToolbarButton
@@ -101,7 +101,7 @@ const FeedbackForm = ({ handlerCloseModal }) => {
               )}
             </Wrap>
             <StyledTextArea
-              id="name"
+              id="review"
               name="text"
               placeholder="Enter text"
               value={values.text}
