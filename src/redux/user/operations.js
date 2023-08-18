@@ -1,13 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { addUserData } from './userSlice';
 
-const { REACT_APP_BASE_URL } = process.env;
-axios.defaults.baseURL = `${REACT_APP_BASE_URL}`;
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+import { setAuthHeader, instance } from 'utils/axiosInctance';
 
 export const fetchCurrentUser = createAsyncThunk(
   'getCurrentUser',
@@ -21,7 +15,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const response = await axios.get('/api/users/current');
+      const response = await instance.get('/api/users/current');
       await thunkAPI.dispatch(addUserData(response.data));
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -33,7 +27,7 @@ export const updateUser = createAsyncThunk(
   'patchCurrentUser',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.patch('/api/users/current', credentials);
+      const response = await instance.patch('/api/users/current', credentials);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
