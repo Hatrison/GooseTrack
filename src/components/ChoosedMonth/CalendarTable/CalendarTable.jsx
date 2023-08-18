@@ -8,8 +8,8 @@ import { useState } from 'react';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import { useDaysOfMonth } from 'hooks/useDaysOfMonth';
-import { EmptyCells } from './components/EmptyCells';
-import { DaysWithTasks } from './components/DaysWithTasks';
+import { EmptyCells } from 'components/EmptyCells';
+import { DaysWithTasks } from 'components/DaysWithTasks';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const [isOpened, setOpening] = useState(false);
