@@ -62,6 +62,7 @@ export const AvatarWrapper = styled.div`
   background-color: ${({ theme }) => theme.mainBackgroundColor};
   border: 2px solid #3e85f3;
   border-radius: 50%;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     position: static;
@@ -74,9 +75,9 @@ export const AvatarWrapper = styled.div`
 `;
 
 export const ImgAvatar = styled.img`
+  display: block;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
   object-position: 50% 50%;
 `;
