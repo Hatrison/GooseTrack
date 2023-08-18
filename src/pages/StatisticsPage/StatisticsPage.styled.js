@@ -1,3 +1,5 @@
 import styled from 'styled-components';
 
-export const StatisticsContainer = styled.section``;
+export const StatisticsWrapper = styled.div`
+  display: relative;
+`;

@@ -10,7 +10,7 @@ import {
   Label,
 } from 'recharts';
 
-const StatisticsChart = () => {
+export const StatisticsChart = ({ data }) => {
   const columns = [
     {
       name: 'To Do',
@@ -118,6 +118,7 @@ const StatisticsChart = () => {
             fontSize={16}
             fontWeight={500}
             stroke={'#343434'}
+            // content={percentagesLabel}
           />
         </Bar>
       </BarChart>
