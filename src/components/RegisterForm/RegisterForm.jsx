@@ -132,7 +132,7 @@ const RegisterForm = () => {
             </FormField>
             <PasswordWrap>
               <Field
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="Enter your password"
                 style={{

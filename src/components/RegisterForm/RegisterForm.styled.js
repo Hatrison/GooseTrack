@@ -95,7 +95,7 @@ export const PasswordWrap = styled.div`
 export const ToggleHidePassword = styled.span`
   position: absolute;
   right: 12px;
-  top: 10px;
+  top: 12px;
   cursor: pointer;
 `;
 
@@ -187,11 +187,5 @@ export const CorrectTag = styled.div`
 `;
 
 export const IconContainer = styled.div`
-height: 50px;
 position: relative;
-
-@media (min-width: 768px) {
-  height: 56px;
-}
-
 `;
