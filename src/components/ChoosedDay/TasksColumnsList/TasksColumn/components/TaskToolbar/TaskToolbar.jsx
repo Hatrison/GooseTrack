@@ -7,6 +7,7 @@ import {
   ChangeDirIcon,
   PencilIcon,
   TrashIcon,
+  TaskDirModalOverlay,
 } from './TaskToolbar.styled';
 import {
   ModalBtn,
@@ -70,6 +71,11 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
 
     dispatch(updateTask(modifiedTask));
   };
+  const onOverlayClick = event => {
+    if (event.target === event.currentTarget) {
+      handleModalToggle();
+    }
+  };
 
   return (
     <List>
@@ -78,16 +84,19 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
           <ChangeDirIcon />
         </Btn>
         {isChangeDirOpened && (
-          <ChangeTaskDirModal>
-            {newItemArray.map(newItem => (
-              <li key={newItem.category}>
-                <ModalBtn onClick={() => handleTransfer(newItem)}>
-                  {newItem.category}
-                  <ChangeDirIconModal />
-                </ModalBtn>
-              </li>
-            ))}
-          </ChangeTaskDirModal>
+          <div>
+            <TaskDirModalOverlay onClick={onOverlayClick}></TaskDirModalOverlay>
+            <ChangeTaskDirModal>
+              {newItemArray.map(newItem => (
+                <li key={newItem.category}>
+                  <ModalBtn onClick={() => handleTransfer(newItem)}>
+                    {newItem.category}
+                    <ChangeDirIconModal />
+                  </ModalBtn>
+                </li>
+              ))}
+            </ChangeTaskDirModal>
+          </div>
         )}
       </li>
       <li>
