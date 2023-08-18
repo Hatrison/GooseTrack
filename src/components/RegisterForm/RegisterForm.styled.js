@@ -3,8 +3,11 @@ import {
   Field as FormikField,
   ErrorMessage as FormikErrorMessage,
 } from 'formik';
-import { ReactComponent as LoginIcon } from 'images/svg/buttonLogReg.svg';
 import styled from 'styled-components';
+
+import { ReactComponent as LoginIcon } from 'images/svg/buttonLogReg.svg';
+import { ReactComponent as IconError } from 'images/svg/ic_baseline-error-outline.svg';
+import { ReactComponent as IconCorrect } from 'images/svg/done.svg';
 
 export const Form = styled(FormikForm)`
   width: 335px;
@@ -42,21 +45,27 @@ export const TitleForm = styled.h1`
   }
 `;
 
-export const Label = styled.label`
+export const FormField = styled.label`
   display: block;
   font-family: 'InterSemiBolt', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 1.25;
+  position: relative;
 
   color: ${props => props.theme.mainTextColor};
-  margin-top: 24px;
+  :nth-of-type(even) {
+    margin-top: 24px;
+  }
   margin-bottom: 8px;
 
   @media (min-width: 768px) {
     font-size: 14px;
     margin-top: 18px;
+    :nth-of-type(even) {
+      margin-top: 18px;
+    }
   }
 `;
 
@@ -67,6 +76,8 @@ export const Field = styled(FormikField)`
   display: block;
   outline: none;
   padding: 14px;
+  color: ${({ theme }) => theme.loginInputColor};
+border: ${({ theme }) => theme.loginInputBorder};
   border: 1px solid rgba(220, 227, 229, 0.6);
   border-radius: 8px;
   margin-top: 10px;
@@ -132,9 +143,55 @@ export const IconButton = styled(LoginIcon)`
   }
 `;
 
-export const ErrorMessage = styled(FormikErrorMessage)`
+export const Error = styled(FormikErrorMessage)`
   margin-left: 4px;
   font-size: 14px;
   color: red;
   max-width: 400px;
+`;
+
+export const ErrorIcon = styled(IconError)`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+export const CorrectIcon = styled(IconCorrect)`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+export const ErrorTag = styled.div`
+  color: ${({ theme }) => theme.errorTagColor};
+  margin-top: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+`;
+
+export const CorrectTag = styled.div`
+  color: ${({ theme }) => theme.correctTagColor};
+  margin-top: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+`;
+
+export const IconContainer = styled.div`
+height: 50px;
+position: relative;
+
+@media (min-width: 768px) {
+  height: 56px;
+}
+
 `;
