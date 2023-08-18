@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { format, parse, add, sub } from 'date-fns';
 import PropTypes from 'prop-types';
 import { setDates } from 'redux/date/dateSlice';
@@ -18,10 +18,9 @@ import {
 
 export const PeriodPaginator = ({ type }) => {
   const params = useParams();
-
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const normalizedDate = useSelector(selectDate);
 
@@ -44,7 +43,9 @@ export const PeriodPaginator = ({ type }) => {
 
     const formattedNewDate = format(newDate, 'yyyy-MM-dd');
     dispatch(setDates(formattedNewDate));
-    navigate(`${type}/${formattedNewDate}`);
+    if (pathname.includes('/calendar/')) {
+      navigate(`${type}/${formattedNewDate}`);
+    }
     return;
   };
 
