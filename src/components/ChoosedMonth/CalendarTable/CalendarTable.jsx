@@ -3,19 +3,23 @@ import PropTypes from 'prop-types';
 import { OverflowWrapper, StyledTable } from './CalendarTable.styled';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
+import { endOfMonth, getDay, startOfMonth, eachDayOfInterval } from 'date-fns';
 import { setDates } from 'redux/date/dateSlice';
 import { useState } from 'react';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
-import { useDaysOfMonth } from 'hooks/useDaysOfMonth';
 import { EmptyCells } from 'components/EmptyCells';
-import { DaysWithTasks } from 'components/DaysWithTasks';
+import { DaysWithTasks } from './DaysWithTasks';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const [isOpened, setOpening] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
-  const { daysOfMonth, firstDayOfMonth } = useDaysOfMonth(currentDate);
+  const startMonth = startOfMonth(new Date(currentDate));
+  const endMonth = endOfMonth(new Date(currentDate));
+  const firstDayOfMonth = getDay(startMonth) - 1;
+  const daysOfMonth = eachDayOfInterval({ start: startMonth, end: endMonth });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

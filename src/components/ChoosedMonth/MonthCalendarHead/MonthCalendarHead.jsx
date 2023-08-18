@@ -3,6 +3,7 @@ import { StyledItem, StyledList } from './MonthCalendarHead.styled';
 export default function MonthCalendarHead() {
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'sat', 'sun'];
 
+
   return (
     <StyledList>
       {daysOfWeek.map(day => (
