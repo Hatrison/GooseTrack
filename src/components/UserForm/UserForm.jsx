@@ -71,7 +71,7 @@ const UserForm = () => {
           <Form>
             <div>
               <AvatarWrapper>
-                {/* {avatarURL ? (
+                {avatarURL ? (
                   <label htmlFor="avatar">
                     <ImgAvatar
                       src={URL.createObjectURL(avatarURL)}
@@ -84,18 +84,6 @@ const UserForm = () => {
                   </label>
                 ) : (
                   ''
-                )} */}
-                {avatarURL ? (
-                  <label htmlFor="avatar">
-                    <ImgAvatar
-                      src={URL.createObjectURL(avatarURL)}
-                      alt="Avatar"
-                    />
-                  </label>
-                ) : (
-                  <label htmlFor="avatar">
-                    <ImgAvatar src={userInfo?.avatarURL} alt="Avatar" />
-                  </label>
                 )}
               </AvatarWrapper>
               <FieldAdd
