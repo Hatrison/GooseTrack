@@ -1,6 +1,7 @@
 export const theme = {
   /* 
-    Звертатись до змінних у файлі .styled.jsx через ${({ theme }) => theme.mainBackgroundColor};  
+    Звертатись до змінних у файлі .styled.jsx через 
+    ${({ theme }) => theme.mainBackgroundColor};  
   */
   // ======================================================================================================
 
@@ -31,10 +32,10 @@ export const theme = {
     // AsideBar
     asideBarBackground: '#FFFFFF',
     asideBarLogoText: '#3E85F3',
-    asideBarTitle: '#7E7D82',
-    asideBarIcon: '#84828A',
+    asideBarTitle: '#34343480',
+    asideBarIcon: '#34343480',
     asideBarIconActive: '#3E85F3',
-    asideBarLinkText: '#84828A',
+    asideBarLinkText: '#34343480',
     asideBarActiveLinkText: '#3E85F3',
     asideBarActiveLinkBackground: '#E3F3FF',
     asideBarLinkBackgroundHover: 'rgba(120, 165, 191, 0.1)',
@@ -75,8 +76,12 @@ export const theme = {
     //TasksColumnCard
     priorTextColor: '#F7F6F9',
 
-    //ChangeTaskDirModal
-    changeTaskDirModalBorder: 'transparent',
+    //LoginForm
+    loginInputColor: '#111111',
+    loginInputBorder: '1px solid rgba(17, 17, 17, 0.15)',
+    backgroundColorForm: '#FFFFFF',
+    errorTagColor: "#E74A3B",
+    correctTagColor: "#3CBC81",
   },
 
   // Стилі для темної теми
@@ -105,7 +110,7 @@ export const theme = {
     // AsideBar
     asideBarBackground: '#13151A',
     asideBarLogoText: '#FFFFFF',
-    asideBarTitle: '#585A5D',
+    asideBarTitle: '#FAFAFA4D',
     asideBarIcon: '#FFFFFF',
     asideBarIconActive: '#FFFFFF',
     asideBarLinkText: '#FFFFFF',
@@ -151,4 +156,15 @@ export const theme = {
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
   },
+
+  // TaskModal
+  taskModalInputColor: '#171820',
+  taskModalLabelColor: '#5B5C61',
+
+   //LoginForm
+   loginInputColor: '#FFFFFF',
+   loginInputBorder: '#DCEBF7',
+   backgroundColorForm: '#111111',
+   errorTagColor: "#E74A3B",
+  correctTagColor: "#3CBC81",
 };
