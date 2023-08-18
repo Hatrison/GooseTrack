@@ -43,9 +43,11 @@ export const Item = styled.li`
     :nth-child(2n) {
       flex-direction: row-reverse;
       justify-content: flex-end;
+      align-items: center;
     }
     :nth-child(2n + 1) {
       justify-content: flex-end;
+      align-items: center;
     }
   }
 `;

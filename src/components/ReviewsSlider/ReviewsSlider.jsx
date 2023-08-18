@@ -1,9 +1,4 @@
-// import React from 'react';
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
-// import Slider from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
+import React, { useEffect, useRef } from 'react';
 import {
   Section,
   Container,
@@ -16,46 +11,22 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowsWrap,
-  RatingStar,
-  // StarsList,
   SliderStyled,
+  StyledRating,
 } from './ReviewsSlider.styled';
-import RatingComponent from '../RatingComponent/RatingComponent';
-import StarsList from '../RatingComponent/RatingComponent';
-
-export const getAllReviews = async () => {
-  const response = await axios.get(
-    'https://goosetrack-0ajq.onrender.com/api/reviews'
-  );
-  if (response.status === 404) {
-    throw new Error('Something went wrong, please try again', response.status);
-  }
-  return response.data;
-};
+import { useDispatch, useSelector } from 'react-redux';
+import { selectReviews } from 'redux/reviews/selectors';
+import { ReactComponent as Star } from 'images/svg/reviewStar.svg';
+import { getReviews } from 'redux/reviews/operations';
 
 const ReviewsSlider = () => {
   const slider = useRef(null);
-  const [reviews, setReviews] = useState([]);
+  const reviews = useSelector(selectReviews);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function getReviews() {
-      try {
-        // setLoading(true);
-        // setError(null);
-        const allReviews = await getAllReviews();
-        console.log(allReviews);
-
-        setReviews(allReviews);
-        // setMovies(trendingMovies.results);
-      } catch (error) {
-        // setError(ERROR_MSG);
-        console.log(error);
-      } finally {
-        // setLoading(false);
-      }
-    }
-    getReviews();
-  }, []);
+    dispatch(getReviews());
+  }, [dispatch]);
 
   function NextArrow(props) {
     const { onClick } = props;
@@ -75,8 +46,8 @@ const ReviewsSlider = () => {
     slidesToShow: 2,
     slidesToScroll: 1,
     swipeToSlide: true,
-    // autoplay: true,
-    autoplaySpeed: 2000,
+    autoplay: true,
+    autoplaySpeed: 1500,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
@@ -101,7 +72,11 @@ const ReviewsSlider = () => {
                 <Item key={review._id}>
                   <WrapAvatarNameStars>
                     <Avatar
-                      src="https://366icons.com/media/01/profile-avatar-account-icon-16699.png"
+                      src={
+                        review.avatar
+                          ? review.avatar
+                          : 'https://366icons.com/media/01/profile-avatar-account-icon-16699.png'
+                      }
                       alt="Avatar"
                       width="50px"
                       height="50px"
@@ -110,24 +85,18 @@ const ReviewsSlider = () => {
                       <Name>
                         {review.name} - {review.rating}
                       </Name>
-                      <StarsList rating={review.rating}>
-                        {/* <li> */}
-                        {/* <RatingStar /> */}
-                        {/* <RatingComponent rating={review.rating} />
-                        </li> */}
-                        {/* <li>
-                          <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li>
-                        <li>
-                          <RatingStar />
-                        </li> */}
-                      </StarsList>
+                      <StyledRating
+                        precision={1}
+                        sx={{ display: 'flex', gap: '10px', maxWidth: '104px' }}
+                        icon={
+                          <Star width="14px" height="14px" fill="#FFAC33" />
+                        }
+                        emptyIcon={
+                          <Star width="14px" height="14px" fill="#CEC9C1" />
+                        }
+                        value={Number(review.rating)}
+                        readOnly
+                      />
                     </div>
                   </WrapAvatarNameStars>
 

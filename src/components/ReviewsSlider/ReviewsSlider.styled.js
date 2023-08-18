@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 import { ReactComponent as ArrowBack } from '../../images/svg/arrowBack.svg';
 import { ReactComponent as ArrowNext } from '../../images/svg/arrowNext.svg';
-// import { ReactComponent as Stars } from '../../images/svg/RatingStar.svg';
-import { ReactComponent as Star } from '../../images/svg/star-black.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Rating } from '@mui/material';
 
 export const Section = styled.div`
   background-color: #ffffff;
+`;
+
+export const StyledRating = styled(Rating)`
+  & .MuiRating-iconFilled {
+    color: '#ff6d75';
+  }
+
+  & .MuiRating-iconHover {
+    color: '#ff3d47';
+  }
 `;
 
 export const Container = styled.div`
@@ -51,25 +60,11 @@ export const SliderStyled = styled(Slider)`
   }
 `;
 
-// export const List = styled.ul`
-//   margin-bottom: 8px;
-
-//   @media screen and (min-width: 768px) {
-//     margin-bottom: 18px;
-//   }
-
-//   @media screen and (min-width: 1280px) {
-//     display: flex;
-//     gap: 24px;
-//   }
-// `;
-
 export const Item = styled.div`
   padding: 24px;
   border-radius: 8px;
   border: 1px solid rgba(17, 17, 17, 0.1);
   width: 100%;
-  /* margin: 0 12px; */
 
   @media screen and (min-width: 768px) {
     padding: 32px;
@@ -107,7 +102,6 @@ export const Avatar = styled.img`
   max-width: 100%;
   height: auto;
   border-radius: 40px;
-  /* outline: 1px dashed red; */
 `;
 
 export const Name = styled.p`
@@ -155,21 +149,4 @@ export const ArrowsWrap = styled.div`
   display: flex;
   justify-content: center;
   gap: 25px;
-`;
-
-// export const RatingStar = styled(Stars)`
-//   width: 14px;
-//   height: 14px;
-//   fill: red;
-// `;
-
-export const RatingStar = styled(Star)`
-  width: 14px;
-  height: 14px;
-  fill: ${props => (props.isyellow = 'true' ? '#FFAC33' : '#CEC9C1')};
-`;
-
-export const StarsList = styled.ul`
-  display: flex;
-  gap: 10px;
 `;
