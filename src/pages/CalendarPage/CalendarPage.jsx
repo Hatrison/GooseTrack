@@ -17,11 +17,8 @@ const CalendarPage = () => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
 
-      if (
-        pathname.includes('/calendar/day/') ||
-        (pathname.includes('/calendar/month/') &&
-          !pathname.includes('currentDate'))
-      ) {
+      if (pathname.includes('/calendar/day/')) {
+        navigate(`/calendar/day/${currentDate}`, { replace: true });
         return;
       }
       navigate(`/calendar/month/${currentDate}`, { replace: true });
