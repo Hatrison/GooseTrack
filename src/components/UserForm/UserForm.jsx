@@ -12,7 +12,6 @@ import { updateUser } from '../../redux/user/operations';
 import {
   AddIcon,
   AvatarWrapper,
-  DefaultAvatar,
   FieldAdd,
   Form,
   ImgAvatar,
@@ -20,7 +19,6 @@ import {
   UserWrapper,
   WrapperForm,
 } from './UserForm.styled';
-import defaultAvatar from '../../images/account/avatar.png';
 
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
@@ -73,7 +71,7 @@ const UserForm = () => {
           <Form>
             <div>
               <AvatarWrapper>
-                {avatarURL ? (
+                {/* {avatarURL ? (
                   <label htmlFor="avatar">
                     <ImgAvatar
                       src={URL.createObjectURL(avatarURL)}
@@ -88,6 +86,20 @@ const UserForm = () => {
                   <DefaultAvatar>
                     <ImgAvatar src={defaultAvatar} alt="Avatar" />
                   </DefaultAvatar>
+                )} */}
+                {avatarURL ? (
+                  <label htmlFor="avatar">
+                    <ImgAvatar
+                      src={URL.createObjectURL(avatarURL)}
+                      alt="Avatar"
+                    />
+                  </label>
+                ) : userInfo?.avatarURL ? (
+                  <label htmlFor="avatar">
+                    <ImgAvatar src={userInfo?.avatarURL} alt="Avatar" />
+                  </label>
+                ) : (
+                  ''
                 )}
               </AvatarWrapper>
               <FieldAdd
