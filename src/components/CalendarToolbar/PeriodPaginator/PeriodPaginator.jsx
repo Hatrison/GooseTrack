@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { format, parse, add, sub } from 'date-fns';
 import PropTypes from 'prop-types';
 import { setDates } from 'redux/date/dateSlice';
@@ -10,6 +10,7 @@ import { ReactComponent as RightArrow } from 'images/svg/chevron-right.svg';
 
 import {
   Btn,
+  Ul,
   Li,
   StyledDate,
   PeriodPaginatorWrapper,
@@ -17,49 +18,34 @@ import {
 
 export const PeriodPaginator = ({ type }) => {
   const params = useParams();
-
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const normalizedDate = useSelector(selectDate);
 
   useEffect(() => {
-    if (params.currentDay) {
-      if (normalizedDate !== params.currentDay) {
-        dispatch(setDates(params.currentDay));
+    if (params.currentDate && params.currentDate !== ':currentDate') {
+      if (normalizedDate !== params.currentDate) {
+        dispatch(setDates(params.currentDate));
       }
     }
-  }, [dispatch, normalizedDate, params.currentDay]);
+  }, [dispatch, normalizedDate, params.currentDate]);
 
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
 
   const onChangeDate = e => {
-    if (e.currentTarget.name === 'addition') {
-      if (type === 'day') {
-        const newDate = add(date, { days: 1 });
-        const formattedNewDate = format(newDate, 'yyyy-MM-dd');
-        dispatch(setDates(formattedNewDate));
-        navigate(`${type}/${formattedNewDate}`);
-        return;
-      }
-      const newDate = add(date, { months: 1 });
-      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
-      dispatch(setDates(formattedNewDate));
-      navigate(`${type}/${formattedNewDate}`);
-      return;
-    }
-    if (type === 'day') {
-      const newDate = sub(date, { days: 1 });
-      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
-      dispatch(setDates(formattedNewDate));
-      navigate(`${type}/${formattedNewDate}`);
-      return;
-    }
-    const newDate = sub(date, { months: 1 });
+    const period = `${type}s`;
+    const newDate =
+      e.currentTarget.name === 'addition'
+        ? add(date, { [period]: 1 })
+        : sub(date, { [period]: 1 });
+
     const formattedNewDate = format(newDate, 'yyyy-MM-dd');
     dispatch(setDates(formattedNewDate));
-    navigate(`${type}/${formattedNewDate}`);
+    if (pathname.includes('/calendar/')) {
+      navigate(`${type}/${formattedNewDate}`);
+    }
     return;
   };
 
@@ -70,16 +56,28 @@ export const PeriodPaginator = ({ type }) => {
       <StyledDate>
         {type === 'month' ? currentDate.slice(3) : currentDate}
       </StyledDate>
-      <ul>
+      <Ul>
         <Li>
-          <Btn type="button" name="subtraction" onClick={onChangeDate}>
+          <Btn
+            type="button"
+            name="subtraction"
+            className="subtraction"
+            onClick={onChangeDate}
+          >
             <LeftArrow />
           </Btn>
-          <Btn type="button" name="addition" onClick={onChangeDate}>
+        </Li>
+        <Li>
+          <Btn
+            type="button"
+            name="addition"
+            className="addition"
+            onClick={onChangeDate}
+          >
             <RightArrow />
           </Btn>
         </Li>
-      </ul>
+      </Ul>
     </PeriodPaginatorWrapper>
   );
 };

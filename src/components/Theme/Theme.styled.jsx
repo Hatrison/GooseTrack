@@ -1,6 +1,7 @@
 export const theme = {
   /* 
-    Звертатись до змінних у файлі .styled.jsx через ${({ theme }) => theme.mainBackgroundColor};  
+    Звертатись до змінних у файлі .styled.jsx через 
+    ${({ theme }) => theme.mainBackgroundColor};  
   */
   // ======================================================================================================
 
@@ -18,6 +19,7 @@ export const theme = {
     buttonBackgroundColor: '#3E85F3',
     buttonBackgroundColorHover: '#2B78EF',
     buttonShadow: ' 4px 2px 16px rgba(136, 165, 191, 0.48)',
+    buttonPeriodColor: '#FFFFFF',
     // comon colors
     mainBackgroundColor: '#FFFFFF',
     secondaryBackgroundColor: '#F7F6F9',
@@ -30,10 +32,10 @@ export const theme = {
     // AsideBar
     asideBarBackground: '#FFFFFF',
     asideBarLogoText: '#3E85F3',
-    asideBarTitle: '#7E7D82',
-    asideBarIcon: '#84828A',
+    asideBarTitle: '#34343480',
+    asideBarIcon: '#34343480',
     asideBarIconActive: '#3E85F3',
-    asideBarLinkText: '#84828A',
+    asideBarLinkText: '#34343480',
     asideBarActiveLinkText: '#3E85F3',
     asideBarActiveLinkBackground: '#E3F3FF',
     asideBarLinkBackgroundHover: 'rgba(120, 165, 191, 0.1)',
@@ -54,10 +56,16 @@ export const theme = {
     CalendarHead: '#616161',
     CurrentDate: '#FFFFFF',
 
+    //Modal
+    modalBorder: '1px solid rgba(220, 227, 229, 0.8)',
+    modalCloseIcon: '#111',
+
     // TaskModal
+    taskModalTextColor: '#343434',
     taskModalInputColor: '#F6F6F6',
     taskModalLabelColor: '#5D5D5D',
-    titleColor: 'rgba(52, 52, 52, 0.8)',
+    taskModalTitleColor: 'rgba(52, 52, 52, 0.8)',
+    taskModalBorder: '1px solid rgba(220, 227, 229, 0.8)',
 
     //WeekCalendar
     weekCalendarText: '#343434',
@@ -70,6 +78,20 @@ export const theme = {
 
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'transparent',
+
+    //LoginForm
+    loginInputColor: '#111111',
+    loginInputBorder: '1px solid rgba(17, 17, 17, 0.15)',
+    backgroundColorForm: '#FFFFFF',
+    errorTagColor: '#E74A3B',
+    correctTagColor: '#3CBC81',
+
+    //CalendarToolbar
+    periodActiveColor: '#3E85F3',
+    periodActiveBackgroundColor: '#CAE8FF',
+    periodInactiveColor: '#3E85F3',
+    periodInactiveBackgroundColor: '#E3F3FF',
+    periodBorder: '1px solid rgba(62, 133, 243, 0.20)',
   },
 
   // Стилі для темної теми
@@ -84,6 +106,7 @@ export const theme = {
     buttontextColor: '#FFFFFF',
     buttonBackgroundColor: '#3E85F3',
     buttonBackgroundColorHover: '#2B78EF',
+    buttonPeriodColor: '#3E85F3',
     buttonShadow: '4px 2px 16px rgba(136, 165, 191, 0.3);',
     // comon colors
     mainBackgroundColor: '#21222C',
@@ -97,7 +120,7 @@ export const theme = {
     // AsideBar
     asideBarBackground: '#13151A',
     asideBarLogoText: '#FFFFFF',
-    asideBarTitle: '#585A5D',
+    asideBarTitle: '#FAFAFA4D',
     asideBarIcon: '#FFFFFF',
     asideBarIconActive: '#FFFFFF',
     asideBarLinkText: '#FFFFFF',
@@ -121,6 +144,16 @@ export const theme = {
     CalendarHead: '#FFFFFF',
     CurrentDate: '#FFFFFF',
 
+    //Modal
+    modalBorder: 'none',
+    modalCloseIcon: '#fff',
+
+    // TaskModal
+    taskModalTextColor: '#fff',
+    taskModalInputColor: '#171820',
+    taskModalLabelColor: '#5B5C61',
+    taskModalTitleColor: 'rgba(250, 250, 250, 0.30)',
+
     //WeekCalendar
     weekCalendarText: 'rgba(250, 250, 250, 0.3)',
 
@@ -132,9 +165,23 @@ export const theme = {
 
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
+
+    //CalendarToolbar
+    periodActiveColor: '#FFFFFF',
+    periodActiveBackgroundColor: '#3E85F3',
+    periodInactiveColor: '#3E85F3',
+    periodInactiveBackgroundColor: '#21222C',
+    periodBorder: '1px solid rgba(255, 255, 255, 0.15)',
   },
 
   // TaskModal
   taskModalInputColor: '#171820',
   taskModalLabelColor: '#5B5C61',
+
+  //LoginForm
+  loginInputColor: '#FFFFFF',
+  loginInputBorder: '#DCEBF7',
+  backgroundColorForm: '#111111',
+  errorTagColor: '#E74A3B',
+  correctTagColor: '#3CBC81',
 };

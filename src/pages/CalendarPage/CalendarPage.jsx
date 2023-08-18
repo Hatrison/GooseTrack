@@ -1,34 +1,42 @@
 import { useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setDates } from 'redux/date/dateSlice';
-import { format } from 'date-fns';
+import { useSelector } from 'react-redux';
+import { selectDate } from 'redux/date/selectors';
+import { TailSpin } from 'react-loader-spinner';
 import CalendarToolbar from 'components/CalendarToolbar';
+import { Suspense, SpinnerWrap } from 'components/MainLayout/MainLayout.styled';
 
 const CalendarPage = () => {
   const isFirstRender = useRef(true);
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
-  const currentDate = format(Date.now(), 'yyyy-MM-dd');
+  const currentDate = useSelector(selectDate);
 
   useEffect(() => {
     const { pathname } = location;
-
     if (isFirstRender.current) {
       isFirstRender.current = false;
 
-      if (!pathname.includes('/calendar/day/')) {
-        navigate(`/calendar/month/${currentDate}`);
-        dispatch(setDates(currentDate));
+      if (pathname.includes('/calendar/day/')) {
+        navigate(`/calendar/day/${currentDate}`, { replace: true });
+        return;
       }
+      navigate(`/calendar/month/${currentDate}`, { replace: true });
     }
-  }, [location, navigate, currentDate, dispatch]);
+  }, [location, navigate, currentDate]);
 
   return (
     <div>
       <CalendarToolbar />
-      <Outlet />
+      <Suspense
+        fallback={
+          <SpinnerWrap>
+            <TailSpin width={'70%'} height={'70%'} color={'#3E85F3'} />
+          </SpinnerWrap>
+        }
+      >
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

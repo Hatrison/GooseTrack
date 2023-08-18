@@ -1,14 +1,24 @@
-import { Link } from 'react-router-dom';
+import {
+  // useDispatch,
+  useSelector,
+} from 'react-redux';
 import { DayCalendarHead, TasksColumnsList } from 'components/ChoosedDay';
+import { selectTasks } from 'redux/tasks/selectors';
+import { selectDate } from 'redux/date/selectors';
+// import { useEffect } from 'react';
 
 const ChoosedDay = ({ propSelectedWeek }) => {
+  // const dispatch = useDispatch();
+  const { tasks } = useSelector(selectTasks);
+  const date = useSelector(selectDate);
+
+  // console.log(date);
+  // console.log(tasks);
+
   return (
     <div>
-      ChoosedDay
-      <br />
-      <Link to="/calendar/month/:currentDate">Month</Link>
-      <DayCalendarHead selectedWeek={propSelectedWeek} />
-      <TasksColumnsList />
+      <DayCalendarHead date={date} />
+      <TasksColumnsList tasks={tasks} actualDate={date} />
     </div>
   );
 };

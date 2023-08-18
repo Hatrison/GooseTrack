@@ -17,17 +17,22 @@ export const ListItem = styled.li`
   display: flex;
 `;
 export const StyledNavLink = styled(StyledLink)`
-  font-family: Inter;
-  color: ${({ theme }) => theme.accentColor};
-  background-color: ${({ theme }) => theme.buttonBackgroundColorAddTask};
+  font-family: Inter, sans-serif;
+
+  background-color: ${({ theme }) => theme.periodInactiveBackgroundColor};
+  color: ${({ theme }) => theme.periodInactiveColor};
   text-decoration: none;
 
   &.active {
-    background-color: #cae8ff;
+    background-color: ${({ theme }) => theme.periodActiveBackgroundColor};
+    color: ${({ theme }) => theme.periodActiveColor};
   }
   &.month {
     padding: 8px 16px;
+    border-right: ${({ theme }) => theme.periodBorder};
     border-radius: 8px 0 0 8px;
+
+    // border-right: ${({ theme }) => theme.periodBorder};
   }
   &.day {
     padding: 8px 25px;
