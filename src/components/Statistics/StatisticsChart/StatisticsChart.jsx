@@ -23,32 +23,28 @@ export const StatisticsChart = () => {
   console.log(selectedDate, tasks);
 
   //довжина масивів = кількість тасок за день та за місяць
-  const tasksByDay = tasks.tasks.filter(
-    task => task.date === selectedDate
-  ).length;
+  const tasksByDay = tasks.tasks.filter(task => task.date === selectedDate);
 
-  const taskByMonth = tasks.tasks.length;
+  const taskByMonth = tasks.tasks;
   console.log(tasksByDay, taskByMonth);
 
-  const todoByDay = tasks.tasks.filter(
-    task => task.category === 'to-do'
-  ).length;
+  const todoByDay = tasksByDay.filter(task => task.category === 'to-do').length;
 
-  const inprogressByDay = tasks.tasks.filter(
+  const inprogressByDay = tasksByDay.filter(
     task => task.category === 'inprogress'
   ).length;
 
-  const doneByDay = tasks.tasks.filter(task => task.category === 'done').length;
+  const doneByDay = tasksByDay.filter(task => task.category === 'done').length;
 
-  const todoByMonth = tasks.tasks.filter(
+  const todoByMonth = taskByMonth.filter(
     task => task.category === 'to-do'
   ).length;
 
-  const inprogressByMonth = tasks.tasks.filter(
+  const inprogressByMonth = taskByMonth.filter(
     task => task.category === 'in-progress'
   ).length;
 
-  const doneByMonth = tasks.tasks.filter(
+  const doneByMonth = taskByMonth.filter(
     task => task.category === 'done'
   ).length;
 
