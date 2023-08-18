@@ -21,7 +21,7 @@ const CalendarPage = () => {
         (pathname.includes(`/calendar/month/${currentDate}`) ||
           pathname.includes('currentDate'))
       ) {
-        navigate(`/calendar/month/${currentDate}`);
+        navigate(`/calendar/month/${currentDate}`, { replace: true });
       }
     }
   }, [location, navigate, currentDate]);
