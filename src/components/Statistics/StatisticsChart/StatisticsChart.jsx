@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import {
   BarChart,
   Bar,
@@ -10,7 +12,23 @@ import {
   Label,
 } from 'recharts';
 
+// підписка на дату та таски із редаксу
+import { selectDate } from 'redux/date/selectors';
+import { selectTasks } from 'redux/tasks/selectors';
+
 export const StatisticsChart = ({ data }) => {
+  // берем данні із редакса, таски = tasks.tasks
+  const selectedDate = useSelector(selectDate);
+  const tasks = useSelector(selectTasks);
+  console.log(selectedDate, tasks);
+
+  //довжина масивів = кількість тасок за день та за місяць
+  const tasksByDay = tasks.tasks.filter(
+    task => task.date === selectedDate
+  ).length;
+  const taskByMonth = tasks.tasks.length;
+  console.log(tasksByDay, taskByMonth);
+
   const columns = [
     {
       name: 'To Do',

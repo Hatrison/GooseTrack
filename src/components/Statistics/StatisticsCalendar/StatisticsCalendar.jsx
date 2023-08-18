@@ -16,12 +16,6 @@ export const StatisticsCalendar = () => {
     dispatch(setDates(formattedNewDate));
   };
 
-  // const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
-  //   <button className="custom-input" onClick={onClick} ref={ref}>
-  //     {value}
-  //   </button>
-  // ));
-
   return (
     <DatePicker
       selected={new Date(selectedDate)}
