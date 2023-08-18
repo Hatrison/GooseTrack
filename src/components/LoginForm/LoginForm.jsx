@@ -81,25 +81,6 @@ const LoginForm = () => {
               </IconContainer>
 
               {touched.email && errors.email && (
-                <ErrorTag>This is an ERROR email</ErrorTag>
-              )}
-              {touched.email && !errors.email && (
-                <CorrectTag>This is an CORRECT email</CorrectTag>
-              )}
-
-              <FormField
-                htmlFor="password"
-                style={{
-                  color:
-                    (touched.password && errors.password && '#E74A3B') ||
-                    (touched.password && !errors.password && '#3CBC81'),
-                }}
-              >
-                Password
-              </FormField>
-              <IconContainer></IconContainer>
-
-              {touched.email && errors.email && (
                 <ErrorTag>Invalid email format</ErrorTag>
               )}
               {touched.email && !errors.email && (
