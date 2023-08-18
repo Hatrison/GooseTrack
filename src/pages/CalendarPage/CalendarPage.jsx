@@ -24,15 +24,12 @@ const CalendarPage = () => {
         dispatch(setDates(currentDate));
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  useEffect(() => {
     if (pathname === '/calendar' || pathname === '/calendar/') {
       navigate(`/calendar/month/${currentDate}`, { replace: true });
       dispatch(setDates(currentDate));
     }
-  }, [location, navigate, currentDate, dispatch, pathname]);
+  }, [currentDate, dispatch, navigate, pathname]);
 
   return (
     <div>
