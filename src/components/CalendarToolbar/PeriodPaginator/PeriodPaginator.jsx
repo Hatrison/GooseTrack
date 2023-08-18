@@ -25,16 +25,16 @@ export const PeriodPaginator = ({ type }) => {
   const normalizedDate = useSelector(selectDate);
 
   useEffect(() => {
-    if (params.currentDay) {
-      if (normalizedDate !== params.currentDay) {
-        dispatch(setDates(params.currentDay));
+    if (params.currentDate && params.currentDate !== ':currentDate') {
+      if (normalizedDate !== params.currentDate) {
+        dispatch(setDates(params.currentDate));
       }
     }
-  }, [dispatch, normalizedDate, params.currentDay]);
+  }, [dispatch, normalizedDate, params.currentDate]);
 
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
 
-  const onChangeDate1 = e => {
+  const onChangeDate = e => {
     const period = `${type}s`;
     const newDate =
       e.currentTarget.name === 'addition'
@@ -62,7 +62,7 @@ export const PeriodPaginator = ({ type }) => {
             type="button"
             name="subtraction"
             className="subtraction"
-            onClick={onChangeDate1}
+            onClick={onChangeDate}
           >
             <LeftArrow />
           </Btn>
@@ -72,7 +72,7 @@ export const PeriodPaginator = ({ type }) => {
             type="button"
             name="addition"
             className="addition"
-            onClick={onChangeDate1}
+            onClick={onChangeDate}
           >
             <RightArrow />
           </Btn>
