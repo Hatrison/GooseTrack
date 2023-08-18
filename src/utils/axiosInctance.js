@@ -9,6 +9,10 @@ const setAuthHeader = token => {
   }
   instance.defaults.headers.common.Authorization = '';
 };
+instance.interceptors.request.use(config => {
+  const accessToken = localStorage.getItem('accessToken');
+  setAuthHeader(accessToken);
+});
 instance.interceptors.response.use(
   responce => responce,
   async error => {
@@ -20,7 +24,7 @@ instance.interceptors.response.use(
       setAuthHeader(refreshToken);
       const { data } = await instance.get('api/auth/refresh');
       setAuthHeader(data.accessToken);
-      localStorage.setItem(data.refreshToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
       return instance(error.config);
     }
     if (
