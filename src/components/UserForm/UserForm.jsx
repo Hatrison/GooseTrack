@@ -6,7 +6,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
-import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
@@ -32,54 +31,15 @@ const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthDate, setBirthDate] = useState(null);
 
-  // const handleSubmit = async ({
-  //   name,
-  //   email,
-  //   phone,
-  //   skype,
-  //   birthday,
-  //   avatarURL,
-  // }) => {
-  //   const formData = new FormData();
-  //   formData.append('name', name);
-  //   formData.append('email', email);
-  //   if (phone) {
-  //     formData.append('phone', phone);
-  //   }
-  //   if (skype) {
-  //     formData.append('skype', skype);
-  //   }
-  //   formData.append(
-  //     'birthday',
-  //     birthDate ? dayjs(birthDate).format('YYYY/MM/DD') : ''
-  //   );
-  //   if (avatarURL) {
-  //     formData.append('avatar', avatarURL);
-  //   }
-  //   try {
-  //     await dispatch(updateUser(formData));
-  //     toast.success('Profile data changed successfully');
-  //   } catch {
-  //     toast.error('Something went wrong... Try again!');
-  //   }
-  // };
-
-  const handleSubmit = async ({
-    name,
-    email,
-    phone,
-    skype,
-    birthday,
-    avatarURL,
-  }) => {
+  const handleSubmit = async values => {
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    if (phone) {
-      formData.append('phone', phone);
+    formData.append('name', values.name);
+    formData.append('email', values.email);
+    if (values.phone) {
+      formData.append('phone', values.phone);
     }
-    if (skype) {
-      formData.append('skype', skype);
+    if (values.skype) {
+      formData.append('skype', values.skype);
     }
     formData.append(
       'birthday',
