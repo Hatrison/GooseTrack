@@ -1,6 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+// підписка на дату та таски із редаксу
+import { selectDate } from 'redux/date/selectors';
+import { selectTasks } from 'redux/tasks/selectors';
+
 import {
   BarChart,
   Bar,
@@ -12,11 +16,7 @@ import {
   Label,
 } from 'recharts';
 
-// підписка на дату та таски із редаксу
-import { selectDate } from 'redux/date/selectors';
-import { selectTasks } from 'redux/tasks/selectors';
-
-export const StatisticsChart = ({ data }) => {
+export const StatisticsChart = () => {
   // берем данні із редакса, таски = tasks.tasks
   const selectedDate = useSelector(selectDate);
   const tasks = useSelector(selectTasks);
@@ -26,25 +26,52 @@ export const StatisticsChart = ({ data }) => {
   const tasksByDay = tasks.tasks.filter(
     task => task.date === selectedDate
   ).length;
+
   const taskByMonth = tasks.tasks.length;
   console.log(tasksByDay, taskByMonth);
+
+  const todoByDay = tasks.tasks.filter(
+    task => task.category === 'to-do'
+  ).length;
+
+  const inprogressByDay = tasks.tasks.filter(
+    task => task.category === 'inprogress'
+  ).length;
+
+  const doneByDay = tasks.tasks.filter(task => task.category === 'done').length;
+
+  const todoByMonth = tasks.tasks.filter(
+    task => task.category === 'to-do'
+  ).length;
+
+  const inprogressByMonth = tasks.tasks.filter(
+    task => task.category === 'in-progress'
+  ).length;
+
+  const doneByMonth = tasks.tasks.filter(
+    task => task.category === 'done'
+  ).length;
+
+  const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
+  const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
 
   const columns = [
     {
       name: 'To Do',
-      byDay: `${0.1 * 100}`,
-      byMonth: `${0.2 * 100}`,
+      byDay: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}%`,
+      byMonth: `${Math.round((todoByMonth / allTasksByMonth) * 100) || 0}%`,
     },
-
     {
       name: 'In Progress',
-      byDay: `${0.3 * 100}`,
-      byMonth: `${0.4 * 100}`,
+      byDay: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
+      byMonth: `${
+        Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0
+      }%`,
     },
     {
       name: 'Done',
-      byDay: `${0.5 * 100}`,
-      byMonth: `${0.6 * 100}`,
+      byDay: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}%`,
+      byMonth: `${Math.round((doneByMonth / allTasksByMonth) * 100) || 0}%`,
     },
   ];
 
@@ -136,7 +163,6 @@ export const StatisticsChart = ({ data }) => {
             fontSize={16}
             fontWeight={500}
             stroke={'#343434'}
-            // content={percentagesLabel}
           />
         </Bar>
       </BarChart>
