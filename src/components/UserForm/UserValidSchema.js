@@ -18,7 +18,7 @@ export const UserValidSchema = () =>
         'The phone number must start with +380 and be 9 digits long'
       )
       .min(13, 'Phone is too Short!')
-      .max(17, 'Phone is too Long!')
+      .max(13, 'Phone is too Long!')
       .notRequired(),
     skype: Yup.string()
       .matches(regexSkype, 'Skype must be between 3 and 16 characters')

@@ -31,22 +31,47 @@ const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthDate, setBirthDate] = useState(null);
 
-  const handleSubmit = async ({
-    name,
-    email,
-    phone,
-    skype,
-    birthday,
-    avatarURL,
-  }) => {
+  // const handleSubmit = async ({
+  //   name,
+  //   email,
+  //   phone,
+  //   skype,
+  //   birthday,
+  //   avatarURL,
+  // }) => {
+  //   const formData = new FormData();
+  //   formData.append('name', name);
+  //   formData.append('email', email);
+  //   if (phone) {
+  //     formData.append('phone', phone);
+  //   }
+  //   if (skype) {
+  //     formData.append('skype', skype);
+  //   }
+  //   formData.append(
+  //     'birthday',
+  //     birthDate ? dayjs(birthDate).format('YYYY/MM/DD') : ''
+  //   );
+  //   if (avatarURL) {
+  //     formData.append('avatar', avatarURL);
+  //   }
+  //   try {
+  //     await dispatch(updateUser(formData));
+  //     toast.success('Profile data changed successfully');
+  //   } catch {
+  //     toast.error('Something went wrong... Try again!');
+  //   }
+  // };
+
+  const handleSubmit = async values => {
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    if (phone) {
-      formData.append('phone', phone);
+    formData.append('name', values.name);
+    formData.append('email', values.email);
+    if (values.phone) {
+      formData.append('phone', values.phone);
     }
-    if (skype) {
-      formData.append('skype', skype);
+    if (values.skype) {
+      formData.append('skype', values.skype);
     }
     formData.append(
       'birthday',
@@ -78,8 +103,8 @@ const UserForm = () => {
       >
         {({ values, setFieldValue }) => (
           <Form>
-            <AvatarWrapper>
-              <div>
+            <div>
+              <AvatarWrapper>
                 {avatarURL ? (
                   <label htmlFor="avatar">
                     <ImgAvatar
@@ -96,7 +121,7 @@ const UserForm = () => {
                     <ImgAvatar src={defaultAvatar} alt="Avatar" />
                   </DefaultAvatar>
                 )}
-              </div>
+              </AvatarWrapper>
               <FieldAdd
                 id="add-avatar"
                 name="avatar"
@@ -109,7 +134,7 @@ const UserForm = () => {
               <label htmlFor="add-avatar">
                 <AddIcon />
               </label>
-            </AvatarWrapper>
+            </div>
             <h1>{userInfo.name}</h1>
             <p>User</p>
             <UserWrapper>
@@ -132,7 +157,7 @@ const UserForm = () => {
                         },
                       }}
                       views={['year', 'month', 'day']}
-                      format="YYYY-MM-DD"
+                      format="YYYY/MM/DD"
                       closeOnSelect={true}
                       disableFuture={true}
                       onChange={date => {

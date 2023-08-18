@@ -9,8 +9,8 @@ export const Form = styled(FormikForm)`
   position: relative;
   padding-top: 59px;
   padding-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 18px;
+  padding-right: 18px;
   background-color: ${({ theme }) => theme.mainBackgroundColor};
   border-radius: ${({ theme }) => theme.bordeRadius};
 
@@ -18,7 +18,7 @@ export const Form = styled(FormikForm)`
     align-items: center;
     padding-top: 40px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1400px) {
     padding-top: 60px;
     padding-bottom: 60px;
   }
@@ -90,8 +90,8 @@ export const UserInfo = styled.div`
 
 export const AddIcon = styled(plus)`
   position: absolute;
-  left: 62%;
-  bottom: -6px;
+  left: 53%;
+  top: 25px;
   width: 14px;
   height: 14px;
   cursor: pointer;
