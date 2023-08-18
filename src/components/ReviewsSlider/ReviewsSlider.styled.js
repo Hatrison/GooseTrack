@@ -122,7 +122,6 @@ export const Text = styled.p`
   opacity: 0.7;
   width: 100%;
   height: 72px;
-  /* overflow: auto; */
 `;
 
 export const ArrowLeft = styled(ArrowBack)`
