@@ -52,25 +52,14 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
     setIsChangeDirOpened(prevState => !prevState);
   };
 
-  const handleTransfer = task => {
-    const modifiedTask = { ...task };
-
-    switch (modifiedTask.category) {
-      case 'Done':
-        modifiedTask.category = 'done';
-        break;
-      case 'In progress':
-        modifiedTask.category = 'in-progress';
-        break;
-      case 'To do':
-        modifiedTask.category = 'to-do';
-        break;
-      default:
-        break;
-    }
-
-    dispatch(updateTask(modifiedTask));
+  const modifyCategory = task => {
+    const { category } = task;
+    const categoryLowerCase = category.toLowerCase();
+    const splitedCategory = categoryLowerCase.split(' ');
+    const modifiedCategory = splitedCategory.join('-');
+    return { ...task, category: modifiedCategory };
   };
+
   const onOverlayClick = event => {
     if (event.target === event.currentTarget) {
       handleModalToggle();
@@ -85,11 +74,15 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
         </Btn>
         {isChangeDirOpened && (
           <div>
-            <TaskDirModalOverlay onClick={onOverlayClick}></TaskDirModalOverlay>
+            <TaskDirModalOverlay onClick={onOverlayClick} />
             <ChangeTaskDirModal>
               {newItemArray.map(newItem => (
                 <li key={newItem.category}>
-                  <ModalBtn onClick={() => handleTransfer(newItem)}>
+                  <ModalBtn
+                    onClick={() =>
+                      dispatch(updateTask(modifyCategory(newItem)))
+                    }
+                  >
                     {newItem.category}
                     <ChangeDirIconModal />
                   </ModalBtn>
