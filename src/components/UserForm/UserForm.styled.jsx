@@ -4,6 +4,7 @@ import {
   Field as FormikFieldAdd,
   Field as Input,
 } from 'formik';
+import { DatePicker } from '@mui/x-date-pickers';
 import { ReactComponent as plus } from '../../images/account/plus.svg';
 
 export const WrapperForm = styled.div`
@@ -155,6 +156,9 @@ export const BtnSave = styled.button`
   &:focus {
     background-color: ${({ theme }) => theme.buttonBackgroundColorHover};
   }
+  &:disabled {
+    opacity: 0.45;
+  }
 
   @media (min-width: 768px) {
     min-width: 262px;
@@ -209,5 +213,49 @@ export const User = styled.p`
   }
   @media (min-width: 1440px) {
     margin-bottom: 44px;
+  }
+`;
+
+export const DatePickerStyled = styled(DatePicker)`
+  input {
+    padding-left: 0px;
+    color: ${({ theme }) => theme.inputText};
+  }
+  input::placeholder {
+    font-size: 14px;
+    color: ${({ theme }) => theme.inputText};
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  /* Input value */
+  .MuiInputBase-root {
+    position: relative;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .MuiButtonBase-root {
+    color: ${({ theme }) => theme.inputText};
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border: 1px solid #11111126;
+  }
+
+  .MuiOutlinedInput-root {
+    min-width: 250px;
+    height: 44px;
+    padding-left: 14px;
+    padding-right: 14px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+
+    .MuiOutlinedInput-notchedOutline {
+      border: 1px solid rgba(17, 17, 17, 0.1);
+    }
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border: 1px solid #111111;
+    }
   }
 `;

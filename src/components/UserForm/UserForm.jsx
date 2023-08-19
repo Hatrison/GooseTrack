@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/user/selectors';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -13,6 +13,7 @@ import {
   AddIcon,
   AvatarWrapper,
   BtnSave,
+  DatePickerStyled,
   FieldAdd,
   Form,
   ImgAvatar,
@@ -117,7 +118,7 @@ const UserForm = () => {
                 <Label>
                   Birthday
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
+                    <DatePickerStyled
                       name="birthday"
                       type="date"
                       slotProps={{
@@ -140,7 +141,7 @@ const UserForm = () => {
                 <div>
                   <Label>
                     Email
-                    <InputInfo name="email" type="email" />
+                    <InputInfo name="email" type="email" disabled />
                     <ErrorMessage name="email" component="span" />
                   </Label>
                 </div>
@@ -169,7 +170,10 @@ const UserForm = () => {
               </UserInfo>
             </UserWrapper>
 
-            <BtnSave type="submit" disabled={!touched || !dirty}>
+            <BtnSave
+              type="submit"
+              disabled={isSubmitting || !touched || !dirty}
+            >
               Save changes
             </BtnSave>
           </Form>
