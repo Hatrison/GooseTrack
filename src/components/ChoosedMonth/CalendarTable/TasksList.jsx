@@ -1,6 +1,19 @@
+import { useWindowSize } from 'hooks/useWindowSize';
 import { StyledListTasks } from './TasksList.styled';
 
 export const TasksList = ({ tasks, openModal, currentTask }) => {
+  const size = useWindowSize();
+
+  const cutTitle = title => {
+    if (size.width < 767) {
+      return title.substring(0, 5) + '...';
+    }
+    if (title.length > 10) {
+      return title.substring(0, 10) + '...';
+    }
+    return title;
+  };
+
   return (
     <StyledListTasks>
       {tasks.map((task, index) => {
@@ -16,7 +29,7 @@ export const TasksList = ({ tasks, openModal, currentTask }) => {
               currentTask(task);
             }}
           >
-            {task.title}
+            {cutTitle(task.title)}
           </li>
         );
       })}
