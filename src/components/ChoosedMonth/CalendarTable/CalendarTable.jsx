@@ -6,9 +6,8 @@ import { useDispatch } from 'react-redux';
 import { endOfMonth, getDay, startOfMonth, eachDayOfInterval } from 'date-fns';
 import { setDates } from 'redux/date/dateSlice';
 import { useState } from 'react';
-import { TaskModal } from 'shared/components/TaskModal/TaskModal';
-import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
-import { EmptyCells } from 'components/EmptyCells';
+// import { TaskModal } from 'shared/components/TaskModal/TaskModal';
+// import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import { DaysWithTasks } from './DaysWithTasks';
 
 export default function CalendarTable({ tasks, currentDate }) {
@@ -22,6 +21,12 @@ export default function CalendarTable({ tasks, currentDate }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const EmptyCells = firstDayOfMonth => {
+    return Array.from({ length: firstDayOfMonth }, (_, index) => (
+      <td key={`empty-${index}`}></td>
+    ));
+  };
 
   const daysWithTasks = daysOfMonth.map(day => ({
     date: format(day, 'yyyy-MM-dd'),
@@ -81,7 +86,7 @@ export default function CalendarTable({ tasks, currentDate }) {
           <tbody>{rows}</tbody>
         </StyledTable>
       </OverflowWrapper>
-      {isOpened && (
+      {/* {isOpened && (
         <TaskModal
           date={formattedDate()}
           type={TASK_MODAL_TYPES.edit}
@@ -93,7 +98,7 @@ export default function CalendarTable({ tasks, currentDate }) {
           end={selectedTask.end}
           priority={selectedTask.priority}
         />
-      )}
+      )} */}
     </>
   );
 }
