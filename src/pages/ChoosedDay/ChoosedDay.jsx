@@ -1,14 +1,9 @@
-import {
-  // useDispatch,
-  useSelector,
-} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { DayCalendarHead, TasksColumnsList } from 'components/ChoosedDay';
 import { selectTasks } from 'redux/tasks/selectors';
 import { selectDate } from 'redux/date/selectors';
-// import { useEffect } from 'react';
 
-const ChoosedDay = ({ propSelectedWeek }) => {
-  // const dispatch = useDispatch();
+const ChoosedDay = () => {
   const { tasks } = useSelector(selectTasks);
   const date = useSelector(selectDate);
 
