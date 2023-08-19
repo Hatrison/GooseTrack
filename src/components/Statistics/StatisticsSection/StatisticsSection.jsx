@@ -5,13 +5,14 @@ import {
   PeriodTime,
   Period,
   ChartContainer,
+  StatisticsWrapper,
 } from './StatisticsSection.styled';
 import { StatisticsCalendar } from '../StatisticsCalendar/StatisticsCalendar';
 import { PeriodPaginator } from 'components/CalendarToolbar/PeriodPaginator/PeriodPaginator';
 
 const StatisticsSection = () => {
   return (
-    <div>
+    <StatisticsWrapper>
       <HeadContainer>
         <div style={{ position: 'relative' }}>
           <PeriodPaginator type={'day'} />
@@ -29,7 +30,7 @@ const StatisticsSection = () => {
       <ChartContainer>
         <StatisticsChart />
       </ChartContainer>
-    </div>
+    </StatisticsWrapper>
   );
 };
 

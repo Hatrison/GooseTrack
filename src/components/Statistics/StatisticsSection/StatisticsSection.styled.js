@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 
+export const StatisticsWrapper = styled.div`
+  width: 100%;
+
+  @media screen and (min-width: 390px) and (max-width: 768px) {
+    max-width: 500px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    max-width: 862px;
+  }
+`;
+
 export const ChartContainer = styled.div`
   position: relative;
   margin-top: auto;
-  /* width: 100%; */
+  width: 100%;
   border-radius: 29px;
   border: 0.8px solid #e3f3ff;
-  @media screen and (max-width: 375px) {
-    max-width: 307px;
-  }
 
   @media screen and (min-width: 376px) and (max-width: 768px) {
-    width: 307px;
     height: 413px;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -20,7 +28,6 @@ export const ChartContainer = styled.div`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    width: 640px;
     height: 424px;
     padding-top: 32px;
     padding-bottom: 32px;
@@ -29,7 +36,6 @@ export const ChartContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 860px;
     height: 440px;
     padding: 40px;
   }
