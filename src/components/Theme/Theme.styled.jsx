@@ -92,6 +92,12 @@ export const theme = {
     periodInactiveColor: '#3E85F3',
     periodInactiveBackgroundColor: '#E3F3FF',
     periodBorder: '1px solid rgba(62, 133, 243, 0.20)',
+
+    //ChoosedMonth
+    monthBackgroundColor: '#FFFFFF',
+    cellBorder: '1px solid rgba(220, 227, 229, 0.80)',
+    monthMainColor: '#343434',
+    monthHolidayColor: '#3E85F3',
   },
 
   // Стилі для темної теми

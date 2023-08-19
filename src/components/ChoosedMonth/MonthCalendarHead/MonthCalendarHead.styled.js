@@ -6,11 +6,11 @@ export const StyledList = styled.ul`
 
   padding: 14px 0px;
 
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: ${({ theme }) => theme.cellBorder};
   border-radius: 8px;
   margin-bottom: 14px;
 
-  background-color: ${props => props.theme.bcgTernary};
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
 
   @media (min-width: 768px) {
     margin-bottom: 18px;
@@ -20,10 +20,10 @@ export const StyledList = styled.ul`
   }
 `;
 export const StyledItem = styled.li`
-  color: ${props =>
+  color: ${({ theme, props }) =>
     props.item === 'SAT' || props.item === 'SUN'
-      ? 'var(--main-blue-color);'
-      : props.theme.calendarHeadDate};
+      ? theme.monthHolidayColor
+      : theme.monthMainColor};
 
   .full-name {
     display: block;
