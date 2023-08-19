@@ -77,7 +77,7 @@ export const Field = styled(FormikField)`
   outline: none;
   padding: 14px;
   color: ${({ theme }) => theme.loginInputColor};
-border: ${({ theme }) => theme.loginInputBorder};
+  border: ${({ theme }) => theme.loginInputBorder};
   border: 1px solid rgba(220, 227, 229, 0.6);
   border-radius: 8px;
   margin-top: 10px;
@@ -85,6 +85,18 @@ border: ${({ theme }) => theme.loginInputBorder};
   :hover,
   :focus {
     border-color: #290b78;
+  }
+
+  ::placeholder {
+    font-family: 'InterSemiBolt', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 18px;
+    color: rgba(17, 17, 17, 0.15);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 18px;
   }
 `;
 
@@ -97,6 +109,10 @@ export const ToggleHidePassword = styled.span`
   right: 12px;
   top: 12px;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    top: 16px;
+  }
 `;
 
 export const SubmitBtn = styled.button`
@@ -187,5 +203,5 @@ export const CorrectTag = styled.div`
 `;
 
 export const IconContainer = styled.div`
-position: relative;
+  position: relative;
 `;
