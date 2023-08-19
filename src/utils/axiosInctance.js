@@ -23,7 +23,7 @@ instance.interceptors.response.use(
       const refreshToken = localStorage.getItem('refreshToken');
       setAuthHeader(refreshToken);
       const { data } = await instance.get('api/auth/refresh');
-
+      setAuthHeader(data.accessToken);
       error.config.headers.authorization = `Bearer ${data.accessToken}`;
       localStorage.setItem('refreshToken', data.refreshToken);
       return instance(error.config);
