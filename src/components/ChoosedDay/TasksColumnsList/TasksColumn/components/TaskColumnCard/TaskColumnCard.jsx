@@ -15,7 +15,6 @@ import { deleteTask } from 'redux/tasks/operations';
 
 export const TaskColumnCard = ({ item, title }) => {
   const { avatarURL, name } = useSelector(selectUser);
-  // console.log('TaskColumnCard', items);
 
   const dispatch = useDispatch();
 

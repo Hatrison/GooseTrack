@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.li`
+  display: flex;
+  flex-direction: column;
   padding-left: 14px;
   padding-top: 18px;
   padding-right: 18px;
@@ -9,7 +11,7 @@ export const Container = styled.li`
 
   min-width: 335px;
   width: 100%;
-
+  height: 100%;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.tasksColumnBorder};
   background: ${props => props.theme.mainBackgroundColor};
