@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const StyledListTasks = styled.ul`
   display: flex;
@@ -26,10 +26,11 @@ export const StyledListTasks = styled.ul`
       scale: 1.05;
     }
   }
-  .low {
-    background-color: #ceeefd;
-    color: #3e85f3;
-  }
+
+  // .low {
+  //   background-color: #ceeefd;
+  //   color: #3e85f3;
+  // }
   .medium {
     color: #f3b249;
     background-color: #fcf0d4;
@@ -38,6 +39,19 @@ export const StyledListTasks = styled.ul`
     color: #ea3d65;
     background-color: #ffd2dd;
   }
+
+  .low {
+    color: ${({ theme }) => theme.lowPriorityColor};
+    background-color: ${({ theme }) => theme.lowPriorityBackgoundColor};
+  }
+  // .medium {
+  //   color: ${({ theme }) => theme.mediumPriorityColor};
+  //   background-color: ${({ theme }) => theme.mediumPriorityBackgroundColor};
+  // }
+  // .high {
+  //   color: ${({ theme }) => theme.highPriorityColor};
+  //   background-color: ${({ theme }) => theme.highPriorityBackgroundColor};
+  // }
 
   @media (min-width: 768px) {
     li {

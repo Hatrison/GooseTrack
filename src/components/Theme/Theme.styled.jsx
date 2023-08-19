@@ -100,6 +100,14 @@ export const theme = {
     monthHolidayColor: '#3E85F3',
     tableBorder: '1px solid rgba(220, 227, 229, 0.80)',
     calendarDate: '#343434',
+
+    lowPriorityColor: '#3e85f3',
+    mediumPriorityColor: '#f3b249',
+    hightPriorityColor: '#ea3d65',
+
+    lowPriorityBackgoundColor: '#ceeefd;',
+    mediumPriorityBackgoundColor: '#fcf0d4',
+    hightPriorityBackgoundColor: '#ffd2dd',
   },
 
   // Стилі для темної теми
@@ -186,6 +194,16 @@ export const theme = {
     cellBorder: '1px solid rgba(255, 255, 255, 0.15)',
     monthMainColor: '#FFFFFF',
     monthHolidayColor: '#3E85F3',
+    tableBorder: '1px solid rgba(255, 255, 255, 0.15);',
+    calendarDate: '#FFFFFF',
+
+    lowPriorityColor: '#3e85f3',
+    mediumPriorityColor: '#f3b249',
+    hightPriorityColor: '#ea3d65',
+
+    lowPriorityBackgoundColor: '#ceeefd;',
+    mediumPriorityBackgoundColor: '#fcf0d4',
+    hightPriorityBackgoundColor: '#ffd2dd',
   },
 
   // TaskModal
