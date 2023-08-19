@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/917.522f8b36.chunk.js","mappings":"iMAIA,EAJ0B,WACxB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,qBACd,C","sources":["pages/PasswordResetPage/PasswordResetPage.jsx"],"sourcesContent":["const PasswordResetPage = () => {\n  return <div>PasswordResetPage</div>;\n};\n\nexport default PasswordResetPage;\n"],"names":["_jsx","children"],"sourceRoot":""}
