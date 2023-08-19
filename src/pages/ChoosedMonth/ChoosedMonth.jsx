@@ -13,15 +13,15 @@ const ChoosedMonth = () => {
   const startMonth = startOfMonth(new Date(currentDate));
   const endMonth = endOfMonth(new Date(currentDate));
 
-  const filteredDates = tasks.tasks.filter(task => {
-    const date = new Date(task.date);
-    return isWithinInterval(date, { start: startMonth, end: endMonth });
-  });
+  // const filteredDates = tasks.tasks.filter(task => {
+  //   const date = new Date(task.date);
+  //   return isWithinInterval(date, { start: startMonth, end: endMonth });
+  // });
 
   return (
     <Wrapper>
       <MonthCalendarHead />
-      <CalendarTable tasks={filteredDates} currentDate={currentDate} />
+      <CalendarTable tasks={tasks.tasks} currentDate={currentDate} />
     </Wrapper>
   );
 };

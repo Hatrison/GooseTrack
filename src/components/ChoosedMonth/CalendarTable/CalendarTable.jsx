@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux';
 import { endOfMonth, getDay, startOfMonth, eachDayOfInterval } from 'date-fns';
 import { setDates } from 'redux/date/dateSlice';
 import { useState } from 'react';
-// import { TaskModal } from 'shared/components/TaskModal/TaskModal';
+//import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 // import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import { DaysWithTasks } from './DaysWithTasks';
 
-export default function CalendarTable({ tasks, currentDate }) {
+const CalendarTable = ({ tasks, currentDate }) => {
   const [isOpened, setOpening] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
@@ -22,7 +22,7 @@ export default function CalendarTable({ tasks, currentDate }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const EmptyCells = firstDayOfMonth => {
+  const tableCreator = firstDayOfMonth => {
     return Array.from({ length: firstDayOfMonth }, (_, index) => (
       <td key={`empty-${index}`}></td>
     ));
@@ -60,7 +60,7 @@ export default function CalendarTable({ tasks, currentDate }) {
 
   const rows = [];
 
-  let cells = EmptyCells(firstDayOfMonth);
+  let cells = tableCreator(firstDayOfMonth);
 
   daysWithTasks.forEach((day, index) => {
     cells.push(
@@ -101,7 +101,7 @@ export default function CalendarTable({ tasks, currentDate }) {
       )} */}
     </>
   );
-}
+};
 CalendarTable.propTypes = {
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
@@ -117,3 +117,5 @@ CalendarTable.propTypes = {
   ),
   currentDate: PropTypes.string.isRequired,
 };
+
+export default CalendarTable;

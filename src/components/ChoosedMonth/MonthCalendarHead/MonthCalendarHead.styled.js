@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const StyledList = styled.ul`
   display: flex;
@@ -20,10 +20,10 @@ export const StyledList = styled.ul`
   }
 `;
 export const StyledItem = styled.li`
-  color: ${({ theme, props }) =>
+  color: ${props =>
     props.item === 'SAT' || props.item === 'SUN'
-      ? theme.monthHolidayColor
-      : theme.monthMainColor};
+      ? props.theme.monthHolidayColor
+      : props.theme.monthMainColor};
 
   .full-name {
     display: block;
