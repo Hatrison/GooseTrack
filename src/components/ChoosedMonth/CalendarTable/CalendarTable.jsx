@@ -6,8 +6,7 @@ import { useDispatch } from 'react-redux';
 import { endOfMonth, getDay, startOfMonth, eachDayOfInterval } from 'date-fns';
 import { setDates } from 'redux/date/dateSlice';
 import { useState } from 'react';
-//import { TaskModal } from 'shared/components/TaskModal/TaskModal';
-// import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
+
 import { DaysWithTasks } from './DaysWithTasks';
 
 const CalendarTable = ({ tasks, currentDate }) => {
