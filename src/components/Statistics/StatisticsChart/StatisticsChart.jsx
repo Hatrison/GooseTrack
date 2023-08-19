@@ -17,6 +17,7 @@ import {
   LabelList,
   ResponsiveContainer,
   Label,
+  Tooltip,
 } from 'recharts';
 
 export const StatisticsChart = () => {
@@ -33,7 +34,7 @@ export const StatisticsChart = () => {
   // берем данні із редакса, таски = tasks.tasks
   const selectedDate = useSelector(selectDate);
   const tasks = useSelector(selectTasks);
-  console.log(selectedDate, tasks);
+  // console.log(selectedDate, tasks);
 
   //довжина масивів = кількість тасок за день та за місяць
   const tasksByDay = tasks.tasks.filter(task => task.date === selectedDate);
@@ -46,10 +47,10 @@ export const StatisticsChart = () => {
   const inprogressByDay = tasksByDay.filter(
     task => task.category === 'in-progress'
   ).length;
-  //console.log(inprogressByDay);
+  // console.log(inprogressByDay);
 
   const doneByDay = tasksByDay.filter(task => task.category === 'done').length;
-  //console.log(doneByDay);
+  // console.log(doneByDay);
 
   const todoByMonth = taskByMonth.filter(
     task => task.category === 'to-do'
@@ -65,16 +66,19 @@ export const StatisticsChart = () => {
 
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
-  console.log(allTasksByDay, allTasksByMonth, todoByDay, todoByMonth);
-
+  // console.log(allTasksByDay, allTasksByMonth, todoByDay, todoByMonth);
   const columns = [
     {
       name: 'To Do',
+      dv: todoByDay,
+      mv: todoByMonth,
       byDay: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}%`,
       byMonth: `${Math.round((todoByMonth / allTasksByMonth) * 100) || 0}%`,
     },
     {
       name: 'In Progress',
+      dv: inprogressByDay,
+      mv: inprogressByMonth,
       byDay: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
       byMonth: `${
         Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0
@@ -82,13 +86,16 @@ export const StatisticsChart = () => {
     },
     {
       name: 'Done',
+      dv: doneByDay,
+      mv: doneByMonth,
       byDay: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}%`,
       byMonth: `${Math.round((doneByMonth / allTasksByMonth) * 100) || 0}%`,
     },
   ];
+  // console.log(columns);
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer>
       <BarChart
         data={columns}
         margin={{
@@ -147,6 +154,7 @@ export const StatisticsChart = () => {
             Tasks
           </Label>
         </YAxis>
+        <Tooltip />
         <Bar
           name="By Day"
           dataKey="byDay"
@@ -156,6 +164,7 @@ export const StatisticsChart = () => {
           minPointSize={10}
         >
           <LabelList
+            dataKey="dp"
             position="top"
             fontSize={16}
             fontWeight={500}
@@ -171,6 +180,7 @@ export const StatisticsChart = () => {
           minPointSize={10}
         >
           <LabelList
+            dataKey="mp"
             position="top"
             fontSize={16}
             fontWeight={500}

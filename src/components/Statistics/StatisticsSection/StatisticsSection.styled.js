@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const ChartContainer = styled.div`
-  /* position: relative; */
+  position: relative;
   margin-top: auto;
-  width: 100%;
+  /* width: 100%; */
   border-radius: 29px;
   border: 0.8px solid #e3f3ff;
   @media screen and (max-width: 375px) {
