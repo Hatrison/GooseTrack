@@ -12,10 +12,15 @@ import { updateUser } from '../../redux/user/operations';
 import {
   AddIcon,
   AvatarWrapper,
+  BtnSave,
   FieldAdd,
   Form,
   ImgAvatar,
+  InputInfo,
+  Label,
+  User,
   UserInfo,
+  UserTitle,
   UserWrapper,
   WrapperForm,
 } from './UserForm.styled';
@@ -60,14 +65,14 @@ const UserForm = () => {
         validationSchema={UserValidSchema}
         initialValues={{
           name: userInfo?.name || '',
-          birthday: userInfo?.birthday || `${birthDate}` || `${currentDate}`,
+          birthday: userInfo?.birthday || `${currentDate}`,
           email: userInfo?.email || '',
           phone: userInfo?.phone || '',
           skype: userInfo?.skype || '',
         }}
         onSubmit={handleSubmit}
       >
-        {({ values, setFieldValue }) => (
+        {({ values, setFieldValue, dirty, isSubmitting, touched }) => (
           <Form>
             <div>
               <AvatarWrapper>
@@ -99,17 +104,17 @@ const UserForm = () => {
                 <AddIcon />
               </label>
             </div>
-            <h1>{userInfo.name}</h1>
-            <p>User</p>
+            <UserTitle>{userInfo.name}</UserTitle>
+            <User>User</User>
             <UserWrapper>
               <UserInfo>
-                <label>
+                <Label>
                   User Name
-                  <Field name="name" />
+                  <InputInfo name="name" />
                   <ErrorMessage name="name" component="span" />
-                </label>
+                </Label>
 
-                <label>
+                <Label>
                   Birthday
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
@@ -131,36 +136,42 @@ const UserForm = () => {
                       }}
                     />
                   </LocalizationProvider>
-                </label>
+                </Label>
                 <div>
-                  <label>
+                  <Label>
                     Email
-                    <Field name="email" type="email" />
+                    <InputInfo name="email" type="email" />
                     <ErrorMessage name="email" component="span" />
-                  </label>
+                  </Label>
                 </div>
               </UserInfo>
 
               <UserInfo>
-                <label>
+                <Label>
                   Phone
-                  <Field name="phone" type="tel" placeholder="+380XXXXXXXXX" />
+                  <InputInfo
+                    name="phone"
+                    type="tel"
+                    placeholder="+380XXXXXXXXX"
+                  />
                   <ErrorMessage name="phone" component="span" />
-                </label>
+                </Label>
 
-                <label>
+                <Label>
                   Skype
-                  <Field
+                  <InputInfo
                     name="skype"
                     type="text"
                     placeholder="Add a skype number"
                   />
                   <ErrorMessage name="skype" component="span" />
-                </label>
+                </Label>
               </UserInfo>
             </UserWrapper>
 
-            <button type="submit">Save changes</button>
+            <BtnSave type="submit" disabled={!touched || !dirty}>
+              Save changes
+            </BtnSave>
           </Form>
         )}
       </Formik>

@@ -22,12 +22,5 @@ export const UserValidSchema = () =>
       .notRequired(),
     skype: Yup.string()
       .matches(regexSkype, 'Skype must be between 3 and 16 characters')
-      .max(13, 'At most 13 digits is required')
-      .test(
-        'Skype-validation',
-        'Skype must be at least 3 characters long',
-        value => {
-          return value && value.replace(/\s/g, '').length >= 3;
-        }
-      ),
+      .max(13, 'At most 13 digits is required'),
   });
