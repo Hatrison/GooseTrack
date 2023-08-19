@@ -27,10 +27,10 @@ export const StyledListTasks = styled.ul`
     }
   }
 
-  // .low {
-  //   background-color: #ceeefd;
-  //   color: #3e85f3;
-  // }
+  .low {
+    background-color: #ceeefd;
+    color: #3e85f3;
+  }
   .medium {
     color: #f3b249;
     background-color: #fcf0d4;
@@ -40,10 +40,10 @@ export const StyledListTasks = styled.ul`
     background-color: #ffd2dd;
   }
 
-  .low {
-    color: ${({ theme }) => theme.lowPriorityColor};
-    background-color: ${({ theme }) => theme.lowPriorityBackgoundColor};
-  }
+  // .low {
+  //   color: ${({ theme }) => theme.lowPriorityColor};
+  //   background-color: ${({ theme }) => theme.lowPriorityBackgoundColor};
+  // }
   // .medium {
   //   color: ${({ theme }) => theme.mediumPriorityColor};
   //   background-color: ${({ theme }) => theme.mediumPriorityBackgroundColor};
