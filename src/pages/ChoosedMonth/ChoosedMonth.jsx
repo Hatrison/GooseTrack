@@ -3,7 +3,6 @@ import MonthCalendarHead from 'components/ChoosedMonth/MonthCalendarHead/MonthCa
 import { useSelector } from 'react-redux';
 import { selectDate } from 'redux/date/selectors';
 import { selectTasks } from 'redux/tasks/selectors';
-import { endOfMonth, startOfMonth } from 'date-fns';
 import { Wrapper } from './ChoosedMonth.styled';
 
 const ChoosedMonth = () => {

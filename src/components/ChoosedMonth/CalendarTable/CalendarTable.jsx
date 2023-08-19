@@ -1,25 +1,29 @@
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
-import { OverflowWrapper, StyledTable } from './CalendarTable.styled';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { endOfMonth, getDay, startOfMonth, eachDayOfInterval } from 'date-fns';
-import { setDates } from 'redux/date/dateSlice';
 import { useState } from 'react';
-
+import { setDates } from 'redux/date/dateSlice';
+import { OverflowWrapper, StyledTable } from './CalendarTable.styled';
 import { DaysWithTasks } from './DaysWithTasks';
 
 const CalendarTable = ({ tasks, currentDate }) => {
-  const [isOpened, setOpening] = useState(false);
+  const [isOpened, setIsOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const startMonth = startOfMonth(new Date(currentDate));
   const endMonth = endOfMonth(new Date(currentDate));
   const firstDayOfMonth = getDay(startMonth) - 1;
   const daysOfMonth = eachDayOfInterval({ start: startMonth, end: endMonth });
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const daysWithTasks = daysOfMonth.map(day => ({
+    date: format(day, 'yyyy-MM-dd'),
+    tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
+  }));
 
   const tableCreator = firstDayOfMonth => {
     return Array.from({ length: firstDayOfMonth }, (_, index) => (
@@ -27,16 +31,9 @@ const CalendarTable = ({ tasks, currentDate }) => {
     ));
   };
 
-  const daysWithTasks = daysOfMonth.map(day => ({
-    date: format(day, 'yyyy-MM-dd'),
-    tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
-  }));
-
   const handleClick = (e, date) => {
     const { currentTarget, target } = e;
-
     if (currentTarget === target) {
-      //dispatch(setDates(date));
       navigate(`/calendar/day/${date}`);
     }
   };
@@ -50,7 +47,7 @@ const CalendarTable = ({ tasks, currentDate }) => {
   };
 
   const handleToggleModal = () => {
-    setOpening(!isOpened);
+    setIsOpen(!isOpened);
   };
 
   const currentTask = data => {
@@ -65,10 +62,10 @@ const CalendarTable = ({ tasks, currentDate }) => {
     cells.push(
       <DaysWithTasks
         key={index}
-        setOpening={setOpening}
-        currentTask={currentTask}
-        handleClick={handleClick}
         day={day}
+        handleClick={handleClick}
+        setOpening={setIsOpen}
+        currentTask={currentTask}
       />
     );
 
