@@ -12,9 +12,6 @@ export const TasksColumnsList = ({ tasks, actualDate }) => {
     task => task.category === 'done' && task.date === actualDate
   );
 
-  // console.log(tasks);
-  // console.log('TasksColumnsList to do', tasksToDo);
-
   return (
     <List>
       <TasksColumn taskName={'To do'} tasks={tasksToDo} />

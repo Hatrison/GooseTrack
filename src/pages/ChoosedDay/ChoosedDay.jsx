@@ -7,9 +7,6 @@ const ChoosedDay = () => {
   const { tasks } = useSelector(selectTasks);
   const date = useSelector(selectDate);
 
-  // console.log(date);
-  // console.log(tasks);
-
   return (
     <div>
       <DayCalendarHead date={date} />
