@@ -4,15 +4,18 @@ import { Rating } from '@mui/material';
 
 export const Form = styled(FormikForm)`
   color: ${({ theme }) => theme.mainTextColor};
-  background-color: ${({ theme }) => theme.secondaryBackgroundColor};
+  /* background-color: ${({ theme }) => theme.secondaryBackgroundColor}; */
   padding: 32px;
+  width:468px;
 `;
 
 export const Label = styled.label`
   font-family: 'Inter';
   font-weight: 500;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.17;
+  margin: 0px 0px 8px;
+  margin-top: 15px;
   color: ${({ theme }) => theme.taskModalTitleColor};
 `;
 
@@ -67,7 +70,7 @@ export const StyledTextArea = styled.textarea`
   width: 100%;
   height: 127px;
   background-color: ${({ theme }) => theme.taskModalInputColor};
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid hsla(0,0%, 100%, .15);
   border-radius: 8px;
   padding: 14px 18px;
   font-family: 'Inter';
@@ -75,7 +78,7 @@ export const StyledTextArea = styled.textarea`
   font-size: 14px;
   line-height: 1.29;
 
-  margin-bottom: 2px;
+  margin-bottom: 18px;
   color: ${({ theme }) => theme.mainTextColor};
   resize: none;
 
@@ -95,6 +98,7 @@ export const StyledTextArea = styled.textarea`
 export const WrapButton = styled.div`
   display: flex;
   gap: 8px;
+  margin-bottom:32px;
 `;
 
 export const StyledButton = styled.button`
@@ -188,5 +192,7 @@ export const CancelButton = styled.button`
 
   @media screen and (min-width: 678px) {
     padding: 15px;
+    /* background-color: rgb(246, 246, 246); */
+
   }
 `;
