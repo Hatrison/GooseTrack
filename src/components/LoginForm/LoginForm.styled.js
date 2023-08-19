@@ -104,33 +104,34 @@ export const FormField = styled.label`
 `;
 
 export const Field = styled(FormikField)`
-font-family: 'InterRegular', sans-serif;
-font-weight: 400;
-font-size: 16px;
-height: 100%; 
-width: 100%;
-display: block;
-outline: none;
-padding: 14px;
-color: ${({ theme }) => theme.loginInputColor};
-border: ${({ theme }) => theme.loginInputBorder};
-border-radius: 8px;
+  font-family: 'InterRegular', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  display: block;
+  outline: none;
+  padding: 14px;
+  color: ${({ theme }) => theme.loginInputColor};
+  border: ${({ theme }) => theme.loginInputBorder};
+  border-radius: 8px;
 
-:hover,
-:focus {
- border-color: #290b78;
-}
+  :hover,
+  :focus {
+    border-color: #290b78;
+  }
 
-::placeholder {
-font-family: 'InterSemiBolt', sans-serif;
-font-size: 16px;
-font-style: normal;
-line-height: 18px; 
-color: rgba(17, 17, 17, 0.15);
+  ::placeholder {
+    font-family: 'InterSemiBolt', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 18px;
+    color: rgba(17, 17, 17, 0.15);
+  }
 
-@media (min-width: 768px) {
-  padding: 19px;
-}
+  @media (min-width: 768px) {
+    padding: 19px;
+  }
 `;
 
 export const ErrorIcon = styled(IconError)`
@@ -170,13 +171,12 @@ export const CorrectTag = styled.div`
 `;
 
 export const IconContainer = styled.div`
-height: 50px;
-position: relative;
+  height: 50px;
+  position: relative;
 
-@media (min-width: 768px) {
-  height: 56px;
-}
-
+  @media (min-width: 768px) {
+    height: 56px;
+  }
 `;
 
 export const ButtonIcon = styled(Icon)`
@@ -207,40 +207,40 @@ export const ButtonIcon = styled(Icon)`
 `;
 
 export const SubmitBtn = styled.button`
-border: transparent;
-cursor: pointer;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: 'InterSemiBolt', sans-serif;
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 18px;
-background: ${props => props.theme.accentColor};
-box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-border-radius: 16px;
-color: ${props => props.theme.secondaryTextColor};
+  border: transparent;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'InterSemiBolt', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  background: ${props => props.theme.accentColor};
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  border-radius: 16px;
+  color: ${props => props.theme.secondaryTextColor};
 
-padding: 14px;
-margin-top: 32px;
+  padding: 14px;
+  margin-top: 32px;
 
-:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+  :disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
-@media (min-width: 768px) {
-  font-size: 18px;
-  line-height: 24px;
-  margin-top: 48px;
-  padding: 16px;
-}
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 48px;
+    padding: 16px;
+  }
 
-&:hover ${ButtonIcon} {
-  animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;}
-
+  &:hover ${ButtonIcon} {
+    animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
 `;
 
 export const GooseIMG = styled.img`
