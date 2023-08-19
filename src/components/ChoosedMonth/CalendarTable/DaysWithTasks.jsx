@@ -10,7 +10,7 @@ const formattedDay = date => {
 export function DaysWithTasks({ day, handleClick, setOpening, currentTask }) {
   return (
     <StyledTd onClick={e => handleClick(e, day.date)}>
-      {day.tasks.length > 0 &&
+      {/* {day.tasks.length > 0 &&
         day.tasks.map(({ tasks }, index) => {
           return (
             <div key={index}>
@@ -22,7 +22,7 @@ export function DaysWithTasks({ day, handleClick, setOpening, currentTask }) {
               {tasks.length > 2 && <Span>+{tasks.length - 2} tasks</Span>}
             </div>
           );
-        })}
+        })} */}
       <StyledDay className={isToday(parseISO(day.date)) && 'today'}>
         {formattedDay(day.date)}
       </StyledDay>
