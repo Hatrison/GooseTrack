@@ -6,6 +6,7 @@ import {
   Period,
   ChartContainer,
   StatisticsWrapper,
+  PaginationWrapper,
 } from './StatisticsSection.styled';
 import { StatisticsCalendar } from '../StatisticsCalendar/StatisticsCalendar';
 import { PeriodPaginator } from 'components/CalendarToolbar/PeriodPaginator/PeriodPaginator';
@@ -14,10 +15,10 @@ const StatisticsSection = () => {
   return (
     <StatisticsWrapper>
       <HeadContainer>
-        <div style={{ position: 'relative' }}>
+        <PaginationWrapper>
           <PeriodPaginator type={'day'} />
           <StatisticsCalendar />
-        </div>
+        </PaginationWrapper>
         <PeriodTime>
           <Period>
             <BsFillCircleFill fill="#FFD2DD" size={8} /> By Day

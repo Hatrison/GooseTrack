@@ -12,34 +12,26 @@ export const StatisticsWrapper = styled.section`
   }
 `;
 
-export const ChartContainer = styled.div`
-  position: relative;
-  margin-top: auto;
-  width: 100%;
-  border-radius: 20px;
-  border: ${({ theme }) => theme.statisticsBorder};
-  padding: 40px 14px;
-  height: 413px;
-
-  @media screen and (min-width: 768px) {
-    height: 424px;
-    padding: 32px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    height: 440px;
-    padding: 40px;
-  }
-`;
-
 export const HeadContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   column-gap: 40px;
   width: 100%;
   justify-content: space-between;
   align-items: baseline;
   padding-bottom: 48px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+export const PaginationWrapper = styled.div`
+  position: relative;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const PeriodTime = styled.div`
@@ -58,5 +50,25 @@ export const Period = styled.span`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
+  }
+`;
+
+export const ChartContainer = styled.div`
+  position: relative;
+  margin-top: auto;
+  width: 100%;
+  border-radius: 20px;
+  border: ${({ theme }) => theme.statisticsBorder};
+  padding: 40px 14px;
+  height: 413px;
+
+  @media screen and (min-width: 768px) {
+    height: 424px;
+    padding: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 440px;
+    padding: 40px;
   }
 `;
