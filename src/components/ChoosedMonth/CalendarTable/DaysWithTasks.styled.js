@@ -1,10 +1,12 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
+
 export const StyledTd = styled.td`
   position: relative;
   cursor: pointer;
   width: 48px;
   height: 94px;
-  border: 1px solid ${props => props.theme.calendarTableBorder};
+
+  border: ${({ theme }) => theme.tableBorder};
   transition: border 250ms linear;
   text-align: center;
   &:hover,
@@ -13,7 +15,7 @@ export const StyledTd = styled.td`
   }
   .today {
     color: white;
-    background-color: #3e85f3;
+    background-color: ${({ theme }) => theme.accentColor};
   }
 
   @media (min-width: 768px) {
@@ -38,7 +40,7 @@ export const StyledDay = styled.p`
   font-size: 12px;
   line-height: 14px;
 
-  color: ${props => props.theme.calendarDate};
+  color: ${({ theme }) => theme.calendarDate};
 
   border-radius: 6px;
 
@@ -55,7 +57,7 @@ export const Span = styled.span`
 
   flex-grow: 1;
 
-  color: ${props => props.theme.calendarDate};
+  color: ${({ theme }) => theme.calendarDate};
 
   @media (min-width: 768px) {
     font-size: 14px;

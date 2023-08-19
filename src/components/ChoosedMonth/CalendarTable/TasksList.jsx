@@ -1,18 +1,6 @@
-// import { useWindowSize } from 'hooks/useWindowSize';
 import { StyledListTasks } from './TasksList.styled';
 
-export function TasksList({ tasks, openModal, currentTask }) {
-  //   const size = useWindowSize();
-
-  //   function truncateString(str) {
-  //     if (size.width < 767) {
-  //       return str.substring(0, 3) + '...';
-  //     }
-  //     if (str.length > 7) {
-  //       return str.substring(0, 7) + '...';
-  //     }
-  //     return str;
-  //   }
+export const TasksList = ({ tasks, openModal, currentTask }) => {
   return (
     <StyledListTasks>
       {tasks.map((task, index) => {
@@ -28,10 +16,10 @@ export function TasksList({ tasks, openModal, currentTask }) {
               currentTask(task);
             }}
           >
-            {/* {truncateString(task.title)} */}
+            {task.title}
           </li>
         );
       })}
     </StyledListTasks>
   );
-}
+};

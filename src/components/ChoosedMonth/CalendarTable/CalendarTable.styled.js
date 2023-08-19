@@ -3,15 +3,12 @@ import styled from 'styled-components';
 export const StyledTable = styled.table`
   border-spacing: 0;
   border-style: hidden;
-
   height: 470px;
 
   width: 100%;
 
   border-radius: 8px;
-  background-color: ${props => props.theme.bcgTernary};
-
-  box-shadow: 0 0 0 1px ${props => props.theme.calendarTableBorder};
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
 
   @media (min-width: 768px) {
     height: 720px;
@@ -25,7 +22,7 @@ export const OverflowWrapper = styled.div`
   max-height: 472px;
   overflow-y: auto;
 
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: ${({ theme }) => theme.tableBorder};
   border-radius: 8px;
 
   @media (min-width: 768px) {

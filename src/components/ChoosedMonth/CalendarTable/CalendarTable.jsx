@@ -37,7 +37,7 @@ const CalendarTable = ({ tasks, currentDate }) => {
     const { currentTarget, target } = e;
 
     if (currentTarget === target) {
-      dispatch(setDates(date));
+      //dispatch(setDates(date));
       navigate(`/calendar/day/${date}`);
     }
   };
