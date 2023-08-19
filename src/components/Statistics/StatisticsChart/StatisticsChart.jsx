@@ -98,7 +98,7 @@ export const StatisticsChart = () => {
   ];
   // console.log(columns);
 
-  const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
+  const renderCustomBarLabel = ({ x, y, width, value }) => {
     return (
       <text
         x={x + width / 2}
@@ -153,8 +153,8 @@ export const StatisticsChart = () => {
           tickSize={0}
           tickMargin={16}
           axisLine={false}
-          fontSize={14}
-          fontWeight={400}
+          fontFamily="InterNormal, sans-serif"
+          fontSize={isMobile ? '12' : '14'}
           stroke={isDarkTheme ? '#fff' : '#343434'}
         />
         <YAxis
@@ -164,14 +164,15 @@ export const StatisticsChart = () => {
           tickLine={false}
           tickCount={6}
           tickMargin={20}
-          fontSize={14}
+          fontFamily="InterNormal, sans-serif"
+          fontSize={'14'}
           stroke={isDarkTheme ? '#fff' : '#343434'}
         >
           <Label
             position="top"
             dy={-28}
-            fontSize={14}
-            fontWeight={500}
+            fontFamily="InterNormal, sans-serif"
+            fontSize={'14'}
             fill={isDarkTheme ? '#fff' : '#343434'}
           >
             Tasks
