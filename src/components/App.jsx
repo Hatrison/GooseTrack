@@ -16,6 +16,7 @@ import { GlobalStyle } from './GlobalStyle.styled';
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const PasswordResetPage = lazy(() => import('../pages/PasswordResetPage'));
 const MainLayout = lazy(() => import('../components/MainLayout'));
 const AccountPage = lazy(() => import('../pages/AccountPage'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage'));
@@ -88,6 +89,15 @@ export const App = () => {
               path="login"
               element={
                 <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              }
+            />
+            <Route
+              path="password"
+              element={
+                <RestrictedRoute
+                  redirectTo="/"
+                  component={<PasswordResetPage />}
+                />
               }
             />
             <Route
