@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[864],{3864:function(e,t,n){n.r(t),n.d(t,{default:function(){return o}});var r=n(184),o=function(){return(0,r.jsx)("div",{children:"ChoosedMonth"})}}}]);
-//# sourceMappingURL=864.b7e158b2.chunk.js.map
