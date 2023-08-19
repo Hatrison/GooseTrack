@@ -1,5 +1,6 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { BtnAdd, PlusCircleIcon, Box, Title } from './ColumnHeadBar.styled';
+import TaskModal from 'components/TaskModal/TaskModal';
 
 export const ColumnHeadBar = ({ title }) => {
   // const [isTaskModalOpened, setIsTaskModalOpened] = useState(false);

@@ -32,7 +32,7 @@ export const TaskBox = styled.li`
 export const TaskText = styled.p`
   margin-bottom: 28px;
 
-  font-family: 'InterMedium';
+  font-family: 'InterMedium', sans-serif;
   font-size: 14px;
   line-height: 1.28;
   color: ${({ theme }) => theme.mainTextColor};
@@ -68,7 +68,7 @@ export const PriorityLow = styled.p`
   border-radius: 4px;
   max-height: 20px;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: ${({ theme }) => theme.priorTextColor};
@@ -81,7 +81,7 @@ export const PriorityMedium = styled.p`
   border-radius: 4px;
   max-height: 20px;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: ${({ theme }) => theme.priorTextColor};
@@ -94,7 +94,7 @@ export const PriorityHigh = styled.p`
   border-radius: 4px;
   max-height: 20px;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: ${({ theme }) => theme.priorTextColor};
