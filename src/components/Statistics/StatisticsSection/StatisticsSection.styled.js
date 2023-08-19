@@ -42,11 +42,8 @@ export const ChartContainer = styled.div`
 `;
 
 export const HeadContainer = styled.section`
-  /* position: absolute;
-  top: 12%;
-  left: 11%; */
-  /* position: relative; */
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
   align-items: baseline;
@@ -69,10 +66,15 @@ export const PeriodTime = styled.div`
 `;
 
 export const Period = styled.span`
-  color: #343434;
-  font-size: 16px;
-  color: ${props => props.theme};
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'InterRegular', sans-serif;
+  font-size: 14px;
+  color: ${({ theme }) => theme.periodColor};
+  line-height: 1.3;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;

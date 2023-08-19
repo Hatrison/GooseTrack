@@ -8,7 +8,7 @@ export const StatisticsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
   width: 100%;
   padding: 0 14px;
 
