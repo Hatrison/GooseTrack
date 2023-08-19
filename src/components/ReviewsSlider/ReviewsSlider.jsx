@@ -82,9 +82,7 @@ const ReviewsSlider = () => {
                       height="50px"
                     />
                     <div>
-                      <Name>
-                        {review.name} - {review.rating}
-                      </Name>
+                      <Name>{review.name}</Name>
                       <StyledRating
                         precision={1}
                         sx={{ display: 'flex', gap: '10px', maxWidth: '104px' }}
