@@ -4,7 +4,6 @@ import { fetchCurrentUser } from '../user/operations';
 
 const initialState = {
   accessToken: null,
-  refreshToken: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -42,4 +41,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setRefreshToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;

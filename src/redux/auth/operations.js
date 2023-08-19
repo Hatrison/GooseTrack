@@ -7,9 +7,6 @@ export const registerUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await instance.post('/api/auth/register', credentials);
-      setAuthHeader(response.data.accessToken);
-      localStorage.setItem('refreshToken', response.data.refreshToken);
-      await thunkAPI.dispatch(addUserData(response.data));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
