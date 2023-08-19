@@ -95,6 +95,7 @@ export const theme = {
 
     //StatisticsSection
     periodColor: '#343434',
+    statisticsBorder: '0.8px solid #E3F3FF',
   },
 
   // Стилі для темної теми
@@ -178,6 +179,7 @@ export const theme = {
 
     //StatisticsSection
     periodColor: '#fff',
+    statisticsBorder: '0.8px solid #E3F3FF26',
   },
 
   // TaskModal

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StatisticsWrapper = styled.div`
+export const StatisticsWrapper = styled.section`
   width: 100%;
 
   @media screen and (min-width: 390px) and (max-width: 768px) {
@@ -16,23 +16,14 @@ export const ChartContainer = styled.div`
   position: relative;
   margin-top: auto;
   width: 100%;
-  border-radius: 29px;
-  border: 0.8px solid #e3f3ff;
+  border-radius: 20px;
+  border: ${({ theme }) => theme.statisticsBorder};
+  padding: 40px 14px;
+  height: 413px;
 
-  @media screen and (min-width: 376px) and (max-width: 768px) {
-    height: 413px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
+  @media screen and (min-width: 768px) {
     height: 424px;
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 32px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -41,23 +32,14 @@ export const ChartContainer = styled.div`
   }
 `;
 
-export const HeadContainer = styled.section`
+export const HeadContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  column-gap: 40px;
   width: 100%;
   justify-content: space-between;
   align-items: baseline;
   padding-bottom: 48px;
-
-  /* @media screen and (min-width: 375px) and (max-width: 768px) {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  @media screen and (min-width: 768px) {
-    padding-left: 54px;
-    padding-right: 54px;
-  } */
 `;
 
 export const PeriodTime = styled.div`
