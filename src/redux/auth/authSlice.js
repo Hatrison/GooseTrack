@@ -3,7 +3,8 @@ import { loginUser, logoutUser, registerUser } from './operations';
 import { fetchCurrentUser } from '../user/operations';
 
 const initialState = {
-  token: null,
+  accessToken: null,
+  refreshToken: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -14,15 +15,18 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
-        state.token = action.payload.token;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.token = action.payload.token;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
       })
       .addCase(logoutUser.fulfilled, state => {
-        state.token = null;
+        state.accessToken = null;
+        state.refreshToken = null;
         state.isLoggedIn = false;
       })
       .addCase(fetchCurrentUser.pending, state => {
