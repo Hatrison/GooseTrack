@@ -18,7 +18,6 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   Label,
-  Tooltip,
 } from 'recharts';
 
 export const StatisticsChart = () => {
@@ -178,7 +177,6 @@ export const StatisticsChart = () => {
             Tasks
           </Label>
         </YAxis>
-        <Tooltip />
         <Bar
           name="By Day"
           dataKey="byDay"
