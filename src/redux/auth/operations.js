@@ -7,15 +7,8 @@ export const registerUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await instance.post('/api/auth/register', credentials);
-      // setAuthHeader(response.data.accessToken);
-      // localStorage.setItem('refreshToken', response.data.refreshToken);
-      console.log(response, response.data.refreshToken);
-      localStorage.setItem(
-        'accessToken',
-        response.data.accessToken,
-        'refreshToken',
-        response.data.refreshToken
-      );
+      setAuthHeader(response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
       await thunkAPI.dispatch(addUserData(response.data));
       return response.data;
     } catch (error) {
@@ -29,13 +22,8 @@ export const loginUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await instance.post('/api/auth/login', credentials);
-      // setAuthHeader(response.data.accessToken);
-      localStorage.setItem(
-        'accessToken',
-        response.data.accessToken,
-        'refreshToken',
-        response.data.refreshToken
-      );
+      setAuthHeader(response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
       await thunkAPI.dispatch(addUserData(response.data));
       return response.data;
     } catch (error) {

@@ -39,7 +39,7 @@ const RegisterForm = () => {
               if (data.error) throw new Error(data.payload);
               navigate('/', { replace: true });
             })
-            .catch(error => toast.error(`Error: ${'Registartion failed'}`));
+            .catch(error => toast.error(`Error: ${'Registration failed'}`));
         }}
         validationSchema={RegisterValidSchema}
       >
