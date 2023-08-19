@@ -72,24 +72,24 @@ export const StatisticsChart = () => {
       name: 'To Do',
       dv: todoByDay,
       mv: todoByMonth,
-      byDay: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}%`,
-      byMonth: `${Math.round((todoByMonth / allTasksByMonth) * 100) || 0}%`,
+      byDay: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}`,
+      byMonth: `${Math.round((todoByMonth / allTasksByMonth) * 100) || 0}`,
     },
     {
       name: 'In Progress',
       dv: inprogressByDay,
       mv: inprogressByMonth,
-      byDay: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
+      byDay: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}`,
       byMonth: `${
         Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0
-      }%`,
+      }`,
     },
     {
       name: 'Done',
       dv: doneByDay,
       mv: doneByMonth,
-      byDay: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}%`,
-      byMonth: `${Math.round((doneByMonth / allTasksByMonth) * 100) || 0}%`,
+      byDay: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}`,
+      byMonth: `${Math.round((doneByMonth / allTasksByMonth) * 100) || 0}`,
     },
   ];
   // console.log(columns);
