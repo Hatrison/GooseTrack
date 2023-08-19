@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Section,
   Container,
@@ -23,6 +23,28 @@ const ReviewsSlider = () => {
   const slider = useRef(null);
   const reviews = useSelector(selectReviews);
   const dispatch = useDispatch();
+
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + '...';
+    }
+    return text;
+  };
+
+  // const itemRef = useRef(null);
+  // console.log(itemRef);
+  // const [maxTextLength, setMaxTextLength] = useState(0);
+
+  // useEffect(() => {
+  //   if (itemRef.current) {
+  //     const itemWidth = itemRef.current.offsetWidth;
+  //     console.log(itemWidth);
+  //     const charWidth = 6; // Приблизне значення для ширини символу, залежно від шрифту
+  //     const availableChars = Math.floor((itemWidth / charWidth) * 4);
+  //     // console.log(availableChars);
+  //     setMaxTextLength(availableChars);
+  //   }
+  // }, []);
 
   useEffect(() => {
     dispatch(getReviews());
@@ -69,7 +91,10 @@ const ReviewsSlider = () => {
           {reviews &&
             reviews.map(review => {
               return (
-                <Item key={review._id}>
+                <Item
+                  key={review._id}
+                  // ref={itemRef}
+                >
                   <WrapAvatarNameStars>
                     <Avatar
                       src={
@@ -98,7 +123,7 @@ const ReviewsSlider = () => {
                     </div>
                   </WrapAvatarNameStars>
 
-                  <Text>{review.text}</Text>
+                  <Text>{truncateText(review.text, 150)}</Text>
                 </Item>
               );
             })}
