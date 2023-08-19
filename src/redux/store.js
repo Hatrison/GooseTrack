@@ -20,7 +20,7 @@ import { reviewsReducer } from './reviews/reviewsSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['accessToken', 'refreshToken'],
+  whitelist: ['accessToken'],
 };
 
 const themePersistConfig = {
