@@ -40,7 +40,7 @@ export const Box = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.11;
