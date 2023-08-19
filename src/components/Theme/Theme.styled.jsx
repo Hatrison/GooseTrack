@@ -92,6 +92,10 @@ export const theme = {
     periodInactiveColor: '#3E85F3',
     periodInactiveBackgroundColor: '#E3F3FF',
     periodBorder: '1px solid rgba(62, 133, 243, 0.20)',
+
+    //StatisticsSection
+    periodColor: '#343434',
+    statisticsBorder: '0.8px solid #E3F3FF',
   },
 
   // Стилі для темної теми
@@ -172,6 +176,10 @@ export const theme = {
     periodInactiveColor: '#3E85F3',
     periodInactiveBackgroundColor: '#21222C',
     periodBorder: '1px solid rgba(255, 255, 255, 0.15)',
+
+    //StatisticsSection
+    periodColor: '#fff',
+    statisticsBorder: '0.8px solid #E3F3FF26',
   },
 
   // TaskModal
