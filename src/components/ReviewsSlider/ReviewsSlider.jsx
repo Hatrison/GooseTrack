@@ -43,7 +43,7 @@ const ReviewsSlider = () => {
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: reviews.length === 1 ? 1 : 2,
     slidesToScroll: 1,
     swipeToSlide: true,
     autoplay: true,
