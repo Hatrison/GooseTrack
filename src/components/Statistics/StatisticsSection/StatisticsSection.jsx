@@ -11,7 +11,7 @@ import { PeriodPaginator } from 'components/CalendarToolbar/PeriodPaginator/Peri
 
 const StatisticsSection = () => {
   return (
-    <>
+    <div>
       <HeadContainer>
         <div style={{ position: 'relative' }}>
           <PeriodPaginator type={'day'} />
@@ -29,7 +29,7 @@ const StatisticsSection = () => {
       <ChartContainer>
         <StatisticsChart />
       </ChartContainer>
-    </>
+    </div>
   );
 };
 
