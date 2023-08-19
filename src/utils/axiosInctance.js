@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-// const { REACT_APP_BASE_URL } = process.env; https:goose-track-auth.onrender.com https:localhost:3000
+const { REACT_APP_BASE_URL } = process.env;
 const instance = axios.create({
-  baseURL: 'https:goose-track-auth.onrender.com',
+  baseURL: REACT_APP_BASE_URL,
 });
 
 const setAuthHeader = token => {
