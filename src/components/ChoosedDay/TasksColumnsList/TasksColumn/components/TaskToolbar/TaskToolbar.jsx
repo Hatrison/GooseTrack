@@ -7,6 +7,7 @@ import {
   ChangeDirIcon,
   PencilIcon,
   TrashIcon,
+  TaskDirModalOverlay,
 } from './TaskToolbar.styled';
 import {
   ModalBtn,
@@ -51,24 +52,18 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
     setIsChangeDirOpened(prevState => !prevState);
   };
 
-  const handleTransfer = task => {
-    const modifiedTask = { ...task };
+  const modifyCategory = task => {
+    const { category } = task;
+    const categoryLowerCase = category.toLowerCase();
+    const splitedCategory = categoryLowerCase.split(' ');
+    const modifiedCategory = splitedCategory.join('-');
+    return { ...task, category: modifiedCategory };
+  };
 
-    switch (modifiedTask.category) {
-      case 'Done':
-        modifiedTask.category = 'done';
-        break;
-      case 'In progress':
-        modifiedTask.category = 'in-progress';
-        break;
-      case 'To do':
-        modifiedTask.category = 'to-do';
-        break;
-      default:
-        break;
+  const onOverlayClick = event => {
+    if (event.target === event.currentTarget) {
+      handleModalToggle();
     }
-
-    dispatch(updateTask(modifiedTask));
   };
 
   return (
@@ -78,16 +73,23 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
           <ChangeDirIcon />
         </Btn>
         {isChangeDirOpened && (
-          <ChangeTaskDirModal>
-            {newItemArray.map(newItem => (
-              <li key={newItem.category}>
-                <ModalBtn onClick={() => handleTransfer(newItem)}>
-                  {newItem.category}
-                  <ChangeDirIconModal />
-                </ModalBtn>
-              </li>
-            ))}
-          </ChangeTaskDirModal>
+          <div>
+            <TaskDirModalOverlay onClick={onOverlayClick} />
+            <ChangeTaskDirModal>
+              {newItemArray.map(newItem => (
+                <li key={newItem.category}>
+                  <ModalBtn
+                    onClick={() =>
+                      dispatch(updateTask(modifyCategory(newItem)))
+                    }
+                  >
+                    {newItem.category}
+                    <ChangeDirIconModal />
+                  </ModalBtn>
+                </li>
+              ))}
+            </ChangeTaskDirModal>
+          </div>
         )}
       </li>
       <li>
