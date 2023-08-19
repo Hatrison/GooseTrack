@@ -1,5 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { parse } from 'date-fns';
+import { getTasks } from 'redux/tasks/operations';
 
 // підписка на дату та таски із редаксу
 import { selectDate } from 'redux/date/selectors';
@@ -17,6 +20,16 @@ import {
 } from 'recharts';
 
 export const StatisticsChart = () => {
+  const normalizedDate = useSelector(selectDate);
+  const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth() + 1;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTasks({ month, year }));
+  }, [dispatch, month, year]);
+
   // берем данні із редакса, таски = tasks.tasks
   const selectedDate = useSelector(selectDate);
   const tasks = useSelector(selectTasks);
@@ -26,15 +39,17 @@ export const StatisticsChart = () => {
   const tasksByDay = tasks.tasks.filter(task => task.date === selectedDate);
 
   const taskByMonth = tasks.tasks;
-  console.log(tasksByDay, taskByMonth);
+  // console.log(tasksByDay, taskByMonth);
 
   const todoByDay = tasksByDay.filter(task => task.category === 'to-do').length;
 
   const inprogressByDay = tasksByDay.filter(
-    task => task.category === 'inprogress'
+    task => task.category === 'in-progress'
   ).length;
+  //console.log(inprogressByDay);
 
   const doneByDay = tasksByDay.filter(task => task.category === 'done').length;
+  //console.log(doneByDay);
 
   const todoByMonth = taskByMonth.filter(
     task => task.category === 'to-do'
@@ -50,6 +65,7 @@ export const StatisticsChart = () => {
 
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
+  console.log(allTasksByDay, allTasksByMonth, todoByDay, todoByMonth);
 
   const columns = [
     {
