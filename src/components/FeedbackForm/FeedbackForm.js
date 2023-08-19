@@ -1,205 +1,134 @@
-import { ReactComponent as FavoriteIcon } from 'images/svg/fullStar.svg';
-import { ReactComponent as FavoriteBorderIcon } from 'images/svg/emptyStar.svg';
-import { useDispatch } from 'react-redux';
-
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Formik } from 'formik';
+import { ReactComponent as Star } from 'images/svg/star.svg';
 import {
-  CharactersQuantityText,
-  FormContainer,
-  LabelText,
-  RatingText,
+  Form,
+  Label,
+  ErrorMessage,
+  Wrap,
+  ToolbarWrap,
+  EditToolbarButton,
+  DeleteToolbarButton,
+  StyledRating,
+  WrapButton,
   StyledButton,
   StyledEditButton,
   StyledTextArea,
-  CharactersQuantityTextContainer,
-  StyledCancelButton,
+  CancelButton,
 } from './FeedbackForm.styled';
+import {
+  createReview,
+  deleteReview,
+  getOwnReview,
+  updateReview,
+} from 'redux/reviews/operations';
+import { selectIsLoading, selectOwnReview } from 'redux/reviews/selectors';
+import { FeedbackFormSchema } from './FeedbackFormSchema';
 
-import { addReview, updateReview } from '../../redux/reviews/operations';
-import { theme } from 'theme';
+const initialValues = {
+  rating: 5,
+  text: '',
+};
 
-const EmptyBigStar = styled(FavoriteBorderIcon)`
-  fill: ${theme.colors.empty_star};
-  stroke: ${theme.colors.empty_star};
-`;
-
-const StyledRating = styled(Rating)({
-  '& .MuiRating-iconFilled': {
-    color: '#ff6d75',
-  },
-  '& .MuiRating-iconHover': {
-    color: '#ff3d47',
-  },
-});
-
-export function FeedbackForm({
-  feedback,
-  rating,
-  toggleEditFeedback,
-  isEditFeedbackOpen,
-  id,
-}) {
-  const [value, setValue] = useState(0);
-  const [review, setReview] = useState('');
-  const [characterCount, setCharacterCount] = useState(0);
-  const [changed, setChanged] = useState(false);
-
-  // const { }=useSelector()
-
+const FeedbackForm = ({ handlerCloseModal }) => {
+  const [statusForm, setStatusForm] = useState('create');
+  const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
+  const review = useSelector(selectOwnReview);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    if (isEditFeedbackOpen) {
-      setValue(rating);
-      setReview(feedback);
-      setCharacterCount(feedback.length);
-      return;
-    }
-    const storedReview = localStorage.getItem('review');
-    const storedRating = localStorage.getItem('rating');
+    dispatch(getOwnReview());
+  }, [dispatch]);
 
-    if (storedReview) {
-      setReview(JSON.parse(storedReview));
-      setCharacterCount(JSON.parse(storedReview).length);
-    } else {
-      setReview('');
-    }
-    if (storedRating) {
-      setValue(JSON.parse(storedRating));
-    } else {
-      setValue(0);
-    }
-  }, [feedback, isEditFeedbackOpen, rating]);
+  useEffect(() => {
+    review?.text ? setStatusForm('edit') : setStatusForm('create');
+  }, [review]);
 
-  const handleFeedbackSubmit = e => {
-    e.preventDefault();
-    if (isEditFeedbackOpen) {
-      dispatch(updateReview({ id, rating: value, comment: review }));
-      toggleEditFeedback();
-      setChanged(false);
-
-      return;
-    }
-
-    dispatch(
-      addReview({
-        rating: value,
-        comment: review,
-      })
-    );
-    setValue(null);
-    setReview('');
-    setCharacterCount(0);
-    localStorage.setItem('review', JSON.stringify(''));
-    localStorage.setItem('rating', JSON.stringify(null));
+  const toggleIsEditing = () => {
+    setIsEditing(prevState => !prevState);
   };
-
-  const handleTextareaChange = e => {
-    const inputValue = e.target.value;
-    setReview(inputValue);
-    setCharacterCount(inputValue.length);
-    if (isEditFeedbackOpen && changed) {
-      return;
-    }
-    if (isEditFeedbackOpen && !changed) {
-      setChanged(!changed);
-      return;
-    }
-    localStorage.setItem('review', JSON.stringify(inputValue));
-  };
-
-  const handleRatingChange = (e, newValue) => {
-    setValue(newValue);
-    if (isEditFeedbackOpen && !changed) {
-      setChanged(true);
-      return;
-    }
-    if (isEditFeedbackOpen && changed) {
-      setChanged(true);
-      return;
-    }
-    localStorage.setItem('rating', JSON.stringify(newValue));
-  };
-
-  const isReviewValid = review.length <= 300;
-  const isRatingValid = value >= 1;
-  // console.log('isRatingValid:', isRatingValid);
 
   return (
-    <FormContainer>
-      <RatingText>Rating</RatingText>
-      <Box
-        sx={{
-          '& > legend': { mt: 1 },
-          marginBottom: '24px',
+    !isLoading && (
+      <Formik
+        initialValues={review || initialValues}
+        validationSchema={FeedbackFormSchema}
+        onSubmit={({ rating, text }) => {
+          rating = Number(rating);
+          const values = { rating, text };
+          dispatch(
+            statusForm === 'create'
+              ? createReview(values)
+              : updateReview(values)
+          );
+          setIsEditing(false);
         }}
       >
-        <StyledRating
-          name="customized-color"
-          value={value}
-          precision={1}
-          icon={<FavoriteIcon fontSize="inherit" width="24px" />}
-          emptyIcon={<EmptyBigStar fontSize="inherit" width="24px" />}
-          onChange={handleRatingChange}
-          sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
-        />
-      </Box>
-      <form onSubmit={handleFeedbackSubmit}>
-        <label htmlFor="feedback">
-          <LabelText>Review</LabelText>
-        </label>
-        <StyledTextArea
-          id="feedback"
-          placeholder="Enter text"
-          name="review"
-          value={review}
-          onChange={handleTextareaChange}
-          isReviewValid={isReviewValid}
-        ></StyledTextArea>
-        <CharactersQuantityTextContainer>
-          {characterCount > 0 && (
-            <CharactersQuantityText isReviewValid={isReviewValid}>
-              Characters entered: {characterCount} (max: 300)
-            </CharactersQuantityText>
-          )}
-        </CharactersQuantityTextContainer>
-
-        {isEditFeedbackOpen ? (
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <StyledEditButton
-              type="submit"
-              disabled={!isReviewValid || !value || !review}
-              isReviewValid={isReviewValid}
-              changed={changed}
-              isRatingValid={isRatingValid}
-            >
-              Edit
-            </StyledEditButton>
-            <StyledCancelButton
-              onClick={() => {
-                setChanged(false);
-                toggleEditFeedback();
-              }}
-              type="button"
-            >
-              Cancel
-            </StyledCancelButton>
-          </div>
-        ) : (
-          <StyledButton
-            type="submit"
-            disabled={!isReviewValid || !value || !review}
-          >
-            Save
-          </StyledButton>
+        {({ values, errors, touched, handleChange, handleBlur }) => (
+          <Form>
+            <Label>
+              Rating
+              <StyledRating
+                name="rating"
+                precision={1}
+                sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
+                icon={<Star width="24px" height="24px" fill="#FFAC33" />}
+                emptyIcon={<Star width="24px" height="24px" fill="#CEC9C1" />}
+                value={Number(values.rating)}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.rating && errors.rating}
+                disabled={!isEditing && statusForm === 'edit'}
+              />
+            </Label>
+            <ErrorMessage name="rating" component="div" />
+            <Wrap>
+              <Label htmlFor="review">Review</Label>
+              {statusForm === 'edit' && (
+                <ToolbarWrap>
+                  <EditToolbarButton
+                    type="button"
+                    className={isEditing ? 'active' : ''}
+                    onClick={() => toggleIsEditing()}
+                  />
+                  <DeleteToolbarButton
+                    type="button"
+                    onClick={() => dispatch(deleteReview())}
+                  />
+                </ToolbarWrap>
+              )}
+            </Wrap>
+            <StyledTextArea
+              id="review"
+              name="text"
+              placeholder="Enter text"
+              value={values.text}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={!isEditing && statusForm === 'edit'}
+            ></StyledTextArea>
+            <ErrorMessage name="text" component="div" />
+            <WrapButton>
+              {(statusForm === 'create' || isEditing) && (
+                <>
+                  {isEditing ? (
+                    <StyledEditButton type="submit">Edit</StyledEditButton>
+                  ) : (
+                    <StyledButton type="submit">Save</StyledButton>
+                  )}
+                  <CancelButton type="button" onClick={handlerCloseModal}>
+                    Cancel
+                  </CancelButton>
+                </>
+              )}
+            </WrapButton>
+          </Form>
         )}
-      </form>
-    </FormContainer>
+      </Formik>
+    )
   );
-}
+};
 
 export default FeedbackForm;

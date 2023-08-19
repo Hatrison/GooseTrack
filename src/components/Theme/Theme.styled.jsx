@@ -76,12 +76,22 @@ export const theme = {
     //TasksColumnCard
     priorTextColor: '#F7F6F9',
 
+    //ChangeTaskDirModal
+    changeTaskDirModalBorder: 'transparent',
+
     //LoginForm
     loginInputColor: '#111111',
     loginInputBorder: '1px solid rgba(17, 17, 17, 0.15)',
     backgroundColorForm: '#FFFFFF',
-    errorTagColor: "#E74A3B",
-    correctTagColor: "#3CBC81",
+    errorTagColor: '#E74A3B',
+    correctTagColor: '#3CBC81',
+
+    //CalendarToolbar
+    periodActiveColor: '#3E85F3',
+    periodActiveBackgroundColor: '#CAE8FF',
+    periodInactiveColor: '#3E85F3',
+    periodInactiveBackgroundColor: '#E3F3FF',
+    periodBorder: '1px solid rgba(62, 133, 243, 0.20)',
   },
 
   // Стилі для темної теми
@@ -155,16 +165,23 @@ export const theme = {
 
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
+
+    //CalendarToolbar
+    periodActiveColor: '#FFFFFF',
+    periodActiveBackgroundColor: '#3E85F3',
+    periodInactiveColor: '#3E85F3',
+    periodInactiveBackgroundColor: '#21222C',
+    periodBorder: '1px solid rgba(255, 255, 255, 0.15)',
   },
 
   // TaskModal
   taskModalInputColor: '#171820',
   taskModalLabelColor: '#5B5C61',
 
-   //LoginForm
-   loginInputColor: '#FFFFFF',
-   loginInputBorder: '#DCEBF7',
-   backgroundColorForm: '#111111',
-   errorTagColor: "#E74A3B",
-  correctTagColor: "#3CBC81",
+  //LoginForm
+  loginInputColor: '#FFFFFF',
+  loginInputBorder: '#DCEBF7',
+  backgroundColorForm: '#111111',
+  errorTagColor: '#E74A3B',
+  correctTagColor: '#3CBC81',
 };

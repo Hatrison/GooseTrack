@@ -17,6 +17,15 @@ export const ChangeDirIcon = styled(IconMove)`
   }
 `;
 
+export const TaskDirModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* background-color: yellow; */
+`;
+
 export const PencilIcon = styled(IconPencil)`
   width: 16px;
   height: 16px;

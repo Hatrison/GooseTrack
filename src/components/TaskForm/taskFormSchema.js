@@ -5,5 +5,4 @@ export const taskFormSchema = Yup.object().shape({
   start: Yup.string('Enter start').required('This field is required'),
   end: Yup.string('Enter end').required('This field is required'),
   priority: Yup.string('Enter priority').required('This field is required'),
-  category: Yup.string('Enter category').required('This field is required'),
 });
