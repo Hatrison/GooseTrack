@@ -63,14 +63,18 @@ export const StyledDay = styled.p`
 export const Span = styled.span`
   font-weight: 700;
   font-size: 10px;
-  line-height: 14px;
+  line-height: 1.4;
 
   flex-grow: 1;
 
   color: ${({ theme }) => theme.calendarDate};
 
+  @media (max-width: 350px) {
+    font-size: 8px;
+  }
+
   @media (min-width: 768px) {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 1.3;
   }
 `;
