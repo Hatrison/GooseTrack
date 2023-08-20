@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Section,
   Container,
@@ -23,6 +23,7 @@ const ReviewsSlider = () => {
   const slider = useRef(null);
   const reviews = useSelector(selectReviews);
   const dispatch = useDispatch();
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     dispatch(getReviews());
@@ -97,8 +98,14 @@ const ReviewsSlider = () => {
                       />
                     </div>
                   </WrapAvatarNameStars>
-
-                  <Text>{review.text}</Text>
+                  <Text
+                    onClick={() => setExpanded(!expanded)}
+                    style={{
+                      overflow: expanded ? 'auto' : 'hidden',
+                    }}
+                  >
+                    {review.text}
+                  </Text>
                 </Item>
               );
             })}
