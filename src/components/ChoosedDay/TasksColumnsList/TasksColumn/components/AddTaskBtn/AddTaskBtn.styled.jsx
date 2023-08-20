@@ -15,9 +15,10 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   gap: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 
   width: 100%;
-  height: 48px;
 
   font-family: 'InterSemiBolt', sans-serif;
   font-weight: 600;
