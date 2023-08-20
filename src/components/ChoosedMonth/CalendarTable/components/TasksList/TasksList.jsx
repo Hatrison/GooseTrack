@@ -8,13 +8,13 @@ export const TasksList = ({ tasks, openModal, currentTask }) => {
 
   const cutTitle = title => {
     if (size.width < 500) {
-      return title.substring(0, 3) + '...';
+      return title.length > 3 ? title.substring(0, 3) + '...' : title;
     }
     if (size.width < 900) {
-      return title.substring(0, 5) + '...';
+      return title.length > 5 ? title.substring(0, 5) + '...' : title;
     }
     if (size.width >= 900) {
-      return title.substring(0, 10) + '...';
+      return title.length > 10 ? title.substring(0, 10) + '...' : title;
     }
     return title;
   };
