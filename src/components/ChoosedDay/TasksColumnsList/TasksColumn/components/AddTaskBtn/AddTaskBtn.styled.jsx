@@ -17,6 +17,8 @@ export const Button = styled.button`
   gap: 8px;
 
   width: 100%;
+  height: 48px;
+
   font-family: 'InterSemiBolt', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -29,10 +31,6 @@ export const Button = styled.button`
   cursor: pointer;
 
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
-
-  @media screen and (max-width: 767px) {
-    height: 48px;
-  }
 
   @media screen and (min-width: 768px) {
     margin-top: 32px;
