@@ -20,6 +20,8 @@ export const StyledList = styled.ul`
   }
 `;
 export const StyledItem = styled.li`
+  font-family: 'InterSemiBold', sans-serif;
+  font-size: 16px;
   color: ${props =>
     props.item === 'SAT' || props.item === 'SUN'
       ? props.theme.monthHolidayColor
