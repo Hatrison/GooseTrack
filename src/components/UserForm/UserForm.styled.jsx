@@ -78,6 +78,7 @@ export const InputInfo = styled(Input)`
   font-weight: 600;
   line-height: 1.3;
   height: 42px;
+  width: 100%;
   border-radius: 8px;
   border-width: 1px;
   border-color: ${({ theme }) => theme.inputBorder};
@@ -85,15 +86,27 @@ export const InputInfo = styled(Input)`
   padding: 12px 14px;
   color: ${({ theme }) => theme.inputText};
   transition: ${({ theme }) => theme.defaultTransition};
-
+  
   &::placeholder {
     color: ${({ theme }) => theme.inputText};
   }
+  :hover,
+  :focus {
+    border: 1px solid ${({ theme }) => theme.inputText};
+    }
 
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 1.13
     padding: 14px 18px;
+    height: 46px;
+  }
+`;
+
+export const IconStatusBox = styled.div`
+  position: relative;
+  height: 46px;
+  @media (min-width: 768px) {
     height: 46px;
   }
 `;

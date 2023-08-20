@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
 
 const regexPhone = /^\+380\d{9}$/;
-// const regexPhone = /^\d{2} \(\d{3}\) \d{3} \d{2} \d{2}$/;
 const regexSkype = /^\S[\S\s]{0,28}\S$/;
 
 export const UserValidSchema = () =>
@@ -22,5 +21,7 @@ export const UserValidSchema = () =>
       .notRequired(),
     skype: Yup.string()
       .matches(regexSkype, 'Skype must be between 3 and 16 characters')
-      .max(13, 'At most 13 digits is required'),
+      .min(3, 'At least 3 digits required')
+      .max(13, 'At most 13 digits is required')
+      .notRequired(),
   });

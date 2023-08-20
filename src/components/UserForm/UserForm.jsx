@@ -4,7 +4,6 @@ import { selectUser } from '../../redux/user/selectors';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { DatePickerStyled } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
@@ -15,6 +14,7 @@ import {
   BtnSave,
   FieldAdd,
   Form,
+  IconStatusBox,
   ImgAvatar,
   InputInfo,
   Label,
@@ -24,6 +24,7 @@ import {
   UserWrapper,
   WrapperForm,
 } from './UserForm.styled';
+import { ErrorIcon, CorrectIcon } from '../LoginForm/LoginForm.styled';
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
@@ -73,7 +74,7 @@ const UserForm = () => {
         }}
         onSubmit={handleSubmit}
       >
-        {({ values, setFieldValue, dirty, isSubmitting, touched }) => (
+        {({ values, setFieldValue, dirty, isSubmitting, touched, errors }) => (
           <Form>
             <div>
               <AvatarWrapper>
@@ -109,9 +110,26 @@ const UserForm = () => {
             <User>User</User>
             <UserWrapper>
               <UserInfo>
-                <Label>
+                <Label
+                  style={{
+                    color:
+                      (touched.name && errors.name && '#E74A3B') ||
+                      (touched.name && !errors.name && '#3CBC81'),
+                  }}
+                >
                   User Name
-                  <InputInfo name="name" />
+                  <IconStatusBox>
+                    <InputInfo
+                      name="name"
+                      style={{
+                        borderColor:
+                          (touched.name && errors.name && '#E74A3B') ||
+                          (touched.name && !errors.name && '#3CBC81'),
+                      }}
+                    />
+                    {touched.name && errors.name && <ErrorIcon />}
+                    {touched.name && !errors.name && <CorrectIcon />}
+                  </IconStatusBox>
                   <ErrorMessage name="name" component="span" />
                 </Label>
 
@@ -151,23 +169,53 @@ const UserForm = () => {
               </UserInfo>
 
               <UserInfo>
-                <Label>
+                <Label
+                  style={{
+                    color:
+                      (touched.phone && errors.phone && '#E74A3B') ||
+                      (touched.phone && !errors.phone && '#3CBC81'),
+                  }}
+                >
                   Phone
-                  <InputInfo
-                    name="phone"
-                    type="tel"
-                    placeholder="+380XXXXXXXXX"
-                  />
+                  <IconStatusBox>
+                    <InputInfo
+                      name="phone"
+                      type="tel"
+                      placeholder="+380XXXXXXXXX"
+                      style={{
+                        borderColor:
+                          (touched.phone && errors.phone && '#E74A3B') ||
+                          (touched.phone && !errors.phone && '#3CBC81'),
+                      }}
+                    />
+                    {touched.phone && errors.phone && <ErrorIcon />}
+                    {touched.phone && !errors.phone && <CorrectIcon />}
+                  </IconStatusBox>
                   <ErrorMessage name="phone" component="span" />
                 </Label>
 
-                <Label>
+                <Label
+                  style={{
+                    color:
+                      (touched.skype && errors.skype && '#E74A3B') ||
+                      (touched.skype && !errors.skype && '#3CBC81'),
+                  }}
+                >
                   Skype
-                  <InputInfo
-                    name="skype"
-                    type="text"
-                    placeholder="Add a skype number"
-                  />
+                  <IconStatusBox>
+                    <InputInfo
+                      name="skype"
+                      type="text"
+                      placeholder="Add a skype number"
+                      style={{
+                        borderColor:
+                          (touched.skype && errors.skype && '#E74A3B') ||
+                          (touched.skype && !errors.skype && '#3CBC81'),
+                      }}
+                    />
+                    {touched.skype && errors.skype && <ErrorIcon />}
+                    {touched.skype && !errors.skype && <CorrectIcon />}
+                  </IconStatusBox>
                   <ErrorMessage name="skype" component="span" />
                 </Label>
               </UserInfo>

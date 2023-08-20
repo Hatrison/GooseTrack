@@ -5,7 +5,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   box-sizing: border-box;
   width: 100%;
   font-weight: 600;
-  font-family: Inter;
+  font-family: 'InterRegular', sans-serif;
   font-size: 14px;
   line-height: 1.3;
   outline: none;
@@ -15,7 +15,6 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   &:hover,
   &:focus {
     border: 1px solid ${({ theme }) => theme.inputText};
-    transition: ${({ theme }) => theme.defaultTransition};
   }
 
   & .MuiInputBase-input {
@@ -27,7 +26,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   }
   .MuiOutlinedInput-root {
     outline: none;
-    // border: none;
+    border: none;
 
     .MuiOutlinedInput-notchedOutline {
       border: none;
@@ -38,7 +37,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     height: 42px;
     border-radius: 8px;
     border-radius: 8px;
-    font-family: Inter;
+    // font-family: Inter sans-serif;
     border: 0.1px solid rgba(255, 255, 255, 0.15);
     &:hover,
     &:focus {
@@ -48,7 +47,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   }
 
   input::placeholder {
-    font-family: Inter;
+    // font-family: Inter sans-serif;
     font-size: 14px;
     color: ${({ theme }) => theme.inputText};
     font-weight: 600;
@@ -59,11 +58,11 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     }
   }
   & .MuiButtonBase-root {
-    margin-left: 18px;
+    // margin-left: 18px;
     padding: 4px;
     border-radius: 1%;
     stroke: #ffffff;
-    margin: 0px 27px;
+    margin: 0px 12px;
   }
 
   && .MuiSvgIcon-root {
@@ -107,12 +106,12 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
 export const PopperDateStyles = {
   '& .MuiDateCalendar-root': {
     height: '354px',
-    fontFamily: 'Inter',
+    // fontFamily: 'Inter sans-serif',
   },
   '& .MuiPaper-root': {
     backgroundColor: '#3E85F3',
     borderRadius: '16px',
-    fontFamily: 'Inter',
+    // fontFamily: 'Inter sans-serif',
     position: 'absolute',
     top: '5px',
     left: '-10px',
@@ -125,7 +124,7 @@ export const PopperDateStyles = {
   '& .MuiPickersCalendarHeader-labelContainer': {
     margin: 0,
     color: '#FFFFFF',
-    fontFamily: 'Inter',
+    // fontFamily: 'Inter sans-serif',
     fontSize: '20px',
     lineHeight: 1.2,
   },
@@ -136,7 +135,7 @@ export const PopperDateStyles = {
     fontWeight: 300,
     fontSize: '14px',
     lineHeight: 1.33,
-    fontFamily: 'Inter',
+    // fontFamily: 'Inter sans-serif',
     padding: '20px',
   },
   '& .MuiPickersArrowSwitcher-spacer': {
@@ -248,7 +247,7 @@ export const PopperDateStyles = {
       fontWeight: 300,
       fontSize: '18px',
       lineHeight: 1.33,
-      fontFamily: 'Inter',
+      // fontFamily: 'Inter sans-serif',
       padding: '22px',
     },
   },
