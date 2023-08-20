@@ -8,7 +8,6 @@ import {
 import { ReactComponent as plus } from '../../images/account/plus.svg';
 
 export const WrapperForm = styled.div`
-  max-width: 375px;
   padding-bottom: 40px;
   position: relative;
   @media (min-width: 768px) {
@@ -88,7 +87,7 @@ export const InputInfo = styled(Input)`
   transition: ${({ theme }) => theme.defaultTransition};
   
   &::placeholder {
-    color: ${({ theme }) => theme.inputText};
+    color: ${({ theme }) => theme.placeholderColor};
   }
   :hover,
   :focus {

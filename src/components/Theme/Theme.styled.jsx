@@ -49,6 +49,7 @@ export const theme = {
     inputText: '#111111',
     labelText: '#111111',
     inputBorder: 'rgba(17, 17, 17, 0.15)',
+    placeholderColor: 'rgba(17, 17, 17, 0.15)',
 
     TextColorUserProfile: '#111111',
 

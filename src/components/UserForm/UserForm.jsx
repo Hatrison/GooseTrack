@@ -35,6 +35,7 @@ const UserForm = () => {
 
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthDate, setBirthDate] = useState(null);
+  const [isFormChanged, setIsFormChanged] = useState(false);
 
   const handleSubmit = async values => {
     const formData = new FormData();
@@ -100,6 +101,7 @@ const UserForm = () => {
                 accept="image/*, .png,.jpg, .gif"
                 onChange={e => {
                   setAvatarURL(e.target.files[0]);
+                  setIsFormChanged(true);
                 }}
               />
               <label htmlFor="add-avatar">
@@ -221,10 +223,7 @@ const UserForm = () => {
               </UserInfo>
             </UserWrapper>
 
-            <BtnSave
-              type="submit"
-              disabled={isSubmitting || !touched || !dirty}
-            >
+            <BtnSave type="submit" disabled={!dirty && !isFormChanged}>
               Save changes
             </BtnSave>
           </Form>
