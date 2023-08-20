@@ -79,6 +79,19 @@ export const LinkSignUp = styled(Link)`
     transform: scale(1.1);
   }
 `;
+export const LinkGoogleAuth = styled(Link)`
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 600;
+  transition: all 250ms;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
 
 export const LinkLogIn = styled(Link)`
   display: flex;

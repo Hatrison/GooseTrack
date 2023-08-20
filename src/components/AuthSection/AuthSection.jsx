@@ -6,6 +6,7 @@ import {
   Header,
   Span,
   WrapLinks,
+  LinkGoogleAuth,
   LinkSignUp,
   LinkLogIn,
   Icon,
@@ -46,6 +47,7 @@ const AuthSection = () => {
             <Icon />
           </LinkLogIn>
           <LinkSignUp to="/register">Sign up</LinkSignUp>
+          <LinkGoogleAuth to="/google">Google</LinkGoogleAuth>
         </WrapLinks>
       </Wrap>
     </Container>
