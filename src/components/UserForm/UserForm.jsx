@@ -119,7 +119,7 @@ const UserForm = () => {
                       (touched.name && !errors.name && '#3CBC81'),
                   }}
                 >
-                  User Name
+                  <p>User Name</p>
                   <IconStatusBox>
                     <InputInfo
                       name="name"

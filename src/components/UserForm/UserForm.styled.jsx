@@ -60,9 +60,9 @@ export const Label = styled.label`
   flex-direction: column;
   row-gap: 8px;
   min-width: 299px;
-    font-weight: 400;
+  font-weight: 400;
   font-size: 12px;
-  line-height: 1.17
+  line-height: 1.17;
   color: ${({ theme }) => theme.labelText};
 
   @media (min-width: 768px) {
@@ -214,7 +214,7 @@ export const UserTitle = styled.h2`
 `;
 
 export const User = styled.p`
-  color: ${({ theme }) => theme.titleTextColor};
+  color: ${({ theme }) => theme.labelText};
   font-size: 12px;
   font-weight: 600;
   line-height: 1.17;

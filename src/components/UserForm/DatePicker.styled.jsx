@@ -2,6 +2,7 @@ import { styled } from '@mui/material/styles';
 import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker';
 
 export const DatePickerStyled = styled(DatePickerCalendar)`
+  color: ${({ theme }) => theme.placeholderColor};
   box-sizing: border-box;
   width: 100%;
   font-weight: 600;
@@ -39,6 +40,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
     border: 0.1px solid rgba(255, 255, 255, 0.15);
+
     &:hover,
     &:focus {
       border: 1px solid white;

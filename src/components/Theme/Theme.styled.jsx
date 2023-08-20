@@ -134,9 +134,9 @@ export const theme = {
     headerBurgerIcon: '#FFFFFF',
 
     // UserProfile
-
+    titleTextColor: '#FFFFFF',
     inputText: '#ffffff',
-    labelText: 'rgba(250, 250, 250, 0.3);',
+    labelText: 'rgba(250, 250, 250, 0.3)',
     inputBorder: 'rgba(255, 255, 255, 0.15)',
     TextColorUserProfile: '#111111',
     //CalendarHead
