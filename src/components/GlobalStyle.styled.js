@@ -16,9 +16,11 @@ export const GlobalStyle = createGlobalStyle`
   /* width */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 12px;
 
   @media screen and (min-width:768px) {
     width: 8px;
+    height: 14px;
   }
 }
 

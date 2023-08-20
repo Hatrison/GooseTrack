@@ -105,8 +105,8 @@ export const theme = {
   // Стилі для темної теми
   dark: {
     // scrollbar
-    scrollbarColor: '#171820',
-    scrollbarBackground: '#2D3037',
+    scrollbarColor: '#2D3037',
+    scrollbarBackground: '#21222C',
 
     defaultTransition: 'all 250ms',
     // buttons
