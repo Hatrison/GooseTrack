@@ -32,6 +32,7 @@ export default function SideBar({ onSidebarToggle }) {
 
     return () => {
       document.removeEventListener('keydown', closeMenuByEsc);
+      document.body.style.overflow = 'auto';
     };
   }, [onSidebarToggle]);
 
