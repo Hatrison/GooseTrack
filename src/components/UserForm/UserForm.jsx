@@ -4,7 +4,7 @@ import { selectUser } from '../../redux/user/selectors';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { DatePickerStyled } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
@@ -13,7 +13,6 @@ import {
   AddIcon,
   AvatarWrapper,
   BtnSave,
-  DatePickerStyled,
   FieldAdd,
   Form,
   ImgAvatar,
@@ -25,6 +24,7 @@ import {
   UserWrapper,
   WrapperForm,
 } from './UserForm.styled';
+import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
@@ -122,6 +122,9 @@ const UserForm = () => {
                       name="birthday"
                       type="date"
                       slotProps={{
+                        popper: {
+                          sx: PopperDateStyles,
+                        },
                         textField: {
                           placeholder: userInfo.birthday || `${currentDate}`,
                         },
