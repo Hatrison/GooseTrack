@@ -23,8 +23,11 @@ const CalendarPage = () => {
       }
       navigate(`/calendar/month/${currentDate}`, { replace: true });
     }
-  }, [location, navigate, currentDate]);
 
+    if (pathname === '/calendar' || pathname === '/calendar/') {
+      navigate(`/calendar/month/${currentDate}`, { replace: true });
+    }
+  }, [location, navigate, currentDate]);
   return (
     <div>
       <CalendarToolbar />
