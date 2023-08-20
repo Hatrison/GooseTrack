@@ -2,10 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { ReactComponent as Star } from 'images/svg/star.svg';
-import { ReactComponent as Pencil } from 'images/svg/pencil.svg';
-import { ReactComponent as Trash } from 'images/svg/trash.svg';
-
-
 import {
   Form,
   Label,
@@ -17,7 +13,6 @@ import {
   EditToolbarButton,
   DeleteToolbarButton,
   StyledRating,
-  StyledReview,
   WrapButton,
   StyledButton,
   StyledEditButton,
@@ -32,7 +27,6 @@ import {
 } from 'redux/reviews/operations';
 import { selectIsLoading, selectOwnReview } from 'redux/reviews/selectors';
 import { FeedbackFormSchema } from './FeedbackFormSchema';
-
 
 const initialValues = {
   rating: 5,
@@ -90,40 +84,28 @@ const FeedbackForm = ({ handlerCloseModal }) => {
                 error={touched.rating && errors.rating}
                 disabled={!isEditing && statusForm === 'edit'}
               />
-              
             </Label>
             <ErrorMessage name="rating" component="div" />
             <Wrap>
-              <Label htmlFor="review">Review
-                <StyledReview
-  name="review"
-  precision={1}
-  sx={{ display: 'flex', width:'30px',
-height: '30px',
-padding: '10px', }}
-  icon={<PencilIcon width="16px" height="16pxpx" fill="#3E85F3" />}
-  emptyIcon={<TrashIcon width="16pxpxpx" height="16px" fill="#EA3D65" />}
-  value={Number(values.review)}  
-  onChange={handleChange}
-  onBlur={handleBlur}
-  error={touched.review && errors.review}
-  disabled={!isEditing && statusForm === 'edit'}
-/>
-  </Label>
-  {statusForm === 'edit' && (
-    <ToolbarWrap>
-      <EditToolbarButton
-        type="button"
-        className={isEditing ? 'active' : ''}
-        onClick={() => toggleIsEditing()}
-      />
-      <DeleteToolbarButton
-        type="button"
-        onClick={() => dispatch(deleteReview())}
-      />
-    </ToolbarWrap>
-  )}
-</Wrap>
+              <Label htmlFor="review">Review</Label>
+              {statusForm === 'edit' && (
+                <ToolbarWrap>
+                  <EditToolbarButton
+                    type="button"
+                    className={isEditing ? 'active' : ''}
+                    onClick={() => toggleIsEditing()}
+                  >
+                    <PencilIcon className={isEditing ? 'active' : ''} />
+                  </EditToolbarButton>
+                  <DeleteToolbarButton
+                    type="button"
+                    onClick={() => dispatch(deleteReview())}
+                  >
+                    <TrashIcon />
+                  </DeleteToolbarButton>
+                </ToolbarWrap>
+              )}
+            </Wrap>
             <StyledTextArea
               id="review"
               name="text"
