@@ -26,6 +26,7 @@ instance.interceptors.response.use(
           refreshToken,
         });
         localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('accessToken', data.accessToken);
         setAuthHeader(data.accessToken);
         error.config.headers.authorization = `Bearer ${data.accessToken}`;
 
