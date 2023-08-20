@@ -42,15 +42,19 @@ export const StyledDay = styled.p`
 
   font-weight: 700;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1.17;
 
   color: ${({ theme }) => theme.calendarDate};
 
   border-radius: 6px;
 
+  @media (max-width: 350px) {
+    font-size: 10px;
+  }
+
   @media (min-width: 768px) {
     font-size: 16px;
-    line-height: 18px;
+    line-height: 1.125;
     top: 14px;
     right: 14px;
   }
