@@ -77,7 +77,7 @@ export const Field = styled(FormikField)`
   outline: none;
   padding: 14px;
   color: #111111;
-  border: 1px solid rgba(220, 227, 229, 0.6);
+  border: 1px solid rgba(17, 17, 17, 0.15);
   border-radius: 8px;
   margin-top: 10px;
 
