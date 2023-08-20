@@ -1,7 +1,24 @@
 import styled from 'styled-components';
 import { ReactComponent as ArrowBack } from '../../images/svg/arrowBack.svg';
 import { ReactComponent as ArrowNext } from '../../images/svg/arrowNext.svg';
-import { ReactComponent as Stars } from '../../images/svg/RatingStar.svg';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { Rating } from '@mui/material';
+
+export const Section = styled.div`
+  background-color: #ffffff;
+`;
+
+export const StyledRating = styled(Rating)`
+  & .MuiRating-iconFilled {
+    color: '#ff6d75';
+  }
+
+  & .MuiRating-iconHover {
+    color: '#ff3d47';
+  }
+`;
 
 export const Container = styled.div`
   max-width: 375px;
@@ -9,7 +26,7 @@ export const Container = styled.div`
   padding-bottom: 64px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  background-color: #ffffff;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -26,29 +43,34 @@ export const Container = styled.div`
   }
 `;
 
-export const List = styled.ul`
+export const SliderStyled = styled(Slider)`
   margin-bottom: 8px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 18px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
+    .slick-track {
+      display: flex;
+      gap: 24px;
+    }
     display: flex;
     gap: 24px;
   }
 `;
 
-export const Item = styled.li`
+export const Item = styled.div`
   padding: 24px;
   border-radius: 8px;
-  /* border-style: solid; */
   border: 1px solid rgba(17, 17, 17, 0.1);
-  /* border-color: #111111; */
-  /* outline: 1px dashed red; */
   width: 100%;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
     width: calc((100% - 24px) / 2);
   }
 `;
@@ -67,7 +89,7 @@ export const Title = styled.h2`
   font-weight: bold;
   line-height: 1.14;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.accentColor};
+  color: #3e85f3;
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
@@ -80,7 +102,6 @@ export const Avatar = styled.img`
   max-width: 100%;
   height: auto;
   border-radius: 40px;
-  outline: 1px dashed red;
 `;
 
 export const Name = styled.p`
@@ -97,12 +118,10 @@ export const Text = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29;
-  color: ${({ theme }) => theme.mainTextColor};
+  color: #111111;
   opacity: 0.7;
   width: 100%;
   height: 72px;
-
-  /* overflow: auto; */
 `;
 
 export const ArrowLeft = styled(ArrowBack)`
@@ -129,14 +148,4 @@ export const ArrowsWrap = styled.div`
   display: flex;
   justify-content: center;
   gap: 25px;
-`;
-
-export const RatingStar = styled(Stars)`
-  width: 14px;
-  height: 14px;
-`;
-
-export const StarsList = styled.ul`
-  display: flex;
-  gap: 10px;
 `;

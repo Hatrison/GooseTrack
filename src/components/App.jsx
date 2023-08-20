@@ -12,6 +12,7 @@ import { TailSpin } from 'react-loader-spinner';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './GlobalStyle.styled';
+import { LoadContainer } from './App.styled';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -36,7 +37,9 @@ export const App = () => {
   return (
     <Theme>
       {isRefreshing ? (
-        <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
+        <LoadContainer>
+          <TailSpin width={'15vh'} height={'15vh'} color={'#3E85F3'} />
+        </LoadContainer>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>

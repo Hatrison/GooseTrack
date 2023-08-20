@@ -17,7 +17,7 @@ export const Button = styled.button`
   gap: 8px;
 
   width: 100%;
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 1.28;

@@ -6,8 +6,7 @@ export const Container = styled.div`
   position: relative;
   max-width: 100%;
   height: 100vh;
-  /* background-color: #3e85f3; */
-  background-color: ${({ theme }) => theme.accentColor};
+  background-color: #3e85f3;
 
   @media screen and (min-width: 768px) {
   }
@@ -25,7 +24,6 @@ export const Image = styled.img`
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-  /* outline: 1px dashed red; */
 `;
 
 export const Header = styled.h1`
@@ -44,7 +42,7 @@ export const Header = styled.h1`
     margin-bottom: 40px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     font-size: 120px;
     line-height: 1.25;
   }
@@ -75,6 +73,11 @@ export const LinkSignUp = styled(Link)`
   line-height: 1.29;
   font-weight: 600;
   text-decoration: underline;
+  transition: all 250ms;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const LinkLogIn = styled(Link)`
@@ -82,16 +85,21 @@ export const LinkLogIn = styled(Link)`
   gap: 6px;
   align-items: center;
   padding: 14px 32px;
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  background-color: #ffffff;
   border: none;
   border-radius: 16px;
-  color: ${({ theme }) => theme.accentColor};
+  color: #3e85f3;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.29;
   letter-spacing: -2%;
+  transition: all 250ms;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  }
 
   @media screen and (min-width: 768px) {
     padding: 14px 22px;

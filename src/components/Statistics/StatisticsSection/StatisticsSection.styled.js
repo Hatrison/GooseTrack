@@ -1,60 +1,37 @@
 import styled from 'styled-components';
 
-export const ChartContainer = styled.div`
-  /* position: relative; */
-  margin-top: auto;
+export const StatisticsWrapper = styled.section`
   width: 100%;
-  border-radius: 29px;
-  border: 0.8px solid #e3f3ff;
-  @media screen and (max-width: 375px) {
-    max-width: 307px;
-  }
 
-  @media screen and (min-width: 376px) and (max-width: 768px) {
-    width: 307px;
-    height: 413px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-left: 14px;
-    padding-right: 14px;
+  @media screen and (min-width: 390px) and (max-width: 768px) {
+    max-width: 500px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    width: 640px;
-    height: 424px;
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 860px;
-    height: 440px;
-    padding: 40px;
+    max-width: 862px;
   }
 `;
 
-export const HeadContainer = styled.section`
-  /* position: absolute;
-  top: 12%;
-  left: 11%; */
-  /* position: relative; */
+export const HeadContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  column-gap: 40px;
   width: 100%;
   justify-content: space-between;
   align-items: baseline;
   padding-bottom: 48px;
 
-  /* @media screen and (min-width: 375px) and (max-width: 768px) {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
   @media screen and (min-width: 768px) {
-    padding-left: 54px;
-    padding-right: 54px;
-  } */
+    flex-direction: row;
+  }
+`;
+
+export const PaginationWrapper = styled.div`
+  position: relative;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const PeriodTime = styled.div`
@@ -63,10 +40,35 @@ export const PeriodTime = styled.div`
 `;
 
 export const Period = styled.span`
-  color: #343434;
-  font-size: 16px;
-  color: ${props => props.theme};
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'InterRegular', sans-serif;
+  font-size: 14px;
+  color: ${({ theme }) => theme.periodColor};
+  line-height: 1.3;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+export const ChartContainer = styled.div`
+  position: relative;
+  margin-top: auto;
+  width: 100%;
+  border-radius: 20px;
+  border: ${({ theme }) => theme.statisticsBorder};
+  padding: 40px 14px;
+  height: 413px;
+
+  @media screen and (min-width: 768px) {
+    height: 424px;
+    padding: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 440px;
+    padding: 40px;
+  }
 `;

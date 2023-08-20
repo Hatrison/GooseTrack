@@ -36,7 +36,7 @@ export const ListDay = styled.ul`
 `;
 
 export const ListItemDay = styled.li`
-  font-family: 'InterSemiBold';
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 16px;
   line-height: 1.13;
   width: calc(100% / 7);
@@ -51,7 +51,7 @@ export const ListItemDay = styled.li`
 
 export const ListItemDate = styled.li`
   color: ${props => props.theme.headerBurgerIcon};
-  font-family: 'InterBold';
+  font-family: 'InterBold', sans-serif;
   font-size: 12px;
   line-height: 1.17;
   width: calc(100% / 7);

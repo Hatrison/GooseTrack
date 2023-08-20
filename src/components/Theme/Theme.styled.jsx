@@ -108,6 +108,10 @@ export const theme = {
     lowPriorityBackgoundColor: '#ceeefd;',
     mediumPriorityBackgoundColor: '#fcf0d4',
     hightPriorityBackgoundColor: '#ffd2dd',
+
+    //StatisticsSection
+    periodColor: '#343434',
+    statisticsBorder: '0.8px solid #E3F3FF',
   },
 
   // Стилі для темної теми
@@ -204,6 +208,10 @@ export const theme = {
     lowPriorityBackgoundColor: '#ceeefd;',
     mediumPriorityBackgoundColor: '#fcf0d4',
     hightPriorityBackgoundColor: '#ffd2dd',
+
+    //StatisticsSection
+    periodColor: '#fff',
+    statisticsBorder: '0.8px solid #E3F3FF26',
   },
 
   // TaskModal

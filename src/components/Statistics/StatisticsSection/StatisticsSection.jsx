@@ -5,12 +5,20 @@ import {
   PeriodTime,
   Period,
   ChartContainer,
+  StatisticsWrapper,
+  PaginationWrapper,
 } from './StatisticsSection.styled';
+import { StatisticsCalendar } from '../StatisticsCalendar/StatisticsCalendar';
+import { PeriodPaginator } from 'components/CalendarToolbar/PeriodPaginator/PeriodPaginator';
 
 const StatisticsSection = () => {
   return (
-    <>
+    <StatisticsWrapper>
       <HeadContainer>
+        <PaginationWrapper>
+          <PeriodPaginator type={'day'} />
+          <StatisticsCalendar />
+        </PaginationWrapper>
         <PeriodTime>
           <Period>
             <BsFillCircleFill fill="#FFD2DD" size={8} /> By Day
@@ -23,7 +31,7 @@ const StatisticsSection = () => {
       <ChartContainer>
         <StatisticsChart />
       </ChartContainer>
-    </>
+    </StatisticsWrapper>
   );
 };
 
