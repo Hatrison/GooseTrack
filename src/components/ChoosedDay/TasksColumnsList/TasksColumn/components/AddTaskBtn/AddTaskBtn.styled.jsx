@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ReactComponent as IconPlus } from 'images/svg/plusAdd.svg';
 
 export const Icon = styled(IconPlus)`
@@ -49,4 +49,28 @@ export const Button = styled.button`
   &:hover ${Icon}, &:focus ${Icon} {
     stroke: #ffffff;
   }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      background-color: #80808045;
+      color: ${({ theme }) => theme.mainTextColor};
+      border: none;
+      cursor: not-allowed;
+      pointer-events: none;
+
+      @media screen and (max-width: 767px) {
+        height: 48px;
+      }
+
+      @media screen and (min-width: 768px) {
+        margin-top: 32px;
+
+        height: 52px;
+      }
+    `}
 `;
