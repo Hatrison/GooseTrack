@@ -19,17 +19,20 @@ export const ListItem = styled.li`
 export const StyledNavLink = styled(StyledLink)`
   font-family: Inter, sans-serif;
 
-  background-color: ${({ theme }) => theme.mainBackgroundColor};
-  color: ${({ theme }) => theme.buttonPeriodColor};
+  background-color: ${({ theme }) => theme.periodInactiveBackgroundColor};
+  color: ${({ theme }) => theme.periodInactiveColor};
   text-decoration: none;
 
   &.active {
-    background-color: ${({ theme }) => theme.buttonBackgroundColor};
-    color: ${({ theme }) => theme.buttontextColor};
+    background-color: ${({ theme }) => theme.periodActiveBackgroundColor};
+    color: ${({ theme }) => theme.periodActiveColor};
   }
   &.month {
     padding: 8px 16px;
+    border-right: ${({ theme }) => theme.periodBorder};
     border-radius: 8px 0 0 8px;
+
+    // border-right: ${({ theme }) => theme.periodBorder};
   }
   &.day {
     padding: 8px 25px;

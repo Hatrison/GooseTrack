@@ -7,6 +7,10 @@ export const theme = {
 
   // Стилі для світлої теми
   light: {
+    // scrollbar
+    scrollbarColor: '#E7E5E5',
+    scrollbarBackground: '#F2F2F2',
+
     // animation
     defaultTransition: 'all 250ms',
     // buttons
@@ -45,10 +49,11 @@ export const theme = {
     headerBurgerIcon: '#343434',
 
     // UserProfile
-
+    titleTextColor: '#343434',
     inputText: '#111111',
     labelText: '#111111',
     inputBorder: 'rgba(17, 17, 17, 0.15)',
+    placeholderColor: 'rgba(17, 17, 17, 0.15)',
 
     TextColorUserProfile: '#111111',
 
@@ -76,16 +81,34 @@ export const theme = {
     //TasksColumnCard
     priorTextColor: '#F7F6F9',
 
+    //ChangeTaskDirModal
+    changeTaskDirModalBorder: 'transparent',
+
     //LoginForm
     loginInputColor: '#111111',
     loginInputBorder: '1px solid rgba(17, 17, 17, 0.15)',
     backgroundColorForm: '#FFFFFF',
-    errorTagColor: "#E74A3B",
-    correctTagColor: "#3CBC81",
+    errorTagColor: '#E74A3B',
+    correctTagColor: '#3CBC81',
+
+    //CalendarToolbar
+    periodActiveColor: '#3E85F3',
+    periodActiveBackgroundColor: '#CAE8FF',
+    periodInactiveColor: '#3E85F3',
+    periodInactiveBackgroundColor: '#E3F3FF',
+    periodBorder: '1px solid rgba(62, 133, 243, 0.20)',
+
+    //StatisticsSection
+    periodColor: '#343434',
+    statisticsBorder: '0.8px solid #E3F3FF',
   },
 
   // Стилі для темної теми
   dark: {
+    // scrollbar
+    scrollbarColor: '#2D3037',
+    scrollbarBackground: '#21222C',
+
     defaultTransition: 'all 250ms',
     // buttons
     borderAddTask: 'none',
@@ -123,11 +146,10 @@ export const theme = {
     headerBurgerIcon: '#FFFFFF',
 
     // UserProfile
-
+    titleTextColor: '#FFFFFF',
     inputText: '#ffffff',
-    labelText: 'rgba(250, 250, 250, 0.3);',
+    labelText: 'rgba(250, 250, 250, 0.3)',
     inputBorder: 'rgba(255, 255, 255, 0.15)',
-
     TextColorUserProfile: '#111111',
     //CalendarHead
     titleColor: 'rgba(250, 250, 250, 0.3)',
@@ -155,16 +177,27 @@ export const theme = {
 
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
+
+    //CalendarToolbar
+    periodActiveColor: '#FFFFFF',
+    periodActiveBackgroundColor: '#3E85F3',
+    periodInactiveColor: '#3E85F3',
+    periodInactiveBackgroundColor: '#21222C',
+    periodBorder: '1px solid rgba(255, 255, 255, 0.15)',
+
+    //StatisticsSection
+    periodColor: '#fff',
+    statisticsBorder: '0.8px solid #E3F3FF26',
   },
 
   // TaskModal
   taskModalInputColor: '#171820',
   taskModalLabelColor: '#5B5C61',
 
-   //LoginForm
-   loginInputColor: '#FFFFFF',
-   loginInputBorder: '#DCEBF7',
-   backgroundColorForm: '#111111',
-   errorTagColor: "#E74A3B",
-  correctTagColor: "#3CBC81",
+  //LoginForm
+  loginInputColor: '#FFFFFF',
+  loginInputBorder: '#DCEBF7',
+  backgroundColorForm: '#111111',
+  errorTagColor: '#E74A3B',
+  correctTagColor: '#3CBC81',
 };

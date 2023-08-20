@@ -1,11 +1,11 @@
 import StatisticsSection from 'components/Statistics/StatisticsSection/StatisticsSection';
-import { StatisticsContainer } from 'pages/StatisticsPage/StatisticsPage.styled';
+import { StatisticsWrapper } from 'pages/StatisticsPage/StatisticsPage.styled';
 
 const StatisticsPage = () => {
   return (
-    <StatisticsContainer>
+    <StatisticsWrapper>
       <StatisticsSection />
-    </StatisticsContainer>
+    </StatisticsWrapper>
   );
 };
 

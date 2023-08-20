@@ -16,7 +16,7 @@ import {
   PeriodPaginatorWrapper,
 } from './PeriodPaginator.styled';
 
-export const PeriodPaginator = ({ type }) => {
+export const PeriodPaginatorStatistics = ({ type }) => {
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,16 +25,16 @@ export const PeriodPaginator = ({ type }) => {
   const normalizedDate = useSelector(selectDate);
 
   useEffect(() => {
-    if (params.currentDate && params.currentDate !== ':currentDate') {
-      if (normalizedDate !== params.currentDate) {
-        dispatch(setDates(params.currentDate));
+    if (params.currentDay) {
+      if (normalizedDate !== params.currentDay) {
+        dispatch(setDates(params.currentDay));
       }
     }
-  }, [dispatch, normalizedDate, params.currentDate]);
+  }, [dispatch, normalizedDate, params.currentDay]);
 
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
 
-  const onChangeDate = e => {
+  const onChangeDate1 = e => {
     const period = `${type}s`;
     const newDate =
       e.currentTarget.name === 'addition'
@@ -62,7 +62,7 @@ export const PeriodPaginator = ({ type }) => {
             type="button"
             name="subtraction"
             className="subtraction"
-            onClick={onChangeDate}
+            onClick={onChangeDate1}
           >
             <LeftArrow />
           </Btn>
@@ -72,7 +72,7 @@ export const PeriodPaginator = ({ type }) => {
             type="button"
             name="addition"
             className="addition"
-            onClick={onChangeDate}
+            onClick={onChangeDate1}
           >
             <RightArrow />
           </Btn>
@@ -82,6 +82,6 @@ export const PeriodPaginator = ({ type }) => {
   );
 };
 
-PeriodPaginator.propTypes = {
+PeriodPaginatorStatistics.propTypes = {
   type: PropTypes.string.isRequired,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Section,
   Number,
   Overview,
   PreTitle,
@@ -51,7 +52,7 @@ import All2xDeskWebp from 'images/main-page/all2xDesk.webp';
 
 const Description = () => {
   return (
-    <div>
+    <Section>
       <List>
         <Item>
           <WrapText>
@@ -159,7 +160,7 @@ const Description = () => {
           </picture>
         </Item>
       </List>
-    </div>
+    </Section>
   );
 };
 

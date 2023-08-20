@@ -12,10 +12,12 @@ import { TailSpin } from 'react-loader-spinner';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './GlobalStyle.styled';
+import { LoadContainer } from './App.styled';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const PasswordResetPage = lazy(() => import('../pages/PasswordResetPage'));
 const MainLayout = lazy(() => import('../components/MainLayout'));
 const AccountPage = lazy(() => import('../pages/AccountPage'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage'));
@@ -35,7 +37,9 @@ export const App = () => {
   return (
     <Theme>
       {isRefreshing ? (
-        <TailSpin width={'10%'} height={'10%'} color={'#3E85F3'} />
+        <LoadContainer>
+          <TailSpin width={'15vh'} height={'15vh'} color={'#3E85F3'} />
+        </LoadContainer>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -88,6 +92,15 @@ export const App = () => {
               path="login"
               element={
                 <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              }
+            />
+            <Route
+              path="password"
+              element={
+                <RestrictedRoute
+                  redirectTo="/"
+                  component={<PasswordResetPage />}
+                />
               }
             />
             <Route

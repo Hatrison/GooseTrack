@@ -1,18 +1,19 @@
 import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
+import { ReactComponent as GooseSvg } from 'images/svg/Goose.svg';
+import { ReactComponent as MessageSvg } from 'images/svg/message.svg';
 
 export const Сontainer = styled.div`
-min-height: 100vh;
-background: #dcebf7;
-position: relative;
+  min-height: 100vh;
+  background: #dcebf7;
+  position: relative;
 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-padding-top: 20px;
-padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;
 
 export const ImageContainer = styled.div`
@@ -40,4 +41,18 @@ export const Text = styled.div`
   color: black;
   z-index: 2;
   transform: rotate(-27deg);
+`;
+
+export const Goose = styled(GooseSvg)`
+  position: absolute;
+  bottom: 0px;
+  left: 50px;
+  width: 352px;
+  height: 329px;
+`;
+
+export const Message = styled(MessageSvg)`
+  position: absolute;
+  top: 0px;
+  right: 130px;
 `;
