@@ -37,23 +37,19 @@ export const StatisticsChart = () => {
   // берем данні із редакса, таски = tasks.tasks
   const selectedDate = useSelector(selectDate);
   const tasks = useSelector(selectTasks);
-  // console.log(selectedDate, tasks);
 
   //довжина масивів = кількість тасок за день та за місяць
   const tasksByDay = tasks.tasks.filter(task => task.date === selectedDate);
 
   const taskByMonth = tasks.tasks;
-  // console.log(tasksByDay, taskByMonth);
 
   const todoByDay = tasksByDay.filter(task => task.category === 'to-do').length;
 
   const inprogressByDay = tasksByDay.filter(
     task => task.category === 'in-progress'
   ).length;
-  // console.log(inprogressByDay);
 
   const doneByDay = tasksByDay.filter(task => task.category === 'done').length;
-  // console.log(doneByDay);
 
   const todoByMonth = taskByMonth.filter(
     task => task.category === 'to-do'
@@ -69,19 +65,14 @@ export const StatisticsChart = () => {
 
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
-  // console.log(allTasksByDay, allTasksByMonth, todoByDay, todoByMonth);
   const columns = [
     {
       name: 'To Do',
-      dv: todoByDay,
-      mv: todoByMonth,
       byDay: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}`,
       byMonth: `${Math.round((todoByMonth / allTasksByMonth) * 100) || 0}`,
     },
     {
       name: 'In Progress',
-      dv: inprogressByDay,
-      mv: inprogressByMonth,
       byDay: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}`,
       byMonth: `${
         Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0
@@ -89,13 +80,10 @@ export const StatisticsChart = () => {
     },
     {
       name: 'Done',
-      dv: doneByDay,
-      mv: doneByMonth,
       byDay: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}`,
       byMonth: `${Math.round((doneByMonth / allTasksByMonth) * 100) || 0}`,
     },
   ];
-  // console.log(columns);
 
   const renderCustomBarLabel = ({ x, y, width, value }) => {
     return (

@@ -7,6 +7,10 @@ export const theme = {
 
   // Стилі для світлої теми
   light: {
+    // scrollbar
+    scrollbarColor: '#E7E5E5',
+    scrollbarBackground: '#F2F2F2',
+
     // animation
     defaultTransition: 'all 250ms',
     // buttons
@@ -116,6 +120,10 @@ export const theme = {
 
   // Стилі для темної теми
   dark: {
+    // scrollbar
+    scrollbarColor: '#2D3037',
+    scrollbarBackground: '#21222C',
+
     defaultTransition: 'all 250ms',
     // buttons
     borderAddTask: 'none',

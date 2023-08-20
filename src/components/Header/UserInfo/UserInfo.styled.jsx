@@ -59,6 +59,10 @@ export const AvatarFirstLetter = styled.span`
 `;
 
 export const UserImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
   border-radius: 50%;
   position: absolute;
 `;
