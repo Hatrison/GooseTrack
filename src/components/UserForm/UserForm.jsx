@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/user/selectors';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
@@ -12,13 +11,21 @@ import { updateUser } from '../../redux/user/operations';
 import {
   AddIcon,
   AvatarWrapper,
+  BtnSave,
   FieldAdd,
   Form,
+  IconStatusBox,
   ImgAvatar,
+  InputInfo,
+  Label,
+  User,
   UserInfo,
+  UserTitle,
   UserWrapper,
   WrapperForm,
 } from './UserForm.styled';
+import { ErrorIcon, CorrectIcon } from '../LoginForm/LoginForm.styled';
+import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
@@ -28,6 +35,7 @@ const UserForm = () => {
 
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthDate, setBirthDate] = useState(null);
+  const [isFormChanged, setIsFormChanged] = useState(false);
 
   const handleSubmit = async values => {
     const formData = new FormData();
@@ -60,14 +68,14 @@ const UserForm = () => {
         validationSchema={UserValidSchema}
         initialValues={{
           name: userInfo?.name || '',
-          birthday: userInfo?.birthday || `${birthDate}` || `${currentDate}`,
+          birthday: userInfo?.birthday || `${currentDate}`,
           email: userInfo?.email || '',
           phone: userInfo?.phone || '',
           skype: userInfo?.skype || '',
         }}
         onSubmit={handleSubmit}
       >
-        {({ values, setFieldValue }) => (
+        {({ values, setFieldValue, dirty, isSubmitting, touched, errors }) => (
           <Form>
             <div>
               <AvatarWrapper>
@@ -93,29 +101,50 @@ const UserForm = () => {
                 accept="image/*, .png,.jpg, .gif"
                 onChange={e => {
                   setAvatarURL(e.target.files[0]);
+                  setIsFormChanged(true);
                 }}
               />
               <label htmlFor="add-avatar">
                 <AddIcon />
               </label>
             </div>
-            <h1>{userInfo.name}</h1>
-            <p>User</p>
+            <UserTitle>{userInfo.name}</UserTitle>
+            <User>User</User>
             <UserWrapper>
               <UserInfo>
-                <label>
-                  User Name
-                  <Field name="name" />
+                <Label
+                  style={{
+                    color:
+                      (touched.name && errors.name && '#E74A3B') ||
+                      (touched.name && !errors.name && '#3CBC81'),
+                  }}
+                >
+                  <p>User Name</p>
+                  <IconStatusBox>
+                    <InputInfo
+                      name="name"
+                      style={{
+                        borderColor:
+                          (touched.name && errors.name && '#E74A3B') ||
+                          (touched.name && !errors.name && '#3CBC81'),
+                      }}
+                    />
+                    {touched.name && errors.name && <ErrorIcon />}
+                    {touched.name && !errors.name && <CorrectIcon />}
+                  </IconStatusBox>
                   <ErrorMessage name="name" component="span" />
-                </label>
+                </Label>
 
-                <label>
+                <Label>
                   Birthday
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
+                    <DatePickerStyled
                       name="birthday"
                       type="date"
                       slotProps={{
+                        popper: {
+                          sx: PopperDateStyles,
+                        },
                         textField: {
                           placeholder: userInfo.birthday || `${currentDate}`,
                         },
@@ -131,36 +160,72 @@ const UserForm = () => {
                       }}
                     />
                   </LocalizationProvider>
-                </label>
+                </Label>
                 <div>
-                  <label>
+                  <Label>
                     Email
-                    <Field name="email" type="email" />
+                    <InputInfo name="email" type="email" disabled />
                     <ErrorMessage name="email" component="span" />
-                  </label>
+                  </Label>
                 </div>
               </UserInfo>
 
               <UserInfo>
-                <label>
+                <Label
+                  style={{
+                    color:
+                      (touched.phone && errors.phone && '#E74A3B') ||
+                      (touched.phone && !errors.phone && '#3CBC81'),
+                  }}
+                >
                   Phone
-                  <Field name="phone" type="tel" placeholder="+380XXXXXXXXX" />
+                  <IconStatusBox>
+                    <InputInfo
+                      name="phone"
+                      type="tel"
+                      placeholder="+380XXXXXXXXX"
+                      style={{
+                        borderColor:
+                          (touched.phone && errors.phone && '#E74A3B') ||
+                          (touched.phone && !errors.phone && '#3CBC81'),
+                      }}
+                    />
+                    {touched.phone && errors.phone && <ErrorIcon />}
+                    {touched.phone && !errors.phone && <CorrectIcon />}
+                  </IconStatusBox>
                   <ErrorMessage name="phone" component="span" />
-                </label>
+                </Label>
 
-                <label>
+                <Label
+                  style={{
+                    color:
+                      (touched.skype && errors.skype && '#E74A3B') ||
+                      (touched.skype && !errors.skype && '#3CBC81'),
+                  }}
+                >
                   Skype
-                  <Field
-                    name="skype"
-                    type="text"
-                    placeholder="Add a skype number"
-                  />
+                  <IconStatusBox>
+                    <InputInfo
+                      name="skype"
+                      type="text"
+                      placeholder="Add a skype number"
+                      style={{
+                        borderColor:
+                          (touched.skype && errors.skype && '#E74A3B') ||
+                          (touched.skype && !errors.skype && '#3CBC81'),
+                      }}
+                    />
+                    {touched.skype && errors.skype && <ErrorIcon />}
+                    {touched.skype && !errors.skype && <CorrectIcon />}
+                  </IconStatusBox>
                   <ErrorMessage name="skype" component="span" />
-                </label>
+                </Label>
               </UserInfo>
             </UserWrapper>
 
-            <button type="submit">Save changes</button>
+            <BtnSave type="submit" disabled={!dirty && !isFormChanged}>
+              Save changes
+            </BtnSave>
           </Form>
         )}
       </Formik>
