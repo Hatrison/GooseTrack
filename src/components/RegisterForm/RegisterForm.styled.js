@@ -14,7 +14,7 @@ export const Form = styled(FormikForm)`
   height: 100%;
   z-index: 2;
 
-  background-color: ${props => props.theme.mainBackgroundColor};
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 40px 24px;
   margin-bottom: 8px;
@@ -36,7 +36,7 @@ export const TitleForm = styled.h1`
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
-  color: ${props => props.theme.accentColor};
+  color: #3e85f3;
   // margin-bottom: 32px;
 
   @media (min-width: 768px) {
@@ -54,7 +54,7 @@ export const FormField = styled.label`
   line-height: 1.25;
   position: relative;
 
-  color: ${props => props.theme.mainTextColor};
+  color: #111111;
   :nth-of-type(even) {
     margin-top: 24px;
   }
@@ -76,8 +76,7 @@ export const Field = styled(FormikField)`
   display: block;
   outline: none;
   padding: 14px;
-  color: ${({ theme }) => theme.loginInputColor};
-  border: ${({ theme }) => theme.loginInputBorder};
+  color: #111111;
   border: 1px solid rgba(220, 227, 229, 0.6);
   border-radius: 8px;
   margin-top: 10px;
@@ -129,10 +128,10 @@ export const SubmitBtn = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
-  background: ${props => props.theme.accentColor};
+  background: #3e85f3;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
-  color: ${props => props.theme.secondaryTextColor};
+  color: #ffffff;
 
   padding: 14px;
   margin-top: 32px;
@@ -185,7 +184,7 @@ export const CorrectIcon = styled(IconCorrect)`
 `;
 
 export const ErrorTag = styled.div`
-  color: ${({ theme }) => theme.errorTagColor};
+  color: #e74a3b;
   margin-top: 8px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -194,7 +193,7 @@ export const ErrorTag = styled.div`
 `;
 
 export const CorrectTag = styled.div`
-  color: ${({ theme }) => theme.correctTagColor};
+  color: #3cbc81;
   margin-top: 8px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
