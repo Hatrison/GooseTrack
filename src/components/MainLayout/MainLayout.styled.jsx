@@ -26,6 +26,7 @@ export const PageContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    margin-left: 290px;
     width: calc(100vw - 290px);
   }
 `;
