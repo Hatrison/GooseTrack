@@ -15,11 +15,12 @@ import { themeReducer } from './theme/themeSlice';
 import { userReducer } from './user/userSlice';
 import { dateReducer } from './date/dateSlice';
 import { tasksReducer } from './tasks/tasksSlice';
+import { reviewsReducer } from './reviews/reviewsSlice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken'],
 };
 
 const themePersistConfig = {
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   date: dateReducer,
   tasks: tasksReducer,
   user: userReducer,
+  reviews: reviewsReducer,
 });
 
 export const store = configureStore({

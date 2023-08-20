@@ -7,12 +7,14 @@ import {
   ChangeDirIcon,
   PencilIcon,
   TrashIcon,
+  TaskDirModalOverlay,
 } from './TaskToolbar.styled';
 import {
   ModalBtn,
   ChangeDirIconModal,
 } from '../ChangeTaskDirModal/ChangeTaskDirModal.styled';
 import { updateTask } from 'redux/tasks/operations';
+import TaskModal from 'components/TaskModal/TaskModal';
 
 export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
@@ -51,25 +53,23 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
     setIsChangeDirOpened(prevState => !prevState);
   };
 
-  const handleTransfer = task => {
-    const modifiedTask = { ...task };
-
-    switch (modifiedTask.category) {
-      case 'Done':
-        modifiedTask.category = 'done';
-        break;
-      case 'In progress':
-        modifiedTask.category = 'in-progress';
-        break;
-      case 'To do':
-        modifiedTask.category = 'to-do';
-        break;
-      default:
-        break;
-    }
-
-    dispatch(updateTask(modifiedTask));
+  const modifyCategory = task => {
+    const { category } = task;
+    const categoryLowerCase = category.toLowerCase();
+    const splitedCategory = categoryLowerCase.split(' ');
+    const modifiedCategory = splitedCategory.join('-');
+    return { ...task, category: modifiedCategory };
   };
+
+  const onOverlayClick = event => {
+    if (event.target === event.currentTarget) {
+      handleModalToggle();
+    }
+  };
+
+  const [isTaskModalOpened, setIsTaskModalOpened] = useState(false);
+
+  const handleToggle = () => setIsTaskModalOpened(prevState => !prevState);
 
   return (
     <List>
@@ -78,24 +78,36 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
           <ChangeDirIcon />
         </Btn>
         {isChangeDirOpened && (
-          <ChangeTaskDirModal>
-            {newItemArray.map(newItem => (
-              <li key={newItem.category}>
-                <ModalBtn onClick={() => handleTransfer(newItem)}>
-                  {newItem.category}
-                  <ChangeDirIconModal />
-                </ModalBtn>
-              </li>
-            ))}
-          </ChangeTaskDirModal>
+          <div>
+            <TaskDirModalOverlay onClick={onOverlayClick} />
+            <ChangeTaskDirModal>
+              {newItemArray.map(newItem => (
+                <li key={newItem.category}>
+                  <ModalBtn
+                    onClick={() =>
+                      dispatch(updateTask(modifyCategory(newItem)))
+                    }
+                  >
+                    {newItem.category}
+                    <ChangeDirIconModal />
+                  </ModalBtn>
+                </li>
+              ))}
+            </ChangeTaskDirModal>
+          </div>
         )}
       </li>
       <li>
-        <Btn
-        // onClick={() => handleEdit(task)}
-        >
+        <Btn onClick={handleToggle}>
           <PencilIcon />
         </Btn>
+        {isTaskModalOpened && (
+          <TaskModal
+            task={item}
+            handlerCloseModal={handleToggle}
+            category={item.category}
+          ></TaskModal>
+        )}
       </li>
       <li>
         <Btn onClick={() => handleDeleteTask(item._id)}>

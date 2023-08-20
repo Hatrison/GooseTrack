@@ -9,7 +9,7 @@ export const RegisterValidSchema = Yup.object().shape({
   password: Yup.string()
     .matches(
       passwordMatches,
-      'Password must contain lowecase letters, uppercase letters and numbers'
+      'Password must contain lowe/uppercase letters and numbers'
     )
     .required('Required'),
 });

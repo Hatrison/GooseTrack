@@ -31,10 +31,9 @@ const emptyTask = {
   start: '00:00',
   end: '00:00',
   priority: 'low',
-  category: 'to-do',
 };
 
-export const TaskForm = ({ task, handlerCloseModal }) => {
+export const TaskForm = ({ category = 'to-do', task, handlerCloseModal }) => {
   const [operation, setOperation] = useState('create');
   const date = useSelector(selectDate);
   const dispatch = useDispatch();
@@ -51,7 +50,9 @@ export const TaskForm = ({ task, handlerCloseModal }) => {
     }
 
     dispatch(
-      operation === 'edit' ? updateTask(values) : addTask({ ...values, date })
+      operation === 'edit'
+        ? updateTask(values)
+        : addTask({ ...values, date, category })
     )
       .then(data => {
         if (data.error) {

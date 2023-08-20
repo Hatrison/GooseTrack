@@ -8,10 +8,11 @@ export const SidebarOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: 1;
 
   @media screen and (min-width: 1440px) {
-    position: relative;
     width: 290px;
+    z-index: 0;
   }
 `;
 
