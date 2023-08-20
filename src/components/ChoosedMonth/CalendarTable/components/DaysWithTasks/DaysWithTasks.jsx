@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { isToday, parseISO } from 'date-fns';
 import { Span, StyledDay, StyledTd } from './DaysWithTasks.styled';
-import { TasksList } from './TasksList';
+import { TasksList } from '../TasksList/TasksList';
 import { selectTasks } from 'redux/tasks/selectors';
 
 const formattedDay = date => {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledListTasks = styled.ul`
+export const TasksListStyled = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,5 +1,5 @@
 import { useWindowSize } from 'hooks/useWindowSize';
-import { StyledListTasks } from './TasksList.styled';
+import { TasksListStyled } from './TasksList.styled';
 
 export const TasksList = ({ tasks, openModal, currentTask }) => {
   const size = useWindowSize();
@@ -15,7 +15,7 @@ export const TasksList = ({ tasks, openModal, currentTask }) => {
   };
 
   return (
-    <StyledListTasks>
+    <TasksListStyled>
       {tasks.map((task, index) => {
         if (index >= 2) {
           return null;
@@ -33,6 +33,6 @@ export const TasksList = ({ tasks, openModal, currentTask }) => {
           </li>
         );
       })}
-    </StyledListTasks>
+    </TasksListStyled>
   );
 };

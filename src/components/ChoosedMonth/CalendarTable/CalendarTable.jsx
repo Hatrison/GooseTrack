@@ -1,18 +1,21 @@
-import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { endOfMonth, getDay, startOfMonth, eachDayOfInterval } from 'date-fns';
+import {
+  format,
+  endOfMonth,
+  getDay,
+  startOfMonth,
+  eachDayOfInterval,
+} from 'date-fns';
 import { useState } from 'react';
-import { setDates } from 'redux/date/dateSlice';
 import { OverflowWrapper, StyledTable } from './CalendarTable.styled';
-import { DaysWithTasks } from './DaysWithTasks';
+import { DaysWithTasks } from './components/DaysWithTasks/DaysWithTasks';
+import TaskModal from 'components/TaskModal/TaskModal';
 
 const CalendarTable = ({ tasks, currentDate }) => {
   const [isOpened, setIsOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const startMonth = startOfMonth(new Date(currentDate));
@@ -38,15 +41,7 @@ const CalendarTable = ({ tasks, currentDate }) => {
     }
   };
 
-  const formattedDate = () => {
-    if (selectedTask) {
-      const date = new Date(selectedTask.date);
-      const formattedDate = format(date, 'yyyy-MM-dd');
-      return formattedDate;
-    }
-  };
-
-  const handleToggleModal = () => {
+  const handleToggle = () => {
     setIsOpen(!isOpened);
   };
 
@@ -82,19 +77,13 @@ const CalendarTable = ({ tasks, currentDate }) => {
           <tbody>{rows}</tbody>
         </StyledTable>
       </OverflowWrapper>
-      {/* {isOpened && (
+      {isOpened && (
         <TaskModal
-          date={formattedDate()}
-          type={TASK_MODAL_TYPES.edit}
-          onCloseModal={handleToggleModal}
+          task={selectedTask}
+          handlerCloseModal={handleToggle}
           category={selectedTask.category}
-          id={selectedTask._id}
-          title={selectedTask.title}
-          start={selectedTask.start}
-          end={selectedTask.end}
-          priority={selectedTask.priority}
-        />
-      )} */}
+        ></TaskModal>
+      )}
     </>
   );
 };
