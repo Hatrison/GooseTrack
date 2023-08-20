@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Form as FormikForm, ErrorMessage as FormikError } from 'formik';
 import { Rating } from '@mui/material';
+import { ReactComponent as Trash } from 'images/svg/trash.svg';
+import { ReactComponent as Pencil } from 'images/svg/pencil.svg';
 
 export const Form = styled(FormikForm)`
   color: ${({ theme }) => theme.mainTextColor};
@@ -10,13 +12,12 @@ export const Form = styled(FormikForm)`
 `;
 
 export const Label = styled.label`
-  font-family: 'Inter';
+  /* font-family: 'Inhert'; */
   font-weight: 500;
   font-size: 15px;
   line-height: 1.17;
-  margin: 0px 0px 8px;
-  margin-top: 15px;
-  color: ${({ theme }) => theme.taskModalTitleColor};
+  margin: 15px 0px 8px;
+  color: rgba(52, 52, 52, 0.80);
 `;
 
 export const StyledRating = styled(Rating)`
@@ -29,10 +30,22 @@ export const StyledRating = styled(Rating)`
   }
 `;
 
+export const TrashIcon = styled(Trash)`
+
+`;
+
+export const PencilIcon = styled(Pencil)`
+
+`;
+
 export const ErrorMessage = styled(FormikError)`
   font-size: 12px;
   color: red;
   margin: 15px 0;
+`;
+
+export const StyledReview = styled(Review)`
+
 `;
 
 export const Wrap = styled.div`
@@ -40,6 +53,7 @@ export const Wrap = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
+
 `;
 
 export const ToolbarWrap = styled.div`
