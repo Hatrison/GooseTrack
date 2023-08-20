@@ -3,6 +3,7 @@ import { isToday, parseISO } from 'date-fns';
 import { Span, StyledDay, StyledTd } from './DaysWithTasks.styled';
 import { TasksList } from '../TasksList/TasksList';
 import { selectTasks } from 'redux/tasks/selectors';
+import { useMediaQuery } from 'react-responsive';
 
 const formattedDay = date => {
   const day = date.split('-')[2];
@@ -16,6 +17,7 @@ export const DaysWithTasks = ({
   currentTask,
 }) => {
   const tasks = useSelector(selectTasks);
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const tasksByDay = tasks.tasks.filter(task => task.date === day.date);
 
   return (
@@ -28,7 +30,9 @@ export const DaysWithTasks = ({
         />
       )}
 
-      {tasksByDay.length > 2 && <Span>+{tasksByDay.length - 2} tasks</Span>}
+      {isMobile
+        ? tasksByDay.length > 1 && <Span>+{tasksByDay.length - 1} tasks</Span>
+        : tasksByDay.length > 2 && <Span>+{tasksByDay.length - 2} tasks</Span>}
 
       <StyledDay className={isToday(parseISO(day.date)) && 'today'}>
         {formattedDay(day.date)}

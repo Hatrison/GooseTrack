@@ -103,7 +103,7 @@ export const theme = {
     cellBorder: '1px solid rgba(220, 227, 229, 0.80)',
     monthMainColor: '#343434',
     monthHolidayColor: '#3E85F3',
-    tableBorder: '1px solid rgba(220, 227, 229, 0.80)',
+    tableBorder: '1px solid rgba(220, 227, 229, 0.50)',
     calendarDate: '#343434',
 
     lowPriorityColor: '#3e85f3',
@@ -206,7 +206,7 @@ export const theme = {
     cellBorder: '1px solid rgba(255, 255, 255, 0.15)',
     monthMainColor: '#FFFFFF',
     monthHolidayColor: '#3E85F3',
-    tableBorder: '1px solid rgba(255, 255, 255, 0.15);',
+    tableBorder: '1px solid rgba(255, 255, 255, 0.15)',
     calendarDate: '#FFFFFF',
 
     lowPriorityColor: '#3e85f3',

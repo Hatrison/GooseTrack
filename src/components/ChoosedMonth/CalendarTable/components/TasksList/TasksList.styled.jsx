@@ -8,13 +8,15 @@ export const TasksListStyled = styled.ul`
   gap: 2px;
 
   li {
+    display: flex;
     cursor: pointer;
     font-weight: 700;
     font-size: 10px;
-    line-height: 14px;
+    line-height: 1.4;
 
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
 
     text-align: center;
     border-radius: 8px;
@@ -56,11 +58,10 @@ export const TasksListStyled = styled.ul`
   @media (min-width: 768px) {
     li {
       font-size: 14px;
-      line-height: 18px;
+      line-height: 1.3;
     }
   }
   @media (min-width: 1440px) {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-left: 12px;
   }
 `;

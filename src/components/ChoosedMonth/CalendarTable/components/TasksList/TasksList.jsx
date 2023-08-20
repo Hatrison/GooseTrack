@@ -1,14 +1,19 @@
 import { useWindowSize } from 'hooks/useWindowSize';
 import { TasksListStyled } from './TasksList.styled';
+import { useMediaQuery } from 'react-responsive';
 
 export const TasksList = ({ tasks, openModal, currentTask }) => {
   const size = useWindowSize();
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   const cutTitle = title => {
-    if (size.width < 767) {
+    if (size.width < 500) {
+      return title.substring(0, 3) + '...';
+    }
+    if (size.width < 900) {
       return title.substring(0, 5) + '...';
     }
-    if (title.length > 10) {
+    if (size.width >= 900) {
       return title.substring(0, 10) + '...';
     }
     return title;
@@ -17,7 +22,7 @@ export const TasksList = ({ tasks, openModal, currentTask }) => {
   return (
     <TasksListStyled>
       {tasks.map((task, index) => {
-        if (index >= 2) {
+        if (index >= (isMobile ? 1 : 2)) {
           return null;
         }
         return (
