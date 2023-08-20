@@ -156,3 +156,13 @@ export const ArrowsWrap = styled.div`
   justify-content: center;
   gap: 25px;
 `;
+
+export const Notification = styled.p`
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  text-align: center;
+  color: #111111;
+  opacity: 0.9;
+`;
