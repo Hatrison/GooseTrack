@@ -33,3 +33,13 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const resetPassword = createAsyncThunk('patchPassword',
+  async (credentials, thunkAPI) => {
+  try {
+    const response = await instance.patch('/api/users/password', credentials);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})

@@ -122,6 +122,8 @@ const LoginForm = () => {
                 <CorrectTag>Valid password format</CorrectTag>
               )}
 
+              <AuthNavigate navigateTo='/password'>Forgot your password?</AuthNavigate>
+
               <SubmitBtn type="submit">
                 Log in
                 <ButtonIcon />
