@@ -20,12 +20,14 @@ instance.interceptors.response.use(
       error.response.status === 401 &&
       error.response.data.error === 'Token Error'
     ) {
-      const refreshToken = localStorage.getItem('refreshToken');
-      setAuthHeader(refreshToken);
-      const { data } = await instance.get('api/auth/refresh');
+      const refreshToken = JSON.stringify(localStorage.getItem('refreshToken'));
+      const { data } = await instance.post('api/auth/refresh', {
+        refreshToken,
+      });
+      localStorage.setItem('refreshToken', data.refreshToken);
       setAuthHeader(data.accessToken);
       error.config.headers.authorization = `Bearer ${data.accessToken}`;
-      localStorage.setItem('refreshToken', data.refreshToken);
+
       return instance(error.config);
     }
 
