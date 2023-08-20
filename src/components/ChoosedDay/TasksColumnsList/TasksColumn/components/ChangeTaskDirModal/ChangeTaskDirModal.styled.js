@@ -59,7 +59,7 @@ export const ModalBtn = styled.button`
   align-items: center;
   padding: 0;
 
-  font-family: 'InterNormal';
+  font-family: 'InterNormal', sans-serif;
   font-size: 12px;
   line-height: 1.17;
   color: ${props => props.theme.mainTextColor};

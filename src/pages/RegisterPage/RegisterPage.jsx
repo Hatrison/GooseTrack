@@ -1,14 +1,18 @@
 import RegisterForm from 'components/RegisterForm/RegisterForm';
-import { Сontainer, ImageContainer, Text} from './RegisterPage.styled';
-
-import { ReactComponent as Message } from 'images/svg/message.svg';
-import { ReactComponent as Goose } from 'images/svg/Goose.svg';
+import {
+  Сontainer,
+  ImageContainer,
+  Text,
+  Goose,
+  Message,
+} from './RegisterPage.styled';
 
 const RegisterPage = () => {
-  return <Сontainer>
-   <RegisterForm />
+  return (
+    <Сontainer>
+      <RegisterForm />
 
-   <ImageContainer>
+      <ImageContainer>
         <Text>
           Quickly
           <span style={{ fontStyle: 'italic', color: '#3E85F3' }}>
@@ -16,10 +20,11 @@ const RegisterPage = () => {
           </span>{' '}
           and familiarize yourself with the application!
         </Text>
-        <Message style={{ position: 'absolute', top: '0px', right: '130px' }} />
-        <Goose style={{ position: 'absolute', bottom: '0px', left: '50px' }} />
+        <Message />
+        <Goose />
       </ImageContainer>
-   </Сontainer>
+    </Сontainer>
+  );
 };
 
 export default RegisterPage;

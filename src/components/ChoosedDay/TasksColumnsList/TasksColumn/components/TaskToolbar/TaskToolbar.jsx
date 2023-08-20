@@ -14,6 +14,7 @@ import {
   ChangeDirIconModal,
 } from '../ChangeTaskDirModal/ChangeTaskDirModal.styled';
 import { updateTask } from 'redux/tasks/operations';
+import TaskModal from 'components/TaskModal/TaskModal';
 
 export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
@@ -66,6 +67,10 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
     }
   };
 
+  const [isTaskModalOpened, setIsTaskModalOpened] = useState(false);
+
+  const handleToggle = () => setIsTaskModalOpened(prevState => !prevState);
+
   return (
     <List>
       <li>
@@ -93,11 +98,16 @@ export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
         )}
       </li>
       <li>
-        <Btn
-        // onClick={() => handleEdit(task)}
-        >
+        <Btn onClick={handleToggle}>
           <PencilIcon />
         </Btn>
+        {isTaskModalOpened && (
+          <TaskModal
+            task={item}
+            handlerCloseModal={handleToggle}
+            category={item.category}
+          ></TaskModal>
+        )}
       </li>
       <li>
         <Btn onClick={() => handleDeleteTask(item._id)}>
