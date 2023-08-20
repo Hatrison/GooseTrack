@@ -122,6 +122,13 @@ export const Text = styled.p`
   opacity: 0.7;
   width: 100%;
   height: 72px;
+  overflow-wrap: break-word;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 `;
 
 export const ArrowLeft = styled(ArrowBack)`
