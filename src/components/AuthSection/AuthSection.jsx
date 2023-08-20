@@ -21,6 +21,8 @@ import Goose2xMobWebp from 'images/main-page/goose2xMob.webp';
 import goose1xTabDeskWebp from 'images/main-page/goose1xTabDesk.webp';
 import goose2xTabDeskWebp from 'images/main-page/goose2xTabDesk.webp';
 
+const { REACT_APP_BASE_URL } = process.env;
+
 const AuthSection = () => {
   return (
     <Container>
@@ -47,7 +49,12 @@ const AuthSection = () => {
             <Icon />
           </LinkLogIn>
           <LinkSignUp to="/register">Sign up</LinkSignUp>
-          <LinkGoogleAuth to="/google">Google</LinkGoogleAuth>
+          <LinkGoogleAuth
+            href={`${REACT_APP_BASE_URL}/api/auth/google`}
+            target="_blank"
+          >
+            Google
+          </LinkGoogleAuth>
         </WrapLinks>
       </Wrap>
     </Container>

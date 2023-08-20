@@ -79,7 +79,7 @@ export const LinkSignUp = styled(Link)`
     transform: scale(1.1);
   }
 `;
-export const LinkGoogleAuth = styled(Link)`
+export const LinkGoogleAuth = styled.a`
   display: block;
   font-family: 'Inter', sans-serif;
   color: #ffffff;
