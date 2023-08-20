@@ -7,8 +7,7 @@ const instance = axios.create({
 
 const setAuthHeader = token => {
   if (token) {
-    instance.defaults.headers.common.authorization = `Bearer ${token}`;
-    return;
+    return (instance.defaults.headers.common.authorization = `Bearer ${token}`);
   }
   instance.defaults.headers.common.authorization = '';
 };
@@ -26,7 +25,6 @@ instance.interceptors.response.use(
       });
       localStorage.setItem('refreshToken', data.refreshToken);
       setAuthHeader(data.accessToken);
-      error.config.headers.authorization = `Bearer ${data.accessToken}`;
 
       return instance(error.config);
     }
