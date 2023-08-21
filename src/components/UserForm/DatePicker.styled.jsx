@@ -2,7 +2,6 @@ import { styled } from '@mui/material/styles';
 import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker';
 
 export const DatePickerStyled = styled(DatePickerCalendar)`
-  // color: ${({ theme }) => theme.inputText};
   box-sizing: border-box;
   width: 100%;
   font-weight: 600;
@@ -24,6 +23,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     line-height: 1.29;
     height: 18px;
     font-weight: 600;
+    color: ${({ theme }) => theme.inputText};
   }
   .MuiOutlinedInput-root {
     outline: none;
@@ -48,7 +48,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     }
   }
 
-  input::placeholder {
+  &. input::placeholder {
     font-size: 14px;
     color: ${({ theme }) => theme.placeholderColor};
     font-weight: 600;
@@ -87,7 +87,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     line-height: 1.12;
 
     .MuiStack-root {
-      color: ${({ theme }) => theme.inputText};
+      // color: ${({ theme }) => theme.inputText};
     }
 
     && .MuiInputBase-root {
