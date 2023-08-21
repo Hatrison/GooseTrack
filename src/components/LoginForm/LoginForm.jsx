@@ -13,6 +13,7 @@ import {
   ErrorTag,
   CorrectTag,
   IconContainer,
+  ResetNavigate,
 } from './LoginForm.styled';
 import { useDispatch } from 'react-redux';
 
@@ -122,7 +123,9 @@ const LoginForm = () => {
                 <CorrectTag>Valid password format</CorrectTag>
               )}
 
-              <AuthNavigate navigateTo='/password'>Forgot your password?</AuthNavigate>
+              <ResetNavigate to="/password">
+                Forgot your password?
+              </ResetNavigate>
 
               <SubmitBtn type="submit">
                 Log in

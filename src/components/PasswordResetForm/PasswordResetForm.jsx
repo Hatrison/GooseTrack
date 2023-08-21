@@ -6,7 +6,6 @@ import {
   ErrorIcon,
   CorrectIcon,
   FormTitle,
-  SubmitBtn,
   ErrorTag,
   CorrectTag,
   IconContainer,
@@ -17,7 +16,7 @@ import { resetPassword } from 'redux/user/operations';
 import { toast } from 'react-toastify';
 
 import { PasswordResetSchema } from './PasswordResetSchema';
-import { Form } from './PasswordResetForm.styled';
+import { Form, SubmitBtn } from './PasswordResetForm.styled';
 import { useNavigate } from 'react-router-dom';
 
 const initialState = { email: '' };

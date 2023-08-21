@@ -1,4 +1,5 @@
 import { Form as FormikForm, Field as FormikField } from 'formik';
+import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { ReactComponent as Icon } from 'images/svg/buttonLogReg.svg';
 import { ReactComponent as IconError } from 'images/svg/ic_baseline-error-outline.svg';
@@ -197,7 +198,6 @@ export const SubmitBtn = styled.button`
   color: #ffffff;
 
   padding: 14px;
-  margin-top: 32px;
 
   :disabled {
     opacity: 0.5;
@@ -207,7 +207,6 @@ export const SubmitBtn = styled.button`
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
-    margin-top: 48px;
     padding: 16px;
   }
 
@@ -226,5 +225,22 @@ export const GooseIMG = styled.img`
     right: 60px;
     bottom: 19px;
     display: block;
+  }
+`;
+
+export const ResetNavigate = styled(RouterLink)`
+  position: relative;
+  display: flex;
+  font-family: 'InterSemiBold', sans-serif;
+  font-size: 12px;
+  line-height: 1.125;
+  text-decoration: underline;
+  margin: 25px 0 35px 0;
+
+  color: ${props => props.theme.accentColor};
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.3;
   }
 `;
