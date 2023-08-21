@@ -11,6 +11,14 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    googleAuth(state, action) {
+      const { accessToken, refreshToken } = action.payload;
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(loginUser.fulfilled, (state, action) => {
@@ -32,5 +40,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setRefreshToken } = authSlice.actions;
+export const { googleAuth } = authSlice.actions;
 export const authReducer = authSlice.reducer;

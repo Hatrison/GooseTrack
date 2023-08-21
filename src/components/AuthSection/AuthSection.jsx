@@ -28,10 +28,7 @@ const AuthSection = () => {
             <Icon />
           </LinkLogIn>
           <LinkSignUp to="/register">Sign up</LinkSignUp>
-          <LinkGoogleAuth
-            href={`${REACT_APP_BASE_URL}/api/auth/google`}
-            target="_blank"
-          >
+          <LinkGoogleAuth href={`${REACT_APP_BASE_URL}/api/auth/google`}>
             Google
           </LinkGoogleAuth>
         </WrapLinks>

@@ -12,17 +12,6 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
-export const googleRegisterUser = createAsyncThunk(
-  'api/auth/google',
-  async (credentials, thunkAPI) => {
-    try {
-      const response = await instance.get('/api/auth/google', credentials);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
 
 export const loginUser = createAsyncThunk(
   'api/auth/login',
