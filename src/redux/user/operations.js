@@ -28,3 +28,13 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const resetPassword = createAsyncThunk('resetPassword',
+  async (credentials, thunkAPI) => {
+  try {
+    const response = await instance.post('/api/users/forgot-password', credentials);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})
