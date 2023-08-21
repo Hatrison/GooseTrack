@@ -53,7 +53,7 @@ export const theme = {
     inputText: '#111111',
     labelText: '#111111',
     inputBorder: 'rgba(17, 17, 17, 0.15)',
-    placeholderColor: 'rgba(17, 17, 17, 0.15)',
+    accountPlaceholderColor: 'rgba(17, 17, 17, 0.15)',
 
     TextColorUserProfile: '#111111',
 
@@ -175,7 +175,8 @@ export const theme = {
     labelText: 'rgba(250, 250, 250, 0.3)',
     inputBorder: 'rgba(255, 255, 255, 0.15)',
     TextColorUserProfile: '#111111',
-    // placeholderCoslor: 'rgba(17, 17, 17, 1)',
+    accountPlaceholderColor: '#ffffff',
+
     //CalendarHead
     titleColor: 'rgba(250, 250, 250, 0.3)',
     CalendarHead: '#FFFFFF',

@@ -1,8 +1,7 @@
-import { styled } from '@mui/material/styles';
+import styled from 'styled-components';
 import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker';
 
 export const DatePickerStyled = styled(DatePickerCalendar)`
-  // color: ${({ theme }) => theme.inputText};
   box-sizing: border-box;
   width: 100%;
   font-weight: 600;
@@ -48,16 +47,6 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     }
   }
 
-  input::placeholder {
-    font-size: 14px;
-    color: ${({ theme }) => theme.placeholderColor};
-    font-weight: 600;
-    opacity: 1;
-    outline: none;
-    @media (min-width: 768px) {
-      font-size: 16px;
-    }
-  }
   & .MuiButtonBase-root {
     // margin-left: 18px;
     padding: 4px;
@@ -75,6 +64,17 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
 
   &.MuiFormControl-root {
     background-color: inherit;
+  }
+
+  & div input::placeholder {
+    font-size: 14px;
+    color: ${({ theme }) => theme.accountPlaceholderColor};
+    font-weight: 600;
+    opacity: 1;
+    outline: none;
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   @media (min-width: 375px) {
