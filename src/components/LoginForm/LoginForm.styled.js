@@ -15,39 +15,12 @@ export const FormContainer = styled.div`
   align-items: center;
 
   padding: 20px;
-
-  & > a {
-    position: relative;
-    display: block;
-    font-family: 'InterSemiBolt', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 14px;
-
-    color: ${props => props.theme.accentColor};
-
-    &:before {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-
-      content: '';
-      width: 100%;
-      height: 1px;
-      background-color: ${props => props.theme.accentColor};
-    }
-    @media (min-width: 768px) {
-      font-size: 18px;
-      line-height: 24px;
-    }
-  }
 `;
 
 export const Form = styled(FormikForm)`
   width: 335px;
   min-height: 376px;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 
   background-color: #ffffff;
   border-radius: 8px;
@@ -60,7 +33,7 @@ export const Form = styled(FormikForm)`
   @media (min-width: 768px) {
     width: 480px;
     min-height: 424px;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
 `;
 
