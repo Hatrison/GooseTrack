@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[917],{51917:function(e,t,r){r.r(t),r.d(t,{default:function(){return a}});var n=r(80184),a=function(){return(0,n.jsx)("div",{children:"PasswordResetPage"})}}}]);
-//# sourceMappingURL=917.c966a3ab.chunk.js.map
