@@ -6,12 +6,16 @@ import { ReactComponent as IconCorrect } from 'images/svg/done.svg';
 export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
-  min-width: 335px;
+  width: 335px;
   padding: 28px 20px;
   background-color: ${({ theme }) => theme.secondaryBackgroundColor};
 
+  @media screen and (max-width: 375px) {
+    width: 280px;
+  }
+
   @media screen and (min-width: 768px) {
-    min-width: 400px;
+    width: 400px;
     padding: 32px;
   }
 `;

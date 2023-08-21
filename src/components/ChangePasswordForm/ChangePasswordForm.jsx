@@ -1,9 +1,8 @@
 import { Formik } from 'formik';
-
 import { useDispatch } from 'react-redux';
 import { changePassword } from 'redux/user/operations';
 import { toast } from 'react-toastify';
-import { changePasswordSchema } from './changePassordSchema';
+import { changePasswordSchema } from './changePasswordSchema';
 import {
   Form,
   FormField,
@@ -18,20 +17,22 @@ import {
   WrapButton,
 } from './ChangePassword.styles';
 
-const initialState = { password: '', confirmPassword: '' };
+const initialValues = { password: '', confirmPassword: '' };
 
 const ChangePasswordForm = ({ handlerCloseModal }) => {
   const dispatch = useDispatch();
 
   return (
     <Formik
-      initialValues={initialState}
+      initialValues={initialValues}
       onSubmit={(values, actions) => {
         dispatch(changePassword({ newPassword: values.password }))
           .then(data => {
             if (data.error) {
               throw new Error(`Something went wrong`);
             }
+            toast.success('Password changed successfully');
+            handlerCloseModal();
             actions.resetForm();
           })
           .catch(error => {
@@ -81,9 +82,14 @@ const ChangePasswordForm = ({ handlerCloseModal }) => {
             htmlFor="confirmPassword"
             style={{
               color:
-                (touched.password && errors.password && '#E74A3B') ||
-                (touched.password && !errors.password && '#3CBC81'),
+                (touched.confirmPassword &&
+                  errors.confirmPassword &&
+                  '#E74A3B') ||
+                (touched.confirmPassword &&
+                  !errors.confirmPassword &&
+                  '#3CBC81'),
             }}
+            confirmPassword
           >
             Confirm password
           </FormField>
@@ -108,16 +114,12 @@ const ChangePasswordForm = ({ handlerCloseModal }) => {
             )}
           </IconContainer>
 
-          {touched.confirmPassword &&
-            errors.confirmPassword &&
-            values.password !== values.confirmPassword && (
-              <ErrorTag>Passwords must be the same</ErrorTag>
-            )}
-          {touched.confirmPassword &&
-            !errors.confirmPassword &&
-            values.password === values.confirmPassword && (
-              <CorrectTag>Passwords match</CorrectTag>
-            )}
+          {touched.confirmPassword && errors.confirmPassword && (
+            <ErrorTag>Passwords must be the same</ErrorTag>
+          )}
+          {touched.confirmPassword && !errors.confirmPassword && (
+            <CorrectTag>Passwords match</CorrectTag>
+          )}
 
           <WrapButton>
             <StyledButton type="submit">Change</StyledButton>
