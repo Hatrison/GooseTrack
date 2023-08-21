@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker';
 
 export const DatePickerStyled = styled(DatePickerCalendar)`
-  color: ${({ theme }) => theme.placeholderColor};
+  // color: ${({ theme }) => theme.inputText};
   box-sizing: border-box;
   width: 100%;
   font-weight: 600;
@@ -67,10 +67,10 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   }
 
   && .MuiSvgIcon-root {
-    color: #111111;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
+    // color: #111111;
+    // width: 30px;
+    // height: 30px;
+    // font-size: 18px;
   }
 
   &.MuiFormControl-root {

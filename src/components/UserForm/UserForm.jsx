@@ -147,6 +147,7 @@ const UserForm = () => {
                         },
                         textField: {
                           placeholder: userInfo.birthday || `${currentDate}`,
+                          // InputProps: { endAdornment: <Calendar /> },
                         },
                       }}
                       views={['year', 'month', 'day']}
