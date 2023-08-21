@@ -5,11 +5,14 @@ import {
   Header,
   Span,
   WrapLinks,
+  LinkGoogleAuth,
   LinkSignUp,
   LinkLogIn,
   Icon,
   Goose,
 } from './AuthSection.styled';
+
+const { REACT_APP_BASE_URL } = process.env;
 
 const AuthSection = () => {
   return (
@@ -25,6 +28,9 @@ const AuthSection = () => {
             <Icon />
           </LinkLogIn>
           <LinkSignUp to="/register">Sign up</LinkSignUp>
+          <LinkGoogleAuth href={`${REACT_APP_BASE_URL}/api/auth/google`}>
+            Google
+          </LinkGoogleAuth>
         </WrapLinks>
       </Wrap>
     </Container>
