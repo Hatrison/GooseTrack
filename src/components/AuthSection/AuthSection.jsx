@@ -12,6 +12,8 @@ import {
   Goose,
 } from './AuthSection.styled';
 
+const { REACT_APP_BASE_URL } = process.env;
+
 const AuthSection = () => {
   return (
     <Container>

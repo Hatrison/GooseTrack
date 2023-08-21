@@ -89,6 +89,7 @@ export const LinkGoogleAuth = styled.a`
   font-size: 14px;
   line-height: 1.29;
   font-weight: 600;
+  text-decoration: underline;
   transition: all 250ms;
 
   &:hover {
