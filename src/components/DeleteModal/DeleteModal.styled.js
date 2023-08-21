@@ -14,6 +14,7 @@ export const DeleteFormWrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    padding-top: 45px;
     width: fit-content;
   }
 `;
@@ -21,6 +22,7 @@ export const DeleteFormWrapper = styled.div`
 export const FormHeader = styled.h1`
   font-family: 'InterBold', sans-serif;
   font-size: 18px;
+  text-align: center;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -37,7 +39,7 @@ export const ButtonWrapper = styled.div`
   }
 
   @media (min-width: 1440px) {
-    margin-top: 80px;
+    margin-top: 70px;
     flex-direction: row;
   }
 `;
