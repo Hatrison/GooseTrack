@@ -5,12 +5,7 @@ import { instance, setAuthHeader } from 'utils/axiosInctance';
 export const fetchCurrentUser = createAsyncThunk(
   'getCurrentUser',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const { accessToken } = state.auth;
-
-    if (accessToken === null) {
-      return thunkAPI.rejectWithValue('Token is not right :(');
-    }
+    const accessToken = localStorage.getItem('accessToken') || '';
 
     try {
       setAuthHeader(accessToken);
