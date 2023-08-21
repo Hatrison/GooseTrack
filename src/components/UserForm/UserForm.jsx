@@ -36,7 +36,6 @@ const UserForm = ({ openModal }) => {
   const userInfo = useSelector(selectUser);
 
   const [avatarURL, setAvatarURL] = useState(null);
-  const [birthDate, setBirthDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
 
   const handleSubmit = async values => {
@@ -49,10 +48,8 @@ const UserForm = ({ openModal }) => {
     if (values.skype) {
       formData.append('skype', values.skype);
     }
-    formData.append(
-      'birthday',
-      birthDate ? dayjs(birthDate).format('YYYY/MM/DD') : ''
-    );
+    formData.append('birthday', dayjs(values.birthday).format('YYYY/MM/DD'));
+
     if (avatarURL) {
       formData.append('avatar', avatarURL);
     }
@@ -149,6 +146,7 @@ const UserForm = ({ openModal }) => {
                         },
                         textField: {
                           placeholder: userInfo.birthday || `${currentDate}`,
+                          // InputProps: { endAdornment: <Calendar /> },
                         },
                       }}
                       views={['year', 'month', 'day']}
@@ -158,7 +156,6 @@ const UserForm = ({ openModal }) => {
                       onChange={date => {
                         if (!date) setFieldValue('birthday', '');
                         setFieldValue('birthday', date);
-                        setBirthDate(date);
                       }}
                     />
                   </LocalizationProvider>

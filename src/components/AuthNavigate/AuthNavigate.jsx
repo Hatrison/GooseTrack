@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link } from './AuthNavigate.styled';
 
 const AuthNavigate = ({ navigateTo, children }) => {
   return <Link to={navigateTo}>{children}</Link>;
