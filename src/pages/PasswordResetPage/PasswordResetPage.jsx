@@ -16,7 +16,7 @@ import {
 } from '../../components/LoginForm/LoginForm.styled';
 import { useDispatch } from 'react-redux';
 
-import { loginUser } from 'redux/auth/operations';
+import { resetPassword } from 'redux/user/operations';
 import { toast } from 'react-toastify';
 import AuthNavigate from 'components/AuthNavigate';
 import { loginFormSchema } from '../../components/LoginForm/loginFormSchema';
@@ -32,14 +32,15 @@ const PasswordResetPage = () => {
       <Formik
         initialValues={{ email: '' }}
         onSubmit={(values, actions) => {
+          console.log('submited');
           dispatch(
-            loginUser({ email: values.email, password: values.password })
+            resetPassword({ email: values.email })
           )
             .then(data => {
               if (data.payload.name) {
               }
               if (data.error) {
-                throw new Error(`Your email or password is incorrect`);
+                throw new Error(`The email is not found`);
               }
               actions.resetForm();
             })
@@ -76,13 +77,6 @@ const PasswordResetPage = () => {
               {touched.email && errors.email && <ErrorIcon />}
               {touched.email && !errors.email && <CorrectIcon />}
             </IconContainer>
-
-            {touched.email && errors.email && (
-              <ErrorTag>Invalid email format</ErrorTag>
-            )}
-            {touched.email && !errors.email && (
-              <CorrectTag>Valid email format</CorrectTag>
-            )}
 
             <SubmitBtn type="submit">
               Reset password
