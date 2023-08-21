@@ -37,6 +37,7 @@ const PasswordResetForm = () => {
                 if (data.error) {
                   throw new Error(`Email not found`);
                 }
+                toast.success(`Password reset email sent to ${values.email}`);
                 navigate('/login', { replace: true });
                 actions.resetForm();
               })
