@@ -24,11 +24,6 @@ export const StyledDatePicker = styled(DatePicker)`
   font-size: 14px;
   line-height: 1.3;
   outline: none;
-
-  :hover,
-  :focus {
-    border: none
-    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   }
 
   @media screen and (min-width: 375px) {
