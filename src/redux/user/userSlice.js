@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { updateUser } from './operations';
+import { deleteUser, updateUser } from './operations';
 
 const updateUserState = (state, action) => {
   for (let key in state) {
@@ -31,9 +31,14 @@ const userSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(updateUser.fulfilled, (state, action) => {
-      updateUserState(state, action.payload);
-    });
+    builder
+      .addCase(updateUser.fulfilled, (state, action) => {
+        updateUserState(state, action.payload);
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state = initialState;
+        return state;
+      });
   },
 });
 

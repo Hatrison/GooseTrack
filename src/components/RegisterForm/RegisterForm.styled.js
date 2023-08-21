@@ -17,7 +17,7 @@ export const Form = styled(FormikForm)`
   background-color: #ffffff;
   border-radius: 8px;
   padding: 40px 24px;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
 
   @media screen and (max-width: 374px) {
     width: 90%;
@@ -27,7 +27,7 @@ export const Form = styled(FormikForm)`
     width: 480px;
     height: 100%;
     padding: 40px;
-    margin-bottom: 14px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -37,11 +37,11 @@ export const TitleForm = styled.h1`
   font-size: 18px;
   line-height: 24px;
   color: #3e85f3;
-  // margin-bottom: 32px;
+  margin-bottom: 32px;
 
   @media (min-width: 768px) {
     font-size: 24px;
-    // margin-bottom: 40px;
+    margin-bottom: 40px;
   }
 `;
 
@@ -55,17 +55,13 @@ export const FormField = styled.label`
   position: relative;
 
   color: #111111;
-  :nth-of-type(even) {
-    margin-top: 24px;
-  }
+  margin-top: 24px;
   margin-bottom: 8px;
 
   @media (min-width: 768px) {
     font-size: 14px;
     margin-top: 18px;
-    :nth-of-type(even) {
-      margin-top: 18px;
-    }
+    margin-top: 18px;
   }
 `;
 

@@ -85,18 +85,18 @@ export const InputInfo = styled(Input)`
   padding: 12px 14px;
   color: ${({ theme }) => theme.inputText};
   transition: ${({ theme }) => theme.defaultTransition};
-  
+
   &::placeholder {
     color: ${({ theme }) => theme.placeholderColor};
   }
   :hover,
   :focus {
     border: 1px solid ${({ theme }) => theme.inputText};
-    }
+  }
 
   @media (min-width: 768px) {
     font-size: 16px;
-    line-height: 1.13
+    line-height: 1.13;
     padding: 14px 18px;
     height: 46px;
   }
@@ -150,11 +150,21 @@ export const UserInfo = styled.div`
   }
 `;
 
-export const BtnSave = styled.button`
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+
+  @media (min-width: 1440px) {
+    margin-top: 88px;
+  }
+`;
+
+export const ControlBtn = styled.button`
   align-items: center;
   min-width: 195px;
   height: 46px;
-  margin-top: 40px;
   border-radius: 16px;
   font-weight: 600;
   font-size: 14px;
@@ -175,9 +185,6 @@ export const BtnSave = styled.button`
   @media (min-width: 768px) {
     min-width: 262px;
     height: 48px;
-  }
-  @media (min-width: 1440px) {
-    margin-top: 88px;
   }
 `;
 
