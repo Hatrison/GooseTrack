@@ -98,6 +98,22 @@ export const theme = {
     periodInactiveBackgroundColor: '#E3F3FF',
     periodBorder: '1px solid rgba(62, 133, 243, 0.20)',
 
+    //ChoosedMonth
+    monthBackgroundColor: '#FFFFFF',
+    cellBorder: '1px solid rgba(220, 227, 229, 0.80)',
+    monthMainColor: '#343434',
+    monthHolidayColor: '#3E85F3',
+    tableBorder: '1px solid rgba(220, 227, 229, 0.50)',
+    calendarDate: '#343434',
+
+    lowPriorityColor: '#3e85f3',
+    mediumPriorityColor: '#f3b249',
+    hightPriorityColor: '#ea3d65',
+
+    lowPriorityBackgoundColor: '#ceeefd;',
+    mediumPriorityBackgoundColor: '#fcf0d4',
+    hightPriorityBackgoundColor: '#ffd2dd',
+
     //StatisticsSection
     periodColor: '#343434',
     statisticsBorder: '0.8px solid #E3F3FF',
@@ -184,6 +200,22 @@ export const theme = {
     periodInactiveColor: '#3E85F3',
     periodInactiveBackgroundColor: '#21222C',
     periodBorder: '1px solid rgba(255, 255, 255, 0.15)',
+
+    //ChoosedMonth
+    monthBackgroundColor: '#21222C',
+    cellBorder: '1px solid rgba(255, 255, 255, 0.15)',
+    monthMainColor: '#FFFFFF',
+    monthHolidayColor: '#3E85F3',
+    tableBorder: '1px solid rgba(255, 255, 255, 0.15)',
+    calendarDate: '#FFFFFF',
+
+    lowPriorityColor: '#3e85f3',
+    mediumPriorityColor: '#f3b249',
+    hightPriorityColor: '#ea3d65',
+
+    lowPriorityBackgoundColor: '#ceeefd;',
+    mediumPriorityBackgoundColor: '#fcf0d4',
+    hightPriorityBackgoundColor: '#ffd2dd',
 
     //StatisticsSection
     periodColor: '#fff',
