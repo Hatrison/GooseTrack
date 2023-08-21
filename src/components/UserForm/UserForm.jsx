@@ -47,10 +47,8 @@ const UserForm = () => {
     if (values.skype) {
       formData.append('skype', values.skype);
     }
-    formData.append(
-      'birthday',
-      birthDate ? dayjs(birthDate).format('YYYY/MM/DD') : ''
-    );
+    formData.append('birthday', dayjs(values.birthday).format('YYYY/MM/DD'));
+
     if (avatarURL) {
       formData.append('avatar', avatarURL);
     }
