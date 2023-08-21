@@ -12,7 +12,8 @@ import { updateUser } from '../../redux/user/operations';
 import {
   AddIcon,
   AvatarWrapper,
-  BtnSave,
+  ButtonWrapper,
+  ControlBtn,
   FieldAdd,
   Form,
   IconStatusBox,
@@ -250,17 +251,25 @@ const UserForm = ({ openModal }) => {
                 </UserInfo>
               </UserWrapper>
 
-              <div>
-                <BtnSave type="button" onClick={() => handlerCloseModal()}>
+              <ButtonWrapper>
+                <ControlBtn type="submit" disabled={!dirty && !isFormChanged}>
+                  Save changes
+                </ControlBtn>
+                <ControlBtn
+                  style={{ marginTop: '24px' }}
+                  type="button"
+                  onClick={() => handlerCloseModal()}
+                >
                   Change password
-                </BtnSave>
-                <BtnSave type="button" onClick={() => handleDelete()}>
+                </ControlBtn>
+                <ControlBtn
+                  style={{ backgroundColor: '#EA3D65' }}
+                  type="button"
+                  onClick={() => handleDelete()}
+                >
                   Delete user
-                </BtnSave>
-              </div>
-              <BtnSave type="submit" disabled={!dirty && !isFormChanged}>
-                Save changes
-              </BtnSave>
+                </ControlBtn>
+              </ButtonWrapper>
             </Form>
           )}
         </Formik>
