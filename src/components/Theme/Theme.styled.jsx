@@ -239,15 +239,4 @@ export const theme = {
     periodColor: '#fff',
     statisticsBorder: '0.8px solid #E3F3FF26',
   },
-
-  // TaskModal
-  taskModalInputColor: '#171820',
-  taskModalLabelColor: '#5B5C61',
-
-  //LoginForm
-  loginInputColor: '#FFFFFF',
-  loginInputBorder: '#DCEBF7',
-  backgroundColorForm: '#111111',
-  errorTagColor: '#E74A3B',
-  correctTagColor: '#3CBC81',
 };
