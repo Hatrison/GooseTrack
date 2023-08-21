@@ -46,6 +46,7 @@ const RegisterForm = () => {
           dispatch(registerUser(values))
             .then(data => {
               if (data.error) throw new Error(data.payload);
+              toast.success(`Success: verification email was sent`);
               navigate('/', { replace: true });
             })
             .catch(error => toast.error(`Error: ${'Registration failed'}`));

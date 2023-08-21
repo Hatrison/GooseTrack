@@ -17,19 +17,13 @@ import { dateReducer } from './date/dateSlice';
 import { tasksReducer } from './tasks/tasksSlice';
 import { reviewsReducer } from './reviews/reviewsSlice';
 
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['accessToken', 'refreshToken'],
-};
-
 const themePersistConfig = {
   key: 'theme',
   storage,
 };
 
 const rootReducer = combineReducers({
-  auth: persistReducer(authPersistConfig, authReducer),
+  auth: authReducer,
   theme: persistReducer(themePersistConfig, themeReducer),
   date: dateReducer,
   tasks: tasksReducer,

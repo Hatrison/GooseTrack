@@ -53,14 +53,12 @@ export const Link = styled(LinkRouter)`
   background-color: transparent;
   color: ${({ theme }) => theme.asideBarLinkText};
 
-  :focus,
   :hover,
   &.active {
     background-color: ${({ theme }) => theme.asideBarActiveLinkBackground};
     color: ${({ theme }) => theme.asideBarActiveLinkText};
   }
 
-  :focus svg,
   :hover svg,
   &.active svg {
     stroke: ${({ theme }) => theme.asideBarActiveLinkText};

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const TaskBox = styled.li`
+  display: block;
   padding-top: 14px;
   padding-right: 14px;
   padding-bottom: 18px;
@@ -8,7 +9,7 @@ export const TaskBox = styled.li`
 
   min-width: 296px;
   width: 100%;
-  height: 108px;
+  min-height: 108px;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.tasksColumnBorder};
   background: ${({ theme }) => theme.secondaryBackgroundColor};
@@ -18,7 +19,7 @@ export const TaskBox = styled.li`
   }
 
   @media (min-width: 768px) {
-    height: 112px;
+    min-height: 112px;
     padding-left: 14px;
     min-width: 300px;
 
@@ -31,7 +32,7 @@ export const TaskBox = styled.li`
 export const TaskText = styled.p`
   margin-bottom: 28px;
 
-  font-family: 'InterMedium';
+  font-family: 'InterMedium', sans-serif;
   font-size: 14px;
   line-height: 1.28;
   color: ${({ theme }) => theme.mainTextColor};
@@ -67,7 +68,7 @@ export const PriorityLow = styled.p`
   border-radius: 4px;
   max-height: 20px;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: ${({ theme }) => theme.priorTextColor};
@@ -80,7 +81,7 @@ export const PriorityMedium = styled.p`
   border-radius: 4px;
   max-height: 20px;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: ${({ theme }) => theme.priorTextColor};
@@ -93,7 +94,7 @@ export const PriorityHigh = styled.p`
   border-radius: 4px;
   max-height: 20px;
 
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: ${({ theme }) => theme.priorTextColor};

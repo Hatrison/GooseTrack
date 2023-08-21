@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ReactComponent as Icon } from 'images/svg/plus-circle.svg';
 
 export const PlusCircleIcon = styled(Icon)`
@@ -24,6 +24,13 @@ export const BtnAdd = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+      pointer-events: none;
+    `}
 `;
 
 export const Box = styled.div`
@@ -40,7 +47,7 @@ export const Box = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-family: 'InterSemiBolt';
+  font-family: 'InterSemiBolt', sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.11;
