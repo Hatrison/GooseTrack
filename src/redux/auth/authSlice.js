@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, logoutUser, registerUser } from './operations';
+import { loginUser, logoutUser } from './operations';
 import { fetchCurrentUser } from '../user/operations';
 
 const initialState = {
@@ -11,20 +11,20 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    googleAuth(state, action) {
+      const { accessToken, refreshToken } = action.payload;
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: builder => {
     builder
-      .addCase(registerUser.fulfilled, (state, action) => {
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+      .addCase(loginUser.fulfilled, state => {
         state.isLoggedIn = true;
       })
       .addCase(logoutUser.fulfilled, state => {
-        state.accessToken = null;
-        state.refreshToken = null;
         state.isLoggedIn = false;
       })
       .addCase(fetchCurrentUser.pending, state => {
@@ -40,5 +40,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setRefreshToken } = authSlice.actions;
+export const { googleAuth } = authSlice.actions;
 export const authReducer = authSlice.reducer;

@@ -5,12 +5,7 @@ import { instance, setAuthHeader } from 'utils/axiosInctance';
 export const fetchCurrentUser = createAsyncThunk(
   'getCurrentUser',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const { accessToken } = state.auth;
-
-    if (accessToken === null) {
-      return thunkAPI.rejectWithValue('Token is not right :(');
-    }
+    const accessToken = localStorage.getItem('accessToken') || '';
 
     try {
       setAuthHeader(accessToken);
@@ -33,3 +28,13 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const resetPassword = createAsyncThunk('resetPassword',
+  async (credentials, thunkAPI) => {
+  try {
+    const response = await instance.post('/api/users/forgot-password', credentials);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})

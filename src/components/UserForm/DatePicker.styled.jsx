@@ -1,9 +1,7 @@
-import { styled } from '@mui/material/styles';
+import styled from 'styled-components';
 import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker';
 
 export const DatePickerStyled = styled(DatePickerCalendar)`
-  color: ${({ theme }) => theme.placeholderColor};
-  box-sizing: border-box;
   width: 100%;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
@@ -11,10 +9,9 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   line-height: 1.3;
   outline: none;
   border-radius: 8px;
-  border: 1px solid rgba(17, 17, 17, 0.15);
   transition: ${({ theme }) => theme.defaultTransition};
-  &:hover,
-  &:focus {
+  &:hover .MuiOutlinedInput-root,
+  &:focus .MuiOutlinedInput-root {
     border: 1px solid ${({ theme }) => theme.inputText};
   }
 
@@ -27,7 +24,8 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   }
   .MuiOutlinedInput-root {
     outline: none;
-    border: none;
+    border: 1px solid ${({ theme }) => theme.inputBorder};
+    transition: ${({ theme }) => theme.defaultTransition};
 
     .MuiOutlinedInput-notchedOutline {
       border: none;
@@ -39,16 +37,27 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     border-radius: 8px;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
-    border: 0.1px solid rgba(255, 255, 255, 0.15);
-
-    &:hover,
-    &:focus {
-      border: 1px solid white;
-      transition: ${({ theme }) => theme.defaultTransition};
-    }
   }
 
-  input::placeholder {
+  & .MuiButtonBase-root {
+    // margin-left: 18px;
+    padding: 4px;
+    stroke: #ffffff;
+    margin: 0px 12px;
+  }
+
+  && .MuiSvgIcon-root {
+    // color: #111111;
+    // width: 30px;
+    // height: 30px;
+    // font-size: 18px;
+  }
+
+  &.MuiFormControl-root {
+    background-color: inherit;
+  }
+
+  & div input::placeholder {
     font-size: 14px;
     color: ${({ theme }) => theme.placeholderColor};
     font-weight: 600;
@@ -57,24 +66,6 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     @media (min-width: 768px) {
       font-size: 16px;
     }
-  }
-  & .MuiButtonBase-root {
-    // margin-left: 18px;
-    padding: 4px;
-    border-radius: 1%;
-    stroke: #ffffff;
-    margin: 0px 12px;
-  }
-
-  && .MuiSvgIcon-root {
-    color: #111111;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-  }
-
-  &.MuiFormControl-root {
-    background-color: inherit;
   }
 
   @media (min-width: 375px) {

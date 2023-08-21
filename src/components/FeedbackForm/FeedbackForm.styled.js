@@ -1,35 +1,77 @@
 import styled from 'styled-components';
 import { Form as FormikForm, ErrorMessage as FormikError } from 'formik';
-import { Rating } from '@mui/material';
+import { ReactComponent as Trash } from 'images/svg/trash.svg';
+import { ReactComponent as Pencil } from 'images/svg/pencil.svg';
+import { ReactComponent as StarSvg } from 'images/svg/star.svg';
+
+export const Star = styled(StarSvg)`
+  width: 24px;
+  height: 24px;
+`;
+
+export const EmptyStar = styled(Star)`
+  fill: ${({ theme }) => theme.emptyStar};
+`;
+
+export const FullStar = styled(Star)`
+  fill: #ffac33;
+`;
 
 export const Form = styled(FormikForm)`
   color: ${({ theme }) => theme.mainTextColor};
+  padding: 28px 20px;
+  width: 335px;
   background-color: ${({ theme }) => theme.secondaryBackgroundColor};
-  padding: 32px;
+
+  @media screen and (max-width: 350px) {
+    width: 260px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+    width: 468px;
+  }
 `;
 
 export const Label = styled.label`
-  font-family: 'Inter';
-  font-weight: 500;
+  font-family: 'InterNormal', sans-serif;
   font-size: 12px;
   line-height: 1.17;
-  color: ${({ theme }) => theme.taskModalTitleColor};
+  color: ${({ theme }) => theme.feedbackLabelColor};
+
+  p {
+    margin-bottom: 8px;
+  }
 `;
 
-export const StyledRating = styled(Rating)`
-  & .MuiRating-iconFilled {
-    color: '#ff6d75';
-  }
+export const RatingWrap = styled.div`
+  margin-bottom: 20px;
 
-  & .MuiRating-iconHover {
-    color: '#ff3d47';
+  @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+  }
+`;
+
+export const TrashIcon = styled(Trash)`
+  width: 16px;
+  height: 16px;
+`;
+
+export const PencilIcon = styled(Pencil)`
+  width: 16px;
+  height: 16px;
+  stroke: #3e85f3;
+
+  &.active {
+    stroke: #fff;
   }
 `;
 
 export const ErrorMessage = styled(FormikError)`
+  font-family: 'InterNormal', sans-serif;
   font-size: 12px;
   color: red;
-  margin: 15px 0;
+  margin: 10px 0;
 `;
 
 export const Wrap = styled.div`
@@ -41,10 +83,13 @@ export const Wrap = styled.div`
 
 export const ToolbarWrap = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 8px;
 `;
 
 export const ToolbarButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -52,30 +97,29 @@ export const ToolbarButton = styled.button`
 `;
 
 export const EditToolbarButton = styled(ToolbarButton)`
-  background-color: lightblue;
+  background-color: ${({ theme }) => theme.editMiniButton};
 
   &.active {
-    background-color: blue;
+    background-color: #3e85f3;
   }
 `;
 
 export const DeleteToolbarButton = styled(ToolbarButton)`
-  background: red;
+  background-color: #ea3d6533;
 `;
 
 export const StyledTextArea = styled.textarea`
   width: 100%;
-  height: 127px;
-  background-color: ${({ theme }) => theme.taskModalInputColor};
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 130px;
+  background-color: ${({ theme }) => theme.feedbackTextareaBackgroung};
+  border: ${({ theme }) => theme.feedbackTextareaBorder};
   border-radius: 8px;
-  padding: 14px 18px;
-  font-family: 'Inter';
-  font-weight: 600;
+  padding: 12px 14px;
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   line-height: 1.29;
 
-  margin-bottom: 2px;
+  margin-bottom: 14px;
   color: ${({ theme }) => theme.mainTextColor};
   resize: none;
 
@@ -84,11 +128,15 @@ export const StyledTextArea = styled.textarea`
   }
 
   ::placeholder {
-    font-family: 'Inter';
-    font-weight: 600;
+    font-family: 'InterSemiBold', sans-serif;
     font-size: 14px;
     line-height: 1.29;
     color: ${({ theme }) => theme.mainTextColor};
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 14px 18px;
+    margin-bottom: 18px;
   }
 `;
 
@@ -104,9 +152,7 @@ export const StyledButton = styled.button`
   align-items: center;
   padding: 12px;
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   line-height: 1.29;
   color: ${({ theme }) => theme.buttontextColor};
@@ -133,6 +179,9 @@ export const StyledEditButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'InterSemiBold', sans-serif;
+  font-size: 14px;
+  line-height: 1.29;
   padding: 12px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.buttonBackgroundColor};
@@ -147,12 +196,6 @@ export const StyledEditButton = styled.button`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.29;
-
   @media screen and (min-width: 678px) {
     padding: 15px;
   }
@@ -163,9 +206,12 @@ export const CancelButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'InterSemiBold', sans-serif;
+  font-size: 14px;
+  line-height: 1.29;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.mainBackgroundColor};
+  background-color: ${({ theme }) => theme.feedbackCancelButton};
   color: ${({ theme }) => theme.mainTextColor};
 
   border: 0;
@@ -178,15 +224,10 @@ export const CancelButton = styled.button`
     background-color: #3e85f3;
   }
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.29;
-
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
 
   @media screen and (min-width: 678px) {
     padding: 15px;
+    /* background-color: rgb(246, 246, 246); */
   }
 `;

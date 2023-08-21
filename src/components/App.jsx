@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import { Layout } from './Layout';
 import NotFound from 'pages/NotFound';
 import Theme from './Theme';
@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './GlobalStyle.styled';
 import { LoadContainer } from './App.styled';
+import { googleAuth } from 'redux/auth/authSlice';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -29,10 +30,17 @@ export const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
+  const [seachParams] = useSearchParams();
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-  }, [dispatch]);
+    const accessToken = seachParams.get('accessToken');
+    const refreshToken = seachParams.get('refreshToken');
+
+    if (accessToken && refreshToken) {
+      dispatch(googleAuth({ accessToken, refreshToken }));
+    }
+  }, [dispatch, seachParams]);
 
   return (
     <Theme>

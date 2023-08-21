@@ -1,4 +1,5 @@
 import { Form as FormikForm, Field as FormikField } from 'formik';
+import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { ReactComponent as Icon } from 'images/svg/buttonLogReg.svg';
 import { ReactComponent as IconError } from 'images/svg/ic_baseline-error-outline.svg';
@@ -15,39 +16,12 @@ export const FormContainer = styled.div`
   align-items: center;
 
   padding: 20px;
-
-  & > a {
-    position: relative;
-    display: block;
-    font-family: 'InterSemiBolt', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 14px;
-
-    color: ${props => props.theme.accentColor};
-
-    &:before {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-
-      content: '';
-      width: 100%;
-      height: 1px;
-      background-color: ${props => props.theme.accentColor};
-    }
-    @media (min-width: 768px) {
-      font-size: 18px;
-      line-height: 24px;
-    }
-  }
 `;
 
 export const Form = styled(FormikForm)`
   width: 335px;
   min-height: 376px;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 
   background-color: #ffffff;
   border-radius: 8px;
@@ -60,7 +34,7 @@ export const Form = styled(FormikForm)`
   @media (min-width: 768px) {
     width: 480px;
     min-height: 424px;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -224,7 +198,6 @@ export const SubmitBtn = styled.button`
   color: #ffffff;
 
   padding: 14px;
-  margin-top: 32px;
 
   :disabled {
     opacity: 0.5;
@@ -234,7 +207,6 @@ export const SubmitBtn = styled.button`
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
-    margin-top: 48px;
     padding: 16px;
   }
 
@@ -253,5 +225,22 @@ export const GooseIMG = styled.img`
     right: 60px;
     bottom: 19px;
     display: block;
+  }
+`;
+
+export const ResetNavigate = styled(RouterLink)`
+  position: relative;
+  display: flex;
+  font-family: 'InterSemiBold', sans-serif;
+  font-size: 12px;
+  line-height: 1.125;
+  text-decoration: underline;
+  margin: 25px 0 35px 0;
+
+  color: ${props => props.theme.accentColor};
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.3;
   }
 `;
