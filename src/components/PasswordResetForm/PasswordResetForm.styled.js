@@ -4,7 +4,7 @@ import { Form as FormikForm } from 'formik';
 export const Form = styled(FormikForm)`
   width: 335px;
   min-height: 300px;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 
   background-color: #ffffff;
   border-radius: 8px;
@@ -17,7 +17,7 @@ export const Form = styled(FormikForm)`
   @media (min-width: 768px) {
     width: 480px;
     min-height: 340px;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
 `;
 

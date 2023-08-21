@@ -18,6 +18,7 @@ import { toast } from 'react-toastify';
 import { PasswordResetSchema } from './PasswordResetSchema';
 import { Form, SubmitBtn } from './PasswordResetForm.styled';
 import { useNavigate } from 'react-router-dom';
+import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
 
 const initialState = { email: '' };
 
@@ -85,6 +86,7 @@ const PasswordResetForm = () => {
             </Form>
           )}
         </Formik>
+        <AuthNavigate navigateTo="/login">Log In</AuthNavigate>
       </FormContainer>
     </>
   );
