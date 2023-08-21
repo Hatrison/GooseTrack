@@ -68,7 +68,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
 
   & div input::placeholder {
     font-size: 14px;
-    color: ${({ theme }) => theme.accountPlaceholderColor};
+    color: ${({ theme }) => theme.placeholderColor};
     font-weight: 600;
     opacity: 1;
     outline: none;
