@@ -188,12 +188,11 @@ export const ControlBtn = styled.button`
   }
   &:disabled {
     opacity: 0.45;
-    @media screen and (max-width: 240px) {
-      min-width: 100px;
-      font-size: 10px;
-    }
   }
-
+  @media screen and (max-width: 240px) {
+    min-width: 100px;
+    font-size: 10px;
+  }
   @media (min-width: 768px) {
     min-width: 262px;
     height: 48px;
