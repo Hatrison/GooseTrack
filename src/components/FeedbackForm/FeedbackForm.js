@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
-import { ReactComponent as Star } from 'images/svg/star.svg';
+
 import {
   Form,
   Label,
+  EmptyStar,
+  FullStar,
+  RatingWrap,
   PencilIcon,
   TrashIcon,
   ErrorMessage,
@@ -12,13 +15,13 @@ import {
   ToolbarWrap,
   EditToolbarButton,
   DeleteToolbarButton,
-  StyledRating,
   WrapButton,
   StyledButton,
   StyledEditButton,
   StyledTextArea,
   CancelButton,
 } from './FeedbackForm.styled';
+import { Rating } from '@mui/material';
 import {
   createReview,
   deleteReview,
@@ -70,22 +73,24 @@ const FeedbackForm = ({ handlerCloseModal }) => {
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
           <Form>
-            <Label>
-              Rating
-              <StyledRating
-                name="rating"
-                precision={1}
-                sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
-                icon={<Star width="24px" height="24px" fill="#FFAC33" />}
-                emptyIcon={<Star width="24px" height="24px" fill="#CEC9C1" />}
-                value={Number(values.rating)}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.rating && errors.rating}
-                disabled={!isEditing && statusForm === 'edit'}
-              />
-            </Label>
-            <ErrorMessage name="rating" component="div" />
+            <RatingWrap>
+              <Label>
+                <p>Rating</p>
+                <Rating
+                  name="rating"
+                  precision={1}
+                  sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
+                  icon={<FullStar />}
+                  emptyIcon={<EmptyStar />}
+                  value={Number(values.rating)}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.rating && errors.rating}
+                  disabled={!isEditing && statusForm === 'edit'}
+                />
+              </Label>
+              <ErrorMessage name="rating" component="div" />
+            </RatingWrap>
             <Wrap>
               <Label htmlFor="review">Review</Label>
               {statusForm === 'edit' && (
