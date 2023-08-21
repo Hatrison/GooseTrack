@@ -28,3 +28,21 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const changePassword = createAsyncThunk('changePassword', async (credentials, thunkAPI) => {
+  try {
+    const response = await instance.patch('/api/users/password', credentials);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})
+
+export const deleteUser = createAsyncThunk('deleteUser', async (credentials, thunkAPI) => {
+  try {
+    const response = await instance.post('/api/users/delete');
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})

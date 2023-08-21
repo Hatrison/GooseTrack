@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { selectUser } from '../../redux/user/selectors';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { deleteUser } from '../../redux/user/operations';
 import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
@@ -29,7 +31,7 @@ import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
-const UserForm = () => {
+const UserForm = ({ openModal }) => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUser);
 
@@ -223,6 +225,24 @@ const UserForm = () => {
               </UserInfo>
             </UserWrapper>
 
+            <div>
+              <button type="submit" onClick={openModal}>
+                Change password
+              </button>
+              <button type="submit" onClick={async () => {
+                dispatch(deleteUser())
+                  .then(data => {
+                    if (data.payload.name) {
+                    }
+                    if (data.error) {
+                      throw new Error(`Something went wrong`);
+                    }
+                  })
+                  .catch(error => {
+                    toast.error(error.message);
+                  });
+              }}>Delete user</button>
+            </div>
             <BtnSave type="submit" disabled={!dirty && !isFormChanged}>
               Save changes
             </BtnSave>
