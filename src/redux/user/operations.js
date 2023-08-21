@@ -40,7 +40,7 @@ export const changePassword = createAsyncThunk('changePassword', async (credenti
 
 export const deleteUser = createAsyncThunk('deleteUser', async (credentials, thunkAPI) => {
   try {
-    const response = await instance.post('/api/users/delete');
+    const response = await instance.delete('/api/users/delete');
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
