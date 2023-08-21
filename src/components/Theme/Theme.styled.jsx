@@ -72,6 +72,14 @@ export const theme = {
     taskModalTitleColor: 'rgba(52, 52, 52, 0.8)',
     taskModalBorder: '1px solid rgba(220, 227, 229, 0.8)',
 
+    // FeedbackModal
+    feedbackLabelColor: '#343434cc',
+    feedbackTextareaBackgroung: '#F6F6F6',
+    feedbackTextareaBorder: 'none',
+    feedbackCancelButton: '#E5EDFA',
+    editMiniButton: '#e3f3ff',
+    emptyStar: '#CEC9C1',
+
     //WeekCalendar
     weekCalendarText: '#343434',
 
@@ -181,6 +189,14 @@ export const theme = {
     taskModalInputColor: '#171820',
     taskModalLabelColor: '#5B5C61',
     taskModalTitleColor: 'rgba(250, 250, 250, 0.30)',
+
+    // FeedbackModal
+    feedbackLabelColor: '#FAFAFA4D',
+    feedbackTextareaBackgroung: '#171820',
+    feedbackTextareaBorder: '1px solid rgba(255, 255, 255, 0.15)',
+    feedbackCancelButton: '#21222C',
+    editMiniButton: '#353647',
+    emptyStar: '#353647',
 
     //WeekCalendar
     weekCalendarText: 'rgba(250, 250, 250, 0.3)',
