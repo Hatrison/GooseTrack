@@ -4,7 +4,6 @@ import { selectUser } from '../../redux/user/selectors';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { deleteUser } from '../../redux/user/operations';
 import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
@@ -29,18 +28,22 @@ import {
 import { ErrorIcon, CorrectIcon } from '../LoginForm/LoginForm.styled';
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 import ChangePasswordModal from 'components/ChangePasswordModal';
-import { useNavigate } from 'react-router-dom';
+import DeleteModal from 'components/DeleteModal/DeleteModal';
 
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
 const UserForm = ({ openModal }) => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUser);
-  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const handlerCloseModal = () => {
     setIsModalOpen(prev => !prev);
+  };
+
+  const handlerCloseDeleteModal = () => {
+    setIsDeleteModalOpen(prev => !prev);
   };
 
   const [avatarURL, setAvatarURL] = useState(null);
@@ -67,19 +70,6 @@ const UserForm = ({ openModal }) => {
     } catch {
       toast.error('Something went wrong... Try again!');
     }
-  };
-
-  const handleDelete = () => {
-    dispatch(deleteUser())
-      .then(data => {
-        if (data.error) {
-          throw new Error(`Something went wrong`);
-        }
-        navigate('/', { replace: true });
-      })
-      .catch(error => {
-        toast.error(error.message);
-      });
   };
 
   return (
@@ -265,7 +255,7 @@ const UserForm = ({ openModal }) => {
                 <ControlBtn
                   style={{ backgroundColor: '#EA3D65BB' }}
                   type="button"
-                  onClick={() => handleDelete()}
+                  onClick={() => handlerCloseDeleteModal()}
                 >
                   Delete user
                 </ControlBtn>
@@ -276,6 +266,9 @@ const UserForm = ({ openModal }) => {
       </WrapperForm>
       {isModalOpen && (
         <ChangePasswordModal handlerCloseModal={handlerCloseModal} />
+      )}
+      {isDeleteModalOpen && (
+        <DeleteModal handlerCloseModal={handlerCloseDeleteModal} />
       )}
     </>
   );
