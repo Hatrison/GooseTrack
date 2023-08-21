@@ -85,18 +85,18 @@ export const InputInfo = styled(Input)`
   padding: 12px 14px;
   color: ${({ theme }) => theme.inputText};
   transition: ${({ theme }) => theme.defaultTransition};
-  
+
   &::placeholder {
     color: ${({ theme }) => theme.placeholderColor};
   }
   :hover,
   :focus {
     border: 1px solid ${({ theme }) => theme.inputText};
-    }
+  }
 
   @media (min-width: 768px) {
     font-size: 16px;
-    line-height: 1.13
+    line-height: 1.13;
     padding: 14px 18px;
     height: 46px;
   }

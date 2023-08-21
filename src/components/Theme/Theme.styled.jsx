@@ -175,6 +175,8 @@ export const theme = {
     labelText: 'rgba(250, 250, 250, 0.3)',
     inputBorder: 'rgba(255, 255, 255, 0.15)',
     TextColorUserProfile: '#111111',
+    placeholderColor: '#ffffff',
+
     //CalendarHead
     titleColor: 'rgba(250, 250, 250, 0.3)',
     CalendarHead: '#FFFFFF',
