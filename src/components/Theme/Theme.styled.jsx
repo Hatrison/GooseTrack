@@ -7,6 +7,10 @@ export const theme = {
 
   // Стилі для світлої теми
   light: {
+    // scrollbar
+    scrollbarColor: '#E7E5E5',
+    scrollbarBackground: '#F2F2F2',
+
     // animation
     defaultTransition: 'all 250ms',
     // buttons
@@ -45,10 +49,11 @@ export const theme = {
     headerBurgerIcon: '#343434',
 
     // UserProfile
-
+    titleTextColor: '#343434',
     inputText: '#111111',
     labelText: '#111111',
     inputBorder: 'rgba(17, 17, 17, 0.15)',
+    placeholderColor: 'rgba(17, 17, 17, 0.15)',
 
     TextColorUserProfile: '#111111',
 
@@ -66,6 +71,14 @@ export const theme = {
     taskModalLabelColor: '#5D5D5D',
     taskModalTitleColor: 'rgba(52, 52, 52, 0.8)',
     taskModalBorder: '1px solid rgba(220, 227, 229, 0.8)',
+
+    // FeedbackModal
+    feedbackLabelColor: '#343434cc',
+    feedbackTextareaBackgroung: '#F6F6F6',
+    feedbackTextareaBorder: 'none',
+    feedbackCancelButton: '#E5EDFA',
+    editMiniButton: '#e3f3ff',
+    emptyStar: '#CEC9C1',
 
     //WeekCalendar
     weekCalendarText: '#343434',
@@ -93,6 +106,22 @@ export const theme = {
     periodInactiveBackgroundColor: '#E3F3FF',
     periodBorder: '1px solid rgba(62, 133, 243, 0.20)',
 
+    //ChoosedMonth
+    monthBackgroundColor: '#FFFFFF',
+    cellBorder: '1px solid rgba(220, 227, 229, 0.80)',
+    monthMainColor: '#343434',
+    monthHolidayColor: '#3E85F3',
+    tableBorder: '1px solid rgba(220, 227, 229, 0.50)',
+    calendarDate: '#343434',
+
+    lowPriorityColor: '#3e85f3',
+    mediumPriorityColor: '#f3b249',
+    hightPriorityColor: '#ea3d65',
+
+    lowPriorityBackgoundColor: '#ceeefd;',
+    mediumPriorityBackgoundColor: '#fcf0d4',
+    hightPriorityBackgoundColor: '#ffd2dd',
+
     //StatisticsSection
     periodColor: '#343434',
     statisticsBorder: '0.8px solid #E3F3FF',
@@ -100,6 +129,10 @@ export const theme = {
 
   // Стилі для темної теми
   dark: {
+    // scrollbar
+    scrollbarColor: '#2D3037',
+    scrollbarBackground: '#21222C',
+
     defaultTransition: 'all 250ms',
     // buttons
     borderAddTask: 'none',
@@ -137,11 +170,10 @@ export const theme = {
     headerBurgerIcon: '#FFFFFF',
 
     // UserProfile
-
+    titleTextColor: '#FFFFFF',
     inputText: '#ffffff',
-    labelText: 'rgba(250, 250, 250, 0.3);',
+    labelText: 'rgba(250, 250, 250, 0.3)',
     inputBorder: 'rgba(255, 255, 255, 0.15)',
-
     TextColorUserProfile: '#111111',
     //CalendarHead
     titleColor: 'rgba(250, 250, 250, 0.3)',
@@ -157,6 +189,14 @@ export const theme = {
     taskModalInputColor: '#171820',
     taskModalLabelColor: '#5B5C61',
     taskModalTitleColor: 'rgba(250, 250, 250, 0.30)',
+
+    // FeedbackModal
+    feedbackLabelColor: '#FAFAFA4D',
+    feedbackTextareaBackgroung: '#171820',
+    feedbackTextareaBorder: '1px solid rgba(255, 255, 255, 0.15)',
+    feedbackCancelButton: '#21222C',
+    editMiniButton: '#353647',
+    emptyStar: '#353647',
 
     //WeekCalendar
     weekCalendarText: 'rgba(250, 250, 250, 0.3)',
@@ -176,6 +216,22 @@ export const theme = {
     periodInactiveColor: '#3E85F3',
     periodInactiveBackgroundColor: '#21222C',
     periodBorder: '1px solid rgba(255, 255, 255, 0.15)',
+
+    //ChoosedMonth
+    monthBackgroundColor: '#21222C',
+    cellBorder: '1px solid rgba(255, 255, 255, 0.15)',
+    monthMainColor: '#FFFFFF',
+    monthHolidayColor: '#3E85F3',
+    tableBorder: '1px solid rgba(255, 255, 255, 0.15)',
+    calendarDate: '#FFFFFF',
+
+    lowPriorityColor: '#3e85f3',
+    mediumPriorityColor: '#f3b249',
+    hightPriorityColor: '#ea3d65',
+
+    lowPriorityBackgoundColor: '#ceeefd;',
+    mediumPriorityBackgoundColor: '#fcf0d4',
+    hightPriorityBackgoundColor: '#ffd2dd',
 
     //StatisticsSection
     periodColor: '#fff',

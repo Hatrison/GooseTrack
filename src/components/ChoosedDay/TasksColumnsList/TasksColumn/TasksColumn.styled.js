@@ -7,7 +7,6 @@ export const Container = styled.li`
   padding-top: 18px;
   padding-right: 18px;
   padding-bottom: 10px;
-  margin-top: 14px;
 
   min-width: 335px;
   width: 100%;
