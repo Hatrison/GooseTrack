@@ -122,6 +122,13 @@ export const Text = styled.p`
   opacity: 0.7;
   width: 100%;
   height: 72px;
+  overflow-wrap: break-word;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 `;
 
 export const ArrowLeft = styled(ArrowBack)`
@@ -148,4 +155,14 @@ export const ArrowsWrap = styled.div`
   display: flex;
   justify-content: center;
   gap: 25px;
+`;
+
+export const Notification = styled.p`
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  text-align: center;
+  color: #111111;
+  opacity: 0.9;
 `;

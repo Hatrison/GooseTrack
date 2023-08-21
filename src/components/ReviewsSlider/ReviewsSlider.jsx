@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Section,
   Container,
@@ -13,6 +13,7 @@ import {
   ArrowsWrap,
   SliderStyled,
   StyledRating,
+  Notification,
 } from './ReviewsSlider.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectReviews } from 'redux/reviews/selectors';
@@ -23,6 +24,7 @@ const ReviewsSlider = () => {
   const slider = useRef(null);
   const reviews = useSelector(selectReviews);
   const dispatch = useDispatch();
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     dispatch(getReviews());
@@ -65,49 +67,65 @@ const ReviewsSlider = () => {
     <Section>
       <Container>
         <Title>Reviews</Title>
-        <SliderStyled ref={slider} {...settings}>
-          {reviews &&
-            reviews.map(review => {
-              return (
-                <Item key={review._id}>
-                  <WrapAvatarNameStars>
-                    <Avatar
-                      src={
-                        review.avatar
-                          ? review.avatar
-                          : 'https://366icons.com/media/01/profile-avatar-account-icon-16699.png'
-                      }
-                      alt="Avatar"
-                      width="50px"
-                      height="50px"
-                    />
-                    <div>
-                      <Name>{review.name}</Name>
-                      <StyledRating
-                        precision={1}
-                        sx={{ display: 'flex', gap: '10px', maxWidth: '104px' }}
-                        icon={
-                          <Star width="14px" height="14px" fill="#FFAC33" />
+        {reviews.length > 0 ? (
+          <SliderStyled ref={slider} {...settings}>
+            {reviews &&
+              reviews.map(review => {
+                return (
+                  <Item key={review._id}>
+                    <WrapAvatarNameStars>
+                      <Avatar
+                        src={
+                          review.avatar
+                            ? review.avatar
+                            : 'https://366icons.com/media/01/profile-avatar-account-icon-16699.png'
                         }
-                        emptyIcon={
-                          <Star width="14px" height="14px" fill="#CEC9C1" />
-                        }
-                        value={Number(review.rating)}
-                        readOnly
+                        alt="Avatar"
+                        width="50px"
+                        height="50px"
                       />
-                    </div>
-                  </WrapAvatarNameStars>
+                      <div>
+                        <Name>{review.name}</Name>
+                        <StyledRating
+                          precision={1}
+                          sx={{
+                            display: 'flex',
+                            gap: '10px',
+                            maxWidth: '104px',
+                          }}
+                          icon={
+                            <Star width="14px" height="14px" fill="#FFAC33" />
+                          }
+                          emptyIcon={
+                            <Star width="14px" height="14px" fill="#CEC9C1" />
+                          }
+                          value={Number(review.rating)}
+                          readOnly
+                        />
+                      </div>
+                    </WrapAvatarNameStars>
+                    <Text
+                      onClick={() => setExpanded(!expanded)}
+                      style={{
+                        overflow: expanded ? 'auto' : 'hidden',
+                      }}
+                    >
+                      {review.text}
+                    </Text>
+                  </Item>
+                );
+              })}
+          </SliderStyled>
+        ) : (
+          <Notification>There is no reviews yet</Notification>
+        )}
 
-                  <Text>{review.text}</Text>
-                </Item>
-              );
-            })}
-        </SliderStyled>
-
-        <ArrowsWrap>
-          <ArrowLeft onClick={() => slider.current.slickPrev()} />
-          <ArrowRight onClick={() => slider.current.slickNext()} />
-        </ArrowsWrap>
+        {reviews.length > 0 && (
+          <ArrowsWrap>
+            <ArrowLeft onClick={() => slider.current.slickPrev()} />
+            <ArrowRight onClick={() => slider.current.slickNext()} />
+          </ArrowsWrap>
+        )}
       </Container>
     </Section>
   );

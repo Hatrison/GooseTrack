@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as GooseMain } from '../../images/svg/gooseMain.svg';
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogInIcon } from '../../images/svg/IconLogin.svg';
 
@@ -7,9 +8,6 @@ export const Container = styled.div`
   max-width: 100%;
   height: 100vh;
   background-color: #3e85f3;
-
-  @media screen and (min-width: 768px) {
-  }
 `;
 
 export const Wrap = styled.div`
@@ -19,11 +17,16 @@ export const Wrap = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const Image = styled.img`
+export const Goose = styled(GooseMain)`
   display: block;
-  max-width: 100%;
-  height: auto;
   margin: 0 auto;
+  width: 142px;
+  height: 142px;
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 149px;
+  }
 `;
 
 export const Header = styled.h1`

@@ -6,8 +6,7 @@ export const registerUser = createAsyncThunk(
   'api/auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const response = await instance.post('/api/auth/register', credentials);
-      return response.data;
+      await instance.post('/api/auth/register', credentials);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -32,6 +31,7 @@ export const loginUser = createAsyncThunk(
       const response = await instance.post('/api/auth/login', credentials);
       setAuthHeader(response.data.accessToken);
       localStorage.setItem('refreshToken', response.data.refreshToken);
+      localStorage.setItem('accessToken', response.data.accessToken);
       await thunkAPI.dispatch(addUserData(response.data));
       return response.data;
     } catch (error) {
@@ -46,6 +46,8 @@ export const logoutUser = createAsyncThunk(
     try {
       await instance.post(`/api/auth/logout`);
       setAuthHeader();
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('accessToken');
       await thunkAPI.dispatch(cleanUserData());
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
