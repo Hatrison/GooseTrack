@@ -18,6 +18,11 @@ const authSlice = createSlice({
       localStorage.setItem('refreshToken', refreshToken);
       state.isLoggedIn = true;
     },
+    cleanAuthData(state) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      state.isLoggedIn = false;
+    },
   },
   extraReducers: builder => {
     builder
@@ -40,5 +45,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { googleAuth } = authSlice.actions;
+export const { googleAuth, cleanAuthData } = authSlice.actions;
 export const authReducer = authSlice.reducer;

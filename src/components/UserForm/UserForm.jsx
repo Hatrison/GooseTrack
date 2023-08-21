@@ -263,7 +263,7 @@ const UserForm = ({ openModal }) => {
                   Change password
                 </ControlBtn>
                 <ControlBtn
-                  style={{ backgroundColor: '#EA3D65' }}
+                  style={{ backgroundColor: '#EA3D65BB' }}
                   type="button"
                   onClick={() => handleDelete()}
                 >
