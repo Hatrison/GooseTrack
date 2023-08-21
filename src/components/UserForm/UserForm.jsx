@@ -34,7 +34,6 @@ const UserForm = () => {
   const userInfo = useSelector(selectUser);
 
   const [avatarURL, setAvatarURL] = useState(null);
-  const [birthDate, setBirthDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
 
   const handleSubmit = async values => {
@@ -155,7 +154,6 @@ const UserForm = () => {
                       onChange={date => {
                         if (!date) setFieldValue('birthday', '');
                         setFieldValue('birthday', date);
-                        setBirthDate(date);
                       }}
                     />
                   </LocalizationProvider>
