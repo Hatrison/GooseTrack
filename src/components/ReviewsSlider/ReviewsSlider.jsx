@@ -76,8 +76,8 @@ const ReviewsSlider = () => {
                     <WrapAvatarNameStars>
                       <Avatar
                         src={
-                          review.avatar
-                            ? review.avatar
+                          review.avatarURL
+                            ? review.avatarURL
                             : 'https://366icons.com/media/01/profile-avatar-account-icon-16699.png'
                         }
                         alt="Avatar"
