@@ -198,7 +198,6 @@ export const PopperDateStyles = {
     width: '32px',
     height: '32px',
   },
-
   '& .MuiButtonBase-root.MuiPickersDay-root.Mui-selected.MuiPickersDay-dayWithMargin.MuiPickersDay-today':
     {
       fill: '#FFFFFF',
@@ -208,7 +207,6 @@ export const PopperDateStyles = {
       width: '32px',
       height: '32px',
     },
-
   '@media (min-width: 768px)': {
     '& .MuiDateCalendar-root': {
       width: '337px',
@@ -252,7 +250,6 @@ export const PopperDateStyles = {
       padding: '22px',
     },
   },
-
   '@media (min-width: 1440px)': {
     '& .MuiDateCalendar-root': {
       width: '337px',
