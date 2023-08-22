@@ -110,6 +110,13 @@ export const WrapRadio = styled.div`
   }
 `;
 
+export const ErrorTag = styled.div`
+  font-family: 'InterNormal', sans-serif;
+  font-size: 12px;
+  color: red;
+  margin: 10px 0;
+`;
+
 export const RadioContainer = styled.div`
   display: flex;
   align-items: center;
