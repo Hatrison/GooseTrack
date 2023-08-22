@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/GooseTrack/static/css/main.274152f6.css",
-    "main.js": "/GooseTrack/static/js/main.ff224c8d.js",
+    "main.js": "/GooseTrack/static/js/main.2d78c600.js",
     "static/css/625.bd4c5d24.chunk.css": "/GooseTrack/static/css/625.bd4c5d24.chunk.css",
     "static/js/625.1c860990.chunk.js": "/GooseTrack/static/js/625.1c860990.chunk.js",
     "static/js/332.78a0fba0.chunk.js": "/GooseTrack/static/js/332.78a0fba0.chunk.js",
@@ -24,7 +24,7 @@
     "static/js/983.80e25df0.chunk.js": "/GooseTrack/static/js/983.80e25df0.chunk.js",
     "static/js/113.e6578934.chunk.js": "/GooseTrack/static/js/113.e6578934.chunk.js",
     "static/js/605.e3deaa5d.chunk.js": "/GooseTrack/static/js/605.e3deaa5d.chunk.js",
-    "static/js/595.80b5371a.chunk.js": "/GooseTrack/static/js/595.80b5371a.chunk.js",
+    "static/js/595.f7963661.chunk.js": "/GooseTrack/static/js/595.f7963661.chunk.js",
     "static/media/calendar2xTab.png": "/GooseTrack/static/media/calendar2xTab.b7a7c2d51cdd56fa1e2b.png",
     "static/media/calendar2xDesk.png": "/GooseTrack/static/media/calendar2xDesk.979e93ff3c956f552f2e.png",
     "static/media/Goose.svg": "/GooseTrack/static/media/Goose.ce77f20c33646a096276747324e14024.svg",
@@ -110,7 +110,7 @@
     "static/media/addIcon.svg": "/GooseTrack/static/media/addIcon.8f6a9541655bf2746c9970986162b056.svg",
     "static/media/plusAdd.svg": "/GooseTrack/static/media/plusAdd.d557e5f870a00548676deca894446b65.svg",
     "main.274152f6.css.map": "/GooseTrack/static/css/main.274152f6.css.map",
-    "main.ff224c8d.js.map": "/GooseTrack/static/js/main.ff224c8d.js.map",
+    "main.2d78c600.js.map": "/GooseTrack/static/js/main.2d78c600.js.map",
     "625.bd4c5d24.chunk.css.map": "/GooseTrack/static/css/625.bd4c5d24.chunk.css.map",
     "625.1c860990.chunk.js.map": "/GooseTrack/static/js/625.1c860990.chunk.js.map",
     "332.78a0fba0.chunk.js.map": "/GooseTrack/static/js/332.78a0fba0.chunk.js.map",
@@ -133,10 +133,10 @@
     "983.80e25df0.chunk.js.map": "/GooseTrack/static/js/983.80e25df0.chunk.js.map",
     "113.e6578934.chunk.js.map": "/GooseTrack/static/js/113.e6578934.chunk.js.map",
     "605.e3deaa5d.chunk.js.map": "/GooseTrack/static/js/605.e3deaa5d.chunk.js.map",
-    "595.80b5371a.chunk.js.map": "/GooseTrack/static/js/595.80b5371a.chunk.js.map"
+    "595.f7963661.chunk.js.map": "/GooseTrack/static/js/595.f7963661.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.274152f6.css",
-    "static/js/main.ff224c8d.js"
+    "static/js/main.2d78c600.js"
   ]
 }
