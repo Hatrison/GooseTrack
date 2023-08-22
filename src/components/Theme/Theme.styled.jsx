@@ -98,6 +98,7 @@ export const theme = {
     backgroundColorForm: '#FFFFFF',
     errorTagColor: '#E74A3B',
     correctTagColor: '#3CBC81',
+    
 
     //CalendarToolbar
     periodActiveColor: '#3E85F3',
