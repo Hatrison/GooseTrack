@@ -196,6 +196,7 @@ export const SubmitBtn = styled.button`
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
   color: #ffffff;
+  transition: background-color 0.7s cubic-bezier(0.39, 0.575, 0.565, 1);
 
   padding: 14px;
 
@@ -210,12 +211,12 @@ export const SubmitBtn = styled.button`
     padding: 16px;
   }
   &:hover {
-    background: #2B78EF; 
-    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48); 
+    background-color: #2b78ef;
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
   &:hover ${ButtonIcon} {
-    background: #2B78EF; 
-    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48); 
+    background-color: #2b78ef;
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
     animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 `;
