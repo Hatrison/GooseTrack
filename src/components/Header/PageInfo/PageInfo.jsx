@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
+import { selectDate } from 'redux/date/selectors';
 
 import {
   PageInfoWrap,
@@ -15,6 +16,12 @@ import {
 export default function PageInfo() {
   const tasks = useSelector(selectTasks);
   const { pathname } = useLocation();
+  const currentDate = useSelector(selectDate);
+
+  const tasksByDay = tasks.tasks.filter(
+    task => task.date === currentDate && task.category !== 'done'
+  );
+
   let location = ``;
   if (pathname.includes(`account`)) {
     location = `Account`;
@@ -26,12 +33,10 @@ export default function PageInfo() {
 
   return (
     <PageInfoWrap>
-      {location === 'Calendar' && tasks && tasks.length > 0 && (
-        <GooseMotivator />
-      )}
+      {location === 'Calendar' && tasksByDay.length > 0 && <GooseMotivator />}
       <Wrapper>
         <LocationName>{location}</LocationName>
-        {location === 'Calendar' && tasks.length > 0 && (
+        {location === 'Calendar' && tasksByDay.length > 0 && (
           <MotivationPhrase>
             <MotivationStart>Let go{` `}</MotivationStart>
             <MotivationEnd>of the past and focus on the present</MotivationEnd>
