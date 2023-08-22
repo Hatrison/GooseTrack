@@ -18,7 +18,9 @@ export default function PageInfo() {
   const { pathname } = useLocation();
   const currentDate = useSelector(selectDate);
 
-  const tasksByDay = tasks.tasks.filter(task => task.date === currentDate);
+  const tasksByDay = tasks.tasks.filter(
+    task => task.date === currentDate && task.category !== 'done'
+  );
 
   let location = ``;
   if (pathname.includes(`account`)) {
