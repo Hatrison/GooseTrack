@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import StatisticsChart from '../StatisticsChart/StatisticsChart';
 import { BsFillCircleFill } from 'react-icons/bs';
 import {
@@ -9,15 +10,24 @@ import {
   PaginationWrapper,
 } from './StatisticsSection.styled';
 import { StatisticsCalendar } from '../StatisticsCalendar/StatisticsCalendar';
-import { PeriodPaginator } from 'components/CalendarToolbar/PeriodPaginator/PeriodPaginator';
+import { format } from 'date-fns';
+import { PeriodPaginatorStatistics } from '../PeriodPaginatorStatistics/PeriodPaginatorStatistics';
 
 const StatisticsSection = () => {
+  const [date, setDate] = useState(() => {
+    return format(new Date(), 'yyyy-MM-dd');
+  });
+
   return (
     <StatisticsWrapper>
       <HeadContainer>
         <PaginationWrapper>
-          <PeriodPaginator type={'day'} />
-          <StatisticsCalendar />
+          <PeriodPaginatorStatistics
+            type={'day'}
+            normalizedDate={date}
+            setDate={setDate}
+          />
+          <StatisticsCalendar selectedDate={date} setDate={setDate} />
         </PaginationWrapper>
         <PeriodTime>
           <Period>
@@ -29,7 +39,7 @@ const StatisticsSection = () => {
         </PeriodTime>
       </HeadContainer>
       <ChartContainer>
-        <StatisticsChart />
+        <StatisticsChart normalizedDate={date} />
       </ChartContainer>
     </StatisticsWrapper>
   );
