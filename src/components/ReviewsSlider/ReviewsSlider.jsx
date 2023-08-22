@@ -23,7 +23,6 @@ import { getReviews } from 'redux/reviews/operations';
 const ReviewsSlider = () => {
   const slider = useRef(null);
   const reviews = useSelector(selectReviews);
-  console.log(reviews);
   const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(false);
 
