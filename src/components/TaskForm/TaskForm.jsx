@@ -9,6 +9,7 @@ import {
   Label,
   StartWrap,
   EndWrap,
+  ErrorTag,
   RadioButtonsInput,
   RadioButtonsLabel,
   RadioButtonCustom,
@@ -74,80 +75,91 @@ export const TaskForm = ({ category = 'to-do', task, handlerCloseModal }) => {
         action.resetForm();
       }}
     >
-      <Form>
-        <InputWrap>
-          <FieldWrap>
-            <div>
-              <Label>Title</Label>
-              <Input
-                type="text"
-                name="title"
-                placeholder="Enter text"
-                required
-              />
-            </div>
-
-            <FormGroup>
-              <StartWrap>
-                <Label>Start</Label>
-                <Input type="time" name="start" required />
-              </StartWrap>
-              <EndWrap>
-                <Label>End</Label>
-                <Input type="time" name="end" required />
-              </EndWrap>
-            </FormGroup>
-          </FieldWrap>
-
-          <WrapRadio>
-            <RadioContainer>
-              <RadioButtonsLabel>
-                <RadioButtonsInput type="radio" value="low" name="priority" />
-                <RadioButtonCustom />
-                Low
-              </RadioButtonsLabel>
-            </RadioContainer>
-
-            <RadioContainer>
-              <RadioButtonsLabel>
-                <RadioButtonsInput
-                  type="radio"
-                  value="medium"
-                  name="priority"
+      {({ errors, touched }) => (
+        <Form>
+          <InputWrap>
+            <FieldWrap>
+              <div>
+                <Label>Title</Label>
+                <Input
+                  type="text"
+                  name="title"
+                  placeholder="Enter text"
+                  required
                 />
-                <RadioButtonCustom />
-                Medium
-              </RadioButtonsLabel>
-            </RadioContainer>
+              </div>
 
-            <RadioContainer>
-              <RadioButtonsLabel>
-                <RadioButtonsInput type="radio" value="high" name="priority" />
-                <RadioButtonCustom />
-                High
-              </RadioButtonsLabel>
-            </RadioContainer>
-          </WrapRadio>
-        </InputWrap>
+              <FormGroup>
+                <StartWrap>
+                  <Label>Start</Label>
+                  <Input type="time" name="start" required />
+                </StartWrap>
+                <EndWrap>
+                  <Label>End</Label>
+                  <Input type="time" name="end" required />
+                </EndWrap>
+              </FormGroup>
+              {touched.start && touched.end && (errors.start || errors.end) && (
+                <ErrorTag>
+                  Start time must be before or equal to end time
+                </ErrorTag>
+              )}
+            </FieldWrap>
 
-        <WrapButton>
-          {operation === 'edit' ? (
-            <EditButton type="submit">
-              <IconEditPen />
-              Edit
-            </EditButton>
-          ) : (
-            <EditButton type="submit">
-              <IconPlus />
-              Add
-            </EditButton>
-          )}
+            <WrapRadio>
+              <RadioContainer>
+                <RadioButtonsLabel>
+                  <RadioButtonsInput type="radio" value="low" name="priority" />
+                  <RadioButtonCustom />
+                  Low
+                </RadioButtonsLabel>
+              </RadioContainer>
 
-          <CancelButton type="button" onClick={handlerCloseModal}>
-            Cancel
-          </CancelButton>
-        </WrapButton>
-      </Form>
+              <RadioContainer>
+                <RadioButtonsLabel>
+                  <RadioButtonsInput
+                    type="radio"
+                    value="medium"
+                    name="priority"
+                  />
+                  <RadioButtonCustom />
+                  Medium
+                </RadioButtonsLabel>
+              </RadioContainer>
+
+              <RadioContainer>
+                <RadioButtonsLabel>
+                  <RadioButtonsInput
+                    type="radio"
+                    value="high"
+                    name="priority"
+                  />
+                  <RadioButtonCustom />
+                  High
+                </RadioButtonsLabel>
+              </RadioContainer>
+            </WrapRadio>
+          </InputWrap>
+
+          <WrapButton>
+            {operation === 'edit' ? (
+              <EditButton type="submit">
+                <IconEditPen />
+                Edit
+              </EditButton>
+            ) : (
+              <EditButton type="submit">
+                <IconPlus />
+                Add
+              </EditButton>
+            )}
+
+            <CancelButton type="button" onClick={handlerCloseModal}>
+              Cancel
+            </CancelButton>
+          </WrapButton>
+        </Form>
+      )}
     </Formik>
   );
 };
