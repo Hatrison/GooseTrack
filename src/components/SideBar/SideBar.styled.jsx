@@ -69,6 +69,12 @@ export const CloseIcon = styled(IconClose)`
   transition: ${({ theme }) => theme.defaultTransition};
   cursor: pointer;
 
+  transition: transform 0.3s ease-in-out;
+  :hover,
+  :focus {
+    transform: scale(1.1);
+  }
+
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;
