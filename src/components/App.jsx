@@ -9,7 +9,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { TailSpin } from 'react-loader-spinner';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './GlobalStyle.styled';
 import { LoadContainer } from './App.styled';
@@ -30,17 +30,25 @@ export const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
-  const [seachParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    const accessToken = seachParams.get('accessToken');
-    const refreshToken = seachParams.get('refreshToken');
+    const accessToken = searchParams.get('accessToken');
+    const refreshToken = searchParams.get('refreshToken');
 
     if (accessToken && refreshToken) {
       dispatch(googleAuth({ accessToken, refreshToken }));
     }
-  }, [dispatch, seachParams]);
+
+    const verification = searchParams.get('emailVerification');
+
+    if (verification === 'success') {
+      toast.success('Your email has been successfully verified', {
+        autoClose: 5000,
+      });
+    }
+  }, [dispatch, searchParams]);
 
   return (
     <Theme>
@@ -122,7 +130,7 @@ export const App = () => {
         </Routes>
       )}
       <GlobalStyle />
-      <ToastContainer autoClose={1000} />
+      <ToastContainer autoClose={1500} />
     </Theme>
   );
 };
