@@ -134,6 +134,12 @@ export const Text = styled.p`
 export const ArrowLeft = styled(ArrowBack)`
   width: 50px;
   height: 50px;
+  cursor: pointer;
+  transition: all 250ms;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 
   @media screen and (min-width: 768px) {
     width: 61px;
@@ -144,6 +150,12 @@ export const ArrowLeft = styled(ArrowBack)`
 export const ArrowRight = styled(ArrowNext)`
   width: 50px;
   height: 50px;
+  cursor: pointer;
+  transition: all 250ms;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 
   @media screen and (min-width: 768px) {
     width: 61px;
