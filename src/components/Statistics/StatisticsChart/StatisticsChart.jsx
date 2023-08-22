@@ -5,9 +5,7 @@ import { parse } from 'date-fns';
 import { getTasks } from 'redux/tasks/operations';
 import { selectTheme } from 'redux/theme/selectors';
 import { useMediaQuery } from 'react-responsive';
-
-// підписка на дату та таски із редаксу
-import { selectDate } from 'redux/date/selectors';
+// підписка на  таски із редаксу
 import { selectTasks } from 'redux/tasks/selectors';
 
 import {
@@ -20,11 +18,10 @@ import {
   Label,
 } from 'recharts';
 
-export const StatisticsChart = () => {
+export const StatisticsChart = ({ normalizedDate }) => {
   const theme = useSelector(selectTheme);
   const isDarkTheme = theme === 'dark';
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const normalizedDate = useSelector(selectDate);
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
   const year = date.getUTCFullYear();
   const month = date.getUTCMonth() + 1;
@@ -35,11 +32,10 @@ export const StatisticsChart = () => {
   }, [dispatch, month, year]);
 
   // берем данні із редакса, таски = tasks.tasks
-  const selectedDate = useSelector(selectDate);
   const tasks = useSelector(selectTasks);
 
   //довжина масивів = кількість тасок за день та за місяць
-  const tasksByDay = tasks.tasks.filter(task => task.date === selectedDate);
+  const tasksByDay = tasks.tasks.filter(task => task.date === normalizedDate);
 
   const taskByMonth = tasks.tasks;
 
