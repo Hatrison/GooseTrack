@@ -50,6 +50,7 @@ export const TaskForm = ({ category = 'to-do', task, handlerCloseModal }) => {
       return;
     }
 
+    console.log(values);
     dispatch(
       operation === 'edit'
         ? updateTask(values)
@@ -72,7 +73,6 @@ export const TaskForm = ({ category = 'to-do', task, handlerCloseModal }) => {
       validationSchema={taskFormSchema}
       onSubmit={(values, action) => {
         handleSubmit(values);
-        action.resetForm();
       }}
     >
       {({ errors, touched }) => (
