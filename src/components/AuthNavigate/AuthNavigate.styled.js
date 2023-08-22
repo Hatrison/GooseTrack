@@ -26,4 +26,7 @@ export const Link = styled(RouterLink)`
     font-size: 18px;
     line-height: 24px;
   }
+  &:hover {
+    color: #2B78EF; 
+  }
 `;

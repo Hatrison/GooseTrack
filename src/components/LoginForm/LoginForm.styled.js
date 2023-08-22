@@ -209,8 +209,13 @@ export const SubmitBtn = styled.button`
     line-height: 24px;
     padding: 16px;
   }
-
+  &:hover {
+    background: #2B78EF; 
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48); 
+  }
   &:hover ${ButtonIcon} {
+    background: #2B78EF; 
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48); 
     animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 `;
