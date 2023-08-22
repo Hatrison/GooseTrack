@@ -50,7 +50,6 @@ export const TaskForm = ({ category = 'to-do', task, handlerCloseModal }) => {
       return;
     }
 
-    console.log(values);
     dispatch(
       operation === 'edit'
         ? updateTask(values)
