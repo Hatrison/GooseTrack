@@ -175,7 +175,8 @@ export const theme = {
     labelText: 'rgba(250, 250, 250, 0.3)',
     inputBorder: 'rgba(255, 255, 255, 0.15)',
     TextColorUserProfile: '#111111',
-    // placeholderCoslor: 'rgba(17, 17, 17, 1)',
+    placeholderColor: '#ffffff',
+
     //CalendarHead
     titleColor: 'rgba(250, 250, 250, 0.3)',
     CalendarHead: '#FFFFFF',
@@ -238,15 +239,4 @@ export const theme = {
     periodColor: '#fff',
     statisticsBorder: '0.8px solid #E3F3FF26',
   },
-
-  // TaskModal
-  taskModalInputColor: '#171820',
-  taskModalLabelColor: '#5B5C61',
-
-  //LoginForm
-  loginInputColor: '#FFFFFF',
-  loginInputBorder: '#DCEBF7',
-  backgroundColorForm: '#111111',
-  errorTagColor: '#E74A3B',
-  correctTagColor: '#3CBC81',
 };
