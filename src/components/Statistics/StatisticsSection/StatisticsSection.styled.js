@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const StatisticsWrapper = styled.section`
   width: 100%;
 
-  @media screen and (min-width: 390px) and (max-width: 768px) {
-    max-width: 500px;
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    max-width: 335px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    max-width: 862px;
+    max-width: 704px;
   }
 `;
 

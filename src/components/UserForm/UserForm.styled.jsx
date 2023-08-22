@@ -8,20 +8,25 @@ import {
 import { ReactComponent as plus } from '../../images/account/plus.svg';
 
 export const WrapperForm = styled.div`
+  margin: 0 auto;
+  max-width: 100%;
   padding-bottom: 40px;
   position: relative;
-  @media (min-width: 768px) {
-    max-width: 100%;
-    min-width: 768px;
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    max-width: 335px;
+  }
+  @media (min-width: 768px) and (max-width: 1439px) {
+    max-width: 704px;
     padding-bottom: 38px;
   }
   @media (min-width: 1440px) {
-    max-width: 100%;
+    min-width: 100%;
     padding-bottom: 32px;
   }
 `;
 
 export const Form = styled(FormikForm)`
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,11 +64,14 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   row-gap: 8px;
-  min-width: 299px;
+  max-width: 100%;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.17;
   color: ${({ theme }) => theme.labelText};
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    min-width: 299px;
+  }
 
   @media (min-width: 768px) {
     width: 354px;
@@ -181,7 +189,10 @@ export const ControlBtn = styled.button`
   &:disabled {
     opacity: 0.45;
   }
-
+  @media screen and (max-width: 240px) {
+    min-width: 100px;
+    font-size: 10px;
+  }
   @media (min-width: 768px) {
     min-width: 262px;
     height: 48px;
