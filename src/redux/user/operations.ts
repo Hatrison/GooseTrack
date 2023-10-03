@@ -32,7 +32,7 @@ export const updateUser = createAsyncThunk(
 
 export const changePassword = createAsyncThunk(
   'changePassword',
-  async (credentials, thunkAPI) => {
+  async (credentials: { newPassword: string }, thunkAPI) => {
     try {
       const response = await instance.patch('/api/users/password', credentials);
       return response.data;

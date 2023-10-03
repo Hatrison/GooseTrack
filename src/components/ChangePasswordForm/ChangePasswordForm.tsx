@@ -16,10 +16,11 @@ import {
   StyledButton,
   WrapButton,
 } from './ChangePassword.styles';
+import { Props } from './ChangePasswordForm.types';
 
 const initialValues = { password: '', confirmPassword: '' };
 
-const ChangePasswordForm = ({ handlerCloseModal }) => {
+const ChangePasswordForm = ({ handlerCloseModal }: Props) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -28,7 +29,7 @@ const ChangePasswordForm = ({ handlerCloseModal }) => {
       onSubmit={(values, actions) => {
         dispatch(changePassword({ newPassword: values.password }))
           .then(data => {
-            if (data.error) {
+            if (data.payload?.error) {
               throw new Error(`Something went wrong`);
             }
             toast.success('Password changed successfully');
@@ -48,7 +49,8 @@ const ChangePasswordForm = ({ handlerCloseModal }) => {
             style={{
               color:
                 (touched.password && errors.password && '#E74A3B') ||
-                (touched.password && !errors.password && '#3CBC81'),
+                (touched.password && !errors.password && '#3CBC81') ||
+                'initial',
             }}
           >
             New password
@@ -87,9 +89,9 @@ const ChangePasswordForm = ({ handlerCloseModal }) => {
                   '#E74A3B') ||
                 (touched.confirmPassword &&
                   !errors.confirmPassword &&
-                  '#3CBC81'),
+                  '#3CBC81') ||
+                'initial',
             }}
-            confirmPassword
           >
             Confirm password
           </FormField>
