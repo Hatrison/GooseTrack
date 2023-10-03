@@ -1,13 +1,14 @@
-const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
-const {
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import {
   getReviews,
   getOwnReview,
   createReview,
   updateReview,
   deleteReview,
-} = require('./operations');
+} from './operations';
+import { TInitialState } from './reviews.types';
 
-const initialState = {
+const initialState: TInitialState = {
   reviews: [],
   ownReview: {
     rating: 0,
@@ -20,6 +21,7 @@ const initialState = {
 const reviewsSlice = createSlice({
   name: 'reviews',
   initialState,
+  reducers: {},
   extraReducers: builder =>
     builder
       .addCase(getReviews.fulfilled, (state, action) => {
@@ -67,7 +69,7 @@ const reviewsSlice = createSlice({
         ),
         (state, action) => {
           state.isLoading = false;
-          state.error = action.payload;
+          state.error = action.payload as string;
         }
       ),
 });

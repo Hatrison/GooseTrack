@@ -7,7 +7,7 @@ export const getReviews = createAsyncThunk(
     try {
       const response = await instance.get('/api/reviews');
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -19,7 +19,7 @@ export const getOwnReview = createAsyncThunk(
     try {
       const response = await instance.get('/api/reviews/own');
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -31,7 +31,7 @@ export const createReview = createAsyncThunk(
     try {
       const response = await instance.post('/api/reviews/own', review);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -43,7 +43,7 @@ export const updateReview = createAsyncThunk(
     try {
       const response = await instance.patch('/api/reviews/own', review);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -55,7 +55,7 @@ export const deleteReview = createAsyncThunk(
     try {
       const response = await instance.delete(`/api/reviews/own`);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }

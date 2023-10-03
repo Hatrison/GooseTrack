@@ -24,7 +24,10 @@ const themePersistConfig = {
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  theme: persistReducer(themePersistConfig, themeReducer),
+  theme: persistReducer<ReturnType<typeof themeReducer>>(
+    themePersistConfig,
+    themeReducer
+  ),
   date: dateReducer,
   tasks: tasksReducer,
   user: userReducer,

@@ -1,21 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { deleteUser, updateUser } from './operations';
+import { TUserState } from './user.types';
 
-const updateUserState = (state, action) => {
-  for (let key in state) {
-    if (state.hasOwnProperty(key) && action.hasOwnProperty(key)) {
-      state[key] = action[key];
-    }
-  }
-};
-
-const initialState = {
+const initialState: TUserState = {
   name: '',
   email: '',
   birthday: '',
   phone: '',
   skype: '',
   avatarURL: '',
+};
+
+const updateUserState = (state: TUserState, action: Required<TUserState>) => {
+  for (let key in state) {
+    if (state.hasOwnProperty(key) && action.hasOwnProperty(key)) {
+      state[key as keyof typeof state] = action[key as keyof typeof action];
+    }
+  }
 };
 
 const userSlice = createSlice({

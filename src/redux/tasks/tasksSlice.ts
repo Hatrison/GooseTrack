@@ -1,7 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addTask, deleteTask, getTasks, updateTask } from './operations';
+import { TInitialState } from './tasks.types';
 
-const initialState = {
+const initialState: TInitialState = {
   tasks: [],
   isLoading: false,
   error: null,
@@ -10,6 +11,7 @@ const initialState = {
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
+  reducers: {},
   extraReducers: builder =>
     builder
       .addCase(getTasks.fulfilled, (state, action) => {
@@ -32,7 +34,9 @@ const tasksSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.tasks = state.tasks.filter(task => task._id !== action.payload);
+        state.tasks = state.tasks.filter(
+          task => task._id !== String(action.payload)
+        );
       })
       .addMatcher(
         isAnyOf(
@@ -54,7 +58,7 @@ const tasksSlice = createSlice({
         ),
         (state, action) => {
           state.isLoading = false;
-          state.error = action.payload;
+          state.error = action.payload as string;
         }
       ),
 });
