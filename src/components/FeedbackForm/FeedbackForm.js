@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { Formik } from 'formik';
 
 import {
@@ -38,8 +39,8 @@ const initialValues = {
 const FeedbackForm = ({ handlerCloseModal }) => {
   const [statusForm, setStatusForm] = useState('create');
   const [isEditing, setIsEditing] = useState(false);
-  const dispatch = useDispatch();
-  const review = useSelector(selectOwnReview);
+  const dispatch = useAppDispatch();
+  const review = useAppSelector(selectOwnReview);
 
   useEffect(() => {
     review?.text ? setStatusForm('edit') : setStatusForm('create');

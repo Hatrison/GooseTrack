@@ -1,10 +1,10 @@
 import { ThemeProvider } from 'styled-components';
 import { theme as themeTemplate } from './Theme.styled';
 import { selectTheme } from 'redux/theme/selectors';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 
 const Theme = ({ children }) => {
-  const theme = useSelector(selectTheme);
+  const theme = useAppSelector(selectTheme);
   const isDarkTheme = theme === 'dark';
   const { light, dark } = themeTemplate;
 

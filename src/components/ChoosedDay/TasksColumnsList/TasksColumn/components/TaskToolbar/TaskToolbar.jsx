@@ -1,6 +1,6 @@
 import { ChangeTaskDirModal } from '..';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'hooks/useDispatch';
 import {
   List,
   Btn,
@@ -18,7 +18,7 @@ import TaskModal from 'components/TaskModal/TaskModal';
 
 export const TaskToolbar = ({ handleDeleteTask, item, title }) => {
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const ChangeDirTitle = title => {
     let titlesArr = [];

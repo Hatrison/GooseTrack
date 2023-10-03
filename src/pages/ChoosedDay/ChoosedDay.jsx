@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { DayCalendarHead, TasksColumnsList } from 'components/ChoosedDay';
 import { selectTasks } from 'redux/tasks/selectors';
 import { selectDate } from 'redux/date/selectors';
 
 const ChoosedDay = () => {
-  const { tasks } = useSelector(selectTasks);
-  const date = useSelector(selectDate);
+  const { tasks } = useAppSelector(selectTasks);
+  const date = useAppSelector(selectDate);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { isToday, parseISO } from 'date-fns';
 import { Span, StyledDay, StyledTd } from './DaysWithTasks.styled';
 import { TasksList } from '../TasksList/TasksList';
@@ -16,7 +16,7 @@ export const DaysWithTasks = ({
   setOpening,
   currentTask,
 }) => {
-  const tasks = useSelector(selectTasks);
+  const tasks = useAppSelector(selectTasks);
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const tasksByDay = tasks.tasks.filter(task => task.date === day.date);
 

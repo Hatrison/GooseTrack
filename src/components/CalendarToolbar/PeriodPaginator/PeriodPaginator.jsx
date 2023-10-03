@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { format, parse, add, sub } from 'date-fns';
 import PropTypes from 'prop-types';
@@ -7,6 +7,7 @@ import { setDates } from 'redux/date/dateSlice';
 import { selectDate } from 'redux/date/selectors';
 import { ReactComponent as LeftArrow } from 'images/svg/chevron-left.svg';
 import { ReactComponent as RightArrow } from 'images/svg/chevron-right.svg';
+import { useAppDispatch } from 'hooks/useDispatch';
 
 import {
   Btn,
@@ -18,11 +19,11 @@ import {
 
 export const PeriodPaginator = ({ type }) => {
   const params = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const normalizedDate = useSelector(selectDate);
+  const normalizedDate = useAppSelector(selectDate);
 
   useEffect(() => {
     if (params.currentDate && params.currentDate !== ':currentDate') {

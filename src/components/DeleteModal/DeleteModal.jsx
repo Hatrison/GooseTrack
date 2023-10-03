@@ -7,13 +7,13 @@ import {
   FormHeader,
 } from './DeleteModal.styled';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { deleteUser } from 'redux/user/operations';
 import { toast } from 'react-toastify';
 
 const DeleteModal = ({ handlerCloseModal }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleDelete = () => {
     dispatch(deleteUser())

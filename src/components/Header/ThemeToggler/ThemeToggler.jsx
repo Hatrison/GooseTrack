@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { selectTheme } from 'redux/theme/selectors';
 
 import { toggleTheme } from 'redux/theme/themeSlice';
@@ -10,9 +11,9 @@ import {
 } from './ThemeToggler.styled';
 
 export default function ThemeToggler() {
-  const dispatсh = useDispatch();
+  const dispatсh = useAppDispatch();
 
-  const theme = useSelector(selectTheme);
+  const theme = useAppSelector(selectTheme);
 
   return (
     <ToggleButton type="button" onClick={() => dispatсh(toggleTheme())}>

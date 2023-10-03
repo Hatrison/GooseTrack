@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { selectDate } from 'redux/date/selectors';
 import { TailSpin } from 'react-loader-spinner';
 import CalendarToolbar from 'components/CalendarToolbar';
@@ -10,7 +10,7 @@ const CalendarPage = () => {
   const isFirstRender = useRef(true);
   const navigate = useNavigate();
   const location = useLocation();
-  const currentDate = useSelector(selectDate);
+  const currentDate = useAppSelector(selectDate);
 
   useEffect(() => {
     const { pathname } = location;

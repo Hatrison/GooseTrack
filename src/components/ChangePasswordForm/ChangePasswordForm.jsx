@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { changePassword } from 'redux/user/operations';
 import { toast } from 'react-toastify';
 import { changePasswordSchema } from './changePasswordSchema';
@@ -20,7 +20,7 @@ import {
 const initialValues = { password: '', confirmPassword: '' };
 
 const ChangePasswordForm = ({ handlerCloseModal }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <Formik

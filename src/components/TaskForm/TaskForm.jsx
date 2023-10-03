@@ -24,7 +24,8 @@ import { toast } from 'react-toastify';
 import { Formik } from 'formik';
 import { addTask, updateTask } from 'redux/tasks/operations';
 import { selectDate } from 'redux/date/selectors';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { taskFormSchema } from './taskFormSchema';
 
 const emptyTask = {
@@ -36,8 +37,8 @@ const emptyTask = {
 
 export const TaskForm = ({ category = 'to-do', task, handlerCloseModal }) => {
   const [operation, setOperation] = useState('create');
-  const date = useSelector(selectDate);
-  const dispatch = useDispatch();
+  const date = useAppSelector(selectDate);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (task?._id) setOperation('edit');

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useAppDispatch } from 'hooks/useDispatch';
 import {
   Section,
   Container,
@@ -15,15 +16,15 @@ import {
   StyledRating,
   Notification,
 } from './ReviewsSlider.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { selectReviews } from 'redux/reviews/selectors';
 import { ReactComponent as Star } from 'images/svg/reviewStar.svg';
 import { getReviews } from 'redux/reviews/operations';
 
 const ReviewsSlider = () => {
   const slider = useRef(null);
-  const reviews = useSelector(selectReviews);
-  const dispatch = useDispatch();
+  const reviews = useAppSelector(selectReviews);
+  const dispatch = useAppDispatch();
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {

@@ -5,11 +5,11 @@ import {
   AvatarFirstLetter,
   UserImage,
 } from './UserInfo.styled';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { selectUser } from 'redux/user/selectors';
 
 export default function UserInfo() {
-  const { name, avatarURL } = useSelector(selectUser);
+  const { name, avatarURL } = useAppSelector(selectUser);
   // const avatar =
   const firstCharName = name.charAt(0).toUpperCase();
   return (
