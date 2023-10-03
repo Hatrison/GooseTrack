@@ -33,7 +33,7 @@ import DeleteModal from 'components/DeleteModal/DeleteModal';
 
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
-const UserForm = ({ openModal }) => {
+const UserForm = () => {
   const dispatch = useAppDispatch();
   const userInfo = useAppSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
