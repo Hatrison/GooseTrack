@@ -3,7 +3,6 @@ import { Layout } from './Layout';
 import NotFound from 'pages/NotFound';
 import Theme from './Theme';
 import { lazy, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/user/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -14,12 +13,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './GlobalStyle.styled';
 import { LoadContainer } from './App.styled';
 import { googleAuth } from 'redux/auth/authSlice';
+import { useAppDispatch } from 'hooks/useDispatch';
+import { useAppSelector } from 'hooks/useSelector';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const PasswordResetPage = lazy(() => import('../pages/PasswordResetPage'));
-const MainLayout = lazy(() => import('../components/MainLayout'));
+const MainLayout = lazy(() => import('./MainLayout'));
 const AccountPage = lazy(() => import('../pages/AccountPage'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'));
@@ -27,9 +28,9 @@ const ChoosedMonth = lazy(() => import('../pages/ChoosedMonth'));
 const ChoosedDay = lazy(() => import('../pages/ChoosedDay'));
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useAppDispatch();
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const isRefreshing = useAppSelector(selectIsRefreshing);
   const [searchParams] = useSearchParams();
 
   useEffect(() => {

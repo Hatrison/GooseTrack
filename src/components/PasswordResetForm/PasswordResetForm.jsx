@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { useAppDispatch } from 'hooks/useDispatch';
 import {
   FormContainer,
   Field,
@@ -10,7 +11,6 @@ import {
   CorrectTag,
   IconContainer,
 } from 'components/LoginForm/LoginForm.styled';
-import { useDispatch } from 'react-redux';
 
 import { resetPassword } from 'redux/user/operations';
 import { toast } from 'react-toastify';
@@ -23,7 +23,7 @@ import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
 const initialState = { email: '' };
 
 const PasswordResetForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   return (

@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { selectTasks } from 'redux/tasks/selectors';
 import { selectDate } from 'redux/date/selectors';
 
@@ -14,9 +14,9 @@ import {
 } from './PageInfo.styled';
 
 export default function PageInfo() {
-  const tasks = useSelector(selectTasks);
+  const tasks = useAppSelector(selectTasks);
   const { pathname } = useLocation();
-  const currentDate = useSelector(selectDate);
+  const currentDate = useAppSelector(selectDate);
 
   const tasksByDay = tasks.tasks.filter(
     task => task.date === currentDate && task.category !== 'done'

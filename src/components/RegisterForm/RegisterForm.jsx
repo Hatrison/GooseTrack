@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import { useState } from 'react';
+import { useAppDispatch } from 'hooks/useDispatch';
 import {
   Field,
   Form,
@@ -17,7 +18,6 @@ import {
   CorrectIcon,
 } from './RegisterForm.styled';
 
-import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 import AuthNavigate from 'components/AuthNavigate';
 import { toast } from 'react-toastify';
@@ -31,7 +31,7 @@ import { useNavigate } from 'react-router';
 const initialState = { name: '', email: '', password: '' };
 
 const RegisterForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleShowPassword = () => {

@@ -1,4 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
+import { useAppDispatch } from 'hooks/useDispatch';
 import {
   TaskBox,
   TaskText,
@@ -14,9 +15,9 @@ import { selectUser } from 'redux/user/selectors';
 import { deleteTask } from 'redux/tasks/operations';
 
 export const TaskColumnCard = ({ item, title }) => {
-  const { avatarURL, name } = useSelector(selectUser);
+  const { avatarURL, name } = useAppSelector(selectUser);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleDeleteTask = value => {
     dispatch(deleteTask(value));

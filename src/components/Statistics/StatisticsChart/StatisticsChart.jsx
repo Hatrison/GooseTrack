@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { useEffect } from 'react';
 import { parse } from 'date-fns';
 import { getTasks } from 'redux/tasks/operations';
 import { selectTheme } from 'redux/theme/selectors';
 import { useMediaQuery } from 'react-responsive';
-// підписка на  таски із редаксу
 import { selectTasks } from 'redux/tasks/selectors';
 
 import {
@@ -19,20 +19,20 @@ import {
 } from 'recharts';
 
 export const StatisticsChart = ({ normalizedDate }) => {
-  const theme = useSelector(selectTheme);
+  const theme = useAppSelector(selectTheme);
   const isDarkTheme = theme === 'dark';
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
   const year = date.getUTCFullYear();
   const month = date.getUTCMonth() + 1;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getTasks({ month, year }));
   }, [dispatch, month, year]);
 
   // берем данні із редакса, таски = tasks.tasks
-  const tasks = useSelector(selectTasks);
+  const tasks = useAppSelector(selectTasks);
 
   //довжина масивів = кількість тасок за день та за місяць
   const tasksByDay = tasks.tasks.filter(task => task.date === normalizedDate);

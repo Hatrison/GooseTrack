@@ -12,7 +12,7 @@ export const fetchCurrentUser = createAsyncThunk(
       setAuthHeader(accessToken);
       const response = await instance.get('/api/users/current');
       await thunkAPI.dispatch(addUserData(response.data));
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -24,7 +24,7 @@ export const updateUser = createAsyncThunk(
     try {
       const response = await instance.patch('/api/users/current', credentials);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -36,7 +36,7 @@ export const changePassword = createAsyncThunk(
     try {
       const response = await instance.patch('/api/users/password', credentials);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -49,19 +49,23 @@ export const deleteUser = createAsyncThunk(
       const response = await instance.delete('/api/users/delete');
       thunkAPI.dispatch(cleanAuthData());
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const resetPassword = createAsyncThunk('resetPassword',
+export const resetPassword = createAsyncThunk(
+  'resetPassword',
   async (credentials, thunkAPI) => {
-  try {
-    const response = await instance.post('/api/users/forgot-password', credentials);
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    try {
+      const response = await instance.post(
+        '/api/users/forgot-password',
+        credentials
+      );
+      return response.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-})
-
+);

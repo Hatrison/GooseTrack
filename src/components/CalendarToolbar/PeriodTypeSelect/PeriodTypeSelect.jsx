@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
 import { selectDate } from 'redux/date/selectors';
 import { ListItem, List, StyledNavLink } from './PeriodTypeSelect.styled';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export const PeriodTypeSelect = ({ onChangeType }) => {
-  const date = useSelector(selectDate);
+  const date = useAppSelector(selectDate);
 
   const location = useLocation();
   const isMonthRoute = location.pathname.includes('month');

@@ -1,13 +1,14 @@
 import FeedbackForm from 'components/FeedbackForm/FeedbackForm';
 import Modal from 'components/Modal';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { getOwnReview } from 'redux/reviews/operations';
 import { selectIsLoading } from 'redux/reviews/selectors';
 
 const AddFeedbackModal = ({ handlerCloseModal }) => {
-  const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
+  const isLoading = useAppSelector(selectIsLoading);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getOwnReview());

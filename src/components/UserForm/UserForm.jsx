@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector } from 'hooks/useSelector';
+import { useAppDispatch } from 'hooks/useDispatch';
 import { selectUser } from '../../redux/user/selectors';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -33,8 +34,8 @@ import DeleteModal from 'components/DeleteModal/DeleteModal';
 const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
 const UserForm = ({ openModal }) => {
-  const dispatch = useDispatch();
-  const userInfo = useSelector(selectUser);
+  const dispatch = useAppDispatch();
+  const userInfo = useAppSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 

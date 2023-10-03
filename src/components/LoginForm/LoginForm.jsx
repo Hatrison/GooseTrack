@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { useAppDispatch } from 'hooks/useDispatch';
 import {
   FormContainer,
   Field,
@@ -15,7 +16,6 @@ import {
   IconContainer,
   ResetNavigate,
 } from './LoginForm.styled';
-import { useDispatch } from 'react-redux';
 
 import { loginUser } from 'redux/auth/operations';
 import { toast } from 'react-toastify';
@@ -28,7 +28,7 @@ import GooseRocketRetina from 'images/png/goose-rocket-login/goose-login@2x.png'
 const initialState = { email: '', password: '' };
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <>
