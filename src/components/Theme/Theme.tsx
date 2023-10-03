@@ -3,7 +3,11 @@ import { theme as themeTemplate } from './Theme.styled';
 import { selectTheme } from 'redux/theme/selectors';
 import { useAppSelector } from 'hooks/useSelector';
 
-const Theme = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Theme = ({ children }: Props) => {
   const theme = useAppSelector(selectTheme);
   const isDarkTheme = theme === 'dark';
   const { light, dark } = themeTemplate;

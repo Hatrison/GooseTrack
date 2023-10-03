@@ -98,7 +98,6 @@ export const theme = {
     backgroundColorForm: '#FFFFFF',
     errorTagColor: '#E74A3B',
     correctTagColor: '#3CBC81',
-    
 
     //CalendarToolbar
     periodActiveColor: '#3E85F3',
@@ -179,7 +178,6 @@ export const theme = {
     placeholderColor: '#ffffff',
 
     //CalendarHead
-    titleColor: 'rgba(250, 250, 250, 0.3)',
     CalendarHead: '#FFFFFF',
     CurrentDate: '#FFFFFF',
 
@@ -192,6 +190,7 @@ export const theme = {
     taskModalInputColor: '#171820',
     taskModalLabelColor: '#5B5C61',
     taskModalTitleColor: 'rgba(250, 250, 250, 0.30)',
+    taskModalBorder: '1px solid rgba(220, 227, 229, 0.8)',
 
     // FeedbackModal
     feedbackLabelColor: '#FAFAFA4D',
@@ -212,6 +211,13 @@ export const theme = {
 
     //ChangeTaskDirModal
     changeTaskDirModalBorder: 'rgba(255, 255, 255, 0.15)',
+
+    //LoginForm
+    loginInputColor: '#111111',
+    loginInputBorder: '1px solid rgba(17, 17, 17, 0.15)',
+    backgroundColorForm: '#FFFFFF',
+    errorTagColor: '#E74A3B',
+    correctTagColor: '#3CBC81',
 
     //CalendarToolbar
     periodActiveColor: '#FFFFFF',
