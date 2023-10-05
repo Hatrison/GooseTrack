@@ -6,7 +6,7 @@ const instance = axios.create({
   baseURL: REACT_APP_BASE_URL,
 });
 
-const setAuthHeader = token => {
+const setAuthHeader = (token: string) => {
   if (token) {
     return (instance.defaults.headers.common.authorization = `Bearer ${token}`);
   }
