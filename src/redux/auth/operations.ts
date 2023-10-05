@@ -36,7 +36,7 @@ export const logoutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await instance.post(`/api/auth/logout`);
-      setAuthHeader();
+      setAuthHeader('');
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('accessToken');
       await thunkAPI.dispatch(cleanUserData());
