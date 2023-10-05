@@ -2,11 +2,11 @@ export type TTask = {
   _id: string;
   title: string;
   date: string;
-  categoty: string;
+  category: string;
   priority: string;
   start: string;
   end: string;
-  owner: string;
+  owner?: string;
 };
 
 export type TInitialState = {
@@ -20,7 +20,12 @@ export type TTaskFetch = Required<{
   month: number;
 }>;
 
-export type TTaskUpdate = Required<{
-  _id: string;
-  owner: string;
-}>;
+export type TTaskAdd = Pick<
+  TTask,
+  'title' & 'date' & 'category' & 'priority' & 'start' & 'end'
+>;
+
+export type TTaskUpdate = Partial<TTask> &
+  Required<{
+    _id: string;
+  }>;

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from 'utils/axiosInctance';
-import { TTaskFetch, TTaskUpdate } from './tasks.types';
+import { TTaskAdd, TTaskFetch, TTaskUpdate } from './tasks.types';
 
 export const getTasks = createAsyncThunk(
   'getTasks',
@@ -19,7 +19,7 @@ export const getTasks = createAsyncThunk(
 
 export const addTask = createAsyncThunk(
   'createTask',
-  async (task, thunkAPI) => {
+  async (task: TTaskAdd, thunkAPI) => {
     try {
       const response = await instance.post(`/api/tasks`, task);
       return response.data;
@@ -33,7 +33,7 @@ export const updateTask = createAsyncThunk(
   'updateTask',
   async (task: TTaskUpdate, thunkAPI) => {
     try {
-      const { _id, owner, ...rest } = task;
+      const { _id, ...rest } = task;
       const response = await instance.patch(`/api/tasks/${task._id}`, rest);
       return response.data;
     } catch (error: any) {
@@ -44,7 +44,7 @@ export const updateTask = createAsyncThunk(
 
 export const deleteTask = createAsyncThunk(
   'deleteTask',
-  async (id, thunkAPI) => {
+  async (id: string, thunkAPI) => {
     try {
       await instance.delete(`/api/tasks/${id}`);
       return id;

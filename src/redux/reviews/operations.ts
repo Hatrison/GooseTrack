@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from 'utils/axiosInctance';
+import { TAction } from './reviews.types';
 
 export const getReviews = createAsyncThunk(
   'getReviews',
@@ -27,7 +28,7 @@ export const getOwnReview = createAsyncThunk(
 
 export const createReview = createAsyncThunk(
   'createReview',
-  async (review, thunkAPI) => {
+  async (review: TAction, thunkAPI) => {
     try {
       const response = await instance.post('/api/reviews/own', review);
       return response.data;
@@ -39,7 +40,7 @@ export const createReview = createAsyncThunk(
 
 export const updateReview = createAsyncThunk(
   'updateReview',
-  async (review, thunkAPI) => {
+  async (review: TAction, thunkAPI) => {
     try {
       const response = await instance.patch('/api/reviews/own', review);
       return response.data;

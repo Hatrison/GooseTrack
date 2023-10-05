@@ -16,3 +16,8 @@ export type TInitialState = {
   error: null | string;
   isLoading: boolean;
 };
+
+export type TAction = {
+  rating: number;
+  text: string;
+};

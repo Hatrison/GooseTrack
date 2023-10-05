@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { addUserData } from './userSlice';
 import { instance, setAuthHeader } from 'utils/axiosInctance';
 import { cleanAuthData } from 'redux/auth/authSlice';
+import { TUserResetPasswordAction, TUserUpdateAction } from './user.types';
 
 export const fetchCurrentUser = createAsyncThunk(
   'getCurrentUser',
@@ -20,7 +21,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'patchCurrentUser',
-  async (credentials, thunkAPI) => {
+  async (credentials: TUserUpdateAction, thunkAPI) => {
     try {
       const response = await instance.patch('/api/users/current', credentials);
       return response.data;
@@ -44,7 +45,7 @@ export const changePassword = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk(
   'deleteUser',
-  async (credentials, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const response = await instance.delete('/api/users/delete');
       thunkAPI.dispatch(cleanAuthData());
@@ -57,7 +58,7 @@ export const deleteUser = createAsyncThunk(
 
 export const resetPassword = createAsyncThunk(
   'resetPassword',
-  async (credentials, thunkAPI) => {
+  async (credentials: TUserResetPasswordAction, thunkAPI) => {
     try {
       const response = await instance.post(
         '/api/users/forgot-password',
